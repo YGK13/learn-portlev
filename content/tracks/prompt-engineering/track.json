@@ -1,0 +1,10 @@
+{
+  "title": "Prompt Engineering",
+  "slug": "prompt-engineering",
+  "summary": "Most professionals prompt like they are asking a question. The ones closing the AI Wage Gap write prompts like they are programming a specialist. This track teaches you the craft.",
+  "level": "beginner",
+  "order": 2,
+  "icon": "🧩",
+  "status": "published",
+  "tags": ["prompting", "productivity", "fundamentals"]
+}

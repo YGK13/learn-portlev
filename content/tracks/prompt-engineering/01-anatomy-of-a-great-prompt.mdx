@@ -1,0 +1,149 @@
+---
+title: "The Anatomy of a Great Prompt"
+summary: "A prompt is not a question. It is a specification. Learn the three-part structure that separates great AI output from generic text."
+track: prompt-engineering
+order: 1
+level: beginner
+status: published
+tier: free
+updated: "2026-05-18"
+tags: ["prompting", "system-prompt", "fundamentals"]
+estReadMin: 9
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+The single biggest mistake professionals make with AI is asking questions.
+
+"Write me a summary of this document." "What should I include in a client proposal?" "Help me think through this hiring decision."
+
+These are not prompts. They are search queries. And AI, when treated like a search engine, returns search-engine results: generic, hedged, safe and largely useless.
+
+The professionals on the right side of the AI Wage Gap treat AI differently. They write **specifications**: precise instructions that tell the AI exactly who it is, exactly what they need and exactly what the output should look like. That shift in mindset produces a completely different tier of output — and it is what this track is about.
+
+## Context
+
+Every effective prompt has three components. Understand these and you will understand why some prompts produce executive-quality output and others produce content you would never actually use.
+
+### Component 1: Role (Who the AI is)
+
+The first line of any system prompt should tell the AI who it is playing. Not "you are a helpful assistant" — that is the default behavior. You want to assign a specific persona with specific expertise.
+
+Compare these two openers:
+
+*Generic:* "Help me write a proposal."
+
+*Role-first:* "You are a senior management consultant at a top-tier firm. You specialize in workforce transformation and have written hundreds of executive proposals for Fortune 500 clients."
+
+The second version immediately primes the AI to write like a senior consultant, not like a first-year analyst. Role assignment is the highest-leverage line in any prompt.
+
+**Effective role framing patterns:**
+- "You are a [specific expert] who [specific experience and specialty]"
+- "You are my [role] — you have [N years / specific background]"
+- "Act as a [role]. You think like [reference point]"
+
+### Component 2: Task (What it must produce)
+
+The task section specifies the output with maximum precision. This is where most prompts fail — they describe the topic but not the deliverable.
+
+Compare:
+
+*Vague:* "Write a hiring manager brief for a new Head of HR."
+
+*Specific:* "Write a one-page hiring brief for a Head of HR role at a 300-person Series B SaaS company. The brief should cover: (1) why we are hiring now, (2) what success looks like in year one, (3) the three non-negotiable qualifications and (4) the compensation range and reporting structure. Format: four labeled sections, no bullets, direct and specific language."
+
+The specific version tells the AI exactly what to produce, in what format and with what constraints. There is almost no room for interpretation — and that is the goal.
+
+**Task specification checklist:**
+- What is the deliverable, exactly? (Document, email, analysis, framework, list?)
+- How long should it be? (One page, five bullets, 300 words, a table?)
+- What sections or components must it include?
+- What is the tone and style? (Formal, direct, conversational, executive-level?)
+- What should it explicitly exclude? (No filler, no motivational language, no hedging?)
+
+### Component 3: Context (What the AI needs to know)
+
+Context is the raw material the AI works with. Without it, the AI makes things up — it has to. With it, the AI can produce output that is specific, accurate and actually usable.
+
+Context includes:
+- **Background information**: The document, email thread, data or notes the AI needs to read
+- **Constraints**: Word limits, audience specifics, confidentiality requirements
+- **Examples**: One or two examples of what good output looks like (the most underused technique in prompting)
+- **Anti-patterns**: Explicit instructions about what to avoid ("do not write in list format," "never use corporate jargon")
+
+The more specific your context, the less editing you will do. Every hour spent editing AI output is an hour lost to insufficient context.
+
+## Steps
+
+### Step 1: Build your role library
+
+Write five role descriptions you will use repeatedly in your work. For each one, spend three minutes writing the most specific version you can.
+
+Examples by profession:
+
+**CHRO:** "You are a senior CHRO with 20 years of experience at technology companies with 500-5,000 employees. You specialize in talent architecture, AI-powered HR transformation and organizational design. You write like a business leader, not like an HR practitioner — direct, strategic, numbers-oriented."
+
+**Consultant:** "You are a senior partner at a management consulting firm specializing in organizational transformation. You have delivered engagements for Fortune 500 clients across financial services, healthcare and technology. You write proposals that win, presentations that move executives to action and analyses that surface non-obvious insights."
+
+**Executive coach:** "You are a senior executive coach with a background in organizational psychology. You have coached C-suite leaders at publicly traded companies. You ask powerful questions, surface assumptions and help leaders see their blind spots without telling them what to do."
+
+Write your five. These become the foundation of your prompt library.
+
+### Step 2: Write the output specification before anything else
+
+Before you write any prompt, write down exactly what you want the AI to produce. Do this in plain language, as if you were briefing a new team member.
+
+Template:
+```
+I need [deliverable type] that [specific function].
+It should be [length/format].
+It must include: [component 1], [component 2], [component 3].
+It should not: [anti-pattern 1], [anti-pattern 2].
+The tone is [X].
+The audience is [Y] who [what they care about].
+```
+
+Fill this in before you write the prompt. Then use it to write the prompt. This single step eliminates 80% of the editing you would otherwise do.
+
+### Step 3: Test the three-part structure on a real deliverable
+
+Take a real piece of work you are doing this week. Apply the three-part structure:
+
+1. Write the role: who is the AI for this task?
+2. Write the task specification: what exactly will the AI produce?
+3. Write the context: what does the AI need to know?
+
+Run the prompt. Read the output. Ask yourself: what would make this output immediately usable? That answer tells you exactly what to add to the next iteration.
+
+Most prompts reach "good enough to use" within two iterations when you start with a properly structured prompt. Starting without structure usually means six iterations — and output you still do not fully trust.
+
+### Step 4: Add constraints and anti-patterns
+
+The most underused element in prompt engineering is the explicit exclusion list. Tell the AI what it must not do.
+
+High-value anti-patterns to include by default:
+- "Do not use filler phrases like 'certainly' or 'great question'"
+- "Do not hedge with phrases like 'it depends' without immediately explaining what it depends on"
+- "Do not use corporate jargon or buzzwords"
+- "Do not exceed [X] words / [X] pages"
+- "Do not invent information — if something is missing, say so explicitly"
+- "Do not summarize — synthesize"
+
+These constraints sound obvious. The AI will violate all of them if you do not name them. The professionals who get the best AI output have learned this and built these constraints into their standard prompts.
+
+## Recap
+
+- A prompt is not a question — it is a specification. The shift from asking to specifying is the single biggest unlock.
+- Every effective prompt has three components: Role (who the AI is), Task (exactly what it must produce) and Context (what it needs to know).
+- Role assignment is the highest-leverage line in any prompt. A specific role produces a fundamentally different tier of output.
+- Output specification should be written before the prompt, not after. Define the deliverable precisely: format, length, sections, tone, audience and anti-patterns.
+- Explicit exclusion lists ("do not use filler," "do not invent information") eliminate the most common AI failure modes.
+
+---
+
+The next lesson builds on this foundation — you will create a personal prompt library that turns your best prompts into permanent, reusable systems.
+
+[Continue: Building Your Prompt Library →](/learn/prompt-engineering/building-your-prompt-library)

@@ -1,0 +1,215 @@
+/* ============================================================
+   PortLev Academy — Global Styles
+   Tailwind v4 CSS-first config. All design tokens live here.
+   No tailwind.config.js — the @theme block is the source of truth.
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ============================================================
+   Design Tokens — edit these to retheme the entire site
+   ============================================================ */
+@theme inline {
+  /* Brand palette */
+  --color-navy:        #0f172a;   /* slate-900: header, footer, dark sections */
+  --color-navy-light:  #1e293b;   /* slate-800: hover states on dark bg */
+  --color-indigo:      #4f46e5;   /* indigo-600: primary CTAs, links */
+  --color-indigo-dark: #4338ca;   /* indigo-700: hover on primary CTAs */
+  --color-amber:       #f59e0b;   /* amber-500: accents, premium badge, highlights */
+  --color-amber-dark:  #d97706;   /* amber-600: hover on amber elements */
+
+  /* Neutral surface palette */
+  --color-surface:     #f8fafc;   /* slate-50: alternate section backgrounds */
+  --color-border:      #e2e8f0;   /* slate-200: dividers, card borders */
+  --color-muted:       #64748b;   /* slate-500: secondary text, metadata */
+
+  /* Semantic */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  /* Radius */
+  --radius-sm:  0.25rem;   /* 4px */
+  --radius-md:  0.5rem;    /* 8px */
+  --radius-lg:  0.75rem;   /* 12px */
+  --radius-xl:  1rem;      /* 16px */
+  --radius-2xl: 1.5rem;    /* 24px */
+
+  /* Shadows */
+  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.1), 0 2px 6px -2px rgb(0 0 0 / 0.08);
+}
+
+/* ============================================================
+   Base reset / global defaults
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   Prose styles for MDX content (lessons and briefs)
+   Applied via the .prose class on the article wrapper.
+   ============================================================ */
+.prose {
+  --prose-body:      #374151;   /* gray-700 */
+  --prose-heading:   #0f172a;   /* navy */
+  --prose-lead:      #4b5563;   /* gray-600 */
+  --prose-link:      #4f46e5;   /* indigo */
+  --prose-link-hover:#4338ca;   /* indigo-dark */
+  --prose-code-bg:   #f1f5f9;   /* slate-100 */
+  --prose-pre-bg:    #0f172a;   /* navy */
+  --prose-border:    #e2e8f0;   /* slate-200 */
+  --prose-blockquote:#64748b;   /* muted */
+
+  color: var(--prose-body);
+  font-size: 1.0625rem;         /* 17px — comfortable reading size */
+  line-height: 1.75;
+  max-width: 65ch;
+}
+
+.prose h2 {
+  color: var(--prose-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.prose h3 {
+  color: var(--prose-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+}
+
+.prose a {
+  color: var(--prose-link);
+  text-decoration: underline;
+  text-decoration-color: rgb(79 70 229 / 0.35);
+  text-underline-offset: 3px;
+  transition: color 0.15s, text-decoration-color 0.15s;
+}
+
+.prose a:hover {
+  color: var(--prose-link-hover);
+  text-decoration-color: var(--prose-link-hover);
+}
+
+.prose strong {
+  color: var(--prose-heading);
+  font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+}
+
+.prose li::marker {
+  color: var(--color-indigo);
+}
+
+.prose ol li::marker {
+  font-weight: 600;
+}
+
+.prose blockquote {
+  border-left: 3px solid var(--color-amber);
+  padding-left: 1.25rem;
+  margin-left: 0;
+  color: var(--prose-blockquote);
+  font-style: italic;
+}
+
+.prose code {
+  background: var(--prose-code-bg);
+  color: #1e293b;
+  border-radius: var(--radius-sm);
+  padding: 0.15em 0.4em;
+  font-size: 0.875em;
+  font-family: var(--font-mono);
+}
+
+.prose pre {
+  background: var(--prose-pre-bg);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.prose pre code {
+  background: transparent;
+  color: #e2e8f0;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--prose-border);
+  margin: 2.5rem 0;
+}
+
+/* ============================================================
+   Utility: tier badge colors
+   ============================================================ */
+.badge-free {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.badge-members {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+.badge-course {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+/* ============================================================
+   Utility: smooth focus ring (keyboard nav)
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--color-indigo);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}

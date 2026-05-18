@@ -1,0 +1,30 @@
+{
+  "name": "learn-portlev",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "validate": "node scripts/validate-content.mjs",
+    "prebuild": "npm run validate",
+    "predev": "npm run validate"
+  },
+  "dependencies": {
+    "feed": "^5.2.1",
+    "gray-matter": "^4.0.3",
+    "next": "16.2.6",
+    "next-mdx-remote": "^6.0.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4"
+  }
+}

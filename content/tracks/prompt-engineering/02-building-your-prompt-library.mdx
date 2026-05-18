@@ -1,0 +1,184 @@
+---
+title: "Building Your Prompt Library"
+summary: "A single great prompt saves you an hour. A library of great prompts saves you that hour every week, forever. Here is how to build and organize yours."
+track: prompt-engineering
+order: 2
+level: beginner
+status: published
+tier: free
+updated: "2026-05-18"
+tags: ["prompting", "productivity", "systems"]
+estReadMin: 11
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+The most expensive thing about AI is not the subscription. It is the time you spend reinventing prompts you have already written.
+
+Every time you start a new chat and rebuild your system prompt from scratch, you are leaving leverage on the table. The executives and consultants who use AI most effectively have the opposite habit: they maintain a library of tested, refined prompts and reuse them relentlessly.
+
+This lesson walks you through building yours — not a collection of prompts you saved somewhere and forgot about, but a system you actually use.
+
+## Context
+
+A prompt library is not a folder of text files. It is a **database of tested, named, versioned prompt systems** organized by the work they perform. Done right, it becomes one of the highest-value professional assets you own.
+
+Here is what separates a real prompt library from a dumping ground:
+
+**Every prompt has a name.** Not a file name — a functional name that tells you exactly what this prompt does. "Executive memo from bullet points" is a name. "Memo prompt" is not.
+
+**Every prompt has been tested.** A prompt you wrote once and never used is not in the library. A prompt you have run 10+ times and consistently produces usable output on the first try — that is in the library.
+
+**Every prompt has a version.** Prompts improve over time. The version tells you which iteration you are on and prevents you from losing a working version when you try to improve it.
+
+**Every prompt lives in Claude Projects (or equivalent).** The best prompt libraries are not stored in a document — they are loaded as system prompts in a persistent AI environment where you can run them instantly.
+
+## Steps
+
+### Step 1: Audit your last 10 AI tasks
+
+Before building a library, audit the work you have actually done with AI in the last two to four weeks. For each task, answer:
+
+1. Did you type the same basic instructions more than once across different sessions?
+2. Did the output require significant editing — and would a better prompt have reduced that editing?
+3. Would you do this task again? (If yes, it belongs in the library.)
+
+Common candidates that almost always emerge:
+- Email drafts (especially for specific contexts: client updates, follow-ups, difficult conversations)
+- Document summaries (meeting notes → actions, report → executive summary)
+- Research synthesis (multiple sources → structured brief)
+- Proposal sections (situation, approach, why us)
+- Interview prep (company research brief, question banks)
+- Performance feedback drafts
+- Job descriptions
+
+List everything that shows up more than once. This is your library backlog.
+
+### Step 2: Format your prompts for reuse
+
+A reusable prompt has a specific structure. Here is the template:
+
+```
+## [Prompt Name]
+**Version:** 1.0
+**Purpose:** [One-sentence description of what this produces]
+**Best for:** [Specific use cases where this works well]
+**Input required:** [What you paste in / what the AI needs]
+
+---
+SYSTEM PROMPT:
+
+[Role]
+[Task specification with format, length, sections, tone]
+[Constraints and anti-patterns]
+[How to receive the input]
+
+---
+**Notes:** [Anything worth remembering — what works, what does not, edge cases]
+```
+
+Write each of your top-five prompts in this format before the end of this lesson. Five is the right number to start. Not fifteen, not one — five.
+
+### Step 3: Load your library into Claude Projects
+
+Claude Projects (Claude.ai Pro/Team → Projects) are the most powerful way to deploy a prompt library because:
+
+1. The system prompt is **persistent** — it loads automatically every session in that Project
+2. You can maintain **separate Projects for separate roles** (CHRO work, coaching, consulting, writing)
+3. The AI has **full context** about how you work without re-entering it every time
+
+**Setup for a CHRO prompt library:**
+
+Create a Project called "CHRO Operations." In the Project Instructions, paste:
+
+```
+You are my executive assistant and strategic advisor for CHRO work.
+
+ABOUT ME:
+[Your role, company size, industry, key priorities]
+
+YOUR DEFAULT BEHAVIOR:
+- Write like a senior business leader, not like an HR practitioner
+- Be direct, specific and numbers-oriented
+- Never use jargon or corporate-speak
+- If information is missing, say what you need rather than guessing
+
+PROMPT LIBRARY:
+When I say "RUN: [prompt name]", execute the corresponding prompt below.
+
+RUN: MEETING-BRIEF — Given a meeting agenda, produce a one-page prep brief: (1) the decision we need to make or outcome we need, (2) the three things I need to know going in, (3) the two or three questions I should ask.
+
+RUN: ATTRITION-MEMO — Given turnover data (I will paste it), write a 1-2 page executive memo: situation, root cause analysis (from the data), three recommended actions with estimated impact, and what success looks like in 90 days.
+
+RUN: JD-DRAFT — Given a role title and 5-8 requirements I paste, write a job description: one-paragraph company context, four-bullet role overview, six non-negotiable requirements (not a laundry list), and a compensation range placeholder.
+
+[Add your other prompts here]
+```
+
+This single Project saves you 10-15 minutes every time you need to set up context — and the output quality improves because the AI always knows who it is talking to.
+
+### Step 4: Build one new prompt per week
+
+A prompt library built in a single sitting atrophies. One built incrementally over time compounds.
+
+The rule: **every time you repeat a prompt, improve it and version it.**
+
+Week 1: Build five prompts from your audit.
+Week 2: Refine the two that needed the most editing after first use. Increment to version 1.1.
+Week 3: Add one new prompt for a task you found yourself doing manually.
+Ongoing: Any task you do more than once per month earns a place in the library.
+
+This discipline separates professionals whose AI capability compounds over time from those who start over every session.
+
+### Step 5: Share your library with your team
+
+The highest-leverage use of a prompt library is not personal — it is organizational. When you have a prompt that consistently produces quality output, turn it into a team asset.
+
+**How to share without losing control:**
+- Create a shared Google Doc or Notion page for team-facing prompts
+- Include the version history so people know which version is current
+- Add "tested by" and "last verified" dates so people know the prompt actually works
+- Create a simple naming convention: DEPT-FUNCTION-VERSION (e.g., HR-JD-DRAFT-v2)
+
+The professional who builds the team's prompt library becomes indispensable. The AI Wage Gap is not just about individual leverage — it is about who builds the systems that make an entire team more effective.
+
+### Step 6: Add your five highest-value prompts right now
+
+Open Claude (or your preferred tool) and create a Project called "[Your Role] Prompt Library." Copy this system prompt as the starting point and customize it:
+
+```
+You are my AI operations partner.
+
+I am a [your role] at [company type/size]. My highest-priority work involves [2-3 focus areas].
+
+GROUND RULES:
+- Write like a senior [profession], not like an AI assistant
+- Be specific, direct and actionable
+- Never hedge without immediately explaining your reasoning
+- If I paste something labeled "INPUT:", that is the material to work with
+- If information is missing, ask for it specifically rather than guessing
+
+MY FIVE CORE PROMPTS:
+
+[Paste your five formatted prompts here]
+```
+
+Done. You now have a functional prompt library. Refine it over the next four weeks and you will have something that generates professional leverage every single day.
+
+## Recap
+
+- A prompt library is a database of tested, named, versioned prompt systems — not a folder of text files.
+- The audit step is critical: identify the tasks you repeat, not the tasks you want to automate. Recurring tasks belong in the library.
+- Format matters: every library prompt needs a name, version, purpose statement, input spec and notes.
+- Claude Projects are the ideal deployment mechanism: persistent system prompt, no re-entry required, role-specific context.
+- One new prompt per week, refined after every use: this is how the library compounds.
+- Sharing your library with your team turns personal leverage into organizational leverage — and makes you the person who built the infrastructure everyone else depends on.
+
+---
+
+The next lesson goes deeper: advanced prompting patterns that unlock output quality your current prompts cannot reach — chain-of-thought, few-shot examples and role-playing at scale.
+
+[Continue: Advanced Prompting Patterns →](/learn/prompt-engineering/advanced-prompting-patterns)
