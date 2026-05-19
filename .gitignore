@@ -34,8 +34,9 @@ yarn-error.log*
 .env*
 !.env*.example
 
-# vercel
-.vercel
+# vercel — ignore generated files, keep project link
+.vercel/*
+!.vercel/project.json
 
 # typescript
 *.tsbuildinfo
