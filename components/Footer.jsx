@@ -15,6 +15,7 @@ const PRODUCT_LINKS = [
   { label: 'The Book',           href: '/book' },
   { label: 'CHRO AI Cohort',     href: '/cohort' },
   { label: 'About Yuri',         href: '/about' },
+  { label: 'Credits',            href: '/credits' },
 ]
 
 const COMMUNITY_LINKS = [

@@ -1,0 +1,113 @@
+---
+title: "What an LLM Actually Is (Without the Math)"
+summary: "You use AI every week, but what is it actually doing? An accurate mental model of how AI works, with zero math, so you can make sound decisions."
+track: how-ai-works
+order: 1
+level: beginner
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["ai-literacy", "fundamentals", "leadership"]
+estReadMin: 9
+video:
+  status: none
+  scriptStatus: none
+---
+
+> **Adapted with attribution.** This lesson is adapted and rewritten for non-technical leaders from [*AI Engineering from Scratch*](https://github.com/rohitg00/ai-engineering-from-scratch) by Rohit Ghumare, used under the MIT License. The original is a 428-lesson technical course for software engineers.
+
+## Hook
+
+You use AI every week. Maybe every day. You have a sense of what it is good at and what it is not. But if someone stopped you in a hallway and asked "what is it actually doing when it answers you?" — could you give a clear, accurate answer in two sentences?
+
+Most professionals cannot. And that is a real problem, because you cannot govern, budget for, delegate to or set policy on a tool you do not understand. Every decision you make about AI — what to use it for, what to keep it away from, what to tell your team, what to tell your board — rests on a mental model of how it works. If that model is wrong, every decision built on it is shaky.
+
+The good news: you do not need mathematics, code or a computer science background to build an accurate mental model. The core of how a large language model works can be explained in plain language, and once you have it, a great deal of confusing AI behavior suddenly makes sense. Why it sometimes invents facts. Why it does not know about recent events. Why the same question can get different answers. Why it is brilliant at some tasks and unreliable at others.
+
+This lesson gives you that model. No math. Just an accurate picture of what is happening when you type a question and get an answer.
+
+## Context
+
+### An LLM is a prediction engine
+
+Start here, because everything else follows from it. A large language model — the technology behind ChatGPT, Claude, Gemini and the rest — does exactly one thing: it predicts the next piece of text.
+
+You give it some text. It predicts what text most plausibly comes next. Then it adds that prediction to the text and predicts again. And again. It builds up an answer one small piece at a time, each piece chosen because it is the most plausible continuation of everything written so far.
+
+That is the entire mechanism. It is, in essence, the most sophisticated autocomplete ever built. Your phone's keyboard guesses the next word from the last few words. A large language model guesses the next piece of text from everything in the conversation, having learned its patterns from an enormous library of human writing.
+
+This sounds too simple to produce the results you have seen, and it is worth sitting with that surprise. The reason prediction produces such capable output is that predicting text well, across millions of examples, forces the model to absorb an extraordinary amount of pattern: grammar, facts, reasoning structures, tone, formats. To predict the end of the sentence "The capital of France is" the model must have absorbed the fact. To predict the next line of a logical argument it must have absorbed the shape of logical arguments. Prediction, done at sufficient scale, ends up looking a great deal like understanding. But the mechanism underneath is prediction.
+
+### How AI reads: tokens, not words
+
+When you give text to an AI, it does not see words the way you do. It breaks text into chunks called **tokens**. A token is often a whole word, but long or unusual words get split. "Understanding" might become "under" and "standing." A name the model has rarely seen might break into three or four pieces.
+
+You do not need to track tokens precisely. You need to know they exist, for one practical reason: tokens are the unit of measurement for AI. The cost of using AI is priced per token. The amount of text an AI can handle at once is measured in tokens. When you hear that a model "has a 200,000 token context window," that is a statement about capacity — and the next idea explains why that capacity matters.
+
+### The context window: AI's working memory
+
+An AI does not remember your conversation the way a colleague does. It has a working memory called the **context window** — the amount of text it can hold in view at one time. This includes your current question, the conversation so far and any documents you have pasted in.
+
+Everything inside the window, the AI can use. Everything outside it does not exist to the model.
+
+This single fact explains a lot. When a long conversation starts to feel like the AI has forgotten what you said at the start, it is not being careless: the start of the conversation has scrolled out of the context window. When you paste a 300-page document and the AI seems to miss something on page 12, the same thing may be happening. The window is large, but it is not infinite.
+
+Think of it as the AI's desk. A large desk holds many documents at once, but anything you take off the desk, the AI can no longer read. It is not in its memory. It is simply gone.
+
+### The training cutoff: AI's frozen knowledge
+
+An AI learned its patterns by reading a vast amount of text, and that reading happened up to a particular date. That date is called the **training cutoff**. After it, the model learned nothing more.
+
+This means a model has no knowledge of anything that happened after its cutoff. Not last week's news. Not yesterday's market move. Not the meeting you had this morning. It also never read your company's internal documents, your private files or anything else that was not part of its training data.
+
+The model's knowledge is frozen at a moment in time, and it is general, not specific to you. This explains an entire category of wrong answers. When an AI gives you a confidently wrong answer about a recent event, it is not malfunctioning. It is answering from a world that ended on its training cutoff. Later lessons in this track cover the two ways to fix this: giving the AI fresh information directly, and connecting it to your own knowledge.
+
+### The crucial consequence: confident is not correct
+
+Put the pieces together. The AI predicts plausible text, from patterns it learned up to a fixed date, using only what is currently inside its working memory.
+
+Notice what is missing from that description: any step where the AI checks whether what it is saying is true.
+
+The model produces text that is *plausible* — text that fits the patterns of correct, fluent, authoritative writing. Plausible text is usually also true, because in the training data, true statements were far more common than false ones. But plausible and true are not the same thing, and the model optimizes for the first. It will produce a confident, well-formed, authoritative-sounding answer whether or not the content is correct, because confident and well-formed is what plausible text looks like.
+
+This is the most important single takeaway in this lesson. Fluency is not evidence of accuracy. The AI's tone of certainty carries no information about whether it is right. A wrong answer and a right answer arrive in exactly the same confident voice. The next lesson, on why AI makes things up, builds directly on this.
+
+## Steps
+
+### Step 1: Audit where your AI use depends on what it cannot know
+
+List the tasks you currently hand to AI. For each one, ask: does this depend on recent events, or on private information specific to me or my organization?
+
+Anything that does is sitting on the training cutoff problem. The AI cannot know recent or private information unless you put it into the context window yourself. Mark those tasks. They are not necessarily off-limits, but they require you to supply the information rather than trust the model to already have it.
+
+### Step 2: Supply the context the model does not have
+
+When a task depends on specific information, give it to the AI directly. State the date. Paste the relevant document. Describe the situation. Do not assume the model knows your industry's current state, your company's policy or this quarter's numbers.
+
+The professionals who get the most reliable AI output have internalized one habit: they treat the AI as brilliant but uninformed about their specific world, and they brief it the way they would brief a sharp new contractor on day one.
+
+### Step 3: Separate fluency from accuracy in your own judgment
+
+Train yourself to notice when you are being persuaded by tone rather than substance. When an AI answer reads as authoritative, that is the model doing exactly what it was built to do. It is not a signal that the answer has been verified.
+
+For any output where being wrong carries a cost, add a verification step that does not rely on the AI's confidence: check the source, confirm the number, test the claim. Build this in as a standing habit, not an occasional precaution.
+
+### Step 4: Match the task to what the tool actually is
+
+A prediction engine trained on human writing is genuinely excellent at tasks that are fundamentally about language and pattern: drafting, rewriting, summarizing, reformatting, explaining, brainstorming, structuring. For these, it is a serious force multiplier.
+
+It is far riskier for tasks that depend on facts it may not have, especially recent or specialized facts, where it will predict a plausible answer rather than admit a gap. Use it heavily where its nature is a strength. Verify rigorously, or use a different approach, where its nature is a weakness. The rest of this track shows you how to tell the difference and what to do about it.
+
+## Recap
+
+- A large language model does one thing: it predicts the next piece of text, over and over, building an answer one piece at a time. It is the most sophisticated autocomplete ever built.
+- AI reads text as tokens (chunks), not words. Tokens are the unit AI is measured and priced in.
+- The context window is the AI's working memory — the text it can hold in view at once. Anything outside it does not exist to the model.
+- The training cutoff is the date the AI's knowledge stops. It knows nothing more recent, and nothing private to you, unless you supply it.
+- Because the model optimizes for plausible text and never checks truth, confidence is not correctness. Fluency is not evidence of accuracy. This is the foundation for everything that follows.
+
+---
+
+The next lesson takes the most important idea here — that AI produces plausible text, not verified truth — and uses it to explain the behavior that worries leaders most: why AI confidently makes things up, and how to know when to trust it.
+
+[Continue: Why AI Makes Things Up →](/learn/how-ai-works/why-ai-makes-things-up)

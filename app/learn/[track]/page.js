@@ -7,7 +7,8 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllTracks, getTrack, getLessonsForTrack } from '@/lib/content'
-import CTABanner from '@/components/CTABanner'
+import CTABanner         from '@/components/CTABanner'
+import AttributionNotice from '@/components/AttributionNotice'
 
 // ============================================================
 // generateStaticParams — pre-render a page for each track
@@ -84,6 +85,14 @@ export default async function TrackPage({ params }) {
         <p className="mt-3 text-sm" style={{ color: '#94a3b8' }}>
           {lessons.length} {lessons.length === 1 ? 'lesson' : 'lessons'} &middot; All free
         </p>
+
+        {/* Source attribution — shown when the track is adapted from an
+            external open-source course (required by the source license) */}
+        {track.attribution && (
+          <div className="mt-6">
+            <AttributionNotice attribution={track.attribution} variant="track" />
+          </div>
+        )}
       </header>
 
       {/* Lesson list */}

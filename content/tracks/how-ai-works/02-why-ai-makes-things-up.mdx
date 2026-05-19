@@ -1,0 +1,117 @@
+---
+title: "Why AI Makes Things Up"
+summary: "AI invents facts, citations and numbers and states them with total confidence. Here is why it happens, where it is most dangerous, and how to stay safe."
+track: how-ai-works
+order: 2
+level: beginner
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["ai-literacy", "hallucination", "risk", "leadership"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+> **Adapted with attribution.** This lesson is adapted and rewritten for non-technical leaders from [*AI Engineering from Scratch*](https://github.com/rohitg00/ai-engineering-from-scratch) by Rohit Ghumare, used under the MIT License. The original is a 428-lesson technical course for software engineers.
+
+## Hook
+
+A lawyer submits a court filing drafted with AI. The filing cites six prior cases. The cases do not exist. The AI invented them — names, case numbers, quotes — and the lawyer, persuaded by how authoritative they looked, did not check.
+
+That is a real category of incident, and it has now happened in courtrooms, newsrooms, research papers and board decks. It is the single behavior of AI that most damages careers and reputations. It has a name: **hallucination**. The AI produces something false and presents it as fact, with the same calm confidence it uses for everything else.
+
+Most professionals know, vaguely, that "AI sometimes gets things wrong." That vague awareness is not enough to protect you. What protects you is understanding *why* it happens, *where* it happens most, and *what* specifically to do about it. This lesson gives you all three.
+
+The previous lesson established the foundation: an AI predicts plausible text and never checks whether that text is true. Hallucination is the direct, unavoidable consequence of that design. Once you see why, you can manage it.
+
+## Context
+
+### What hallucination actually is
+
+A hallucination is AI output that is plausible but false. Not a typo, not a misunderstanding of your request: a confident, fluent, well-formed statement that simply is not true.
+
+The word "hallucination" is slightly misleading because it suggests a malfunction, something going wrong. It is more accurate to say the AI is doing exactly what it was built to do. Recall the foundation: the model predicts the most plausible next piece of text. When it knows the real answer, the most plausible text is the true answer. When it does not know, the most plausible text is a confident, well-formed answer that *sounds* like the truth — because that is what plausible text looks like. The model has no separate setting for "I am sure" versus "I am guessing." It produces fluent text either way.
+
+### Why it happens: three root causes
+
+**It optimizes for plausible, not for true.** This is the core cause. The model was trained to produce text that fits the patterns of good writing. True statements fit those patterns. So do confident, well-structured false statements. The model cannot tell the two apart from the inside, because it is not checking truth at all. It is checking plausibility.
+
+**It has no natural "I don't know."** A human expert, asked something outside their knowledge, will usually say so. An AI, by default, will not. Saying "I don't know" is rare in the writing it learned from — confident answers are far more common — so the most plausible continuation of almost any question is an answer, not an admission of a gap. The model fills the gap with invention because invention is what plausible text does when knowledge runs out.
+
+**Gaps get filled, not flagged.** When the model lacks a specific fact — a real case name, an exact figure, a genuine quote — it does not leave a blank. It generates something that has the correct *shape*: a name that looks like a case name, a number that looks like a plausible figure, a sentence that looks like a quote. The shape is right. The content is invented.
+
+### Where hallucination is most dangerous: specifics
+
+Hallucination is not evenly distributed. AI is quite reliable on broad, well-established knowledge: it will not tell you Paris is in Asia. It is most dangerous on **specifics** — and specifics are exactly what professional work runs on.
+
+The high-risk zones, in roughly descending order of danger:
+
+- **Citations and sources.** Case law, academic papers, article titles, book references, URLs. AI invents these readily and they look completely real.
+- **Quotes.** Words attributed to a specific person. The AI will produce a fluent quote that the person never said.
+- **Numbers and statistics.** Market sizes, percentages, financial figures, dates. A plausible-looking number is trivially easy for the model to generate.
+- **Names and attributions.** Who did what, who said what, who founded what, which company acquired which.
+- **Recent or niche facts.** Anything after the training cutoff, or anything too specialized to have appeared often in training data. (The previous lesson covered the training cutoff.)
+
+The pattern: the more specific and verifiable a claim, and the less likely it appeared often in the model's training, the higher the hallucination risk. Broad explanation, low risk. Precise attributed fact, high risk.
+
+### Why it sounds so convincing
+
+Here is the part that makes hallucination genuinely dangerous rather than merely annoying: a hallucinated answer and a correct answer arrive in *exactly the same voice*.
+
+There is no tremor of uncertainty, no hedge, no tell. The invented court cases in the opening story were formatted perfectly, named plausibly and quoted fluently. That is not a coincidence — it is the whole problem. The model produces fluent, confident text as its default, so its confidence is uniform. It is just as confident when it is inventing as when it is recalling.
+
+This means you cannot use the AI's tone to gauge its reliability. The instinct every professional has — to trust a confident, well-argued, articulate source more than a hesitant one — actively works against you here. With AI, confidence is not a signal. It is the constant.
+
+### The myth of the "fixed" model
+
+You will hear that newer, more advanced models "don't really hallucinate anymore." This is false, and believing it is dangerous.
+
+Newer models hallucinate *less*. They are better at recognizing the edges of their knowledge and somewhat more willing to express uncertainty. That is real progress. But hallucination is not a bug that gets patched — it is a direct consequence of how the technology works. A system that predicts plausible text will, when it lacks knowledge, predict plausible-but-false text. Less often, with better models. Never zero.
+
+Treat every model, however advanced, as a system that can hallucinate. The professional posture is not "which model is safe" but "which of my tasks require verification regardless of the model."
+
+## Steps
+
+### Step 1: Map your high-risk zones
+
+Look at how you use AI and identify every point where its output includes a specific, verifiable claim — a citation, a quote, a number, a name, a date, a recent fact. Those points are your hallucination exposure. Write them down. Everything on that list needs a verification habit attached to it; the remaining steps build those habits.
+
+### Step 2: Give the AI explicit permission to say "I don't know"
+
+Because the model will not admit gaps by default, instruct it to. Add a line like this to prompts where accuracy matters:
+
+> "If you are not certain of a specific fact, name or figure, say so explicitly rather than guessing. I would rather have a gap I can fill than a confident answer that might be wrong."
+
+This does not eliminate hallucination, but it measurably reduces it. You are changing what counts as a "good" answer, so admitting uncertainty becomes a more plausible continuation.
+
+### Step 3: Ground the AI in real source material
+
+The most effective single defense is to stop relying on the model's memory at all. Instead of asking "what does our refund policy say," paste the actual policy into the conversation and ask the AI to answer from it. An AI working from a document you provided is dramatically more reliable than an AI working from its training memory.
+
+This is important enough that the next lesson is devoted to it: how to give AI your own knowledge so it answers from your real documents rather than from invention.
+
+### Step 4: Verify every specific that carries a cost
+
+Adopt one firm rule: no AI-generated specific goes into anything that matters — a client deliverable, a board document, a published piece, a legal or financial decision — until a human has verified it against a real source.
+
+Verify every citation by finding the actual source. Confirm every number against the real data. Check every quote against the real transcript. This is not optional diligence; it is the cost of using the tool. The lawyer in the opening story skipped this step. That is the entire story.
+
+### Step 5: Make it a team norm, not a personal habit
+
+If your team uses AI, your personal caution does not protect the organization. Set an explicit, written norm: AI-generated specifics — citations, quotes, figures, named facts — are always verified before they leave the building. Name who verifies and when. Treat an unverified AI specific in client-facing or board-facing work the way you would treat any other unchecked claim: as a real risk, not a minor one.
+
+## Recap
+
+- A hallucination is plausible-but-false AI output, stated with full confidence. It is not a malfunction — it is the direct consequence of a system that predicts plausible text and never checks truth.
+- Three root causes: the model optimizes for plausible over true, it has no natural way to say "I don't know" and it fills knowledge gaps with invention rather than flagging them.
+- Hallucination concentrates in specifics: citations, quotes, numbers, names, dates and recent or niche facts. Broad knowledge is fairly safe; precise attributed claims are not.
+- A hallucinated answer sounds exactly as confident as a correct one. You cannot use the AI's tone to judge its reliability.
+- Newer models hallucinate less but never zero. Defend with explicit permission to admit uncertainty, grounding in real sources and firm verification of every specific that carries a cost.
+
+---
+
+The strongest defense against hallucination is to stop relying on the AI's memory and start feeding it real, current, specific information. The next lesson shows you exactly how that works.
+
+[Continue: Giving AI Your Own Knowledge →](/learn/how-ai-works/giving-ai-your-own-knowledge)
