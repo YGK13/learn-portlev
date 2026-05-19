@@ -1,0 +1,116 @@
+---
+title: "When to Use an Agent (and When Not To)"
+summary: "Agents are powerful and oversold. The real skill is knowing when an agent earns its cost and when a simple prompt or fixed workflow wins."
+track: ai-agents
+order: 3
+level: intermediate
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["ai-agents", "decisions", "workflows", "leadership"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+> **Adapted with attribution.** This lesson is adapted and rewritten for non-technical leaders from [*AI Engineering from Scratch*](https://github.com/rohitg00/ai-engineering-from-scratch) by Rohit Ghumare, used under the MIT License. The original is a 428-lesson technical course for software engineers.
+
+## Hook
+
+Agents are the most exciting thing in AI right now, and excitement is exactly when good judgment gets expensive.
+
+The pattern is predictable. A team sees an agent demo. It is impressive. They decide their next project should be "agentic." They build an agent for a task that did not need one. It is slower than what it replaced, costs more per use, behaves differently every time and cannot be easily explained when it goes wrong. The capability was real. The fit was not.
+
+The skill that separates leaders who get value from agents from leaders who get burned by them is not technical. It is knowing when an agent is genuinely the right tool, and when something simpler and more reliable will serve far better. This lesson gives you that judgment, by putting the agent where it belongs: at the top of a spectrum of options, to be used only when the rungs below it will not do.
+
+## Context
+
+### The spectrum: prompt, workflow, agent
+
+An AI agent is not the only way to get AI to do work. It is the most powerful and the least predictable of three options, which sit on a spectrum.
+
+**A single prompt.** One instruction, one response. Fast, cheap, predictable. You get the same kind of result every time. This is the right tool for a great many tasks: draft this, summarize that, rewrite this.
+
+**A fixed workflow.** Several AI steps run in a set sequence, the output of each feeding the next. Still predictable, because the steps are defined in advance and never change. (This is the entire subject of the AI Workflows track on this platform.) The right tool when a task always involves the same series of steps.
+
+**An agent.** The AI itself decides which steps to take, in what order, reacting to what it finds. Maximum power, because it can handle tasks whose shape is not known in advance. Minimum predictability, for exactly the same reason.
+
+The crucial insight: as you move up the spectrum, you gain flexibility and you lose predictability, control, speed, low cost and easy auditability. Every rung up is a trade. An agent is not the best of the three. It is the most powerful, which is a different thing.
+
+### The cost of an agent
+
+Be clear-eyed about what an agent costs compared with a prompt or a fixed workflow:
+
+- **It is slower.** The observe-think-act loop runs many times. Many AI calls, not one.
+- **It costs more.** Each loop is billable AI usage. An agent can cost many times what a single prompt costs for the same outcome.
+- **It is less predictable.** Because the agent chooses its own path, two runs of the same task can go differently. That is the point of an agent, and it is also the cost.
+- **It is harder to audit.** A single prompt has one input and one output. An agent has a whole trail of decisions and actions, and you have to be able to reconstruct that trail when something goes wrong.
+
+None of this means do not use agents. It means an agent should earn that cost by doing something the cheaper, more predictable options genuinely cannot.
+
+### When an agent is the right tool
+
+An agent earns its place when a task has these features together:
+
+- **The path varies.** The steps needed are genuinely different each time and cannot be fixed in advance. If you can write down the steps, you do not need an agent. You need a fixed workflow.
+- **It needs to react.** The task requires responding to what is found along the way: searching differently when a search fails, following wherever the information leads.
+- **It is genuinely multi-step.** A one-step task never needs an agent. It needs a prompt.
+
+Triaging a varied inbox where every message needs a different response. Researching an open question across sources you cannot list in advance. Investigating a problem where each finding determines the next move. That is agent-shaped work: variable, reactive, multi-step.
+
+### When an agent is the wrong choice
+
+Just as important, the cases where reaching for an agent is a mistake:
+
+- **The task is always the same steps.** Use a fixed workflow. It will be faster, cheaper, predictable and auditable. Do not pay agent prices for workflow-shaped work.
+- **The task is one step.** Use a prompt.
+- **A wrong action would be costly or irreversible, and you cannot supervise it.** An agent that can act unsupervised in a high-stakes area is a serious exposure. Either keep a human in the loop or do not use an agent there.
+- **You cannot see what it did.** If a proposed agent cannot give you a clear trail of its actions, it is not ready for anything that matters.
+
+### How agents fail
+
+Agents fail in their own characteristic ways, and knowing the failure modes helps you decide where to risk one:
+
+- **They get stuck.** An agent can loop, trying the same failing approach again and again, burning time and money.
+- **They act wrongly with full confidence.** An agent can take a wrong action as smoothly as a right one. The confidence problem from earlier in the curriculum, now attached to actions rather than answers.
+- **They succeed at the wrong thing.** An agent can technically achieve the goal you set while missing the goal you meant, because it optimized the instruction literally.
+- **They run up cost.** A loop with a weak stopping point can run far longer and far more expensively than expected.
+
+The governing principle that follows: match an agent's autonomy to the cost of it being wrong. Where a mistake is cheap and reversible, an agent can run freely. Where a mistake is expensive or irreversible, a human approves the consequential actions before they happen. Autonomy is not all-or-nothing. You set the dial, and you set it by the stakes.
+
+## Steps
+
+### Step 1: Start at the bottom of the spectrum
+
+For any task you want AI to handle, start with the simplest option and move up only when forced. Can a single prompt do it? Use a prompt. If not, can a fixed sequence of steps do it? Build a workflow. Only when both genuinely cannot handle the task should you reach for an agent. The agent is the last resort, not the default.
+
+### Step 2: Apply the "does the path vary?" test
+
+The single clearest test for whether a task needs an agent: can you write down the steps in advance? If you can, it is a fixed workflow, and a workflow will beat an agent on speed, cost, predictability and auditability. Only if the steps genuinely cannot be known in advance, because they depend on what is discovered along the way, is the task actually agent-shaped.
+
+### Step 3: Match autonomy to the stakes
+
+For any agent, decide deliberately how much it may do on its own. Map its possible actions by consequence. Cheap and reversible actions: the agent may take them freely. Expensive, sensitive or irreversible actions: a human approves them before they execute. Do not let the question of autonomy go undecided, because undecided defaults to full autonomy, which is rarely what you want.
+
+### Step 4: Demand observability before you trust it
+
+Never deploy an agent for anything that matters unless you can see what it did: every action it took, in order, and why. If a vendor cannot show you that trail, the agent is not ready. You cannot govern, debug or defend something whose actions you cannot reconstruct.
+
+### Step 5: Pilot small
+
+When you do build or buy an agent, start it in a low-stakes corner where mistakes are cheap and easy to catch. Watch how it actually behaves over real use before you widen its scope or raise its autonomy. An agent that has earned trust on small, reversible work is a candidate for more. An agent that has only been demoed is not.
+
+## Recap
+
+- AI work sits on a spectrum: a single prompt, a fixed workflow, an agent. Moving up gains flexibility and loses predictability, speed, low cost and easy auditing.
+- An agent costs more on every front than a prompt or workflow. It must earn that cost by doing something the simpler options genuinely cannot.
+- Use an agent only when the task's path genuinely varies, needs to react to what it finds and is multi-step. If you can write the steps down in advance, use a fixed workflow instead.
+- Agents fail in characteristic ways: getting stuck, acting wrongly with confidence, succeeding at the wrong thing and running up cost.
+- Match an agent's autonomy to the stakes: free rein where mistakes are cheap and reversible, human approval where they are not. Demand a full trail of its actions, and pilot small before widening scope.
+
+---
+
+You have completed **AI Agents, Explained**. You can define an agent, explain how it connects to your software and judge when an agent is the right tool. The final track turns to the responsibility side of all this power: the risks of AI at work, what happens to your data and the regulation now arriving.
+
+[Back to AI Agents, Explained →](/learn/ai-agents)

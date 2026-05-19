@@ -1,0 +1,18 @@
+{
+  "title": "AI Risk and Governance for Leaders",
+  "slug": "ai-governance",
+  "summary": "Leaders are asked to approve, fund and answer for AI. This track covers the real risks, what happens to your data and the regulation now arriving — in plain terms.",
+  "level": "intermediate",
+  "order": 5,
+  "icon": "🛡️",
+  "status": "published",
+  "type": "track",
+  "tags": ["governance", "risk", "compliance", "leadership"],
+  "attribution": {
+    "sourceName": "AI Engineering from Scratch",
+    "sourceAuthor": "Rohit Ghumare",
+    "sourceUrl": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "license": "MIT License",
+    "note": "The original is a 428-lesson technical course for software engineers; these lessons are a plain-language adaptation for leaders."
+  }
+}

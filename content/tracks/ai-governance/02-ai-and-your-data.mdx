@@ -1,0 +1,102 @@
+---
+title: "AI and Your Data: What Happens to What You Share"
+summary: "Every time someone pastes something into an AI tool, they make a data decision. Here is what actually happens to that information and how to govern it."
+track: ai-governance
+order: 2
+level: intermediate
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["data-privacy", "governance", "confidentiality", "leadership"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+> **Adapted with attribution.** This lesson is adapted and rewritten for non-technical leaders from [*AI Engineering from Scratch*](https://github.com/rohitg00/ai-engineering-from-scratch) by Rohit Ghumare, used under the MIT License. The original is a 428-lesson technical course for software engineers.
+
+## Hook
+
+Right now, somewhere in most organizations, an employee is pasting something into an AI tool. A contract. A client's financials. A spreadsheet of employee data. A document marked confidential. They are doing it to get help, with good intent and no bad faith at all. And they almost certainly do not know what just happened to that information.
+
+Every time anyone shares data with an AI tool, they make a data-governance decision. Most of the time they do not know they are making it, because the act feels as casual as a web search. That gap, between how casual it feels and how consequential it is, is one of the most underestimated risks in business AI today.
+
+This lesson closes the gap. It explains, in plain terms, what actually happens to information you put into an AI tool, why the type of account matters enormously and how to govern AI data use without bringing useful work to a halt.
+
+## Context
+
+### The question nobody asks
+
+When someone types or pastes information into an AI tool, the information leaves their device and travels to the AI provider's computers to be processed. That much is unavoidable; it is how the tool works. The question almost nobody asks is the one that matters: once it arrives there, what happens to it?
+
+There are three broad possibilities, and the difference between them is the difference between safe and serious.
+
+**Processed and discarded.** The information is used to generate the response and then not retained. The lowest-risk outcome.
+
+**Retained.** The information is stored by the provider — kept as conversation history, held in logs, retained for a period under their policies. It now exists somewhere outside your control, subject to their security and their rules.
+
+**Used for training.** The information is used to help train the provider's future AI models. This is the outcome that most alarms a careful leader, because it means your data could, in principle, influence what a model later produces for someone else. It is also the most widely misunderstood point, which the next section addresses.
+
+### Consumer accounts versus business accounts
+
+Here is the single most important distinction in this lesson, and the one most often missed.
+
+The same AI brand typically offers two very different kinds of account, and they treat your data under different rules.
+
+**Consumer tiers** — free accounts and personal subscriptions — frequently allow the provider to retain what you submit and to use it to help improve and train their models. The exact terms vary by provider and change over time, and there are often settings to opt out, but the default posture of a consumer account is generally the more permissive one. Consumer accounts are built for individuals using AI for personal purposes.
+
+**Business, team and enterprise tiers** are built for organizations, and they generally come with materially stronger data terms. As a rule, reputable business agreements commit that your data will *not* be used to train the provider's models, alongside clearer commitments on retention, security and confidentiality. This is not a minor upgrade. For an organization, it is the difference between an acceptable tool and an unacceptable one.
+
+The practical consequence is stark. An employee using a personal, free AI account to process company information may be placing that information under far weaker protections than your organization would ever knowingly accept. They are not being reckless. They simply do not know there is a difference. Closing that knowledge gap is one of the highest-value things this lesson can do.
+
+### Where the leaks happen
+
+Data exposure through AI tends to happen in a few recurring ways, none of them dramatic:
+
+- **The personal-account leak.** An employee uses a free, personal AI account for work because it is convenient, placing company or client data under consumer terms.
+- **The casual-paste leak.** Confidential material — contracts, financials, personal data, source documents — gets pasted in without a thought, because the tool feels informal.
+- **The connected-tool leak.** As the AI Agents track described, AI tools connect to other systems. A connection is a path data can travel. An AI connected to a sensitive system can expose what is in it.
+- **The third-party leak.** AI features arrive embedded inside other software. Data flowing through that software may flow through an AI provider under terms nobody in your organization has actually read.
+
+### What is genuinely at stake
+
+This matters because of what the data is. Client information you are contractually and ethically bound to protect. Employee personal data covered by privacy law. Trade secrets and strategy that are only valuable while confidential. Regulated categories — health, financial, legal — that carry specific legal duties. And your professional obligations of confidentiality, which do not pause because a tool was convenient.
+
+A casual paste into the wrong AI account can, in a few seconds, breach a client contract, a privacy regulation or a professional duty. The act feels trivial. The exposure is not. The good news, and the rest of this lesson, is that this is very governable. It does not take sophisticated technology. It takes the right accounts, a few clear rules and a team that understands them.
+
+## Steps
+
+### Step 1: Get your organization onto the right tier
+
+The foundational move: ensure everyone doing real work with AI is on a business, team or enterprise account governed by an agreement that excludes your data from model training and sets clear terms on retention and security. Until that is true, every other measure is built on sand. The cost of proper accounts is small next to the cost of a single confidentiality breach.
+
+### Step 2: Classify what must never go into a general AI tool
+
+Define clearly, in terms your people will recognize, the categories of information that may not be placed into a general-purpose AI tool: name client-confidential material, regulated personal data, trade secrets, anything under a confidentiality obligation. People cannot follow a rule they cannot apply. Give them concrete categories, not abstractions.
+
+### Step 3: Write an AI data policy people will actually follow
+
+Produce a short, plain policy that answers, in one readable page: which AI tools and accounts are approved, what information may and may not be shared with them, and who to ask when unsure. A simple policy that is read and followed protects you. A long one that is ignored does not. Bias hard toward clarity and brevity.
+
+### Step 4: Ask vendors the four data questions
+
+For any AI tool or AI-embedded software, get clear answers, in writing, to four questions: Will our data be used to train your models? How long do you retain it, and can we control that? Where is it stored, and who can access it? Who are your sub-processors — the other companies that may touch our data through you? A vendor who answers these crisply is a vendor you can evaluate. A vendor who is vague is an answer in itself.
+
+### Step 5: Train the team, because the team is the real control
+
+The largest single data risk is not a technology failure. It is a well-meaning employee who does not know that a personal AI account and a company one treat data differently. No policy or contract closes that gap; only awareness does. Make sure everyone who uses AI understands, in plain terms, what happens to what they share and why the account and the tool they choose genuinely matters.
+
+## Recap
+
+- Sharing data with an AI tool sends it to the provider's computers, where it may be processed and discarded, retained or used to train future models.
+- The most important distinction is account type. Consumer tiers tend to permit retention and training by default; business and enterprise agreements generally commit not to train on your data and set stronger terms. For an organization, that difference decides whether a tool is acceptable.
+- Exposure usually happens quietly: personal accounts used for work, casual pastes of confidential material, connected tools and AI embedded in third-party software.
+- What is at stake is real: client confidentiality, regulated personal data, trade secrets and professional duties — all breachable in a few careless seconds.
+- Govern it with the right account tier, clear classification of what must never be shared, a short usable policy, hard vendor questions and, above all, a team that understands what happens to what they share.
+
+---
+
+You have managed the risks inside your organization. The final lesson looks outward, at the rules now arriving from outside it: the AI regulation that is moving from theoretical to real, and what a leader should do about it now.
+
+[Continue: AI Regulation Every Leader Should Know →](/learn/ai-governance/ai-regulation-for-leaders)

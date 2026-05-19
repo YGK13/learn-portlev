@@ -1,0 +1,101 @@
+---
+title: "What Is an AI Agent (and How It Differs from a Chatbot)"
+summary: "A chatbot answers. An agent acts. Understanding that one distinction tells you what AI agents really are and why they change the risk picture."
+track: ai-agents
+order: 1
+level: intermediate
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["ai-agents", "fundamentals", "leadership"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+> **Adapted with attribution.** This lesson is adapted and rewritten for non-technical leaders from [*AI Engineering from Scratch*](https://github.com/rohitg00/ai-engineering-from-scratch) by Rohit Ghumare, used under the MIT License. The original is a 428-lesson technical course for software engineers.
+
+## Hook
+
+"AI agent" is the most used and least understood phrase in business technology right now. Every vendor sells one. Every conference keynote promises them. Most of the executives being sold to could not, if pressed, say what actually makes something an agent rather than just an AI feature.
+
+That gap is expensive. When you cannot define an agent, you cannot tell whether the "agentic AI platform" a vendor is pitching is genuinely an agent or a chatbot with a new label. You cannot tell whether a proposed project needs an agent or something far simpler. And you cannot assess the risk, because agents carry a category of risk that ordinary AI features do not.
+
+The good news: the core distinction is simple and you can hold it in one sentence. A chatbot answers. An agent acts. This lesson unpacks that sentence into a working understanding of what an AI agent is, how it operates and why "it acts" changes everything about how you evaluate and govern it.
+
+## Context
+
+### A chatbot answers. An agent acts.
+
+Start with the thing you already know. When you use ChatGPT or Claude in the ordinary way, you type something and it produces text back. Ask a question, get an answer. Ask for a draft, get a draft. The AI's entire output is words on a screen. What happens next is up to you. You read the answer, you copy the draft, you decide what to do. The AI did not do anything in the world. It responded.
+
+An agent is different in one specific way: it can take actions, not just produce text. An agent can check your calendar, send an email, search the web, update a record in a database, create a file, run a piece of software. It does things, and then it continues working based on what those things returned.
+
+Here is the same task, both ways. *Chatbot version:* you ask, "what does my Thursday look like?" and paste in your calendar; it answers. *Agent version:* you say, "look at my Thursday and move any internal meeting that conflicts with the client call," and it checks the calendar itself, identifies the conflicts, and reschedules them. The chatbot needed you to fetch the information and to carry out the result. The agent did both ends itself.
+
+### The loop: observe, think, act
+
+How does an agent actually work? Underneath, every AI agent runs the same simple cycle, over and over:
+
+1. **Observe.** Look at the current situation: the goal, what has happened so far, the result of the last action.
+2. **Think.** Decide what to do next. Is the goal achieved? If not, what is the next step?
+3. **Act.** Take that step: use a tool, send a request, make a change.
+4. Then observe the result of that action, think again, act again.
+
+The agent stays in this loop, action after action, until it decides the goal is met or it hits a stopping point. That is the entire mechanism. An agent is a large language model placed inside a loop, given the ability to act, and pointed at a goal.
+
+This is why agents can handle work that a single AI response cannot. A single response is one shot: input goes in, text comes out, done. The loop lets the AI take a step, see what happened, adjust and take another step. It can react to what it finds. If a search returns nothing useful, it can search differently. If a file is missing, it can notice and respond. That capacity to course-correct mid-task is what the loop buys.
+
+### What an agent needs to exist
+
+Strip an agent to its essentials and there are five:
+
+- **A goal.** What it is trying to accomplish. Without a clear goal, the loop has no stopping point.
+- **Tools.** The specific actions it is allowed to take. An agent with no tools is just a chatbot. (The next lesson is entirely about tools and how AI connects to your software.)
+- **The ability to observe results.** After it acts, it must be able to see what happened, or it cannot adjust.
+- **The loop.** The observe-think-act cycle that lets it work step by step.
+- **A stopping point.** A condition that ends the loop: goal achieved, step limit reached, or a human called in.
+
+Notice what is required and what is not. An agent does not require advanced or exotic AI. It is the ordinary language model you already know, given tools and placed in a loop. "Agent" is not a smarter kind of AI. It is a particular *arrangement* of AI.
+
+### Why "it acts" changes everything
+
+The line between answering and acting is not a technical detail. It is the whole risk story.
+
+A chatbot that is wrong produces a wrong answer. You read it, and if you are paying attention, you catch it before it does harm. The text is a proposal; you are the gate.
+
+An agent that is wrong takes a wrong *action*. It sends the email, moves the meeting, updates the record, deletes the file. By the time you see it, the action has already happened. There is no gate unless you deliberately build one. An agent does not just multiply the productivity of AI; it multiplies the consequences, in both directions.
+
+This is why the definition matters so much for a leader. The moment a system can act rather than only answer, it moves into a different risk category and needs different oversight. A great deal of this track, and the AI Risk and Governance track that follows, is about managing exactly that. But it starts here, with the recognition that an agent acts, and acting is not the same as answering.
+
+## Steps
+
+### Step 1: Learn to tell an agent from a chatbot on sight
+
+For any AI system you encounter or are sold, ask one question: does it only produce text for me to act on, or does it take actions itself? If a person still has to carry out everything the AI suggests, it is a chatbot, however it is marketed. If it checks things, sends things, changes things on its own, it is an agent. This single question cuts through most of the marketing fog.
+
+### Step 2: Spot agent-shaped work in your own world
+
+Agents fit a specific shape of task: multi-step, where the steps are not fully predictable in advance, and where the system needs to react to what it finds along the way. Look at your operations for work like that: triaging an inbox, researching across many sources, monitoring something and responding, coordinating a process with several moving parts. Those are the places an agent could genuinely help. Tasks that are a single step, or always the exact same sequence of steps, are not agent-shaped.
+
+### Step 3: Register the new risk surface
+
+For any agent or proposed agent, make yourself answer: what actions can this thing actually take, and what is the worst one it could take by mistake? An agent that can only read information is low risk. An agent that can send communications, move money, change records or delete things is a different matter entirely. You cannot govern an agent until you know its action list. Get that list explicitly, in writing.
+
+### Step 4: Ask the definitional question before you buy
+
+When a vendor pitches an "agentic" product, do not accept the label. Ask directly: is this a chatbot or an agent? What specific actions can it take without a human approving each one? What can it reach into and change? A vendor who cannot answer those plainly does not have a product you are ready to buy. A vendor who answers them clearly has just given you the start of your risk assessment.
+
+## Recap
+
+- A chatbot answers; an agent acts. The agent does things in the world — sends, checks, changes, creates — not just produces text for you to act on.
+- Every agent runs the same loop: observe the situation, think about the next step, act, then observe the result and repeat until the goal is met or a stopping point is reached.
+- An agent needs five things: a goal, tools (the actions it can take), the ability to observe results, the loop and a stopping point. It is ordinary AI placed in a loop and given tools, not a smarter kind of AI.
+- Because an agent acts rather than only answers, a wrong agent takes a wrong action that has already happened by the time you see it. Acting moves a system into a higher risk category that needs deliberate oversight.
+
+---
+
+An agent is only as capable as the tools it can reach. The next lesson explains how AI connects to your calendar, your files, your CRM and the rest of your software — and the standard that is making those connections far easier.
+
+[Continue: How AI Connects to Your Other Software →](/learn/ai-agents/how-ai-connects-to-your-tools)

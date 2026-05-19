@@ -1,0 +1,18 @@
+{
+  "title": "AI Agents, Explained",
+  "slug": "ai-agents",
+  "summary": "Everyone is talking about AI agents. Few can define one. This track explains what agents are, how they connect to your software and when they are the right tool.",
+  "level": "intermediate",
+  "order": 4,
+  "icon": "🤖",
+  "status": "published",
+  "type": "track",
+  "tags": ["ai-agents", "tools", "automation", "leadership"],
+  "attribution": {
+    "sourceName": "AI Engineering from Scratch",
+    "sourceAuthor": "Rohit Ghumare",
+    "sourceUrl": "https://github.com/rohitg00/ai-engineering-from-scratch",
+    "license": "MIT License",
+    "note": "The original is a 428-lesson technical course for software engineers; these lessons are a plain-language adaptation for leaders."
+  }
+}

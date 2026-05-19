@@ -1,0 +1,95 @@
+---
+title: "The Real Risks: Hallucination, Bias and Prompt Injection"
+summary: "Past the hype and the doom are three concrete AI risks a leader must manage: confident errors, inherited bias and hidden instructions that hijack the AI."
+track: ai-governance
+order: 1
+level: intermediate
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["risk", "bias", "security", "governance"]
+estReadMin: 11
+video:
+  status: none
+  scriptStatus: none
+---
+
+> **Adapted with attribution.** This lesson is adapted and rewritten for non-technical leaders from [*AI Engineering from Scratch*](https://github.com/rohitg00/ai-engineering-from-scratch) by Rohit Ghumare, used under the MIT License. The original is a 428-lesson technical course for software engineers.
+
+## Hook
+
+When AI risk is discussed, it usually arrives in one of two unhelpful shapes. One is hype: AI is magic, adopt it everywhere, the risks are overblown. The other is doom: AI is an existential threat, vague and enormous. Neither helps a leader who has to decide, this quarter, whether to approve an AI tool for the HR team.
+
+What a leader needs is the middle: the concrete, operational risks that actually show up in real organizations using real AI tools. There are three that matter most, and they are specific enough to manage. One you have met already in this curriculum. Two are likely new. Together they cover the great majority of how AI use goes wrong in practice.
+
+This lesson names all three plainly, explains where each one bites hardest and gives you the posture to manage them. It is the foundation for everything else in this track.
+
+## Context
+
+### Risk 1: Hallucination — confident, fluent error
+
+You met this in the How AI Actually Works track, so the recap is short. An AI produces text that is *plausible* rather than *verified*. When it lacks a fact, it does not say so. It generates a confident, well-formed answer that sounds right and may be wholly invented: a fake citation, a wrong number, a quote nobody said.
+
+The operational danger is not that AI is sometimes wrong. All tools are sometimes wrong. The danger is that AI is wrong in the exact same confident voice it uses when it is right, so the error carries no warning label. Hallucination bites hardest wherever AI output includes specifics — figures, names, citations, quotes — that flow into real decisions or external documents without a human checking them against a source.
+
+### Risk 2: Bias — inherited and amplified
+
+An AI model learned its patterns from an enormous body of human writing. Human writing carries human bias: about gender, race, age, nationality, disability and more. The model absorbed those patterns along with everything else, because it learned patterns indiscriminately. It cannot tell a fair pattern from an unfair one. It only knows what is common.
+
+So an AI can reproduce bias, and worse, it can *amplify* it, applying a skewed pattern consistently and at scale across every case it touches. And it does this invisibly. There is no slur, no obvious red flag. The bias hides inside a fluent, professional, reasonable-sounding output.
+
+Bias becomes a serious risk in a specific zone: **decisions about people.** Screening job candidates. Evaluating employee performance. Assessing creditworthiness. Prioritizing who gets a service. Anywhere AI shapes who gets an opportunity, who gets scrutiny, who gets resources, inherited bias can produce real, unfair, and in many places unlawful, harm. For broad drafting and summarizing, bias is a minor concern. For decisions about people, it is a central one.
+
+### Risk 3: Prompt injection — hidden instructions that hijack the AI
+
+This is the one most likely to be new to you, and it is the one security professionals now rank as the single biggest risk in AI applications.
+
+Here is the mechanism. An AI cannot reliably tell the difference between *instructions from you* and *instructions hidden in content it is reading.* To the AI, it is all just text. So if the AI reads a document, a web page, an email or a customer message that contains hidden instructions, it may simply follow them, as if they came from you.
+
+That is prompt injection. The most dangerous form is called *indirect* prompt injection, where the attacker never contacts you at all. They plant instructions in content they know an AI will eventually read: a web page the AI will browse, an email that lands in a monitored inbox, a document in a shared drive, a resume in your hiring pipeline, a review of your product. When the AI processes that content, it encounters the hidden instructions and can act on them, telling it to leak information, to ignore its safeguards, to take an action it should not.
+
+This has moved well beyond theory. There have been real, documented cases of AI assistants built into major business software being compromised this way, including "zero-click" cases where simply receiving a malicious message was enough, with no one clicking anything. Security bodies that catalogue software threats now rank prompt injection as the top risk for AI applications.
+
+Prompt injection is uniquely dangerous when it meets an *agent* — an AI that can take actions, from the previous track. A hijacked chatbot produces bad text. A hijacked agent takes bad actions: sends, deletes, transfers, exposes. The risk of prompt injection scales directly with how much the AI is allowed to do.
+
+### The shared lesson across all three
+
+The three risks are different, but they point to one principle. Hallucination means AI output is not automatically true. Bias means AI output is not automatically fair. Prompt injection means AI behavior is not automatically under your control. In every case, the failure is *confident and invisible* — it does not announce itself.
+
+Therefore the response, in every case, is the same at its core: a human being remains accountable. AI assists. A named person, applying judgment and able to be answerable for the outcome, decides. The rest of this track builds out what that means for data and for regulation, but it rests on this: you do not delegate accountability to a system that can be confidently wrong, quietly unfair and externally hijacked.
+
+## Steps
+
+### Step 1: Match the risk to the use case
+
+The three risks are not equally present everywhere. Map them onto how AI is actually used in your organization. Hallucination is sharpest where AI output includes specifics that feed decisions or external documents. Bias is sharpest in decisions about people. Prompt injection is sharpest where AI reads content from outside your control, and most severe where that AI is an agent that can act. For each AI use you oversee, name which of the three risks is the live one. That tells you where to concentrate.
+
+### Step 2: For bias, never let AI make the final call on a person
+
+Set a firm line: in any decision that affects a person's access to a job, a promotion, money or a service, AI may inform but a human decides and is accountable. Beyond that, for any AI used in people-decisions, ask to see evidence that it has been checked for unfair patterns across groups, and treat AI-assisted people-decisions as something to audit, not assume.
+
+### Step 3: For prompt injection, treat outside content as untrusted
+
+Adopt a clear stance: any content an AI ingests from outside your control — web pages, inbound emails, uploaded documents, customer messages, anything from the public internet — is untrusted, and an AI processing it can be hijacked by it. The practical defenses follow directly: be cautious about pointing AI at arbitrary external content, and be most cautious of all where an agent that can take actions is reading outside content. Limit what such an agent is allowed to do (the least-access principle from the previous track) and require human approval before consequential actions.
+
+### Step 4: Keep a human accountable for every consequential use
+
+For every AI use that carries real consequences, there must be a specific, named person who is accountable for the outcome and who exercises real judgment over it. Not the vendor. Not "the AI." A person. If you cannot name that person for a given AI use, that is the gap to close before anything else.
+
+### Step 5: Put it in writing
+
+Turn the above into a short, plain AI risk policy your people will actually read: where AI may and may not be used, what must always be verified, what must never be decided by AI alone, who is accountable. A policy that is one clear page and is followed beats a detailed one that is ignored.
+
+## Recap
+
+- Three concrete AI risks matter most operationally: hallucination, bias and prompt injection.
+- Hallucination is confident, fluent error. It bites hardest where AI output includes specifics that flow into decisions or external documents unchecked.
+- Bias is inherited from human training data and amplified at scale, invisibly. It bites hardest in decisions about people: hiring, evaluation, credit, access.
+- Prompt injection is hidden instructions, planted in content the AI reads, that hijack its behavior. It is ranked the top risk for AI applications and is most dangerous when the AI is an agent that can act.
+- All three fail confidently and invisibly. The core response is the same: a named human stays accountable and decides. AI assists; it does not get delegated accountability.
+
+---
+
+The next lesson turns to a risk that is quieter but just as real: what actually happens to your information, your clients' information and your company's secrets every time someone shares them with an AI tool.
+
+[Continue: AI and Your Data →](/learn/ai-governance/ai-and-your-data)

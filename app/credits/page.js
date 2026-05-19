@@ -30,7 +30,9 @@ const ADAPTED_SOURCES = [
                   'of select lessons — rewritten in plain language, with all code and ' +
                   'mathematics removed — for non-technical leaders.',
     usedIn: [
-      { track: 'How AI Actually Works', href: '/learn/how-ai-works' },
+      { track: 'How AI Actually Works',            href: '/learn/how-ai-works' },
+      { track: 'AI Agents, Explained',             href: '/learn/ai-agents' },
+      { track: 'AI Risk and Governance for Leaders', href: '/learn/ai-governance' },
     ],
   },
 ]
