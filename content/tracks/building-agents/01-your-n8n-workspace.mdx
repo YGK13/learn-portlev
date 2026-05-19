@@ -1,0 +1,92 @@
+---
+title: "Your n8n Workspace: Setup and First Automation"
+summary: "The bridge from understanding agents to building them is a no-code tool called n8n. Here is how to set it up and build your first working automation."
+track: building-agents
+order: 1
+level: advanced
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["n8n", "automation", "hands-on", "setup"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+By now you can explain what an AI agent is, how it connects to tools and when to use one. That is real knowledge. It is also the exact point where most professionals stop, because the next step looks like it requires being a developer.
+
+It does not. The gap between understanding agents and building them is bridged by a category of tool called no-code automation, and the leading one is **n8n**. It lets you build real, working AI agents and automations by connecting visual blocks on a canvas. No programming. The skill it asks for is the one you already have from the earlier tracks: knowing what you want the system to do.
+
+This track is hands-on. By the end of it you will have built and shipped a working AI agent. This first lesson is the foundation: setting up your n8n workspace and building your first automation, so the canvas stops being abstract and becomes a place you are comfortable working.
+
+<FlowDiagram steps={[{label:"Trigger",note:"what starts it"},{label:"Node",note:"a step"},{label:"Node",note:"another step"},{label:"Result",note:"the output"}]} caption="An n8n workflow: a trigger, a chain of nodes, a result" />
+
+## Context
+
+### What n8n is
+
+n8n is a visual workflow automation tool. Instead of writing code, you build automations by placing blocks on a canvas and connecting them with lines. Each block does one thing. The lines define the order. The whole arrangement is called a workflow.
+
+It helps to think of it as a flowchart that actually runs. You have drawn process flows on whiteboards your whole career: first this happens, then that, then this. n8n is that whiteboard, except the boxes are real and when you press run, the process executes.
+
+n8n is the right tool for a non-technical professional building AI agents for three reasons. It is genuinely visual, so you are connecting blocks, not writing syntax. It connects to a vast range of real software, so your automations can touch the tools you actually use. And it has AI and agent capabilities built in, so the concepts from the earlier tracks have a direct home here.
+
+### The anatomy of a workflow
+
+Every n8n workflow is built from a few parts, and the vocabulary is worth learning once:
+
+- **Nodes.** The blocks. Each node is one step: send an email, read a spreadsheet, call an AI model, fetch a web page. A workflow is a set of nodes.
+- **The trigger.** The first node, the one that starts the workflow. A trigger might be "when I click run," "every morning at 8," "when an email arrives" or "when a form is submitted." Every workflow begins with exactly one trigger.
+- **Connections.** The lines between nodes. They define the order: the output of one node flows along the connection to become the input of the next. This is the chaining idea from the AI Workflows track, made visual.
+- **Execution.** One run of the workflow, start to finish. n8n keeps a record of every execution so you can see exactly what happened at each node.
+
+That is the whole model. Trigger starts it, nodes do the work, connections carry the data, an execution is one run. Once those four words are solid, the canvas is no longer intimidating.
+
+### Cloud or self-hosted
+
+n8n comes in two forms. The **cloud** version is hosted for you: you sign up, you log in, you build, n8n runs it on their servers. The **self-hosted** version runs on infrastructure you control. Self-hosting is cheaper at scale and keeps everything on your own systems, but it requires technical setup.
+
+For learning this track and for most professional use, start with the cloud version. It removes every piece of technical friction so you can focus on building. You can always move to self-hosted later if volume or data-control requirements call for it. Do not let the hosting decision delay you: take the cloud version and start.
+
+### What you are about to build
+
+This lesson's automation is deliberately trivial: a workflow with a manual trigger and one or two simple nodes that produce an output. It will not be useful. That is the point. The goal of the first build is not utility. It is to make the canvas, the trigger, the nodes, the connections and the execution log familiar, so that when the next lessons add AI models and real tools, the environment is already comfortable. You learn the room before you rearrange the furniture.
+
+## Steps
+
+### Step 1: Create your workspace
+
+Go to n8n and create an account, choosing the cloud option. You will land in a workspace with an empty canvas. Do not configure anything elaborate. You need an account and a blank canvas in front of you, nothing more. If you are presented with templates or a getting-started tour, you may skim it, but the real learning is in building, which starts now.
+
+### Step 2: Learn the canvas
+
+Spend five minutes orienting. Find where you add a node. Find the canvas where nodes sit. Find where a workflow is saved. Find the executions view, the list of past runs. You do not need to understand every option. You need to know where four things live: the add-node action, the canvas, the save action and the executions view. Locate those and the interface is yours.
+
+### Step 3: Add a trigger and one action
+
+Add a trigger node. For this first build, choose the simplest one, a manual trigger, the kind that runs when you click. Then add one action node that does something visible and self-contained, such as a node that simply sets or returns a piece of text. Connect the trigger to the action by drawing the line between them. You have now built a workflow: a trigger and a node, connected.
+
+### Step 4: Run it and read the output
+
+Run the workflow. Then open the node you added and look at its output. This is the most important habit in the entire track: after every run, you read what each node actually produced. n8n shows you the exact data at every step. Builders who succeed with n8n are the ones who constantly check node output. Builders who struggle are the ones who run the whole thing and only look at the end. Start the good habit now, on this trivial workflow, where there is nothing to go wrong.
+
+### Step 5: Save it and check the execution log
+
+Save the workflow with a clear name. Then open the executions view and find the run you just performed. See that n8n recorded it: when it ran, that it succeeded, what flowed through. This execution history is what makes n8n debuggable and trustworthy. When a real agent misbehaves later in this track, this log is where you will find out why. Confirm you know where it is.
+
+## Recap
+
+- The gap between understanding AI agents and building them is bridged by no-code automation. n8n is the leading tool, and it requires no programming.
+- An n8n workflow is a visual flowchart that runs. It is built from nodes (the steps), one trigger (what starts it), connections (which carry data between nodes) and executions (single runs).
+- Start with the cloud version of n8n. It removes all technical setup friction. Do not let the hosting choice delay you from building.
+- Your first build is deliberately trivial: a trigger and one node. The goal is not utility but familiarity with the canvas, before AI and real tools are added.
+- Build the core habit immediately: after every run, read the output of each node. n8n shows you the exact data at every step, and checking it is what separates builders who succeed from those who struggle.
+
+---
+
+Your workspace is ready and the canvas is familiar. The next lesson makes your automations powerful: connecting them to an AI model and to the real tools your work depends on.
+
+[Continue: Connecting AI to Your Real Tools →](/learn/building-agents/connecting-ai-to-tools)

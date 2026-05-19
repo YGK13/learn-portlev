@@ -1,0 +1,97 @@
+---
+title: "Testing, Monitoring and Shipping It"
+summary: "A demo that works once is not a deployment. Here is how to take an n8n build from working-on-your-screen to genuinely trustworthy in production."
+track: building-agents
+order: 5
+level: advanced
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["n8n", "testing", "monitoring", "shipping"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+There is a dangerous moment in every build. The workflow runs, the output looks right, and it feels finished. It is not finished. It has worked once, on one input, while you were watching. That is a demo, not a deployment.
+
+The distance between those two things is where most amateur builds quietly fail. They get switched on after one good run, then meet an input the builder never tested, take a wrong action nobody was watching, and erode trust in one stroke, often permanently.
+
+This final lesson of the track closes that distance. It covers what turns a working demo into something you can actually rely on: testing it against the inputs you did not design for, handling errors on purpose, keeping a human in the loop where the stakes demand it, and monitoring it once it is live. This is the discipline that separates a builder from someone who once got a workflow to run.
+
+<FlowDiagram steps={["Test the edge cases","Handle errors","Human checkpoint","Ship","Monitor"]} caption="From working demo to trustworthy deployment" />
+
+## Context
+
+### Test the inputs you did not design for
+
+When you build, you naturally test with the input you had in mind. That input is exactly the one that was always going to work. Real testing is the opposite: deliberately feeding the build the inputs you did not design for.
+
+The empty input, the input nobody read at all. The malformed one, the document in the wrong format, the message with missing fields. The unusually large one, far bigger than your example. The ambiguous one, where the right action is genuinely unclear. The adversarial one, content from outside that might contain misleading instructions, the prompt-injection risk from the Governance track.
+
+For each, run the build and ask not "did it succeed" but "did it fail safely." A build that handles the clean case and breaks loudly and harmlessly on the messy cases is far more trustworthy than one that mostly works and occasionally does something wrong in silence.
+
+### Handle errors on purpose
+
+Things will go wrong in a live build. A connected tool will be briefly unavailable, an input will be malformed, a step will fail. The question is not whether errors happen but whether your build was designed to expect them.
+
+n8n lets you decide what happens when a node fails. The default, where the whole workflow simply stops, is often the wrong choice for something running unattended. You can instead route a failure deliberately: send yourself a notification, log the problem, retry, or fall back to a safe path. The principle is that every build that runs unattended should have a defined answer to "what happens when a step fails," and that answer should be something other than "it silently stops and nobody knows."
+
+### Keep a human where the stakes demand it
+
+Not every build should run fully unattended. The lesson from the AI Agents track holds: match the autonomy of a build to the cost of it being wrong.
+
+Where a mistake is cheap and reversible, a build can run on its own. Where a mistake is expensive, sensitive or irreversible, sending an external message, moving money, deleting records, changing something a client sees, put a human approval step in the workflow. n8n supports a pause: the build does its work up to the consequential action, then waits for a person to approve before it proceeds.
+
+A human checkpoint is not a failure of automation. It is the design choice that lets you automate confidently around the parts that matter, instead of either risking an unattended mistake or not automating at all.
+
+### Monitor what you ship
+
+A build that is live is not a build you can forget. The executions view you found in the first lesson is now your instrument: it records every run, successful and failed.
+
+Monitoring does not have to be elaborate. It means checking, on a regular rhythm, that the build is running when it should, that executions are succeeding, and that failures, when they happen, are the safe kind you designed for. For anything important, configure the build to actively tell you when something goes wrong rather than relying on you to remember to look. A shipped build needs an owner and a rhythm, not just an on switch.
+
+### Ship at the right moment
+
+With testing done, errors handled and the human checkpoints placed, you ship: in n8n, you activate the workflow and connect it to its real trigger so it runs on its own.
+
+Ship when the build is genuinely reliable on the inputs it will actually meet, not when it is theoretically perfect. The earlier tracks made this point about websites and it is just as true here: a reliable build that is live and doing its job beats a perfect build that is still being polished. The difference between shipping too early and shipping right is precisely the testing and error-handling discipline in this lesson. Do that work, and shipping is no longer a leap of faith.
+
+## Steps
+
+### Step 1: Write and run an edge-case test list
+
+List the inputs you did not design for: empty, malformed, oversized, ambiguous and adversarial. Run your build against each one. For every case, confirm it either handles the input correctly or fails safely and visibly. Fix anything that fails unsafely before going further.
+
+### Step 2: Add deliberate error handling
+
+Go through your build and decide, for the steps that can fail, what should happen when they do. Configure n8n to act on those failures on purpose: notify you, log the issue, retry or fall back. Make sure no unattended build can fail silently.
+
+### Step 3: Place your human checkpoints
+
+Identify every action in the build that is expensive, sensitive or irreversible. For each, add a human approval step so the build pauses and waits for a person before taking that action. Let the low-stakes, reversible actions run unattended.
+
+### Step 4: Activate it
+
+Once the build is reliable on real inputs, errors are handled and checkpoints are placed, activate the workflow and connect its real trigger. The build is now live and running on its own. Watch the first several real executions closely, the way you watched the first live action two lessons ago.
+
+### Step 5: Set a monitoring rhythm
+
+Decide how and when you will check the build: a regular look at the executions view, and an automatic alert for failures on anything that matters. Assign the build an owner, even if that owner is you, and put the check on a schedule. A shipped build is a thing you maintain, not a thing you forget.
+
+## Recap
+
+- A build that worked once, on one input, while you watched, is a demo. A deployment is something tested, error-handled, monitored and trusted.
+- Real testing means the inputs you did not design for: empty, malformed, oversized, ambiguous and adversarial. For each, the bar is not "did it succeed" but "did it fail safely."
+- Handle errors on purpose. Every unattended build should have a defined answer to "what happens when a step fails," and that answer must not be "it stops silently."
+- Match autonomy to stakes. Put a human approval step before any action that is expensive, sensitive or irreversible; let cheap, reversible actions run unattended.
+- Ship when the build is reliably correct on the inputs it will actually meet, then monitor it on a rhythm with an owner and automatic failure alerts. A shipped build is maintained, not forgotten.
+
+---
+
+You have completed **Building AI Agents Hands-On**. You can set up n8n, connect AI and tools, build both fixed workflows and real agents, choose correctly between them and ship something trustworthy. You have crossed the line from understanding agents to building them.
+
+[Back to Building AI Agents Hands-On →](/learn/building-agents)

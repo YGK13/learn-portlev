@@ -1,0 +1,100 @@
+---
+title: "Workflow vs. Agent: The Decision in Practice"
+summary: "You can now build both. The skill that matters is choosing right. Here is the workflow-versus-agent decision, made concrete in the tools you are using."
+track: building-agents
+order: 4
+level: advanced
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["n8n", "ai-agents", "decisions", "hands-on"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+You can now build a fixed workflow, and you can build an agent. That makes the next question the one that matters most: for any given task, which should you build?
+
+It is tempting, having just built an agent, to make everything an agent. Agents are the exciting part. They are also the slower, costlier, less predictable part, and reaching for one when a fixed workflow would do is the most common and most expensive mistake builders make once they have the skill.
+
+The "When to Use an Agent" lesson in the AI Agents track gave you the principle. This lesson makes it a working decision you apply every time you open the n8n canvas: a clear test, an honest accounting of what each choice costs, and the discipline to build the simplest thing that solves the problem.
+
+<FlowDiagram steps={[{label:"Single prompt",note:"one step"},{label:"Fixed workflow",note:"known steps"},{label:"Agent",note:"the AI decides"}]} caption="The spectrum: choose the leftmost option that solves the problem" />
+
+## Context
+
+### The spectrum, in n8n terms
+
+The three options from the AI Agents track are now three concrete things you know how to build:
+
+- **A single AI model node.** One instruction, one response. For a task that is genuinely one step.
+- **A fixed workflow.** A chain of nodes you arranged, running the same path every time. For a task whose steps are known and stable.
+- **An agent node.** The AI chooses its own steps from the tools you gave it. For a task whose path genuinely varies.
+
+The rule has not changed: as you move right along the spectrum, you gain flexibility and you lose predictability, speed, low cost and easy debugging. The discipline is to choose the leftmost option that actually solves the problem, not the most powerful one.
+
+### The one test that decides it
+
+There is a single question that resolves most cases: **can you write down the steps in advance?**
+
+If you can list the steps and they are the same every time, the task is a fixed workflow. You already know the path, so draw it. A fixed workflow will be faster, cheaper, more predictable and far easier to debug than an agent doing the same thing.
+
+If you genuinely cannot list the steps, because they depend on what the system discovers as it goes, the task is agent-shaped. The agent's whole value is deciding the path in real time. That is worth its cost only when the path truly cannot be known beforehand.
+
+Most builders, asked this question honestly, find that more of their tasks are fixed-workflow tasks than they assumed. The excitement of agents makes the path feel more variable than it is. Be honest with the test.
+
+### What an agent actually costs you, in n8n
+
+In the abstract, "agents cost more" is easy to nod along to. In practice, building in n8n, here is what it concretely means:
+
+- **Speed.** A fixed workflow runs its nodes once, in order. An agent runs its observe-think-act loop many times, each loop a call to the AI model. The same outcome takes noticeably longer.
+- **Cost.** Every loop of the agent is billable AI usage. An agent can cost several times what a fixed workflow costs for an equivalent result.
+- **Predictability.** A fixed workflow does the same thing every run; you can trust it. An agent may take a different path each time. That is the feature, and it is also why you cannot fully predict a given run.
+- **Debugging.** When a fixed workflow fails, you open the node that failed. When an agent misbehaves, you must read its whole decision trail to find where its judgment went wrong. More power, more to inspect.
+
+None of this argues against agents. It argues for using one only when the task genuinely needs it, so the cost buys something a fixed workflow could not deliver.
+
+### The hybrid most builds actually want
+
+The real world is rarely all-or-nothing, and n8n makes the middle ground easy. A great many strong builds are mostly a fixed workflow with one agent step inside it, or an agent whose individual tools are themselves small fixed workflows.
+
+When part of a task has a known path and part of it genuinely varies, you do not pick one mode for the whole thing. You build the known parts as fixed workflow and the variable part as an agent, in the same canvas. Thinking in terms of "which parts vary" rather than "is this a workflow or an agent" is what experienced builders do, and n8n is built for exactly that mix.
+
+## Steps
+
+### Step 1: Take a real task and write down the steps
+
+Choose a real task you want to build. Before opening the canvas, try to write the steps out, in order. Be honest and specific. This single act of writing usually answers the question on its own: either the steps come out clean and stable, or you find yourself writing "it depends on what it finds."
+
+### Step 2: Apply the test, part by part
+
+If the steps are stable, build a fixed workflow. If they genuinely vary, build an agent. And if some parts are stable and one part varies, do not force a single mode: plan the stable parts as fixed workflow and the variable part as an agent step. Decide this deliberately, on paper, before you build anything.
+
+### Step 3: Default to the simpler build
+
+When you are genuinely unsure whether a task is fixed or variable, build the fixed workflow first. It is faster to build, cheaper to run, easier to trust and easier to debug. If it turns out the fixed workflow cannot handle the real variation in the task, you will know precisely, and you can introduce an agent step exactly where it is needed. Earn the agent; do not assume it.
+
+### Step 4: Account for the cost before you commit
+
+Before building an agent, state plainly what it will cost in speed and money compared with a fixed workflow, and what the agent does that the fixed workflow genuinely cannot. If you cannot name something the agent uniquely provides, that is the test telling you to build the workflow.
+
+### Step 5: Build it, then re-examine the choice
+
+Build the version your decision pointed to. Once it runs on real inputs, look again: is the agent genuinely taking varied paths, or doing the same thing each time? Is the fixed workflow handling the real range of inputs, or breaking on cases you did not foresee? Let the real behavior correct the choice. The decision is not final until the build has met reality.
+
+## Recap
+
+- You can build a single prompt, a fixed workflow or an agent. The discipline is to choose the leftmost option on that spectrum that actually solves the problem.
+- The deciding test: can you write down the steps in advance? Stable steps mean a fixed workflow. Genuinely unknowable steps mean an agent.
+- In n8n, an agent concretely costs more than a fixed workflow on every front: slower (many model calls), costlier (each loop is billable), less predictable and harder to debug.
+- Most strong builds are hybrids: a fixed workflow with an agent step where the path varies. Think in terms of which parts vary, not "workflow or agent" for the whole thing.
+- When unsure, build the fixed workflow first and let reality tell you if an agent is truly needed. Earn the agent; never assume it.
+
+---
+
+You can build the right thing for the task. The final lesson takes any build from a working demo to something you can actually trust in production: testing, error handling, monitoring and shipping.
+
+[Continue: Testing, Monitoring and Shipping It →](/learn/building-agents/testing-and-shipping)

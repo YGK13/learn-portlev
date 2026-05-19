@@ -1,0 +1,93 @@
+---
+title: "Connecting AI to Your Real Tools"
+summary: "An automation that cannot reach your software is a toy. Here is how to connect an AI model and your real tools inside n8n — and the safety rule that governs it."
+track: building-agents
+order: 2
+level: advanced
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["n8n", "tools", "integration", "hands-on"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+You have a workspace and you have built a workflow that runs. It does nothing useful yet, and that is because it is sealed off from everything. It cannot think, because it has no AI model. It cannot act, because it is connected to none of your real software.
+
+This lesson opens both doors. You will connect an AI model, so your workflow can reason and generate. And you will connect a real tool, one piece of software you actually use, so your workflow can reach into your work and do something that matters. The moment a workflow can both think and act on real systems, it stops being a toy and becomes leverage.
+
+The "AI Agents, Explained" track taught the principle behind this: an AI never acts directly, it asks a surrounding system to act. In n8n, you are now building that surrounding system. This lesson is where the concept becomes your hands on the keyboard.
+
+<FlowDiagram steps={[{label:"AI model node",note:"thinks and generates"},{label:"Tool node",note:"reads or acts on real software"},{label:"Result",note:"a real outcome"}]} caption="A workflow that can both think and act on your actual tools" />
+
+## Context
+
+### Credentials: how n8n connects to your software
+
+For a workflow to touch your email, your spreadsheets or any other software, n8n needs permission to connect to that software on your behalf. That permission is stored as a **credential**.
+
+A credential is a saved connection to one piece of software: your Google account, your email, a particular service. You set it up once, n8n stores it securely, and from then on any node that talks to that software uses the credential. You are not re-entering passwords in every workflow. You are granting n8n a connection once and reusing it.
+
+This is the most important security surface in everything you will build, so hold one principle from the start: a credential is a grant of access, and you should grant the least access the job needs. If a workflow only needs to read a spreadsheet, its connection should not be able to delete one. You will not always control the granularity, but you should always be conscious of what each credential can do. A credential is a key. Know which doors each key opens.
+
+### The AI model node: giving a workflow a brain
+
+To let a workflow think, you add an AI model node, the block that calls a large language model. This is the same kind of model you met in the "How AI Actually Works" track, now available as a step inside your automation.
+
+The AI model node takes text in and produces text out. You give it instructions and input; it returns a response. Inside a workflow, this means any node before it can feed it material, and any node after it can act on what it produces. The AI becomes one specialized worker in your assembly line: the one that reads, reasons, drafts or decides in language.
+
+Connecting the model requires a credential too, to the AI provider, set up the same way as any other. Once connected, "have the AI do something with this" becomes a block you can drop into any workflow.
+
+### Tool nodes: giving a workflow hands
+
+A tool node is a block that reads from or acts on a specific piece of software. A node that reads a spreadsheet. A node that sends an email. A node that creates a calendar event. A node that fetches a web page. Each tool node is one concrete capability.
+
+This is exactly the idea of "tools" from the AI Agents track, now literal: in n8n, a tool is a node. The set of tool nodes in a workflow is the set of actions that workflow can take, and therefore the boundary of what it can do and what it could do wrong.
+
+Tool nodes split into two kinds, and the distinction matters for safety. **Read nodes** only pull information in: read a sheet, fetch a page, list emails. They cannot change anything, so they are low risk. **Action nodes** change something in the world: send, create, update, delete. They are powerful and they are where mistakes have consequences. As you build, always know which of your nodes are read nodes and which are action nodes.
+
+### The pattern you are building
+
+Put the pieces together and you have the shape of every useful AI workflow: a tool node reads something in, the AI model node thinks about it, and another tool node acts on the result. Read, think, act. A spreadsheet is read, the AI analyzes it, an email is drafted. A web page is fetched, the AI summarizes it, a document is updated.
+
+In this lesson you build the simplest honest version of that pattern: one real tool connected, the AI model connected, and a workflow that uses both to produce a genuine result. Small, but real. It is the template every later build expands.
+
+## Steps
+
+### Step 1: Connect an AI model
+
+Add an AI model node to a workflow and create the credential it needs, the connection to your AI provider. Most providers issue an API key from your account settings for exactly this purpose. Once the credential is saved, the AI model node is live. Give it a simple instruction directly, run the workflow, and confirm a response comes back. Your workflow can now think.
+
+### Step 2: Choose and connect one real tool
+
+Pick one piece of software you genuinely use and that would be useful to automate against. A spreadsheet tool and an email tool are both excellent first choices: familiar, common, and immediately practical. Add the matching tool node and create its credential. When you set up that connection, consciously note what access you are granting, and grant no more than the task needs.
+
+### Step 3: Build the read-think-act pattern
+
+Build a small workflow that uses both. A clean first version: a read node pulls in some real information (a few rows of a spreadsheet, the contents of a document), the AI model node does something with it (summarize it, classify it, draft a response), and the result is produced as output. Keep the final step as output-only for now rather than a live action, so nothing irreversible can happen while you are still testing.
+
+### Step 4: Test it and read every node
+
+Run the workflow. Then, using the habit from the first lesson, open each node in turn and read its output. Did the read node pull in what you expected? Did the AI model node receive that input and produce a sensible response? Tracing the data node by node is how you build workflows that work and how you fix the ones that do not.
+
+### Step 5: Turn on the action, deliberately
+
+Only once the read-think portion is reliably correct, change the final step from output-only to a real action node: actually send the draft, actually update the sheet. Do this deliberately and watch the first live run closely. The moment a workflow goes from producing output to taking action is the moment it carries real consequences. Treat that switch as a decision, not a default.
+
+## Recap
+
+- A workflow that cannot reach your software is a toy. Connecting an AI model gives it a brain; connecting tools gives it hands.
+- n8n connects to your software through credentials: saved, reusable connections. A credential is a key, so grant the least access the job needs and always know what each one can do.
+- The AI model node lets a workflow think. Tool nodes let it act. The set of a workflow's tool nodes is the exact boundary of what it can do.
+- Tool nodes are either read nodes (pull information, low risk) or action nodes (change the world, consequential). Always know which is which.
+- Every useful AI workflow follows one pattern: read, think, act. Build the read-think part until it is reliable, then turn on the action deliberately and watch the first live run.
+
+---
+
+You can now connect AI and tools into a workflow. But a fixed workflow is not yet an agent. The next lesson crosses that line: building a system where the AI itself decides which tools to use.
+
+[Continue: Building Your First Working Agent →](/learn/building-agents/your-first-working-agent)

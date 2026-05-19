@@ -158,18 +158,72 @@ const CERT_CATEGORIES = [
 ]
 
 // ------------------------------------------------------------
-// Open-source projects worth knowing
+// The Toolkit — open-source repos worth knowing, by category.
+// Each line: one repo, one short effect. Curated from a real
+// power-user Claude Code setup.
 // ------------------------------------------------------------
-const PROJECTS = [
+const TOOLKIT = [
   {
-    name: 'n8n',
-    desc: 'The leading no-code workflow automation platform. The practical foundation for building AI agents and automations without writing code.',
-    url:  'https://github.com/n8n-io/n8n',
+    category: 'Claude Code, supercharged',
+    items: [
+      { name: 'superpowers',             by: 'obra',          desc: 'Auto-sources and activates skills',         url: 'https://github.com/obra/superpowers' },
+      { name: 'everything-claude-code',  by: 'affaan-m',      desc: 'The complete Claude Code playbook',         url: 'https://github.com/affaan-m/everything-claude-code' },
+      { name: 'gstack',                  by: 'garrytan',      desc: 'A full deploy pipeline inside Claude',      url: 'https://github.com/garrytan/gstack' },
+      { name: 'gbrain',                  by: 'garrytan',      desc: 'A persistent second brain for Claude',      url: 'https://github.com/garrytan/gbrain' },
+      { name: 'Personal_AI_Infrastructure', by: 'danielmiessler', desc: 'A full personal AI operating system',  url: 'https://github.com/danielmiessler/Personal_AI_Infrastructure' },
+      { name: 'claude-doctor',           by: 'millionco',     desc: 'Diagnoses and tunes your setup',            url: 'https://github.com/millionco/claude-doctor' },
+      { name: 'archon',                  by: 'coleam00',      desc: 'Repeatable, standardized coding workflows', url: 'https://github.com/coleam00/archon' },
+    ],
   },
   {
-    name: 'AI Engineering from Scratch',
-    desc: 'The open-source course (by Rohit Ghumare) that three PortLev Academy tracks are adapted from. A full technical curriculum for those who want the depth.',
-    url:  'https://github.com/rohitg00/ai-engineering-from-scratch',
+    category: 'Memory and token efficiency',
+    items: [
+      { name: 'claude-mem',  by: 'thedotmack', desc: 'Free long-term memory, fewer tokens', url: 'https://github.com/thedotmack/claude-mem' },
+      { name: 'mempalace',   by: 'MemPalace',  desc: 'A structured memory palace',          url: 'https://github.com/MemPalace/mempalace' },
+      { name: 'rtk',         by: 'rtk-ai',     desc: 'Cuts token use up to 90 percent',     url: 'https://github.com/rtk-ai/rtk' },
+      { name: 'lat.md',      by: '1st1',       desc: 'Fixes markdown file architecture',    url: 'https://github.com/1st1/lat.md' },
+    ],
+  },
+  {
+    category: 'Agents and skills',
+    items: [
+      { name: 'agent-skills',      by: 'addyosmani',     desc: 'A curated agent-skills collection',    url: 'https://github.com/addyosmani/agent-skills' },
+      { name: 'book-to-skill',     by: 'virgiliojr94',   desc: 'Turns any book into a Claude skill',   url: 'https://github.com/virgiliojr94/book-to-skill' },
+      { name: 'create-agent-tui',  by: 'OpenRouterTeam', desc: 'A full agent in one command',          url: 'https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui' },
+      { name: 'maestro',           by: 'its-maestro-baby', desc: 'A Bloomberg Terminal for Claude Code', url: 'https://github.com/its-maestro-baby/maestro' },
+      { name: 'helmor',            by: 'dohooo',         desc: 'Multi-agent development fixer',         url: 'https://github.com/dohooo/helmor' },
+      { name: 'paperclip',         by: 'paperclipai',    desc: 'An AI agent that manages agents',      url: 'https://github.com/paperclipai/paperclip' },
+      { name: 'OpenMythos',        by: 'kyegomez',       desc: 'An open-source agent toolkit',         url: 'https://github.com/kyegomez/OpenMythos' },
+      { name: 'token-dashboard',   by: 'nateherkai',     desc: 'Live Claude token tracking',           url: 'https://github.com/nateherkai/token-dashboard' },
+    ],
+  },
+  {
+    category: 'Content, media and design',
+    items: [
+      { name: 'PptxGenJS',         by: 'gitbrent',      desc: 'Generate slide decks, a free Gamma',       url: 'https://github.com/gitbrent/PptxGenJS' },
+      { name: 'supertonic',        by: 'supertone-inc', desc: 'Fast TTS, an ElevenLabs alternative',      url: 'https://github.com/supertone-inc/supertonic' },
+      { name: 'LuxTTS',            by: 'ysharma3501',   desc: 'Free text-to-speech for Claude',           url: 'https://github.com/ysharma3501/LuxTTS' },
+      { name: 'cli-printing-press', by: 'mvanhorn',     desc: 'Publication-quality output from the CLI',  url: 'https://github.com/mvanhorn/cli-printing-press' },
+      { name: 'open-design',       by: 'nexu-io',       desc: 'An open design system for Claude builds',  url: 'https://github.com/nexu-io/open-design' },
+    ],
+  },
+  {
+    category: 'Web, data and research',
+    items: [
+      { name: 'browser-harness', by: 'browser-use', desc: 'Flexible AI browser control',      url: 'https://github.com/browser-use/browser-harness' },
+      { name: 'Scrapling',       by: 'D4Vinci',     desc: 'A robust, free web scraper',       url: 'https://github.com/D4Vinci/Scrapling' },
+      { name: 'wterm',           by: 'vercel-labs', desc: 'A web terminal, by Vercel',        url: 'https://github.com/vercel-labs/wterm' },
+      { name: 'data-formulator', by: 'microsoft',   desc: 'Natural-language BI and charts',   url: 'https://github.com/microsoft/data-formulator' },
+    ],
+  },
+  {
+    category: 'Privacy, learning and career',
+    items: [
+      { name: 'LLM-anonymization',        by: 'zeroc00I',  desc: 'Strips sensitive data from prompts', url: 'https://github.com/zeroc00I/LLM-anonymization' },
+      { name: 'ai-engineering-from-scratch', by: 'rohitg00', desc: 'The 428-lesson AI engineering course', url: 'https://github.com/rohitg00/ai-engineering-from-scratch' },
+      { name: 'omniget',                  by: 'tonhowtf',  desc: 'Free courses pulled from everywhere', url: 'https://github.com/tonhowtf/omniget' },
+      { name: 'career-ops',               by: 'santifer',  desc: 'An AI-powered job-search system',    url: 'https://github.com/santifer/career-ops' },
+    ],
   },
 ]
 
@@ -325,18 +379,49 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* ---- Build With These ---- */}
+      {/* ---- The Toolkit ---- */}
       <section className="py-14 sm:py-16" aria-labelledby="build-heading">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 id="build-heading" className="text-2xl font-bold mb-2" style={{ color: '#0f172a' }}>
-            Build with these
+            The toolkit
           </h2>
-          <p className="text-base leading-7 mb-6" style={{ color: '#374151' }}>
-            Open-source projects worth knowing as you move from learning to building.
+          <p className="text-base leading-7 mb-8" style={{ color: '#374151' }}>
+            Open-source repositories worth knowing as you move from learning to building:
+            the actual toolkit behind a power-user Claude Code setup, grouped by what each
+            one does for you.
           </p>
-          <ul className="grid gap-4 sm:grid-cols-2 list-none p-0 m-0">
-            {PROJECTS.map(r => <ResourceCard key={r.name} {...r} />)}
-          </ul>
+
+          <div className="flex flex-col gap-7">
+            {TOOLKIT.map(group => (
+              <div key={group.category}>
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: '#4f46e5' }}>
+                  {group.category}
+                </h3>
+                <ul className="flex flex-col list-none p-0 m-0 rounded-xl border divide-y" style={{ borderColor: '#e2e8f0', backgroundColor: '#fff' }}>
+                  {group.items.map(it => (
+                    <li
+                      key={it.name}
+                      className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 px-4 py-2.5"
+                      style={{ borderColor: '#f1f5f9' }}
+                    >
+                      <a
+                        href={it.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold font-mono no-underline hover:underline"
+                        style={{ color: '#0f172a' }}
+                      >
+                        {it.name}
+                      </a>
+                      <span className="text-xs" style={{ color: '#cbd5e1' }}>/{it.by}</span>
+                      <span className="text-xs" style={{ color: '#cbd5e1' }}>&middot;</span>
+                      <span className="text-sm" style={{ color: '#64748b' }}>{it.desc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

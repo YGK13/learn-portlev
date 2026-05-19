@@ -1,0 +1,87 @@
+---
+title: "Building Your First Working Agent"
+summary: "A fixed workflow follows your steps. An agent decides its own. Here is how to build one in n8n — give it tools, instructions and a goal, then watch it choose."
+track: building-agents
+order: 3
+level: advanced
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["n8n", "ai-agents", "hands-on", "build"]
+estReadMin: 11
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+Everything you have built so far is a fixed workflow. You decided the steps, you placed them in order, and the workflow runs them exactly as drawn, every time. That is powerful, and for many tasks it is the right answer.
+
+It is not an agent. An agent, as the "AI Agents, Explained" track defined it, is different in one specific way: the AI itself decides which steps to take. You do not draw the path. You give the AI a goal and a set of tools, and it chooses, action by action, how to reach the goal, reacting to what it finds along the way.
+
+This lesson is where you cross that line. You will build a real, working AI agent in n8n: give it tools, write its instructions, set it loose on a goal and watch it decide. It is the centerpiece of this track, and by the end of this lesson the abstract idea of an agent will be something you have built with your own hands.
+
+<FlowDiagram loop steps={["Observe","Think","Choose a tool","Act"]} caption="Inside the agent node: the observe-think-act loop, running until the goal is met" />
+
+## Context
+
+### The agent node
+
+n8n provides a dedicated AI Agent node. Where the plain AI model node simply takes text in and gives text out, the agent node does something more: it runs the observe-think-act loop from the AI Agents track. It looks at the goal and the situation, decides on a step, takes that step using a tool, observes the result, and continues, looping until it judges the goal complete.
+
+You are not drawing that loop yourself. The agent node contains it. Your job is to give the agent the three things it needs to run that loop well: tools, instructions and a goal.
+
+### The three things you give an agent
+
+**Tools.** An agent with no tools is just a chatbot. The tools you attach to the agent node are the actions it is allowed to take, and the agent will choose among them as it works. Attach the tools the goal genuinely requires, and, applying the principle from the previous lesson, no more. The tool list is the agent's reach and its risk surface in one. An agent that only needs to read information should have only read tools.
+
+**Instructions.** The agent node has a system prompt: the standing instructions that define who the agent is, what it is for, how it should behave and what it must not do. This is the prompt-engineering skill from Track 2, applied to an agent. Good agent instructions state the role, the goal, how to use the tools, the boundaries and what to do when unsure. Vague instructions produce an agent that wanders. Precise instructions produce one that performs.
+
+**A goal.** Each time the agent runs, it receives a specific objective, the concrete task for this run. The instructions are permanent; the goal is per-run. "Triage this inbox." "Research this question." "Process this document." The clearer the goal, the better the agent's choices.
+
+### Why an agent, not a workflow, for this build
+
+You could often build the same outcome as a fixed workflow. So why build an agent at all? Because an agent earns its place when the path varies, the exact steps cannot be known in advance, and the system needs to react to what it finds. That is the lesson from "When to Use an Agent," and you will apply it rigorously in the next lesson.
+
+For this build, you will deliberately choose a task with that shape, so the agent has something real to decide. If you gave an agent a task whose steps never change, you would simply be watching it reinvent a fixed workflow, slower and less predictably. The point of this lesson is to see the agent genuinely choose, so the task must genuinely vary.
+
+### What you will watch for
+
+When you run the agent, the valuable thing is not just the final output. It is the trail: the sequence of decisions the agent made, which tool it reached for at each step and why. n8n lets you see that trail. Watching an agent's reasoning unfold, seeing it pick a tool, read the result and adjust, is what turns "agent" from a word into something you understand in your bones. Watch the trail as closely as the result.
+
+## Steps
+
+### Step 1: Choose a genuinely agent-shaped task
+
+Pick a task whose steps vary from run to run and that needs the system to react to what it finds. Strong candidates: triage a varied inbox where each message needs a different handling, research an open question across sources you cannot list in advance, or investigate something where each finding determines the next move. Avoid anything whose steps are always identical; that is a fixed workflow, not an agent task.
+
+### Step 2: Add the agent node and attach its tools
+
+Add the AI Agent node to a workflow. Attach the tools the task requires, built from the tool nodes you learned in the previous lesson. Keep the set minimal and appropriate: give the agent exactly what the goal needs. For a first agent, lean toward read tools and low-consequence actions, so that while you are learning the agent's behavior, a wrong choice cannot do real damage.
+
+### Step 3: Write the agent's instructions
+
+Write the system prompt with the care of a Track 2 prompt. State the role the agent plays, the goal it serves, how and when to use each tool, the boundaries it must not cross, and what it should do when it is uncertain, including when to stop and hand back to a human. Treat this as the most important text in the build, because it is. The instructions are the agent's judgment.
+
+### Step 4: Run it and watch it decide
+
+Give the agent a specific goal and run it. Then study the execution: the steps it took, the tools it chose, the order it chose them in, how it responded to each result. Do not just check the final output. Read the whole trail. This is the moment the agent concept becomes concrete, and it is worth slowing down for.
+
+### Step 5: Test with a different input
+
+Run the agent again with a genuinely different input, a different inbox, a different question. Watch it take a different path. This is the proof that you have built an agent and not a disguised fixed workflow: faced with a different situation, it makes different choices toward the same kind of goal. If it does, you have built a working agent. If it always does the exact same thing, the task was not agent-shaped, and the next lesson is exactly about telling the difference.
+
+## Recap
+
+- A fixed workflow follows the steps you drew. An agent decides its own steps: you give it a goal and tools, it chooses how to reach the goal, looping until done.
+- n8n's AI Agent node contains the observe-think-act loop. You do not build the loop; you supply what it needs to run well.
+- An agent needs three things: tools (the actions it may take, kept minimal), instructions (the permanent system prompt defining its role, behavior and boundaries) and a goal (the specific objective for each run).
+- Only build an agent for a genuinely agent-shaped task: one where the path varies and the system must react to what it finds. A fixed-path task should be a fixed workflow.
+- The proof you have built a real agent: give it a different input and watch it take a different path. Watch the whole decision trail, not just the final output.
+
+---
+
+You can now build both fixed workflows and agents. The next lesson is the judgment that decides which to reach for: the workflow-versus-agent decision, made concrete in n8n terms.
+
+[Continue: Workflow vs. Agent — The Decision in Practice →](/learn/building-agents/workflow-vs-agent-in-practice)

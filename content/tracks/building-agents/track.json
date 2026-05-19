@@ -1,0 +1,11 @@
+{
+  "title": "Building AI Agents Hands-On",
+  "slug": "building-agents",
+  "summary": "You understand agents conceptually. This advanced track gets you building real, working AI agents with no code, using n8n — from first automation to shipped agent.",
+  "level": "advanced",
+  "order": 7,
+  "icon": "🛠️",
+  "status": "published",
+  "type": "track",
+  "tags": ["ai-agents", "n8n", "automation", "hands-on"]
+}
