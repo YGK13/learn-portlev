@@ -10,7 +10,8 @@
     "lint": "eslint",
     "validate": "node scripts/validate-content.mjs",
     "prebuild": "npm run validate",
-    "predev": "npm run validate"
+    "predev": "npm run validate",
+    "video": "node scripts/video-pipeline.mjs"
   },
   "dependencies": {
     "feed": "^5.2.1",

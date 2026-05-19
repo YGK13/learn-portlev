@@ -38,6 +38,9 @@ yarn-error.log*
 .vercel/*
 !.vercel/project.json
 
+# video pipeline — generated scripts (re-creatable via npm run video script-all)
+scripts/video-scripts/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
