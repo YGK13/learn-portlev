@@ -10,6 +10,8 @@
 // ============================================================
 
 import Link from 'next/link'
+import Callout from './Callout'
+import FlowDiagram from './FlowDiagram'
 
 // ---- Headings --------------------------------------------------
 
@@ -220,6 +222,9 @@ const MDXComponents = {
   pre:        Pre,
   hr:         HR,
   strong:     Strong,
+  // Custom lesson components — used directly in MDX content
+  Callout,
+  FlowDiagram,
 }
 
 export default MDXComponents
