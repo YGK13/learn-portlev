@@ -6,8 +6,8 @@
 import Link from 'next/link'
 
 const LEARN_LINKS = [
-  { label: 'AI Foundations', href: '/learn/ai-foundations' },
   { label: 'All Tracks',     href: '/learn' },
+  { label: 'AI Resources',   href: '/resources' },
   { label: 'The Brief',      href: '/brief' },
 ]
 

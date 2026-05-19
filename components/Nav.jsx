@@ -11,11 +11,12 @@ import Link from 'next/link'
 
 // Primary nav links
 const NAV_LINKS = [
-  { label: 'Learn',   href: '/learn' },
-  { label: 'Brief',   href: '/brief' },
-  { label: 'Book',    href: '/book' },
-  { label: 'Cohort',  href: '/cohort' },
-  { label: 'About',   href: '/about' },
+  { label: 'Learn',     href: '/learn' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Brief',     href: '/brief' },
+  { label: 'Book',      href: '/book' },
+  { label: 'Cohort',    href: '/cohort' },
+  { label: 'About',     href: '/about' },
 ]
 
 export default function Nav() {
