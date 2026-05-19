@@ -1,0 +1,221 @@
+---
+title: "Chaining Prompts: Building Multi-Step AI Systems"
+summary: "One prompt has a ceiling. A chain of prompts breaks through it. Learn the three patterns that make chains work and the failure modes that break them."
+track: ai-workflows
+order: 2
+level: beginner
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["prompt-chaining", "workflows", "systems"]
+estReadMin: 11
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+There is a specific kind of frustration that hits when you have mastered prompt engineering but the output still is not where it needs to be.
+
+You have the role. You have the task specification. You have the context. The prompt is technically correct and the output is technically correct. But it is not the output you would have produced yourself. It is missing something — a non-obvious insight, a structural decision that requires real judgment, a calibration to the specific audience that a general instruction cannot capture.
+
+The reason is not that the prompt is wrong. The reason is that the prompt is doing too much in a single shot. The AI is simultaneously extracting information, interpreting it, structuring an argument and writing prose — four different cognitive modes compressed into one operation. The result is competent at all four and excellent at none.
+
+Chaining breaks that compression. Instead of one prompt doing everything, you write a sequence of specialized prompts where each one has a clear role, a defined input and a defined output. The chain handles the cognitive architecture. Each link handles one task exceptionally well.
+
+This lesson teaches you three prompt chaining patterns, the failure modes to avoid and how to build your first working chain from a real piece of work.
+
+## Context
+
+### What Makes a Chain Different from a Sequence of Prompts
+
+The distinction matters. A sequence of prompts is when you ask AI something, get an answer, ask something else and so on — each conversation turn independent of the others.
+
+A chain is when the output of each prompt is the explicit, structured input of the next. The AI in step 3 does not just have access to what happened in steps 1 and 2 — it receives the output of step 2 as the content it works on.
+
+The difference is structural. In a sequence, the connection between steps is implicit and depends on the AI's ability to maintain context. In a chain, the connection is explicit: you copy the output, paste it in and tell the next prompt what it is working with.
+
+This explicitness is what makes chains reliable. The AI in step 3 cannot hallucinate what step 2 produced — it is right there in the prompt.
+
+### Pattern 1: Sequential Chain
+
+The most common pattern. Output flows linearly from step to step.
+
+```
+Input → Step 1 → Step 2 → Step 3 → Output
+```
+
+Each step transforms the output of the previous step. The chain is complete when the final step produces the deliverable.
+
+**When to use it:** Any task with a natural progression — gather, then analyze, then write. Or extract, then structure, then polish.
+
+**Example — board presentation narrative:**
+
+Step 1: Extract the five most important facts and decisions from these meeting notes.
+
+Step 2 [receives Step 1 output]: Structure these facts into a three-part narrative: (1) where we are now, (2) what we decided and why, (3) what happens next and who owns what.
+
+Step 3 [receives Step 2 output]: Rewrite this narrative for a board audience. Language: precise, no jargon, assumes financial and strategic literacy. Each section: maximum three sentences. Total: under 200 words.
+
+The final output from a sequential chain is cleaner than anything a single prompt would produce because each step had exactly one job.
+
+### Pattern 2: Branch-and-Merge Chain
+
+The input splits into parallel tracks that are processed independently, then merged into a single output.
+
+```
+               ┌─ Branch A ─┐
+Input → Split ─┤             ├─ Merge → Output
+               └─ Branch B ─┘
+```
+
+**When to use it:** When the task requires two different perspectives, analyses or formats that need to be synthesized. Decision memos (pros and cons evaluated separately, then synthesized). Competitive analyses (your position analyzed independently from competitor position, then compared). Risk assessments (operational risks and strategic risks analyzed separately, then prioritized together).
+
+**Example — build vs. buy analysis:**
+
+Step 1A [Build branch]: Evaluate the build option. Analyze: development cost, time to value, maintenance burden, strategic control gained, team capacity required.
+
+Step 1B [Buy branch]: Evaluate the buy option. Analyze: vendor cost (3-year TCO), implementation timeline, customization limits, vendor dependency risk, integration effort.
+
+Step 2 [receives both outputs]: Given this build analysis [1A] and this buy analysis [1B], produce a one-page recommendation. Structure: executive summary (one paragraph), key comparison factors (table), recommendation with rationale (two paragraphs), open questions (three bullets).
+
+The branch-and-merge pattern ensures each side of the analysis gets a full, specialized treatment rather than a compressed half-treatment inside a single prompt.
+
+### Pattern 3: Refinement Loop
+
+The output is evaluated against a standard and refined until it meets the standard.
+
+```
+Input → Draft → Evaluate → [pass] → Output
+                    ↓
+                 [fail]
+                    ↓
+                 Revise → Evaluate again
+```
+
+**When to use it:** High-stakes deliverables where the first pass is never good enough. Executive communications. Client-facing proposals. Presentations for senior audiences. Any content where tone, precision and structure are critical.
+
+**Example — executive email refinement:**
+
+Step 1: Draft an email to the CFO requesting budget approval for the Q3 headcount plan. Context: [paste context]. Goal: secure approval or a meeting to discuss.
+
+Step 2 [receives Step 1 output]: Evaluate this email against these criteria:
+- Does it open with the specific ask rather than context?
+- Is the business case stated in three sentences or fewer?
+- Does it make the CFO's decision easy (clear yes/no or clear next step)?
+- Is it under 150 words?
+Rate each criterion pass/fail. Identify the two highest-priority improvements.
+
+Step 3 [receives Steps 1 and 2 output]: Rewrite the email addressing the highest-priority issues identified in the evaluation. Do not change what works — only fix what was flagged.
+
+You can run steps 2 and 3 again on the revised output if needed. Most refinement loops reach "ready to send" in two cycles.
+
+### The Input/Output Contract
+
+Every link in a chain has an input/output contract — a clear specification of what goes in and what comes out.
+
+This sounds obvious. It is routinely violated.
+
+The most common chain failure is a mismatch between what one step produces and what the next step expects. Step 2 expects structured data; step 1 produced flowing prose. Step 3 expects a list of five items; step 2 produced eight. The chain breaks not because the prompts are wrong individually, but because the handoff between them was not specified.
+
+**How to write a clean input/output contract for each step:**
+
+Input: What format is the input? (Paragraph, list, table, JSON, raw data?) How long is it? Does it need any preprocessing before this step can use it?
+
+Output: What format should the output be? (Structured list, numbered sections, a table, a paragraph?) How long? What should it explicitly include? What should it explicitly exclude?
+
+Write these contracts before you write the step prompts. The contracts are the workflow design. The prompts are the implementation.
+
+### Three Failure Modes and How to Fix Them
+
+**Failure mode 1: Steps that are too long.**
+If a single step produces more than one page of output, it is probably doing two or three jobs. Break it down. The ideal step produces one clean, bounded output that the next step can use without filtering.
+
+The diagnostic: if you find yourself scanning the output of a step to find the part you actually need for the next step, the step is too broad.
+
+**Failure mode 2: Context bleed.**
+You include too much of the upstream context in each step, trying to give the AI everything it might need. The result is that the AI prioritizes the wrong parts of the context.
+
+The fix: give each step only what it needs to do its specific job. If step 3 is editing prose, it needs the draft text and the editing criteria — not the original raw input from step 1.
+
+**Failure mode 3: No intermediate quality check.**
+You run the entire chain and get a final output that is wrong — but you do not know which step produced the error. By the time you find the problem, you have wasted multiple prompts.
+
+The fix: build a quick quality check after every step that requires judgment. Before moving to step 2, read the step 1 output. Does it actually contain what you need? If not, adjust step 1 and re-run before proceeding.
+
+## Steps
+
+### Step 1: Pick a recurring deliverable and identify its natural stages
+
+Use the work you mapped in Lesson 1. You already have the task and the decomposition. Now you are going to build the chain.
+
+Write down the three or four stages of your deliverable:
+- *What must be extracted or gathered first?*
+- *What analysis or interpretation must happen next?*
+- *What must be structured or organized before writing begins?*
+- *What writing, editing or calibration is the final step?*
+
+These stages are your chain links.
+
+### Step 2: Write the input/output contract for each link before writing the prompts
+
+For each stage, write:
+
+```
+Step N: [name the cognitive operation]
+Input: [what this step receives, in what format]
+Output: [what this step produces, in what format and length]
+```
+
+Do this for every step before writing a single prompt. You will catch mismatches now rather than after running the chain.
+
+### Step 3: Write the prompt for each link
+
+With the contracts in hand, write a focused prompt for each step using the Role + Task + Context structure from the Prompt Engineering track.
+
+The task section of each prompt should match exactly the output specification in that step's contract. If the contract says "produce a numbered list of five items with a one-sentence rationale for each," the task section says the same thing.
+
+### Step 4: Run the chain on a real piece of work
+
+No further refinement in your head. Run it.
+
+After each step, before moving to the next: read the output. Does it match the contract? Is it usable as input for the next step? If yes, proceed. If no, adjust the prompt for that step and re-run before continuing.
+
+This discipline of stopping after each step is what separates professionals who build reliable chains from those who run the whole chain, get bad output and cannot figure out where it broke.
+
+### Step 5: Document the chain as a reusable template
+
+Once the chain runs cleanly end to end on real input, write it up as a template:
+
+```
+WORKFLOW: [Name]
+TRIGGER: [What initiates this workflow — what raw input does it receive?]
+
+STEP 1: [Name]
+Role: [who the AI is for this step]
+Task: [what it produces, in what format]
+Input: [what goes in]
+
+STEP 2: [Name]
+...
+
+OUTPUT: [what the final deliverable looks like]
+NOTES: [edge cases, failure modes you have encountered, things to watch for]
+```
+
+This template goes into your prompt library. Every time you encounter this task, you run the template rather than rebuilding the chain from scratch.
+
+## Recap
+
+- A chain is different from a sequence of prompts: the output of each step is the explicit, structured input of the next. The connection is structural, not conversational.
+- Three chaining patterns: Sequential (linear flow), Branch-and-Merge (parallel tracks synthesized into one output) and Refinement Loop (evaluate and revise until the standard is met).
+- Every link in a chain needs an input/output contract written before the prompt. Mismatches between what one step produces and what the next step expects are the leading cause of chain failures.
+- Check each step before moving to the next. A quality check after each step catches errors before they compound.
+- Document every working chain as a reusable template. The chain you build once runs every time you encounter that type of task.
+
+---
+
+The next lesson applies everything you have built here to the most common professional use case: document processing. You will build a complete pipeline that takes any document as input and produces a structured brief, an action list and a risk summary — in minutes.
+
+[Continue: Your First Document Processing Pipeline →](/learn/ai-workflows/your-first-document-pipeline)

@@ -1,0 +1,11 @@
+{
+  "title": "AI Workflows",
+  "slug": "ai-workflows",
+  "summary": "A great prompt is a tool. A workflow is a system. Learn to chain prompts, build repeatable pipelines and create AI-powered leverage that runs without you.",
+  "level": "beginner",
+  "order": 2,
+  "icon": "⚙️",
+  "status": "published",
+  "type": "track",
+  "tags": ["workflows", "automation", "productivity", "systems"]
+}

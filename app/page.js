@@ -21,8 +21,12 @@ export default function Home() {
   const tracks = getAllTracks()
   const briefs = getAllBriefs().slice(0, 3) // Show three most recent on home page
 
+  // Split intro unit from numbered curriculum tracks
+  const introTrack = tracks.find(t => t.type === 'intro') ?? null
+  const curriculumTracks = tracks.filter(t => t.type !== 'intro')
+
   // Attach lesson counts to each track for display
-  const tracksWithCounts = tracks.map(track => ({
+  const tracksWithCounts = curriculumTracks.map(track => ({
     track,
     lessonCount: getLessonsForTrack(track.slug).length,
   }))
@@ -144,26 +148,28 @@ export default function Home() {
       {/* ============================================================
           Tracks section
           ============================================================ */}
-      {tracksWithCounts.length > 0 && (
+      {(introTrack || tracksWithCounts.length > 0) && (
         <section
           className="py-16 sm:py-20"
           aria-labelledby="tracks-heading"
         >
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 flex items-end justify-between gap-4">
+
+            {/* Section header */}
+            <div className="mb-8 flex items-end justify-between gap-4">
               <div>
                 <p className="mb-2 text-xs font-semibold uppercase tracking-wider" style={{ color: '#4f46e5' }}>
-                  Start here
+                  Free curriculum
                 </p>
                 <h2
                   id="tracks-heading"
                   className="text-2xl sm:text-3xl font-bold leading-tight"
                   style={{ color: '#0f172a' }}
                 >
-                  Learning Tracks
+                  Start Learning
                 </h2>
                 <p className="mt-2 text-base" style={{ color: '#64748b' }}>
-                  Structured paths from zero to leverage, one lesson at a time.
+                  Begin with the Introduction, then work through the tracks in order.
                 </p>
               </div>
               <Link
@@ -171,20 +177,81 @@ export default function Home() {
                 className="hidden sm:inline-flex items-center gap-1 text-sm font-semibold no-underline whitespace-nowrap"
                 style={{ color: '#4f46e5' }}
               >
-                All tracks
+                Full curriculum
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
             </div>
 
-            <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
-              {tracksWithCounts.map(({ track, lessonCount }) => (
-                <li key={track.slug}>
-                  <TrackCard track={track} lessonCount={lessonCount} />
-                </li>
-              ))}
-            </ul>
+            {/* Introduction unit — compact banner linking to /learn/ai-foundations */}
+            {introTrack && (
+              <div className="mb-6">
+                <Link
+                  href={`/learn/${introTrack.slug}`}
+                  className="
+                    group flex items-center justify-between gap-4
+                    rounded-xl border p-4 sm:p-5 no-underline
+                    transition-shadow hover:shadow-md
+                  "
+                  style={{ borderColor: '#c7d2fe', backgroundColor: 'rgb(79 70 229 / 0.03)' }}
+                >
+                  <div className="flex items-center gap-4 min-w-0">
+                    <span
+                      className="
+                        shrink-0 inline-flex items-center justify-center
+                        rounded-full px-3 py-1 text-xs font-bold uppercase tracking-wider
+                      "
+                      style={{ backgroundColor: 'rgb(79 70 229 / 0.12)', color: '#4f46e5' }}
+                    >
+                      Start Here
+                    </span>
+                    <span className="text-sm leading-none" aria-hidden="true">{introTrack.icon}</span>
+                    <div className="min-w-0">
+                      <p className="font-semibold text-sm truncate" style={{ color: '#0f172a' }}>
+                        {introTrack.title}
+                      </p>
+                      <p className="text-xs mt-0.5 truncate" style={{ color: '#64748b' }}>
+                        {introTrack.summary}
+                      </p>
+                    </div>
+                  </div>
+                  <span
+                    className="shrink-0 flex items-center gap-1 text-xs font-semibold group-hover:underline"
+                    style={{ color: '#4f46e5' }}
+                    aria-hidden="true"
+                  >
+                    Begin
+                    <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                </Link>
+              </div>
+            )}
+
+            {/* Numbered curriculum tracks */}
+            {tracksWithCounts.length > 0 && (
+              <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 list-none p-0 m-0">
+                {tracksWithCounts.map(({ track, lessonCount }, i) => (
+                  <li key={track.slug} className="relative">
+                    <div
+                      className="
+                        absolute -top-3 -left-2 z-10
+                        flex h-7 w-7 items-center justify-center
+                        rounded-full text-xs font-bold text-white
+                      "
+                      style={{ backgroundColor: '#4f46e5' }}
+                      aria-hidden="true"
+                    >
+                      {i + 1}
+                    </div>
+                    <TrackCard track={track} lessonCount={lessonCount} />
+                  </li>
+                ))}
+              </ul>
+            )}
+
           </div>
         </section>
       )}

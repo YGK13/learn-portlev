@@ -1,10 +1,11 @@
 {
   "title": "AI Foundations",
   "slug": "ai-foundations",
-  "summary": "The core concepts and first workflows every professional needs to start closing the AI Wage Gap. Start here.",
+  "summary": "The core concepts and first workflows every professional needs before diving into the tracks. Start here.",
   "level": "beginner",
-  "order": 1,
+  "order": 0,
   "icon": "🧠",
   "status": "published",
+  "type": "intro",
   "tags": ["ai-fundamentals", "career", "productivity"]
 }

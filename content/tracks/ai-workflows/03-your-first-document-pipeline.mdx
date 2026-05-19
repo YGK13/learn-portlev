@@ -1,0 +1,280 @@
+---
+title: "Your First Document Processing Pipeline"
+summary: "The most expensive thing in most organizations is documents that sit unread. This pipeline turns any document into decisions in minutes."
+track: ai-workflows
+order: 3
+level: beginner
+status: published
+tier: free
+updated: "2026-05-19"
+tags: ["document-processing", "workflows", "pipeline", "productivity"]
+estReadMin: 12
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+There is a specific kind of inbox that exists in every organization above a certain size: the inbox of documents that people are supposed to read but do not.
+
+Board packs. Vendor proposals. Research reports. Legal documents. Audit findings. Strategy memos from other departments. The documents exist. They contain information that matters. Nobody has time to read all of them. So people skim or skip entirely, make decisions without the information and wonder later why outcomes diverge from intentions.
+
+The document processing pipeline is the solution to this problem that most organizations do not know exists.
+
+A document processing pipeline takes any document as input and produces three outputs that are actually useful: a structured brief (what the document says, in two pages), an action list (what needs to happen and who owns it) and a risk flag (what in this document demands attention before anything else).
+
+A senior leader who receives a 60-page board pack on Friday and has a two-hour flight on Sunday does not need to read 60 pages. They need the three-page brief, the action list and the risk flag. The pipeline produces all three in under ten minutes.
+
+This lesson builds that pipeline from scratch. You will produce a reusable system that works on any document type — not a toy example, but a professional tool you can use on real work starting today.
+
+## Context
+
+### The Three Transformations of Document Processing
+
+Every document processing workflow involves one or more of three fundamental transformations. Understanding which transformation each step performs is what lets you design the pipeline correctly.
+
+**Transformation 1: Extraction**
+
+Extraction pulls specific information out of a document. It does not interpret or judge — it identifies and surfaces. The output of an extraction step is raw material: the key facts, the decisions, the numbers, the named entities, the explicit commitments.
+
+Extraction prompts are specific about what to extract: "List every decision made in this document, with the date, the decision-maker and the agreed outcome." They are not open-ended: "Tell me what is important."
+
+Good extraction is the foundation of every reliable document pipeline. When extraction is done precisely, the downstream steps have what they need to work with. When extraction is vague, every subsequent step amplifies the vagueness.
+
+**Transformation 2: Analysis**
+
+Analysis interprets the extracted information. It applies judgment, identifies patterns, surfaces implications and answers the question: "Given what this document says, what should I know?"
+
+Analysis steps require more context than extraction steps. You are not just asking AI to read — you are asking it to reason. This is where the role assignment matters most. A CFO analyzing a vendor proposal asks different questions than a COO analyzing the same document. Specify the perspective.
+
+Analysis prompts name the framework: "Given these extracted data points, identify the three most significant risks. For each risk, estimate the likelihood (high/medium/low) and the potential impact on operations."
+
+**Transformation 3: Transformation**
+
+Transformation reformats the processed information for a specific audience or purpose. A 60-page report becomes a two-page executive brief. A legal document becomes a plain-language summary. A technical specification becomes a business requirements document.
+
+Transformation steps are audience-specific. The input is the analyzed content; the output is a formatted document that works for a reader who was not the original audience of the source material.
+
+Transformation prompts specify format, length, audience and explicit exclusions: "Write a two-page executive brief from this analysis. Audience: board members with financial but not technical backgrounds. Format: situation (one paragraph), key findings (four bullets with data), implications (two paragraphs), decisions required (numbered list). Tone: direct, no jargon. Exclude: any technical detail that does not directly affect a business decision."
+
+### Document Types and Their Natural Pipeline Shapes
+
+Not all documents use all three transformations in the same order. Matching the pipeline shape to the document type is what makes the pipeline fast and reliable.
+
+**Long reports and research (board packs, audit reports, research briefs):**
+Extract key findings → Analyze by priority and implication → Transform into executive brief + action list
+
+**Vendor proposals and contracts:**
+Extract commitments, pricing and terms → Analyze against your criteria and flag risks → Transform into a recommendation memo
+
+**Meeting notes and transcripts:**
+Extract decisions, action items and open questions → Analyze for completeness and follow-up requirements → Transform into a structured follow-up
+
+**Strategy and planning documents:**
+Extract objectives, assumptions and dependencies → Analyze against current priorities and known constraints → Transform into an implementation brief for the relevant team
+
+**Legal and compliance documents:**
+Extract obligations, deadlines and risk provisions → Analyze for operational and financial exposure → Transform into plain-language summary with flagged items requiring legal review
+
+### Why Most Document Pipelines Fail
+
+Two failure modes account for the majority of failed attempts.
+
+**Failure mode 1: Treating the whole document as context.**
+Pasting a 60-page document into a single prompt and asking for a summary is not a pipeline — it is a single prompt handling the entire transformation. The output will be generic because the AI is simultaneously deciding what matters, deciding how to structure it and deciding what to emphasize for your audience. Each of those is its own step.
+
+Pipelines break the document into sections or process it step by step. If the document is too long to fit in a single context window, you process it in chunks and synthesize the chunks in a final step.
+
+**Failure mode 2: No audience specification in the transformation step.**
+"Summarize this" produces a summary. "Write a two-page brief for a CFO who has eight minutes before a board meeting" produces a brief that is actually usable. The transformation step must name the audience, the format, the length and the specific decisions or actions the reader needs to walk away with.
+
+## Steps
+
+### Step 1: Choose your document type and define the three outputs
+
+Pick a document type you process regularly. Do not pick a hypothetical — pick something sitting in your inbox right now.
+
+Before building any prompts, define what you want the pipeline to produce. Write this down:
+
+```
+DOCUMENT TYPE: [e.g., vendor proposal, board pack section, legal contract]
+
+OUTPUT 1: Executive brief
+  Format: [e.g., 4 labeled sections, 2 pages max]
+  Audience: [e.g., COO with no time to read the original]
+  Purpose: [e.g., enable a go/no-go decision]
+
+OUTPUT 2: Action list
+  Format: [e.g., numbered list, each item: action + owner + deadline]
+  Audience: [e.g., the project team implementing the decision]
+  Purpose: [e.g., unambiguous next steps]
+
+OUTPUT 3: Risk / attention flags
+  Format: [e.g., 3-5 bullets, each flagging one item + why it matters]
+  Audience: [e.g., the decision-maker before they sign off]
+  Purpose: [e.g., surface items that should pause or change the decision]
+```
+
+You are not guessing at this. You are specifying it. The pipeline will produce exactly this — or you will know which step to fix.
+
+### Step 2: Write the extraction prompt
+
+The extraction prompt asks the AI to pull specific information from the document. Do not ask for interpretation yet.
+
+Template:
+```
+You are a precise research assistant. Read the following document and extract:
+1. [specific extraction target 1 — e.g., every explicit commitment made by the vendor]
+2. [specific extraction target 2 — e.g., every pricing structure mentioned, with exact figures]
+3. [specific extraction target 3 — e.g., every deadline or timeline stated in the document]
+4. [specific extraction target 4 — e.g., every condition or caveat attached to the agreement]
+
+For each item, note: [what metadata to capture — e.g., the page or section it appears in]
+Do not interpret or evaluate — only extract exactly what the document states.
+
+DOCUMENT:
+[paste document]
+```
+
+Run this prompt. Read the output. Does it contain what you need for the next step? If anything important is missing, add it to the extraction list and re-run. This is the step to get right — every downstream step depends on it.
+
+### Step 3: Write the analysis prompt
+
+The analysis prompt receives the extraction output and applies judgment.
+
+Template:
+```
+You are a [specific role — e.g., senior consultant evaluating vendor proposals for a Fortune 500 client].
+
+I have extracted the following information from a [document type]:
+
+[EXTRACTION OUTPUT — paste the output from Step 2]
+
+Given this extracted information, analyze:
+1. [analysis question 1 — e.g., What are the top three risks in this proposal, and what is the magnitude of each?]
+2. [analysis question 2 — e.g., Which commitments are vague or unenforceable?]
+3. [analysis question 3 — e.g., What is missing from this proposal that we would typically expect?]
+4. [analysis question 4 — e.g., On balance, is this proposal within our standard terms or does it require negotiation?]
+
+For each point, explain your reasoning in two to three sentences.
+```
+
+The analysis step is where the pipeline produces insights you would not get from a single-pass summary. Take your time reading the output. This is the intellectual core of the pipeline.
+
+### Step 4: Write the transformation prompts (one per output)
+
+Write a separate transformation prompt for each of your three defined outputs.
+
+**Executive brief:**
+```
+You are a senior executive communications specialist. I need a two-page executive brief from the following analysis.
+
+ANALYSIS:
+[paste Step 3 output]
+
+BRIEF SPECIFICATIONS:
+Audience: [your audience]
+Format: [your format — sections, lengths, structure]
+Tone: [direct, no jargon, data-driven]
+Include: [specific items to include]
+Exclude: [specific items to exclude]
+
+Write the brief now.
+```
+
+**Action list:**
+```
+You are a chief of staff. From the following analysis, produce a complete action list.
+
+ANALYSIS:
+[paste Step 3 output]
+
+For each action item:
+- State the action precisely (one sentence, active verb)
+- Identify the function or role responsible (do not guess at names — use role titles)
+- State the recommended deadline or time horizon
+- Flag if this action is time-sensitive or blocks another action
+
+Format as a numbered list. Do not include actions that are vague or unverifiable.
+```
+
+**Risk flags:**
+```
+You are a risk officer reviewing this analysis for a [senior decision-maker title].
+
+ANALYSIS:
+[paste Step 3 output]
+
+Identify the three to five items in this analysis that most require the decision-maker's attention before proceeding. For each item:
+- State the issue in one sentence
+- Explain why it matters (potential impact, in plain language)
+- State what action it requires (none / monitor / investigate / resolve before proceeding)
+
+Prioritize by impact, not by document order.
+```
+
+### Step 5: Run the pipeline on your real document and refine
+
+With all four prompts written, run the complete pipeline on your document:
+1. Extraction → check the output
+2. Analysis → check the output
+3. Executive brief → review against your specifications
+4. Action list → verify each action is specific and owned
+5. Risk flags → confirm the top items are genuinely the highest priority
+
+After the full run, identify the one step that produced output furthest from what you needed. Fix only that step. Run again. Repeat until the pipeline produces outputs you would be comfortable using in real decisions.
+
+### Step 6: Save the pipeline as a reusable template
+
+Document your completed pipeline using this format:
+
+```
+PIPELINE: [Document Type] Processing Pipeline
+VERSION: 1.0
+UPDATED: [date]
+
+PURPOSE: Takes [document type] as input and produces:
+  - Executive brief: [describe]
+  - Action list: [describe]
+  - Risk flags: [describe]
+
+STEP 1: EXTRACTION
+[paste your extraction prompt with [DOCUMENT] placeholder]
+
+STEP 2: ANALYSIS
+[paste your analysis prompt with [EXTRACTION OUTPUT] placeholder]
+
+STEP 3A: EXECUTIVE BRIEF
+[paste your brief prompt with [ANALYSIS] placeholder]
+
+STEP 3B: ACTION LIST
+[paste your action list prompt with [ANALYSIS] placeholder]
+
+STEP 3C: RISK FLAGS
+[paste your risk flags prompt with [ANALYSIS] placeholder]
+
+NOTES:
+- [What to watch for with this document type]
+- [Failure modes you have encountered]
+- [Edge cases and how to handle them]
+```
+
+A pipeline template saved is a pipeline you will actually use. The investment in building it pays off on every subsequent document of the same type.
+
+## Recap
+
+- Document processing pipelines have three transformations: Extraction (pull out the facts), Analysis (interpret the facts) and Transformation (reformat for a specific audience and purpose).
+- Define your outputs before writing any prompts. Knowing exactly what the pipeline must produce is what lets you build prompts that produce it.
+- The extraction step is the foundation. Every downstream step depends on it. Get it right before moving on.
+- The analysis step is the intellectual core. Specify the role, the analytical framework and the specific questions — this is where the pipeline produces insights a single-pass summary never would.
+- Write separate transformation prompts for each distinct output. One prompt per deliverable, with explicit audience, format and exclusion specifications.
+- Save every working pipeline as a reusable template. The pipeline you build once runs on every document of that type, forever.
+
+---
+
+You have completed the AI Workflows track. You now have the three core capabilities that separate AI users from AI-powered professionals: the workflow mindset, the chaining patterns and the document processing pipeline.
+
+The next track applies these foundations to the work that defines strategic leverage at the senior level — using AI for analysis, decision support and communication at executive scale.
+
+[Back to AI Workflows track →](/learn/ai-workflows)
