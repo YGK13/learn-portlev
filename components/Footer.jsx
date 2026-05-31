@@ -12,16 +12,18 @@ const LEARN_LINKS = [
 ]
 
 const PRODUCT_LINKS = [
-  { label: 'The Book',           href: '/book' },
-  { label: 'CHRO AI Cohort',     href: '/cohort' },
-  { label: 'About Yuri',         href: '/about' },
-  { label: 'Credits',            href: '/credits' },
+  { label: 'The Book',              href: '/book' },
+  { label: 'Executive AI Cohort',   href: '/cohort' },
+  { label: 'About Yuri',            href: '/about' },
+  { label: 'Credits',               href: '/credits' },
 ]
 
+// Community is not live yet (Skool not set up). For now every
+// "join us" link routes to The Leverage Brief signup.
 const COMMUNITY_LINKS = [
-  { label: 'Free Community',     href: process.env.NEXT_PUBLIC_SKOOL_FREE_URL || 'https://www.skool.com' },
-  { label: 'Leverage Lab',       href: process.env.NEXT_PUBLIC_SKOOL_PAID_URL || 'https://www.skool.com' },
-  { label: 'Newsletter Archive', href: '/brief' },
+  { label: 'The Leverage Brief',    href: '/brief' },
+  { label: 'Subscribe by Email',    href: 'https://leveragebrief.beehiiv.com/subscribe' },
+  { label: 'RSS Feed',              href: 'https://leveragebrief.beehiiv.com/feed' },
 ]
 
 export default function Footer() {

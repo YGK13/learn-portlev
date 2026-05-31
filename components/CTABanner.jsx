@@ -3,9 +3,8 @@
 // Server component: pure display. No interactivity.
 //
 // Variants:
-//   'community' — Join the free Skool community
-//   'premium'   — Upgrade to Leverage Lab (paid Skool)
-//   'cohort'    — Apply for the CHRO AI Cohort (Maven)
+//   'community' — Subscribe to The Leverage Brief (no Skool yet)
+//   'cohort'    — Apply for the Executive AI Cohort (ForwardShare)
 //   'newsletter' — Subscribe to The Leverage Brief (with NewsletterCapture)
 // ============================================================
 
@@ -13,36 +12,27 @@ import NewsletterCapture from './NewsletterCapture'
 
 // Variant config — stable object outside component
 const VARIANTS = {
+  // The "community" hook stays in the API so existing callers do not
+  // break, but until the Skool community is live it now points to
+  // The Leverage Brief signup. Single funnel, one less broken link.
   community: {
-    eyebrow: 'Free Community',
-    headline: 'Go deeper with 100+ practitioners.',
-    body: 'The free Skool community is where PortLev learners share results, ask questions and hold each other accountable. Free forever.',
-    cta: 'Join the Community',
-    href: process.env.NEXT_PUBLIC_SKOOL_FREE_URL || 'https://www.skool.com',
-    external: true,
+    eyebrow: 'Free Newsletter',
+    headline: 'Get one actionable AI idea every Monday.',
+    body: 'The Leverage Brief is the weekly signal for PortLev readers: one concept, one implementation path, something you can act on this week. Free forever.',
+    cta: 'Subscribe to the Brief',
+    href: '/brief',
+    external: false,
     bg:     '#f0f4ff',
     border: '#c7d2fe',
     ctaBg:  '#4f46e5',
-    icon:   '🏛️',
-  },
-  premium: {
-    eyebrow: 'Leverage Lab',
-    headline: 'Weekly live sessions. Done-for-you assets. Accountability.',
-    body: 'Everything in the free community plus weekly live working sessions, prompt libraries, workflow templates and direct access to Yuri. $49–99/mo.',
-    cta: 'Explore Leverage Lab',
-    href: process.env.NEXT_PUBLIC_SKOOL_PAID_URL || 'https://www.skool.com',
-    external: true,
-    bg:     '#fffbeb',
-    border: '#fde68a',
-    ctaBg:  '#f59e0b',
-    icon:   '⚡',
+    icon:   '✉️',
   },
   cohort: {
-    eyebrow: 'CHRO AI Cohort',
-    headline: 'Transform your HR function with AI in 8 weeks.',
-    body: 'A live cohort for CHROs and senior HR leaders ready to deploy AI at scale. Small cohort. Hands-on. Real deliverables. Apply now on Maven.',
-    cta: 'Apply on Maven',
-    href: process.env.NEXT_PUBLIC_MAVEN_COHORT_URL || 'https://maven.com',
+    eyebrow: 'Executive AI Cohort',
+    headline: 'Build your Portfolio OS in 12 weeks with ForwardShare.',
+    body: 'A live cohort for mid-career executives building their AI Portfolio OS. Small cohort. Real deliverables. Run by Yuri with ForwardShare Ventures.',
+    cta: 'Apply on ForwardShare',
+    href: 'https://forwardshare.co/executive-ai-cohort-forward-achieve-forward-share-ventures',
     external: true,
     bg:     '#f9f5ff',
     border: '#ddd6fe',

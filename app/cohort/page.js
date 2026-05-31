@@ -1,58 +1,65 @@
 // ============================================================
-// app/cohort/page.js — CHRO AI Cohort landing page
+// app/cohort/page.js — Portfolio Executive Cohort landing page
 // Server Component. Pure JSX.
+//
+// This page is a teaser for the live cohort run by Yuri with
+// ForwardShare Ventures. All CTAs link directly to the
+// ForwardShare enrolment page (the source of truth) so there
+// is one funnel, not two.
 // ============================================================
 
 import Link from 'next/link'
-import CTABanner from '@/components/CTABanner'
+
+// Single source of truth for the cohort URL.
+const COHORT_URL = 'https://forwardshare.co/executive-ai-cohort-forward-achieve-forward-share-ventures'
 
 export const metadata = {
-  title:       'CHRO AI Cohort',
-  description: 'An 8-week live cohort for CHROs and senior HR leaders ready to deploy AI at scale. ' +
-               'Small cohort. Hands-on. Real deliverables.',
+  title:       'Executive AI Cohort — Forward Achieve',
+  description: 'A 12-week live cohort with ForwardShare Ventures for ' +
+               'mid-career executives building their AI Portfolio OS. ' +
+               'Limited to 15 per intake.',
 }
 
 const OUTCOMES = [
-  'A fully documented AI strategy for your HR function, ready to present to your board',
-  'Three live AI workflows deployed in your actual systems before the cohort ends',
-  'An attrition risk model built on your workforce data, not a generic template',
-  'A prompt library and playbook your team can use without you in the room',
-  'A peer network of CHROs at companies facing the same challenges',
+  'A complete Task Stack Map: where AI substitutes, augments and unlocks new work in your specific role',
+  'An AI Skills Edge plan moving you from user to architect, layer by layer',
+  'A Node Density Map of the network that will actually distribute your work',
+  'A Portfolio Seed List: three to five income streams matched to your skills, audience and constraints',
+  'Your first paid Proof-of-Concept engagement, started during the cohort',
+  'A Money OS for variable income, including legal and tax guardrails',
 ]
 
 const CURRICULUM = [
-  { week: 'Week 1–2', title: 'AI Audit and Strategy',       desc: 'Assess your current HR stack, map your highest-leverage AI opportunities and draft a board-ready strategy.' },
-  { week: 'Week 3–4', title: 'First Workflows',             desc: 'Deploy your first three AI-powered workflows in tier-one HR operations using tools your team already has.' },
-  { week: 'Week 5–6', title: 'Analytics and Prediction',    desc: 'Build an attrition risk model and workforce planning dashboard on your own data.' },
-  { week: 'Week 7–8', title: 'Scale and Operationalize',    desc: 'Document and hand off your playbook so your team can run these systems without you.' },
+  { week: 'Weeks 1–3',  title: 'See the Gap',     desc: 'Diagnose your personal AI Wage Gap. Calculate your score, map the macro and the micro, and decide what you are actually optimizing for.' },
+  { week: 'Weeks 4–6',  title: 'Design the OS',   desc: 'Build your Task Stack Map, AI Skills Edge plan and Node Density Map. The three documents that everything else hangs off.' },
+  { week: 'Weeks 7–9',  title: 'Build the First Stream', desc: 'Choose your first portfolio stream, run the Stream Filter Test, ship a paid Proof-of-Concept and negotiate the space to do it.' },
+  { week: 'Weeks 10–12', title: 'Scale and Protect', desc: 'Systems that scale beyond your own hours. Legal and IP guardrails. A Money OS built for variable income. The plan for the next 90 days.' },
 ]
 
 const FAQ = [
   {
     q: 'Who is this for?',
-    a: 'CHROs, CPOs and senior HR leaders at companies with 200+ employees who have budget authority and want to deploy AI in their HR function within the next 90 days.',
+    a: 'Mid-career executives, senior consultants, coaches and advisors who want to build an AI Portfolio OS while still employed. Not for absolute beginners. You should already be comfortable using AI tools in your work.',
   },
   {
     q: 'What is the time commitment?',
-    a: 'Two live sessions per week (90 minutes each) plus approximately three to four hours of implementation work. Expect to spend 6-8 hours per week.',
-  },
-  {
-    q: 'What tools do I need?',
-    a: 'Claude or ChatGPT (we use both), your existing HRIS, and a spreadsheet. No coding required.',
+    a: 'One live session per week (90 minutes) plus approximately three to five hours of implementation work on your own portfolio. Expect to spend about six hours per week.',
   },
   {
     q: 'What does it cost?',
-    a: 'Cohort pricing is $2,000–$5,000 per participant depending on cohort size and access level. Exact pricing is available on Maven during enrollment.',
+    a: 'Inaugural cohort pricing is $2,500. Future cohorts will be priced higher as the program matures and the alumni network compounds.',
   },
   {
     q: 'What if I miss a session?',
-    a: 'Every session is recorded and available within 24 hours. Recordings are yours to keep.',
+    a: 'Every session is recorded and available within 24 hours. The recordings are yours to keep.',
+  },
+  {
+    q: 'Who runs it?',
+    a: 'Yuri Kruman, in partnership with ForwardShare Ventures. The full program operates on the ForwardShare platform.',
   },
 ]
 
 export default function CohortPage() {
-  const mavenUrl = process.env.NEXT_PUBLIC_MAVEN_COHORT_URL || 'https://maven.com'
-
   return (
     <>
       {/* ---- Hero ---- */}
@@ -63,24 +70,25 @@ export default function CohortPage() {
       >
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="mb-4 text-xs font-semibold uppercase tracking-wider" style={{ color: '#f59e0b' }}>
-            Live cohort on Maven
+            Live cohort · ForwardShare Ventures
           </p>
           <h1
             id="cohort-hero-heading"
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5"
           >
-            CHRO AI Cohort
+            Executive AI Cohort: Forward Achieve
           </h1>
           <p className="text-lg leading-relaxed mb-4 mx-auto max-w-2xl" style={{ color: '#94a3b8' }}>
-            An 8-week intensive for CHROs and senior HR leaders who want to deploy AI
-            in their HR function and walk away with a real strategy, real workflows and a
-            real playbook their team can run.
+            A 12-week intensive for mid-career executives who are done watching
+            the AI wave from the sideline. Build your Portfolio OS, ship your
+            first paid stream and walk out with a Money OS that survives the
+            transition.
           </p>
           <p className="text-sm mb-10" style={{ color: '#64748b' }}>
-            Small cohort (12 participants max) · Live sessions · Real deliverables · Led by Yuri Kruman
+            15 participants max · Live sessions · Real deliverables · Led by Yuri Kruman with ForwardShare Ventures
           </p>
           <a
-            href={mavenUrl}
+            href={COHORT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="
@@ -90,7 +98,7 @@ export default function CohortPage() {
             "
             style={{ backgroundColor: '#7c3aed' }}
           >
-            Apply on Maven
+            Apply on ForwardShare
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -137,7 +145,7 @@ export default function CohortPage() {
             className="text-2xl sm:text-3xl font-bold mb-8"
             style={{ color: '#0f172a' }}
           >
-            8-week curriculum
+            12-week curriculum
           </h2>
           <ol className="flex flex-col gap-4 list-none p-0 m-0">
             {CURRICULUM.map(({ week, title, desc }) => (
@@ -187,13 +195,13 @@ export default function CohortPage() {
       <section className="py-16 sm:py-20" style={{ backgroundColor: '#f8fafc' }}>
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold mb-4" style={{ color: '#0f172a' }}>
-            Ready to close the gap in your org?
+            Ready to build your Portfolio OS?
           </h2>
           <p className="mb-8 text-base" style={{ color: '#64748b' }}>
-            The cohort runs with 12 participants maximum. Once it fills, enrollment closes.
+            The cohort runs with 15 participants maximum. Once it fills, enrollment closes.
           </p>
           <a
-            href={mavenUrl}
+            href={COHORT_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="
@@ -203,7 +211,7 @@ export default function CohortPage() {
             "
             style={{ backgroundColor: '#7c3aed' }}
           >
-            Apply on Maven
+            Apply on ForwardShare
           </a>
           <p className="mt-5 text-sm" style={{ color: '#94a3b8' }}>
             Not ready for the cohort?{' '}

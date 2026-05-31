@@ -22,8 +22,10 @@ const NAV_LINKS = [
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Pull Skool free community URL from env (baked in at build time via NEXT_PUBLIC_)
-  const skoolFreeUrl = process.env.NEXT_PUBLIC_SKOOL_FREE_URL || 'https://www.skool.com'
+  // Primary CTA. The Skool community is not live yet, so for now
+  // the nav CTA routes to the /brief archive, where the Leverage
+  // Brief sign-up form is the first thing every visitor sees.
+  const briefUrl = '/brief'
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-sm">
@@ -58,10 +60,8 @@ export default function Nav() {
           </ul>
 
           {/* ---- Desktop CTA ---- */}
-          <a
-            href={skoolFreeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href={briefUrl}
             className="
               hidden md:inline-flex items-center gap-1.5
               px-4 py-2 rounded-lg text-sm font-semibold
@@ -71,11 +71,11 @@ export default function Nav() {
             "
             style={{ backgroundColor: '#4f46e5' }}
           >
-            Join Free
+            Get the Brief
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </a>
+          </Link>
 
           {/* ---- Mobile hamburger ---- */}
           <button
@@ -124,10 +124,9 @@ export default function Nav() {
             </ul>
 
             <div className="pt-3 border-t border-slate-100 mt-2">
-              <a
-                href={skoolFreeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href={briefUrl}
+                onClick={() => setMenuOpen(false)}
                 className="
                   flex items-center justify-center gap-2
                   mx-3 py-2.5 rounded-lg text-sm font-semibold
@@ -135,8 +134,8 @@ export default function Nav() {
                 "
                 style={{ backgroundColor: '#4f46e5' }}
               >
-                Join the Free Community
-              </a>
+                Get the Leverage Brief
+              </Link>
             </div>
           </div>
         )}

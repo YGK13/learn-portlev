@@ -21,8 +21,6 @@ const CREDENTIALS = [
 ]
 
 export default function AboutPage() {
-  const skoolFreeUrl = process.env.NEXT_PUBLIC_SKOOL_FREE_URL || 'https://www.skool.com'
-
   return (
     <>
       {/* ---- Hero ---- */}
@@ -158,10 +156,8 @@ export default function AboutPage() {
             >
               Start Learning Free
             </Link>
-            <a
-              href={skoolFreeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/brief"
               className="
                 flex-1 flex items-center justify-center gap-2 rounded-lg border px-6 py-3
                 text-sm font-semibold no-underline transition-colors
@@ -169,8 +165,8 @@ export default function AboutPage() {
               "
               style={{ borderColor: '#e2e8f0', color: '#374151' }}
             >
-              Join the Community
-            </a>
+              Get the Leverage Brief
+            </Link>
           </div>
           <CTABanner variant="newsletter" source="about-page" />
         </div>

@@ -5,6 +5,7 @@
 
 import Link from 'next/link'
 import { getAllTracks, getLessonsForTrack, getAllBriefs } from '@/lib/content'
+import { getLeverageBriefPosts } from '@/lib/leverage-brief'
 import TrackCard         from '@/components/TrackCard'
 import BriefCard         from '@/components/BriefCard'
 import CTABanner         from '@/components/CTABanner'
@@ -16,10 +17,17 @@ export const metadata = {
                'Build real workflows, close the AI Wage Gap and create lasting leverage.',
 }
 
-export default function Home() {
-  // Load published content — synchronous, runs on server
-  const tracks = getAllTracks()
-  const briefs = getAllBriefs().slice(0, 3) // Show three most recent on home page
+// Re-render the home page hourly so newly-published briefs on
+// beehiiv appear within the hour.
+export const revalidate = 3600
+
+export default async function Home() {
+  // Load published content — tracks are synchronous (fs), briefs
+  // are pulled live from the Leverage Brief publication on beehiiv.
+  // Falls back to local MDX if the API is unreachable.
+  const tracks         = getAllTracks()
+  const beehiivPosts   = await getLeverageBriefPosts({ limit: 3 })
+  const briefs         = (beehiivPosts.length > 0 ? beehiivPosts : getAllBriefs()).slice(0, 3)
 
   // Split intro unit from numbered curriculum tracks
   const introTrack = tracks.find(t => t.type === 'intro') ?? null
@@ -30,8 +38,6 @@ export default function Home() {
     track,
     lessonCount: getLessonsForTrack(track.slug).length,
   }))
-
-  const skoolFreeUrl = process.env.NEXT_PUBLIC_SKOOL_FREE_URL || 'https://www.skool.com'
 
   return (
     <>
@@ -93,10 +99,8 @@ export default function Home() {
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Link>
-            <a
-              href={skoolFreeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/brief"
               className="
                 inline-flex items-center gap-2 rounded-lg px-6 py-3
                 text-sm font-semibold no-underline
@@ -104,8 +108,8 @@ export default function Home() {
               "
               style={{ backgroundColor: 'rgb(255 255 255 / 0.08)', color: '#e2e8f0', border: '1px solid rgb(255 255 255 / 0.15)' }}
             >
-              Join the Free Community
-            </a>
+              Get the Leverage Brief
+            </Link>
           </div>
 
           {/* Newsletter capture inside hero */}
