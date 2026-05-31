@@ -8,17 +8,16 @@ import CTABanner from '@/components/CTABanner'
 
 export const metadata = {
   title:       'About',
-  description: 'Yuri Kruman is a 3x CHRO, AI trainer and executive coach who built PortLev Academy ' +
+  description: 'Yuri Kruman is a 3x CHRO, AI model trainer and executive coach who built PortLev Academy ' +
                'to help executives and consultants close the AI Wage Gap.',
 }
 
 const CREDENTIALS = [
   { label: 'Roles',        value: '3x CHRO · CLO · Fractional CHRO' },
-  { label: 'AI Training',  value: 'Meta · Microsoft · OpenAI · Crossover' },
+  { label: 'AI Training',  value: 'Trainer of frontier AI models for Meta, Microsoft and OpenAI' },
   { label: 'Coaching',     value: '2,300+ executive coaching clients' },
   { label: 'Expertise',    value: 'Top 5 Global HR Thought Leader (Thinkers360)' },
   { label: 'Education',    value: 'JD Cardozo · BA UPenn (Anthropology / Neuroscience)' },
-  { label: 'Based',        value: 'Israel (made aliyah 2021) · US operations: DC / NY / NJ' },
 ]
 
 export default function AboutPage() {
@@ -34,15 +33,15 @@ export default function AboutPage() {
       >
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
-            {/* Avatar placeholder */}
-            <div
-              className="shrink-0 w-28 h-28 rounded-2xl flex items-center justify-center text-4xl"
+            {/* Headshot */}
+            <img
+              src="/yuri-kruman.jpg"
+              alt="Yuri Kruman"
+              width="160"
+              height="160"
+              className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover"
               style={{ backgroundColor: '#eef2ff' }}
-              aria-label="Yuri Kruman"
-              role="img"
-            >
-              👤
-            </div>
+            />
 
             {/* Bio */}
             <div>
@@ -64,10 +63,15 @@ export default function AboutPage() {
                   The gap is not theoretical. It is expensive, and it is widening.
                 </p>
                 <p>
-                  In 2023 I started training executives at Meta, Microsoft, OpenAI and Crossover
-                  on how to build with AI. In that work I kept running into the same pattern:
-                  brilliant people who understood AI conceptually but had no systematic framework
-                  for deploying it in their actual work. That gap is what PortLev Academy exists to close.
+                  Since 2023 I have been training frontier AI models for Meta, Microsoft and OpenAI:
+                  evaluating outputs, writing reference solutions and grading reasoning across
+                  HR, legal and business domains. That work put me inside how these systems
+                  actually learn, and it sharpened the playbook I now teach.
+                </p>
+                <p>
+                  In parallel I kept running into the same pattern in the workplace: brilliant
+                  people who understood AI conceptually but had no systematic framework for
+                  deploying it in their actual work. That gap is what PortLev Academy exists to close.
                 </p>
                 <p>
                   Everything on this site is free, open-source and built to implement. The only
