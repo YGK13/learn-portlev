@@ -21,8 +21,14 @@ function formatDate(dateString) {
 }
 
 export default function BriefCard({ brief, size = 'default' }) {
-  const { title, slug, summary, date, tags = [], tier } = brief
+  const { title, slug, summary, date, tags = [], tier, webUrl } = brief
   const isFeatured = size === 'featured'
+
+  // If the brief carries a webUrl, it lives on beehiiv. Link the
+  // whole card to that external URL so visitors land on the post
+  // page (which shows the newsletter sign-up CTA at the top).
+  // Otherwise fall back to the internal /brief/[slug] MDX route.
+  const isExternal = Boolean(webUrl)
 
   return (
     <article
@@ -33,11 +39,21 @@ export default function BriefCard({ brief, size = 'default' }) {
       }}
     >
       {/* Full-card link overlay */}
-      <Link
-        href={`/brief/${slug}`}
-        className="absolute inset-0 rounded-xl"
-        aria-label={`Read: ${title}`}
-      />
+      {isExternal ? (
+        <a
+          href={webUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0 rounded-xl"
+          aria-label={`Read on the Leverage Brief: ${title}`}
+        />
+      ) : (
+        <Link
+          href={`/brief/${slug}`}
+          className="absolute inset-0 rounded-xl"
+          aria-label={`Read: ${title}`}
+        />
+      )}
 
       <div className={`flex flex-col gap-3 ${isFeatured ? 'p-8' : 'p-5'}`}>
         {/* Meta row: date + tier badge */}
@@ -97,10 +113,17 @@ export default function BriefCard({ brief, size = 'default' }) {
             style={{ color: '#4f46e5' }}
             aria-hidden="true"
           >
-            Read issue
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+            {isExternal ? 'Read on the Leverage Brief' : 'Read issue'}
+            {isExternal ? (
+              // External-link icon (arrow out of box)
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M6 3H3v10h10v-3M10 3h3v3M13 3L8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
           </span>
         </div>
       </div>
