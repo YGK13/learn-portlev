@@ -17,13 +17,19 @@
 
 - [ ] Google Search Console (verify learn.portlev.com, grant API access)
 - [ ] Analytics (confirm Vercel Analytics or GA4 is live + readable)
-- [ ] beehiiv metrics (signups by UTM source) — API key already configured
+- [ ] beehiiv metrics (signups by UTM source): API key already configured
 - [ ] AEO citation check routine (query the major answer engines for target questions, log who is cited)
 
 ## Baseline (to be captured on first full run)
 
 _Not yet captured. The first Intelligence run will record a baseline so all future movement is measured against it (the same discipline the business-case lesson preaches)._
 
+**Why still empty after week 23 (W23):** the only Intelligence run this week (2026-06-03) failed at the transport layer (`API Error: Unable to connect to API (ECONNRESET)`) and wrote no brief. See `state/runs/2026-06-03-audit-block.md`. No baseline can be honestly recorded until a real Intelligence run completes AND the data sources above are connected. None of the four data sources (Search Console, analytics, beehiiv read, AEO citation routine) have produced a reading yet, so every metric below remains uninstrumented by design, not by oversight.
+
 ## Weekly readings
 
-_(Coordinator appends dated rows here each week.)_
+| Week | Date | Qualified sessions | Indexed/avg pos | AEO citations | Newsletter signups | Waitlist clicks | Lessons pub/draft | Notes |
+|------|------|--------------------|-----------------|---------------|--------------------|-----------------|-------------------|-------|
+| W23 | 2026-06-03 | not connected | not connected | not connected | not connected | not connected | 2 pub / 0 new draft | Seed/proof run. Intelligence BLOCKED (ECONNRESET); content, on-page and distribution producers intentionally not fired. No baseline captured. Nothing published, nothing posted. |
+
+_(Coordinator appends one dated row here each week. "not connected" stays until the matching data source in the action-items list is live, so the gap is always visible.)_

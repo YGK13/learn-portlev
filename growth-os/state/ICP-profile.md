@@ -2,7 +2,11 @@
 
 > The single source of truth on who learn.portlev.com serves. The Intelligence agent updates this with evidence; the Coordinator reconciles it weekly. Every other agent reads it before acting. Never edit with assumptions: changes must cite evidence.
 
-_Last reconciled: 2026-06-03 (seed, by Claude with Yuri)_
+_Last reconciled: 2026-06-03 (W23 coordinator sync, by Claude). No changes to the profile this week: see reconciliation note below._
+
+## W23 reconciliation note (2026-06-03)
+
+No evidence-backed change was made to this profile this week. The Intelligence agent (01) was the only source that could have added new ICP evidence and it failed at the transport layer (ECONNRESET, see `state/runs/2026-06-03-audit-block.md`), so it produced no brief. Per the standing rule "never edit with assumptions," the profile is held exactly as seeded. All four "Open questions for the Intelligence agent" below remain OPEN and are the priority for the next successful Intelligence run. The seed evidence anchors (PwC AI Jobs Barometer 2025, ForwardShare cohort research, Gartner/Deloitte 2026) are unchanged and were not re-verified this week.
 
 ## Primary ICP
 
