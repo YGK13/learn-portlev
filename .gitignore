@@ -44,3 +44,5 @@ scripts/video-scripts/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.env*
