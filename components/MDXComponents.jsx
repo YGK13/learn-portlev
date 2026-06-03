@@ -12,6 +12,9 @@
 import Link from 'next/link'
 import Callout from './Callout'
 import FlowDiagram from './FlowDiagram'
+import TLDR from './TLDR'
+import Pullquote from './Pullquote'
+import Stat from './Stat'
 
 // ---- Headings --------------------------------------------------
 
@@ -225,6 +228,9 @@ const MDXComponents = {
   // Custom lesson components — used directly in MDX content
   Callout,
   FlowDiagram,
+  TLDR,
+  Pullquote,
+  Stat,
 }
 
 export default MDXComponents

@@ -1,0 +1,152 @@
+---
+title: "The Enterprise AI Deployment Protocol: Build, Buy or Platform"
+summary: "You built an agent or you are about to buy one. Here is how to actually deploy AI inside a real enterprise without it dying in pilot purgatory."
+track: leading-ai-adoption
+order: 5
+level: advanced
+status: published
+tier: free
+updated: "2026-06-03"
+tags: ["deployment", "enterprise-ai", "operator", "governance"]
+estReadMin: 14
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+There is a moment that arrives for every executive who has started building with AI. You have a working agent or workflow. Maybe you built it yourself in this curriculum. Maybe a team brought you one, or a vendor is pitching one. It demos beautifully. And now you have to do the genuinely hard thing: deploy it inside a real enterprise, with real data, real users, real risk and a real budget owner asking what it returns.
+
+This is where most AI dies. Not in the building, which has never been easier, but in the deployment, which has never been harder. The graveyard of enterprise AI is not full of bad prototypes. It is full of good prototypes that nobody could get into production.
+
+<TLDR>
+Building an AI agent is now the easy part. Deploying it across an enterprise is where value is won or lost, and roughly 9 in 10 pilots never make it. This lesson is the operator's protocol: choose the right deployment model (build, buy, embed or platform), pick a use case you can actually win, build governance in from day one, prove ROI against a baseline, scale through a repeatable model, and lead the people through the change.
+</TLDR>
+
+<Stat value="~88%" label="of enterprise AI agent pilots never reach production" source="Deloitte Tech Trends and industry surveys, 2026" />
+
+## Context
+
+### Two games are being played at once
+
+Before the protocol, name the game you are in, because this track is really about two of them.
+
+The first is the **operator's game**: deploying AI inside your enterprise role to create massive value, enable your team and make yourself the leader who designs how the work gets done. The second is the **portfolio game**: building your own AI-powered career and income streams using the Portfolio Executive OS in the book and the cohort. They reinforce each other, but they are not the same, and this lesson is squarely about the first. Master the operator's game and you become indispensable where you already sit, which is the strongest possible launchpad for everything else.
+
+<Pullquote author="Yuri Kruman" source="AI Wage Gap Podcast">
+The AI Wage Gap is on the employee side. The AI Build Gap is on the company side. Companies, for the most part, don't care what people make. They care about value add. So instead of just getting rid of people, teach them how to build using AI with real use cases internally, and then you have some great value.
+</Pullquote>
+
+That is the operator's whole thesis in three sentences. Your organization has an AI Build Gap. Closing it, visibly, is how you create value and protect your seat at the same time.
+
+### The prototype-to-production wall is real, and it is mostly not technical
+
+The reason so much enterprise AI stalls is not that the models are not good enough. It is that the surrounding system is not ready, and the failure points are organizational far more than technical.
+
+<Stat value=">40%" label="of agentic AI projects will be cancelled by end of 2027, due to cost, unclear value or weak risk controls" source="Gartner, 2025" />
+<Stat value="21%" label="of organizations have mature AI agent governance, even as most plan to deploy within two years" source="Industry survey, 2026" />
+
+Across the research and my own work with enterprises, the same six blockers recur. Learn their shapes, because the protocol that follows is built to defuse each one.
+
+- **Governance and security.** Without guardrails, an agent can take unauthorized actions, violate policy or leak data. This is the single most common reason a promising pilot is killed.
+- **Integration complexity.** An agent that cannot reach the systems and data it needs is a clever demo and nothing more.
+- **Scalability and performance.** What works for one team breaks when it meets real volume.
+- **The talent and expertise gap.** As one of my podcast guests, a fractional CTO who has led AI at Google, Microsoft and a Fortune 500, put it, the constraint is people, not models.
+- **Cost and ROI pressure.** With no clear number, finance either refuses to fund it or, worse, overspends chasing momentum and then pulls the plug.
+- **Deployment timelines.** Slow rollouts miss the window of business relevance, and the initiative quietly loses its sponsor.
+
+<Pullquote author="Alon Bochman" role="Fractional CTO; ex-Google, Microsoft, head of AI at FactSet" source="AI Wage Gap Podcast">
+AI is changing how work is done. There's a shortage of people that can bring that change about, relative to the people that want that change. Because of that supply-demand imbalance, the people who can bring about that change are worth quite a bit.
+</Pullquote>
+
+### Four ways to deploy, and how to choose
+
+There is no single right way to put AI into an enterprise. There are four, each with a real trade-off. Most failed rollouts come from picking the wrong one for the situation, not from executing the right one badly.
+
+<FlowDiagram steps={[{label:"Build",note:"custom, in-house"},{label:"Buy",note:"off-the-shelf agent"},{label:"Embed",note:"inside a SaaS tool"},{label:"Platform",note:"orchestrate at scale"}]} caption="The four enterprise AI deployment models" />
+
+- **Build (internal custom agents).** Engineering builds it from scratch. Maximum control and fit, slowest and most expensive, demands real in-house AI talent. Right when the use case is core, specialized and a genuine differentiator.
+- **Buy (off-the-shelf agents).** License a pre-built agent for a narrow job: a scheduler, a Q&A bot. Fast and cheap, but limited control, thin integration and vendor lock-in. Right when the task is simple and speed beats control.
+- **Embed (SaaS app agents).** Use the agent already baked into a platform you run, like your CRM or HRIS. Fast inside that ecosystem, but trapped in it, with no cross-system orchestration. Right for automating tasks inside one tool you already live in.
+- **Platform (AI-ready orchestration).** A central platform to build, govern and run agents across many systems with shared guardrails. Higher upfront onboarding and demands central ownership, but the only model that scales enterprise-wide without sprawl. Right when you are going past one use case to many.
+
+<Callout type="key">The build-versus-buy decision is not about sophistication. It is about fit. A $20-a-month off-the-shelf tool that ships this week can beat a custom build that arrives in nine months and is obsolete on arrival. Match the model to the stakes, the timeline and the control you actually need.</Callout>
+
+A useful default for the operator: **buy or embed to learn fast and cheap, build only where it is core and differentiating, and move to a platform the moment you are running more than two or three agents that matter.** Gartner expects roughly 80% of enterprises with mature automation to consolidate onto an orchestration platform by 2029. You do not have to start there. You do have to plan for it.
+
+## Steps
+
+The protocol is six moves, in order. It is deliberately the same backbone as the rest of this track, pointed at a single deployment.
+
+<FlowDiagram steps={[{label:"1 Choose the play"},{label:"2 Pick the use case"},{label:"3 Govern first"},{label:"4 Prove ROI"},{label:"5 Scale the model"},{label:"6 Lead the people"}]} caption="The enterprise AI deployment protocol" />
+
+### Step 1: Choose the play before you fall in love with a tool
+
+Run the build / buy / embed / platform decision deliberately, against this situation, before a vendor or a clever engineer makes it for you. Write down, in one paragraph: how core is this to the business, how much control do we truly need, what is our real timeline, and do we have the talent to build and maintain it. The answer points to one of the four models. Most first deployments should be buy or embed. Resist the ego pull of building custom just because you now can.
+
+<Pullquote author="Alon Bochman" role="Fractional CTO; ex-Google, Microsoft, head of AI at FactSet" source="AI Wage Gap Podcast">
+When you break down the tactics, they're not very special. And yet only 5 or 10% of people are doing it.
+</Pullquote>
+
+### Step 2: Pick a use case you can actually win
+
+The instinct is to aim the first deployment at the biggest, most visible, most painful problem. That is how pilots die. Pick instead a use case that is **high value but low blast radius**: real enough that success matters, contained enough that a bad day does not reach a client or the board. Strong first candidates by function:
+
+- **HR:** a service-desk agent for policy, PTO and onboarding questions; resume screening; onboarding provisioning.
+- **Finance:** invoice reconciliation; budget and spend Q&A; procurement approval routing.
+- **IT:** ticket triage and resolution; a knowledge agent across internal docs.
+- **Sales and marketing:** call prep and follow-up drafting; campaign coordination; RFP drafting from existing content.
+
+The pattern is the same one from the failure-modes lesson: before you automate any process, make sure the process is worth running. Automating a broken process just produces broken output faster.
+
+### Step 3: Build governance in from day one, not after the incident
+
+This is the step that separates deployments that survive from deployments that get killed. Do not bolt governance on after something goes wrong. Build it in before the first real user touches the agent:
+
+- **Human in the loop** for any action with real consequences. The agent proposes; a person approves, until trust is earned.
+- **Access control and least privilege.** The agent reaches only the data and systems it genuinely needs.
+- **Audit and observability.** Every action is logged and reviewable. If you cannot see what it did, you cannot defend it.
+- **Clear data boundaries.** What is allowed in, what is never allowed in, on the account tiers and terms the Governance track insists on.
+
+With only about a fifth of organizations running mature agent governance, doing this well is not just risk control. It is a genuine competitive and career advantage. The operator who can say "here is exactly what it can do, what it cannot, and how we would know" is the one whose project survives the first scary moment.
+
+### Step 4: Prove ROI against a baseline you captured first
+
+Finance does not fund vibes. Before you deploy, measure the current state of whatever you intend to improve: the hours the task takes now, the error rate, the throughput. Then measure it again after. A number that moves against a baseline you captured beforehand is evidence. A number you describe afterward is a story, and stories do not survive budget reviews. This is the discipline from the business-case lesson, applied to one deployment.
+
+<Pullquote author="Alon Bochman" role="Fractional CTO; ex-Google, Microsoft, head of AI at FactSet" source="AI Wage Gap Podcast">
+It used to take me at least an hour a day, plus an extra hour at the end of the week, to consolidate my notes into a client status update. So five or six hours a week. Now it's basically two prompts and a few iterations. From six hours down to maybe twenty minutes.
+</Pullquote>
+
+That is what a real ROI claim looks like: a specific task, a before number, an after number, and money attached. Find yours.
+
+### Step 5: Scale through a repeatable model, not a pile of one-offs
+
+A pilot that succeeds and stops is a failure with a celebration attached. The move from one working agent to many is its own resourced phase, exactly as the roadmap lesson warned. Scaling means standardizing the approach, putting it on shared and governed infrastructure, and naming a clear owner so you do not end up with a sprawl of ungoverned agents nobody can account for. This is the moment the platform model starts to earn its keep: one place to build, govern and observe everything, instead of a fresh integration and a fresh risk surface for every new use case.
+
+### Step 6: Lead the people, or the best agent in the world sits idle
+
+A deployment is a change-management problem wearing a technology costume. The agent only creates value if people actually use it, and people adopt what their leaders visibly use and what they have been genuinely helped to learn. The highest-leverage move available to you is to use the thing yourself, in the open, and then teach your team to do the same.
+
+<Pullquote author="Kim Pecina" role="HR leader, global benefits and M&A integration" source="AI Wage Gap Podcast">
+I've been teaching the organization, the HR team, how to use it as well, because they see what I'm able to do with it.
+</Pullquote>
+
+That sentence is the whole operator's play in one line. She used AI visibly on real work, the team saw what became possible, and the demand to learn pulled the rest of the function forward. That is how an AI Build Gap actually closes inside a company: not with a mandate, with a leader who demonstrates and then enables.
+
+<Callout type="warning" title="The two deaths to watch for">The pilot graveyard (a success that never scales) and automating a broken process (amplifying a flaw). Both are covered in depth in the next lesson. Build Steps 5 and 2 well and you have already inoculated against both.</Callout>
+
+## Recap
+
+- Building AI is now easy. Deploying it across an enterprise is the hard part, and roughly 88% of agent pilots never reach production. The failures are mostly organizational, not technical.
+- You are playing two games: the operator's game (create value in your enterprise role) and the portfolio game (build your own career OS). This lesson is the operator's game, and it is the strongest launchpad for the other.
+- There are four deployment models: build, buy, embed and platform. Choose by fit, not sophistication. Default to buy or embed early, build only where it is core, and move to a platform once you run more than a few agents that matter.
+- The protocol is six moves: choose the play, pick a high-value low-blast-radius use case, build governance in from day one, prove ROI against a captured baseline, scale through a repeatable model, and lead the people through visible use and enablement.
+- Governance-first is the operator's edge. With only ~21% of organizations running mature agent governance, the leader who can account for exactly what an agent does is the one whose deployment survives.
+
+---
+
+You can now deploy AI inside a real organization, not just build it. The final lesson is the cheapest insurance of all: the seven predictable ways AI adoption fails, so you can see each one coming while there is still time to act.
+
+[Continue: The Common Failure Modes →](/learn/leading-ai-adoption/common-failure-modes)

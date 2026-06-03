@@ -18,7 +18,7 @@ const VARIANTS = {
   community: {
     eyebrow: 'Free Newsletter',
     headline: 'Get one actionable AI idea every Monday.',
-    body: 'The Leverage Brief is the weekly signal for PortLev readers: one concept, one implementation path, something you can act on this week. Free forever.',
+    body: 'The Leverage Brief is the weekly signal for PortLev readers: one concept, one implementation path, something you can act on this week.',
     cta: 'Subscribe to the Brief',
     href: '/brief',
     external: false,
@@ -62,7 +62,7 @@ export default function CTABanner({ variant = 'community', source }) {
               One actionable AI idea, every week.
             </h2>
             <p className="text-sm" style={{ color: '#64748b' }}>
-              No hype. No listicles. One idea and one implementation path, every Monday. Free forever.
+              No hype. No listicles. One idea and one implementation path, every Monday.
             </p>
           </div>
           <div className="sm:w-72">

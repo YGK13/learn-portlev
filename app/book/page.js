@@ -258,7 +258,7 @@ export default function BookPage() {
             <NewsletterCapture variant="hero" source="book-waitlist" />
           </div>
           <p className="mt-4 text-xs" style={{ color: '#94a3b8' }}>
-            No spam. Unsubscribe anytime. The Leverage Brief is free, forever.
+            No spam. Unsubscribe anytime.
           </p>
           <p className="mt-10 text-sm" style={{ color: '#64748b' }}>
             Want to start applying the frameworks now?{' '}
