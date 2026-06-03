@@ -13,6 +13,7 @@ import {
   getLessonsForTrack,
   getLesson,
 } from '@/lib/content'
+import { getLessonFaq } from '@/lib/lesson-faq'
 import LessonNav    from '@/components/LessonNav'
 import CTABanner    from '@/components/CTABanner'
 import MDXComponents from '@/components/MDXComponents'
@@ -43,13 +44,22 @@ export async function generateMetadata({ params }) {
   const lesson = getLesson(trackSlug, lessonSlug)
   if (!lesson) return {}
 
+  // Canonical path for this lesson. metadataBase (set in
+  // app/layout.js) resolves this to the absolute URL, so search
+  // engines treat /learn/<track>/<lesson> as the one true URL.
+  const canonicalPath = `/learn/${trackSlug}/${lessonSlug}`
+
   return {
     title:       lesson.title,
     description: lesson.summary,
+    alternates: {
+      canonical: canonicalPath,
+    },
     openGraph: {
       title:       lesson.title,
       description: lesson.summary,
       type:        'article',
+      url:         canonicalPath,
     },
   }
 }
@@ -91,8 +101,44 @@ export default async function LessonPage({ params }) {
     year: 'numeric', month: 'long', day: 'numeric',
   }).format(new Date(lesson.updated + 'T00:00:00'))
 
+  // ----------------------------------------------------------
+  // FAQPage JSON-LD (AEO). If this lesson has answer-shaped Q&A
+  // registered in lib/lesson-faq.js, emit valid FAQPage
+  // structured data so search and AI answer engines can cite the
+  // page as the direct answer. The visible copy lives in the MDX
+  // <AnswerBlock>; this is the machine-readable mirror of it.
+  // Rendered via a native <script> tag per the Next.js JSON-LD
+  // guide, with `<` scrubbed to its unicode escape to prevent
+  // XSS through the serialized payload.
+  // ----------------------------------------------------------
+  const faq = getLessonFaq(trackSlug, lessonSlug)
+  const faqJsonLd = faq && faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faq.map(({ question, answer }) => ({
+          '@type': 'Question',
+          name: question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: answer,
+          },
+        })),
+      }
+    : null
+
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14">
+      {/* FAQPage JSON-LD for AEO — only when this lesson opts in */}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+
       <div className="flex gap-12 lg:gap-16">
 
         {/* ---- Main content column ---- */}

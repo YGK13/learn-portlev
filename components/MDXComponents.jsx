@@ -15,6 +15,7 @@ import FlowDiagram from './FlowDiagram'
 import TLDR from './TLDR'
 import Pullquote from './Pullquote'
 import Stat from './Stat'
+import AnswerBlock from './AnswerBlock'
 
 // ---- Headings --------------------------------------------------
 
@@ -231,6 +232,7 @@ const MDXComponents = {
   TLDR,
   Pullquote,
   Stat,
+  AnswerBlock,
 }
 
 export default MDXComponents
