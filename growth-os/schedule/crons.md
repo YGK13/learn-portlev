@@ -25,18 +25,23 @@ True autonomy (runs even when the laptop is off / no chat session open) requires
 2. **Windows routines dispatcher** (`~/.claude/routines/`, Task Scheduler). Needs `CLAUDE_CODE_OAUTH_TOKEN` in the environment. Per memory, cutover was pending; confirm it is live.
 3. **On-demand** (today's fallback). Invoke the Workflow tool manually. Produces identical output; just not unattended.
 
-## Current status (2026-06-03)
+## Current status (2026-06-03) — WIRED FOR 24/7
 
-- **Workflows: built and proven.** `daily-swarm.js` and `weekly-sync.js` run on demand today and produce identical output to a scheduled run.
-- **In-session crons: registered** via CronCreate (daily `33 6 * * 0,1,2,3,4`, weekly `7 7 * * 0`, Israel local). IMPORTANT: these are **session-only**. They fire only while a Claude Code session is open and idle, and they auto-expire after 7 days. They are NOT 24/7 autonomy. They are a stopgap for testing.
-- **Proof run done.** The audit layer was verified: it blocked a transient Intelligence API failure and two brand/zero-hallucination violations before anything reached shared state. Nothing was published or posted.
+The "cutover pending" note in memory was stale. The **Windows routines dispatcher is live** (`~/.claude/routines/`, a Scheduled Task firing every 15 min, `CLAUDE_CODE_OAUTH_TOKEN` set, 17 routines already running). The Growth OS is now registered into it:
 
-## The ONE step to true 24/7 autonomy (needs Yuri)
+- `~/.claude/scheduled-tasks/growth-os-daily-swarm/SKILL.md` — daily cycle (intelligence + strategy + the single top producer item, each audited), cron `10 6 * * 0,1,2,3,4` (6:10am Israel, Sun-Thu).
+- `~/.claude/scheduled-tasks/growth-os-weekly-sync/SKILL.md` — weekly distribution drafts + coordinator digest, cron `30 7 * * 0` (7:30am Sunday).
+- Both added to `~/.claude/routines/routines.json`. The dispatcher picks them up on its next 15-min pass. No Task Scheduler change needed.
 
-The in-session cron dies when Claude closes. Real always-on requires the **Windows routines dispatcher** (Task Scheduler), which per memory (`project_claude_routines_alwayson.md`) is installed but "cutover pending" and needs `CLAUDE_CODE_OAUTH_TOKEN` in the environment.
+Note: the dispatcher runs prompts headless and synchronously, so the SKILL.md files orchestrate the agents directly (not via the async Workflow tool, which fire-and-forgets). The `workflows/*.js` here remain the on-demand/interactive engine and the canonical sequence the SKILL files mirror.
 
-- [ ] Confirm `CLAUDE_CODE_OAUTH_TOKEN` is set for the dispatcher.
-- [ ] Cut the dispatcher over (flip it live).
-- [ ] Register two routines pointing at `daily-swarm.js` and `weekly-sync.js`.
-- [ ] Review the first unattended weekly digest before trusting it unsupervised.
-- [ ] Resolve the Agent 01 ECONNRESET with retry-with-backoff in the runner (logged by the coordinator) so a transient API blip never wastes a run again.
+The session-only CronCreate stopgaps were deleted (superseded by the dispatcher).
+
+These existing routines target OTHER properties (portlev.com, aiwagegap.com, aibuildgap.com) and pipelines, not learn.portlev.com, so there is no conflict. Worth aligning later with the existing `Downloads/standards/SEO_AEO_MAINTENANCE.md` SOP and `AEO_POSITION_LOG.csv`.
+
+## What is left (small, mostly Yuri's hands)
+
+- [ ] Confirm the first unattended weekly digest looks right before trusting it fully.
+- [ ] Add retry-with-backoff for the Agent 01 ECONNRESET so a transient API blip never wastes a run.
+- [ ] beehiiv read is built (`growth-os/tools/beehiiv-metrics.mjs`) but `BEEHIIV_API_KEY` is Sensitive in Vercel and will not `env pull`. Provide the key to the dispatcher env, or expose a small authed server endpoint, to unlock real signup numbers.
+- [ ] Google Search Console: needs Yuri to verify the property and grant API access (see metrics.md).
