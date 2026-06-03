@@ -1,0 +1,51 @@
+{
+  "name": "PortLev Academy Growth OS",
+  "target": "https://learn.portlev.com",
+  "repo": "C:/Users/yurik/Downloads/learn-portlev",
+  "owner": "Yuri Kruman",
+  "createdUtc": "2026-06-03",
+  "version": 1,
+
+  "decisions": {
+    "scope": "learn.portlev.com only",
+    "changeControl": "tiered",
+    "externalPosting": "draft-for-approval",
+    "cadence": "daily-agents-weekly-sync"
+  },
+
+  "changeControlRules": {
+    "autoMergeAllowed": false,
+    "onPageSeoFixes": "open PR, human merges",
+    "netNewContent": "write to content/ as status: draft, human flips to published",
+    "neverAutoPublish": ["new lessons", "pricing", "claims/stats", "external posts"],
+    "comment": "Low-risk SEO fixes become PRs. Net-new content lands as draft. Nothing risky publishes itself."
+  },
+
+  "guardrails": {
+    "zeroHallucination": "Every stat, name, URL and claim must be sourced inline or it does not ship. When unsure, flag it.",
+    "brandVoice": "Yuri Kruman voice. No Oxford comma. No em dash. Direct, opinionated, no filler.",
+    "icp": "Busy mid-career enterprise executives (CHRO/VP People and adjacent leaders) who are late to AI, have dabbled, and are anxious about obsolescence.",
+    "redditRules": "Never post programmatically. Drafts only, to the approval queue. Genuine value, never promotional slop. Respect each subreddit's self-promotion rules.",
+    "noVanityMetrics": "Optimize for outcomes (qualified traffic, signups, citations), not activity counts."
+  },
+
+  "agents": [
+    { "id": "01-intelligence",  "cadence": "daily",  "auditor": "audit/intelligence" },
+    { "id": "02-strategy",      "cadence": "daily",  "auditor": "audit/strategy" },
+    { "id": "03-content",       "cadence": "daily",  "auditor": "audit/content" },
+    { "id": "04-onpage-seo",    "cadence": "daily",  "auditor": "audit/onpage-seo" },
+    { "id": "05-distribution",  "cadence": "weekly", "auditor": "audit/distribution" },
+    { "id": "06-coordinator",   "cadence": "weekly", "auditor": "self" }
+  ],
+
+  "cadencePlan": {
+    "daily": ["01-intelligence", "02-strategy", "03-content", "04-onpage-seo"],
+    "weekly": ["05-distribution", "06-coordinator"],
+    "dailyTimeLocal": "06:30",
+    "weeklySyncDay": "Sunday",
+    "weeklySyncTimeLocal": "07:00",
+    "timezone": "Asia/Jerusalem",
+    "shabbatAware": true,
+    "note": "No runs scheduled Friday evening through Saturday night. Weekly sync runs Sunday morning (start of Yuri's work week)."
+  }
+}
