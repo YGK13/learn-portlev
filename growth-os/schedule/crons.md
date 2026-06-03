@@ -25,7 +25,18 @@ True autonomy (runs even when the laptop is off / no chat session open) requires
 2. **Windows routines dispatcher** (`~/.claude/routines/`, Task Scheduler). Needs `CLAUDE_CODE_OAUTH_TOKEN` in the environment. Per memory, cutover was pending; confirm it is live.
 3. **On-demand** (today's fallback). Invoke the Workflow tool manually. Produces identical output; just not unattended.
 
-## What Yuri must confirm to flip to fully autonomous
-- [ ] `CLAUDE_CODE_OAUTH_TOKEN` present for the dispatcher, OR scheduled-remote-agents available in this workspace.
-- [ ] The two routines registered (daily + weekly) pointing at the workflow scriptPaths.
-- [ ] First unattended run reviewed in the weekly digest to confirm quality before trusting it.
+## Current status (2026-06-03)
+
+- **Workflows: built and proven.** `daily-swarm.js` and `weekly-sync.js` run on demand today and produce identical output to a scheduled run.
+- **In-session crons: registered** via CronCreate (daily `33 6 * * 0,1,2,3,4`, weekly `7 7 * * 0`, Israel local). IMPORTANT: these are **session-only**. They fire only while a Claude Code session is open and idle, and they auto-expire after 7 days. They are NOT 24/7 autonomy. They are a stopgap for testing.
+- **Proof run done.** The audit layer was verified: it blocked a transient Intelligence API failure and two brand/zero-hallucination violations before anything reached shared state. Nothing was published or posted.
+
+## The ONE step to true 24/7 autonomy (needs Yuri)
+
+The in-session cron dies when Claude closes. Real always-on requires the **Windows routines dispatcher** (Task Scheduler), which per memory (`project_claude_routines_alwayson.md`) is installed but "cutover pending" and needs `CLAUDE_CODE_OAUTH_TOKEN` in the environment.
+
+- [ ] Confirm `CLAUDE_CODE_OAUTH_TOKEN` is set for the dispatcher.
+- [ ] Cut the dispatcher over (flip it live).
+- [ ] Register two routines pointing at `daily-swarm.js` and `weekly-sync.js`.
+- [ ] Review the first unattended weekly digest before trusting it unsupervised.
+- [ ] Resolve the Agent 01 ECONNRESET with retry-with-backoff in the runner (logged by the coordinator) so a transient API blip never wastes a run again.
