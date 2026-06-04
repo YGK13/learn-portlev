@@ -4,6 +4,47 @@
 // NOTE: params is a Promise in Next.js 16 — always await it.
 // ============================================================
 
+// ============================================================
+// AEO structured data (FAQPage JSON-LD) — keyed by lesson slug.
+// Add a new entry here when a lesson has FAQ content authored
+// against a specific target query. The schema is injected via a
+// <script type="application/ld+json"> tag in the page body so
+// AI answer engines (Perplexity, SGE, Bing Copilot) can parse
+// and cite the Q+A pairs directly.
+// ============================================================
+const FAQ_SCHEMA = {
+  'your-first-hour-with-claude': {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How does a non-technical executive actually start using AI in one hour?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Open Claude, bring one real piece of this week\'s work, brief the AI with your role, the context, your task and the format you want back, push on the first answer two or three times until it is useful, then save what worked into a Project. No training or technical background required.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the best first AI task for a busy executive?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Pick something genuine from your actual week: a long report to summarize before a meeting, a first draft you have been putting off, or a decision where you want the strongest arguments for and against. Real tasks build real habit. Test tasks teach nothing transferable.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'How do I write a prompt that actually works for executive tasks?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Use four parts: who you want the AI to be, the context it needs, the exact task and the format you want back. Brief it like a sharp new analyst who knows nothing about your situation yet. That single pattern produces dramatically better results than a one-line question and accounts for most of the skill you need in your first session.',
+        },
+      },
+    ],
+  },
+}
+
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { compileMDX } from 'next-mdx-remote/rsc'
@@ -73,6 +114,9 @@ export default async function LessonPage({ params }) {
   const prevLesson = currentIdx > 0 ? lessons[currentIdx - 1] : null
   const nextLesson = currentIdx < lessons.length - 1 ? lessons[currentIdx + 1] : null
 
+  // FAQPage JSON-LD for this lesson (null if no FAQ data defined)
+  const faqSchema = FAQ_SCHEMA[lessonSlug] ?? null
+
   // Compile MDX — this is an async operation on the server
   const { content } = await compileMDX({
     source:     lesson.content,
@@ -93,6 +137,12 @@ export default async function LessonPage({ params }) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14">
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <div className="flex gap-12 lg:gap-16">
 
         {/* ---- Main content column ---- */}
