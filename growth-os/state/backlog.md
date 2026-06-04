@@ -3,24 +3,25 @@
 > Owned by Agent 02 (Strategy). Re-ranked daily. Status: idea | ready | in-progress | shipped | killed.
 > Score = ICP impact (1-5) x intent/AEO value (1-5) / effort (1-5). Higher is better.
 
-_Last re-ranked: 2026-06-04 (Agent 02 daily run, second real-intel re-rank)_
+_Last re-ranked: 2026-06-04 (Agent 02, second invocation — lesson 07 moved to SHIPPED; new top content item promoted to IN-PROGRESS)_
 
 ## Intel status for this run
 
-Today's brief (2026-06-04) added two findings that reshape the IDEAS queue but do not displace the top two READY items:
+The second invocation of 2026-06-04 produced two new briefs:
+- `2026-06-04.md` (first run, primary): conviction-anxiety gap, CHRO tenure data, internal communication gap
+- `2026-06-04-supp.md` (second run, supplemental): competitive landscape for the "is AI going to take my executive job?" query space
 
-1. **The conviction-anxiety gap** (new naming from AMS/Reworked.co): CHROs believe AI is essential (80% in a Jan 2026 survey of 300) but freeze on personal commitment due to job-security fear. The 2026-06-03 content draft maps onto this directly; carry it forward as in-progress.
-2. **The internal communication gap** (new from Mercer 2025 HR Tech Report): 78% of employees are already using AI tools; only 13% heard anything from HR. No incumbent addresses "what should CHROs tell employees about AI?" at a hands-on, non-governance level. New IDEAS entry added below.
-3. **Structural risk data** (new from Bersin/Findem, cited in HR Dive, January 28, 2026): average CHRO tenure fell from 6 to 4.8 years; 42% move to lower-level roles post-tenure. Reinforces the seat-shrinking anxiety underpinning READY #2; no re-ranking needed.
-
-The top onpage item (AEO answer block on the first-hour lesson) is being produced in this run. The content item is already in-progress. Rankings unchanged from 2026-06-03 except status updates below.
+Key changes from this invocation:
+1. **Lesson 07 published** by Yuri in commit `ef8dbfc` (phase 3 run, June 4). Moved to SHIPPED below.
+2. **AEO branch (`aeo/first-hour-faq-schema`) is stale**: the branch was cut before phases 1-3 were committed to main. It is missing all files added in those commits. PR #2 is open. DO NOT MERGE without a rebase. Flagged for Yuri.
+3. **New top content item** ("Is AI going to take my executive job?", score 12.5) promoted from IDEAS to IN-PROGRESS. Draft produced this run: `content/tracks/ai-foundations/04-is-ai-going-to-take-my-executive-job.mdx`.
 
 ## IN-PROGRESS (being produced this run)
 
 | # | Type | Item | Score | Status |
 |---|------|------|-------|--------|
-| 1 | onpage | Add AEO answer block (concise direct-answer lede + `FAQPage` JSON-LD) to the published "Your First Hour with Claude" lesson, targeting "How does a non-technical executive actually start using AI in one hour?" | 5x5/1 = 25 | **in-progress: branch aeo/first-hour-faq-schema, PR opened 2026-06-04 by Agent 04** |
-| 2 | content | "What a CHRO should do first with AI (without handing it to IT)" | 5x5/2 = 12.5 | **in-progress: drafted 2026-06-03, file `content/tracks/leading-ai-adoption/07-what-a-chro-should-do-first-with-ai.mdx`, status: draft, awaiting human publish** |
+| 1 | onpage | Add AEO answer block (concise direct-answer lede + `FAQPage` JSON-LD) to the published "Your First Hour with Claude" lesson, targeting "How does a non-technical executive actually start using AI in one hour?" | 5x5/1 = 25 | **PR #2 OPEN but STALE — branch `aeo/first-hour-faq-schema` diverged from main (missing phases 1-3 files). Rebase required before merge. Flagged for Yuri.** |
+| 2 | content | "Is AI going to take my executive job?" — ai-foundations/04, targeting the CHRO job-security anxiety query; AI Wage Gap reframe; one concrete first move | 5x5/2 = 12.5 | **in-progress: drafted 2026-06-04 (second invocation), file `content/tracks/ai-foundations/04-is-ai-going-to-take-my-executive-job.mdx`, status: draft, awaiting human publish** |
 
 ## IDEAS (queued, not yet ranked for execution)
 
@@ -30,7 +31,7 @@ The top onpage item (AEO answer block on the first-hour lesson) is being produce
 - content: "What should CHROs tell their employees about AI?" (the internal communication gap): ~5x4/2 = 10. Brief 2026-06-04, new. 78% of employees already use AI tools; only 13% heard from HR about it (Mercer 2025 HR Tech Report). No incumbent answers this at hands-on, non-governance altitude. Concrete first move a CHRO can own with no budget.
 - content: Define "AI fluency" operationally for a time-poor executive (query #8): ~4x5/2 = 10. Brief 2026-06-03 query #8. "AI fluency" is the phrase incumbents use but rarely define operationally.
 - content: "AI wage gap: what is it and how do I close it as an individual leader?" (query #3): ~5x4/2 = 10. Brief 2026-06-03 query #3. Our owned brand frame, near-zero direct competition on the individual-leader closing angle. Partially served by `content/tracks/ai-foundations/01-what-is-the-ai-wage-gap.mdx`; check overlap before drafting.
-- content: "Is AI going to take my executive job?" (anxiety query, AI Wage Gap reframe): ~5x5/2 = 12.5. Strongest emotional driver. Held below the CHRO-first lesson because role+first-action is more bottom-funnel.
+- ~~content: "Is AI going to take my executive job?" (anxiety query, AI Wage Gap reframe): ~5x5/2 = 12.5. Promoted to IN-PROGRESS this run.~~
 - content: "What should I actually build first with AI?" (the paralysis query): ~5x4/2 = 10. Possible overlap with `content/tracks/ai-foundations/02-your-first-ai-workflow.mdx`; check before drafting.
 - content: "Substitute vs augment vs elevate: how to decide which tasks to give AI" (query #4): ~4x4/2 = 8. Our framework phrased as the comparison query. No incumbent owns this exact phrasing.
 - content: "AI for the VP of Finance" role playbook: ~4x4/2 = 8. Adjacent ICP; reuses the CHRO lesson structure once READY #2 ships.
@@ -49,6 +50,7 @@ The top onpage item (AEO answer block on the first-hour lesson) is being produce
 - content: "Your First Hour with Claude, for Busy Executives" (published 2026-06-03)
 - content: "The Enterprise AI Deployment Protocol" (published 2026-06-03)
 - format: TLDR / Pullquote / Stat components + retrofit of 3 foundational lessons (2026-06-03)
+- content: "What a CHRO Should Do First with AI (Without Handing It to IT)" — published by Yuri, commit `ef8dbfc`, 2026-06-04. ICP panel verdict: PASS (strong fit for persona 01, partial fit for persona 03). Level corrected from advanced to intermediate. Dual handoff link added for personas 01 and 03.
 
 ## KILLED
 
