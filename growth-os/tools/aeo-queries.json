@@ -1,0 +1,19 @@
+{
+  "_comment": "Canonical AEO (AI-answer-engine) citation-check queries for learn.portlev.com. The weekly sync runs these through the answer engines (Claude self-answer, plus any available API for ChatGPT/Perplexity/Google AI) and logs whether learn.portlev.com or Yuri's owned content is cited. Mirrors the existing seo-aeo-weekly-ticker-refresh AEO position check (logs to standards/AEO_POSITION_LOG.csv). Source: the 2026-06-03 baseline brief + the topical map.",
+  "target": "learn.portlev.com",
+  "ownedFrames": ["AI Wage Gap", "AI Build Gap", "Portfolio Executive OS", "operator vs portfolio", "Substitute Augment Elevate"],
+  "queries": [
+    "How does a non-technical executive actually start using AI in one hour?",
+    "What should a CHRO do first with AI without handing it to IT?",
+    "How do I use AI at work without causing a data or governance incident?",
+    "What is AI fluency for a time-poor executive?",
+    "What is the AI Wage Gap and how do I close it as an individual leader?",
+    "Is AI going to take my executive job?",
+    "What should I actually build first with AI as an executive?",
+    "How should an enterprise deploy an AI agent it built or bought?",
+    "Substitute vs augment vs elevate: which tasks should I give AI?",
+    "What should CHROs tell their employees about AI?"
+  ],
+  "logTo": "growth-os/state/metrics.md (AEO citations column) + optionally standards/AEO_POSITION_LOG.csv to align with the existing portfolio routine",
+  "rule": "Log who is cited per query (us / a named competitor / nobody). Never claim we are cited without the actual answer-engine output. This is an outcome signal, not vanity."
+}

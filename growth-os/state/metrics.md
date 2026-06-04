@@ -13,12 +13,12 @@
 | Cohort/book waitlist clicks | beehiiv tags / link tracking | Bottom-of-funnel intent |
 | Lessons published vs drafted | repo | Throughput (context, not a goal) |
 
-## Data sources to connect (action items)
+## Data sources to connect (action items) — Phase 3 status 2026-06-04
 
-- [ ] Google Search Console (verify learn.portlev.com, grant API access)
-- [ ] Analytics (confirm Vercel Analytics or GA4 is live + readable)
-- [ ] beehiiv metrics (signups by UTM source): API key already configured
-- [ ] AEO citation check routine (query the major answer engines for target questions, log who is cited)
+- [x] **Analytics: connected.** `@vercel/analytics` `<Analytics/>` in the root layout; live on deploy. Read the dashboard in the Vercel project.
+- [x] **beehiiv: connected via server endpoint.** `app/api/internal/metrics/route.js` reads the Sensitive key server-side and returns active-subscriber total + UTM breakdown, gated by `METRICS_TOKEN` (set in Vercel prod + gitignored `.env.local`). The swarm fetches `GET /api/internal/metrics?token=...`. Live on next deploy.
+- [x] **AEO citation routine: defined.** Canonical queries in `growth-os/tools/aeo-queries.json`; the weekly sync runs them through the answer engines and logs who is cited (mirrors the existing seo-aeo position check).
+- [ ] **Google Search Console: 1 step left for Yuri.** Verification meta is wired (set `GOOGLE_SITE_VERIFICATION` in Vercel with the HTML-tag code). Then verify the property at search.google.com/search-console. For the swarm to READ ranking data, also create a Google Cloud service account, enable the Search Console API, add its email as a user in Search Console, and place its key for the dispatcher. Data read stays "not connected" until this lands.
 
 ## Baseline (to be captured on first full run)
 

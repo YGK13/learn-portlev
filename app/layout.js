@@ -55,6 +55,12 @@ export const metadata = {
       'application/rss+xml': '/feed.xml',
     },
   },
+  // Google Search Console verification. Set GOOGLE_SITE_VERIFICATION in
+  // Vercel (the content value Google gives you on the HTML-tag method)
+  // and Next renders the verification meta tag automatically. Unset = omitted.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
 }
 
 // ============================================================
