@@ -24,9 +24,13 @@ Consider what actually happens when a senior consultant prepares a client delive
 
 A single prompt handles one of those steps. A workflow handles all six.
 
-This is the distinction that separates professionals who use AI for isolated tasks from those who build AI-powered systems. The first group gets better output on individual prompts. The second group gets entire deliverables produced in a fraction of the time — consistently, repeatably, without reinventing the process every time.
+This is the distinction that separates professionals who use AI for isolated tasks from those who build AI-powered systems. The first group gets better output on individual prompts. The second group gets entire deliverables produced in a fraction of the time, consistently, repeatably, without reinventing the process every time.
 
 This lesson defines what an AI workflow is, when you need one and how to map your own work into a workflow structure. Everything that follows in this track builds on what you learn here.
+
+<TLDR>
+A prompt does one cognitive step. A workflow chains several, where the output of each step becomes the input of the next, so AI handles a whole deliverable instead of one slice of it. Use a workflow when a task is multi-step, accuracy matters at each stage, the task recurs and the output must be consistent. Decompose the task first, mark which steps are AI and which are yours, then build the prompts. The decomposition is the workflow.
+</TLDR>
 
 <FlowDiagram steps={[{label:"Trigger",note:"your raw input"},{label:"Steps",note:"AI operations in sequence"},{label:"Output",note:"the deliverable"}]} caption="Every workflow has three parts: a trigger, steps, an output" />
 
@@ -40,13 +44,15 @@ That definition is simple enough that it is easy to underestimate. The implicati
 
 A single prompt asks AI to produce output from your input. A workflow asks AI to transform your input through a series of intermediate states, each one moving closer to the final deliverable you need. The workflow handles the cognitive architecture of the task, not just the execution of one part of it.
 
+<Callout type="key">A workflow is a sequence of AI steps where the output of each step becomes the input of the next. It is not a better prompt. It is a different unit of work. The prompt executes one operation. The workflow handles the whole task.</Callout>
+
 **The three elements every workflow contains:**
 
-**Trigger:** What initiates the workflow. This is usually your raw input — a document, a data set, a brief, a set of notes, a question to answer. The trigger defines what the workflow is working on.
+**Trigger:** What initiates the workflow. This is usually your raw input: a document, a data set, a brief, a set of notes, a question to answer. The trigger defines what the workflow is working on.
 
 **Steps:** The sequence of AI operations that transform the trigger into the final output. Each step has its own role prompt, task specification and input/output contract. The output of step N is the input of step N+1.
 
-**Output:** The final deliverable — the document, analysis, brief or recommendation the workflow was designed to produce. The output is defined before you build the workflow, not after.
+**Output:** The final deliverable: the document, analysis, brief or recommendation the workflow was designed to produce. The output is defined before you build the workflow, not after.
 
 ### When a Workflow Beats a Single Prompt
 
@@ -58,7 +64,7 @@ Not every task needs a workflow. A single well-structured prompt handles:
 
 A workflow is the right tool when:
 
-**The task has multiple distinct cognitive steps.** If you can decompose the task into "first I need to know X, then I need to decide Y, then I need to produce Z" — that decomposition is your workflow.
+**The task has multiple distinct cognitive steps.** If you can decompose the task into "first I need to know X, then I need to decide Y, then I need to produce Z", that decomposition is your workflow.
 
 **Accuracy at each step matters.** When the output of one step is likely to be wrong if the preceding step was done carelessly, you need a structured handoff between steps rather than a single prompt handling everything at once.
 
@@ -66,7 +72,7 @@ A workflow is the right tool when:
 
 **The output needs to be consistent across instances.** A proposal written for client A should have the same structure and quality standard as one written for client B. A workflow enforces that standard. A fresh prompt each time produces variable results.
 
-**You need to be able to check intermediate work.** Single prompts are black boxes — input goes in, output comes out. Workflows let you inspect the intermediate outputs, catch errors before they compound and make targeted corrections without starting over.
+**You need to be able to check intermediate work.** Single prompts are black boxes: input goes in, output comes out. Workflows let you inspect the intermediate outputs, catch errors before they compound and make targeted corrections without starting over.
 
 ### The Hidden Cost of the Single-Prompt Approach
 
@@ -74,9 +80,17 @@ Professionals who rely exclusively on single prompts share a common frustration:
 
 The reason is almost always the same: the prompt was asked to do too much at once.
 
-When a single prompt must simultaneously understand the context, identify the relevant information, decide on a structure, generate the content and calibrate the tone — it does all five tasks at a mediocre level. Specialists outperform generalists at each discrete task. Your workflow is the specialist structure that lets each prompt do one thing exceptionally well.
+When a single prompt must simultaneously understand the context, identify the relevant information, decide on a structure, generate the content and calibrate the tone, it does all five tasks at a mediocre level. Specialists outperform generalists at each discrete task. Your workflow is the specialist structure that lets each prompt do one thing exceptionally well.
 
-The editing time that disappears when you switch to workflows is not small. Professionals who make this switch consistently report cutting their AI-assisted editing time by 60-80%. The workflow does not eliminate human judgment — it eliminates the mechanical rework that happens when a single prompt tries to substitute for it.
+<Callout type="warning" title="The single-prompt trap">If your AI output always needs heavy editing before it is usable, the cause is almost never the model. It is that one prompt was asked to do five jobs at once. Split the jobs and the rework disappears.</Callout>
+
+The editing time that disappears when you switch to workflows is not small. Professionals who make this switch consistently report cutting their AI-assisted editing time by 60-80%. The workflow does not eliminate human judgment. It eliminates the mechanical rework that happens when a single prompt tries to substitute for it.
+
+<Stat value="60-80%" label="Reported reduction in AI-assisted editing time after switching from single prompts to workflows" source="Closing the AI Wage Gap" />
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+The way out of the scaling trap is not working harder. It is building systems.
+</Pullquote>
 
 ### Anatomy of a Professional-Grade Workflow
 
@@ -89,11 +103,11 @@ You are a senior HR leader. Here is our attrition data for Q3. Write a two-page 
 [paste 400 rows of data]
 ```
 
-This will produce a memo. It will be mediocre — the data interpretation will miss non-obvious patterns, the root cause analysis will be generic and the recommendations will not be tailored to the specific signals in the data.
+This will produce a memo. It will be mediocre: the data interpretation will miss non-obvious patterns, the root cause analysis will be generic and the recommendations will not be tailored to the specific signals in the data.
 
 **Workflow approach:**
 
-Step 1 (Data interpreter): Extract the five most significant patterns in this attrition data. Provide numbers, percentages and comparisons to the prior quarter. Do not interpret — only describe what the data shows.
+Step 1 (Data interpreter): Extract the five most significant patterns in this attrition data. Provide numbers, percentages and comparisons to the prior quarter. Do not interpret, only describe what the data shows.
 
 Step 2 (Pattern analyst): Given these five data patterns [Step 1 output], identify the two or three most likely root causes. For each cause, explain which patterns support it and what alternative explanations exist.
 
@@ -101,7 +115,7 @@ Step 3 (Strategist): Given these root causes [Step 2 output] and the company con
 
 Step 4 (Writer): Given this analysis [Steps 1-3 output], write a two-page executive memo. Structure: situation (one paragraph), findings (three bullets with data), root causes (two paragraphs), recommendations (three numbered actions with metrics). Audience: CFO and CEO. Tone: direct, data-driven, no jargon.
 
-Four prompts. Each one focused on a single cognitive task. The final memo is qualitatively different from what the single-prompt approach produces — and it required less editing.
+Four prompts. Each one focused on a single cognitive task. The final memo is qualitatively different from what the single-prompt approach produces, and it required less editing.
 
 ## Steps
 
@@ -165,7 +179,7 @@ Then write the connective tissue: how does the output of step N get formatted fo
 
 ### Step 5: Run it once, note what breaks and iterate
 
-Run your workflow on a real piece of work. Do not tweak it in your head — run it.
+Run your workflow on a real piece of work. Do not tweak it in your head, run it.
 
 After the run, answer these questions for each step:
 - Did this step produce what I needed?
@@ -176,15 +190,15 @@ Every answer is a prompt improvement. The first run of a workflow is never the f
 
 ## Recap
 
-- A workflow is a sequence of AI steps where the output of each step becomes the input of the next. It is not a better prompt — it is a different unit of work entirely.
+- A workflow is a sequence of AI steps where the output of each step becomes the input of the next. It is not a better prompt: it is a different unit of work entirely.
 - Single prompts handle isolated tasks. Workflows handle complex, multi-step deliverables where accuracy, consistency and repeatability matter.
-- The hidden cost of the single-prompt approach is editing time — the rework that happens when one prompt tries to handle multiple distinct cognitive tasks at once.
+- The hidden cost of the single-prompt approach is editing time: the rework that happens when one prompt tries to handle multiple distinct cognitive tasks at once.
 - Every workflow has three elements: a trigger (raw input), steps (the sequence of AI operations) and an output (the final deliverable).
 - Decompose the task before writing a single prompt. The decomposition is the workflow. The prompts are the implementation.
 - Not every step belongs to AI. Mark the steps that require your judgment and build your human review points into the workflow design.
 
 ---
 
-The next lesson goes hands-on: you will build a three-step prompt chain from scratch and learn the patterns that make chains work — and the failure modes that make them break.
+The next lesson goes hands-on: you will build a three-step prompt chain from scratch and learn the patterns that make chains work, plus the failure modes that make them break.
 
 [Continue: Chaining Prompts →](/learn/ai-workflows/chaining-prompts)

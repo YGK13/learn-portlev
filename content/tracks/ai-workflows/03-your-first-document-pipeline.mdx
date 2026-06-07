@@ -26,9 +26,17 @@ A document processing pipeline takes any document as input and produces three ou
 
 A senior leader who receives a 60-page board pack on Friday and has a two-hour flight on Sunday does not need to read 60 pages. They need the three-page brief, the action list and the risk flag. The pipeline produces all three in under ten minutes.
 
-This lesson builds that pipeline from scratch. You will produce a reusable system that works on any document type — not a toy example, but a professional tool you can use on real work starting today.
+This lesson builds that pipeline from scratch. You will produce a reusable system that works on any document type, not a toy example, but a professional tool you can use on real work starting today.
+
+<TLDR>
+A document processing pipeline turns any document into three useful outputs: a structured brief, an action list and a risk flag. It works in three transformations, Extract, Analyze and Transform, each as its own step with its own prompt. Define the outputs first, get extraction right, specify a role and audience in the later steps, then save the whole thing as a reusable template you run on every document of that type.
+</TLDR>
 
 <FlowDiagram steps={[{label:"Extract",note:"pull out the facts"},{label:"Analyze",note:"interpret them"},{label:"Transform",note:"reformat for the reader"}]} caption="The three transformations of a document pipeline" />
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+The way out of the scaling trap is not working harder. It is building systems.
+</Pullquote>
 
 ## Context
 
@@ -38,17 +46,19 @@ Every document processing workflow involves one or more of three fundamental tra
 
 **Transformation 1: Extraction**
 
-Extraction pulls specific information out of a document. It does not interpret or judge — it identifies and surfaces. The output of an extraction step is raw material: the key facts, the decisions, the numbers, the named entities, the explicit commitments.
+Extraction pulls specific information out of a document. It does not interpret or judge: it identifies and surfaces. The output of an extraction step is raw material: the key facts, the decisions, the numbers, the named entities, the explicit commitments.
 
 Extraction prompts are specific about what to extract: "List every decision made in this document, with the date, the decision-maker and the agreed outcome." They are not open-ended: "Tell me what is important."
 
 Good extraction is the foundation of every reliable document pipeline. When extraction is done precisely, the downstream steps have what they need to work with. When extraction is vague, every subsequent step amplifies the vagueness.
 
+<Callout type="key" title="The extraction step is the foundation">When extraction is done precisely, the downstream steps have what they need to work with. When extraction is vague, every subsequent step amplifies the vagueness. Get this step right before moving on.</Callout>
+
 **Transformation 2: Analysis**
 
 Analysis interprets the extracted information. It applies judgment, identifies patterns, surfaces implications and answers the question: "Given what this document says, what should I know?"
 
-Analysis steps require more context than extraction steps. You are not just asking AI to read — you are asking it to reason. This is where the role assignment matters most. A CFO analyzing a vendor proposal asks different questions than a COO analyzing the same document. Specify the perspective.
+Analysis steps require more context than extraction steps. You are not just asking AI to read, you are asking it to reason. This is where the role assignment matters most. A CFO analyzing a vendor proposal asks different questions than a COO analyzing the same document. Specify the perspective.
 
 Analysis prompts name the framework: "Given these extracted data points, identify the three most significant risks. For each risk, estimate the likelihood (high/medium/low) and the potential impact on operations."
 
@@ -84,7 +94,9 @@ Extract obligations, deadlines and risk provisions → Analyze for operational a
 Two failure modes account for the majority of failed attempts.
 
 **Failure mode 1: Treating the whole document as context.**
-Pasting a 60-page document into a single prompt and asking for a summary is not a pipeline — it is a single prompt handling the entire transformation. The output will be generic because the AI is simultaneously deciding what matters, deciding how to structure it and deciding what to emphasize for your audience. Each of those is its own step.
+Pasting a 60-page document into a single prompt and asking for a summary is not a pipeline. It is a single prompt handling the entire transformation. The output will be generic because the AI is simultaneously deciding what matters, deciding how to structure it and deciding what to emphasize for your audience. Each of those is its own step.
+
+<Callout type="warning" title="Do not collapse the pipeline into one prompt">A single prompt that summarizes a whole document forces the AI to decide what matters, how to structure it and what to emphasize for your audience all at once. The result is generic. Break the work into separate steps, one transformation per prompt.</Callout>
 
 Pipelines break the document into sections or process it step by step. If the document is too long to fit in a single context window, you process it in chunks and synthesize the chunks in a final step.
 
@@ -95,7 +107,7 @@ Pipelines break the document into sections or process it step by step. If the do
 
 ### Step 1: Choose your document type and define the three outputs
 
-Pick a document type you process regularly. Do not pick a hypothetical — pick something sitting in your inbox right now.
+Pick a document type you process regularly. Do not pick a hypothetical: pick something sitting in your inbox right now.
 
 Before building any prompts, define what you want the pipeline to produce. Write this down:
 
@@ -118,7 +130,7 @@ OUTPUT 3: Risk / attention flags
   Purpose: [e.g., surface items that should pause or change the decision]
 ```
 
-You are not guessing at this. You are specifying it. The pipeline will produce exactly this — or you will know which step to fix.
+You are not guessing at this. You are specifying it. The pipeline will produce exactly this, or you will know which step to fix.
 
 ### Step 2: Write the extraction prompt
 
@@ -127,19 +139,19 @@ The extraction prompt asks the AI to pull specific information from the document
 Template:
 ```
 You are a precise research assistant. Read the following document and extract:
-1. [specific extraction target 1 — e.g., every explicit commitment made by the vendor]
-2. [specific extraction target 2 — e.g., every pricing structure mentioned, with exact figures]
-3. [specific extraction target 3 — e.g., every deadline or timeline stated in the document]
-4. [specific extraction target 4 — e.g., every condition or caveat attached to the agreement]
+1. [specific extraction target 1, e.g., every explicit commitment made by the vendor]
+2. [specific extraction target 2, e.g., every pricing structure mentioned, with exact figures]
+3. [specific extraction target 3, e.g., every deadline or timeline stated in the document]
+4. [specific extraction target 4, e.g., every condition or caveat attached to the agreement]
 
-For each item, note: [what metadata to capture — e.g., the page or section it appears in]
-Do not interpret or evaluate — only extract exactly what the document states.
+For each item, note: [what metadata to capture, e.g., the page or section it appears in]
+Do not interpret or evaluate, only extract exactly what the document states.
 
 DOCUMENT:
 [paste document]
 ```
 
-Run this prompt. Read the output. Does it contain what you need for the next step? If anything important is missing, add it to the extraction list and re-run. This is the step to get right — every downstream step depends on it.
+Run this prompt. Read the output. Does it contain what you need for the next step? If anything important is missing, add it to the extraction list and re-run. This is the step to get right: every downstream step depends on it.
 
 ### Step 3: Write the analysis prompt
 
@@ -147,17 +159,17 @@ The analysis prompt receives the extraction output and applies judgment.
 
 Template:
 ```
-You are a [specific role — e.g., senior consultant evaluating vendor proposals for a Fortune 500 client].
+You are a [specific role, e.g., senior consultant evaluating vendor proposals for a Fortune 500 client].
 
 I have extracted the following information from a [document type]:
 
-[EXTRACTION OUTPUT — paste the output from Step 2]
+[EXTRACTION OUTPUT, paste the output from Step 2]
 
 Given this extracted information, analyze:
-1. [analysis question 1 — e.g., What are the top three risks in this proposal, and what is the magnitude of each?]
-2. [analysis question 2 — e.g., Which commitments are vague or unenforceable?]
-3. [analysis question 3 — e.g., What is missing from this proposal that we would typically expect?]
-4. [analysis question 4 — e.g., On balance, is this proposal within our standard terms or does it require negotiation?]
+1. [analysis question 1, e.g., What are the top three risks in this proposal, and what is the magnitude of each?]
+2. [analysis question 2, e.g., Which commitments are vague or unenforceable?]
+3. [analysis question 3, e.g., What is missing from this proposal that we would typically expect?]
+4. [analysis question 4, e.g., On balance, is this proposal within our standard terms or does it require negotiation?]
 
 For each point, explain your reasoning in two to three sentences.
 ```
@@ -177,7 +189,7 @@ ANALYSIS:
 
 BRIEF SPECIFICATIONS:
 Audience: [your audience]
-Format: [your format — sections, lengths, structure]
+Format: [your format, sections, lengths, structure]
 Tone: [direct, no jargon, data-driven]
 Include: [specific items to include]
 Exclude: [specific items to exclude]
@@ -194,7 +206,7 @@ ANALYSIS:
 
 For each action item:
 - State the action precisely (one sentence, active verb)
-- Identify the function or role responsible (do not guess at names — use role titles)
+- Identify the function or role responsible (do not guess at names, use role titles)
 - State the recommended deadline or time horizon
 - Flag if this action is time-sensitive or blocks another action
 
@@ -269,7 +281,7 @@ A pipeline template saved is a pipeline you will actually use. The investment in
 - Document processing pipelines have three transformations: Extraction (pull out the facts), Analysis (interpret the facts) and Transformation (reformat for a specific audience and purpose).
 - Define your outputs before writing any prompts. Knowing exactly what the pipeline must produce is what lets you build prompts that produce it.
 - The extraction step is the foundation. Every downstream step depends on it. Get it right before moving on.
-- The analysis step is the intellectual core. Specify the role, the analytical framework and the specific questions — this is where the pipeline produces insights a single-pass summary never would.
+- The analysis step is the intellectual core. Specify the role, the analytical framework and the specific questions: this is where the pipeline produces insights a single-pass summary never would.
 - Write separate transformation prompts for each distinct output. One prompt per deliverable, with explicit audience, format and exclusion specifications.
 - Save every working pipeline as a reusable template. The pipeline you build once runs on every document of that type, forever.
 
@@ -277,6 +289,6 @@ A pipeline template saved is a pipeline you will actually use. The investment in
 
 You have completed the AI Workflows track. You now have the three core capabilities that separate AI users from AI-powered professionals: the workflow mindset, the chaining patterns and the document processing pipeline.
 
-The next track applies these foundations to the work that defines strategic leverage at the senior level — using AI for analysis, decision support and communication at executive scale.
+The next track applies these foundations to the work that defines strategic leverage at the senior level: using AI for analysis, decision support and communication at executive scale.
 
 [Back to AI Workflows track →](/learn/ai-workflows)

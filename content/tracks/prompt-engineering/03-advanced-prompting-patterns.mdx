@@ -18,13 +18,13 @@ video:
 
 There is a ceiling on what standard prompts can produce.
 
-You can write a perfectly structured system prompt with a clear role, a precise task specification and thorough context — and still hit output that is technically correct but misses the mark. The analysis is shallow. The recommendation is obvious. The memo reads like something a capable intern wrote, not a senior leader.
+You can write a perfectly structured system prompt with a clear role, a precise task specification and thorough context, and still hit output that is technically correct but misses the mark. The analysis is shallow. The recommendation is obvious. The memo reads like something a capable intern wrote, not a senior leader.
 
-That ceiling exists because standard prompts ask AI to do one thing: produce output. Advanced prompting patterns ask AI to *think first* — to show its reasoning, learn from examples and inhabit a role with enough depth to catch what a surface-level pass would miss.
+That ceiling exists because standard prompts ask AI to do one thing: produce output. Advanced prompting patterns ask AI to *think first*, to show its reasoning, learn from examples and inhabit a role with enough depth to catch what a surface-level pass would miss.
 
 These three patterns are what you add when the basic structure is not enough.
 
-<FlowDiagram steps={["Chain-of-thought","Few-shot examples","Structured role-play"]} caption="Three advanced patterns — combine all three for high-stakes work" />
+<FlowDiagram steps={["Chain-of-thought","Few-shot examples","Structured role-play"]} caption="Three advanced patterns, combine all three for high-stakes work" />
 
 ## Context
 
@@ -32,7 +32,7 @@ These three patterns are what you add when the basic structure is not enough.
 
 Chain-of-thought prompting instructs the AI to reason through a problem step by step before producing its answer. This sounds trivial. The output improvement is not.
 
-**Why it works:** AI models produce higher-quality output when they reason out loud. The process of articulating intermediate steps forces the model to surface assumptions, identify gaps and catch logical errors that a direct-to-answer approach would skip. You get the benefit of a structured thinking process — not just the conclusion.
+**Why it works:** AI models produce higher-quality output when they reason out loud. The process of articulating intermediate steps forces the model to surface assumptions, identify gaps and catch logical errors that a direct-to-answer approach would skip. You get the benefit of a structured thinking process, not just the conclusion.
 
 **When to use it:**
 - Any analysis that requires weighing multiple factors (build vs. buy, hire vs. contract, market entry decisions)
@@ -66,7 +66,7 @@ The second prompt produces analysis. The first produces an opinion.
 
 Few-shot prompting gives the AI one to three examples of the output you want before asking it to produce the actual output. This is the fastest way to close the gap between what AI produces by default and what your work actually requires.
 
-**Why it works:** AI models are exceptional pattern matchers. When you show an example, you are not just giving instructions — you are showing the model what the target looks like at a structural, stylistic and tonal level. This eliminates the single biggest source of editing work: output that is correct in content but wrong in form.
+**Why it works:** AI models are exceptional pattern matchers. When you show an example, you are not just giving instructions, you are showing the model what the target looks like at a structural, stylistic and tonal level. This eliminates the single biggest source of editing work: output that is correct in content but wrong in form.
 
 **When to use it:**
 - Any output with a specific format or style you have defined (your email style, your memo format, your feedback framework)
@@ -80,7 +80,7 @@ Few-shot prompting gives the AI one to three examples of the output you want bef
 Here is an example of the kind of output I want:
 
 ---EXAMPLE---
-[Paste a real piece of your best prior work — something you would be proud to send]
+[Paste a real piece of your best prior work, something you would be proud to send]
 ---END EXAMPLE---
 
 Now produce [the actual deliverable] using the same format, tone and level of specificity.
@@ -90,11 +90,11 @@ My input: [paste your actual content]
 
 One strong example beats a paragraph of tone instructions every time. Two examples beat one. Three is usually diminishing returns.
 
-**The most common mistake:** Using AI-generated examples. The few-shot example should be your own work — something you wrote, edited and would publish. Using a piece the AI wrote introduces the AI's defaults, which you are trying to override.
+**The most common mistake:** Using AI-generated examples. The few-shot example should be your own work, something you wrote, edited and would publish. Using a piece the AI wrote introduces the AI's defaults, which you are trying to override.
 
 ### Pattern 3: Structured Role-Play
 
-Structured role-play assigns the AI a specific, detailed persona and instructs it to stay in character throughout a multi-turn interaction. This is different from the basic role assignment in Lesson 1 — structured role-play is deeper, more constrained and designed for specific high-stakes use cases.
+Structured role-play assigns the AI a specific, detailed persona and instructs it to stay in character throughout a multi-turn interaction. This is different from the basic role assignment in Lesson 1, structured role-play is deeper, more constrained and designed for specific high-stakes use cases.
 
 **Why it works:** When an AI inhabits a detailed role over multiple turns, its output reflects the assumptions, priorities and blind spots of that role. This is valuable for:
 - **Devil's advocate**: Having the AI argue the strongest possible case against your plan
@@ -119,7 +119,7 @@ Stay in character for the entire conversation. Do not break character to explain
 Begin.
 ```
 
-**Example — adversarial board review:**
+**Example, adversarial board review:**
 
 ```
 You are a board member with a private equity background reviewing our people strategy.
@@ -161,17 +161,17 @@ Collect five to eight pieces of your own best work: a memo you are proud of, an 
 Label each one:
 - **EXAMPLE: Executive update memo** (attach to your update memo prompt)
 - **EXAMPLE: Client follow-up email** (attach to your email drafting prompt)
-- **EXAMPLE: JD — Head of Engineering** (attach to your job description prompt)
+- **EXAMPLE: JD, Head of Engineering** (attach to your job description prompt)
 
 When you run the prompt, paste the relevant example before the input. Your output quality will improve immediately, and it will stay consistent across sessions.
 
 ### Step 3: Create one adversarial reviewer for your most important work
 
-Think about the hardest critic of your work — the CFO who cuts initiatives, the board member who asks the questions you do not want to answer, the prospective client who presses on your methodology. Write a detailed role-play persona for that critic.
+Think about the hardest critic of your work, the CFO who cuts initiatives, the board member who asks the questions you do not want to answer, the prospective client who presses on your methodology. Write a detailed role-play persona for that critic.
 
 Use the structured role-play template from Pattern 3. Be specific: their background, what they optimize for, what they push back on. The more specific the persona, the more useful the output.
 
-Run your most important upcoming piece of work through this reviewer before you send it. Treat every pushback as a gift — it is a version of the critique you are going to receive anyway, and now you can address it before it reaches the actual stakeholder.
+Run your most important upcoming piece of work through this reviewer before you send it. Treat every pushback as a gift, it is a version of the critique you are going to receive anyway, and now you can address it before it reaches the actual stakeholder.
 
 ### Step 4: Combine all three patterns for high-stakes deliverables
 
@@ -181,13 +181,13 @@ The three patterns compound:
 2. **Chain-of-thought** ensures the reasoning is thorough before output is produced
 3. **Role-play** reviews the finished output from the perspective of its harshest critic
 
-For a board presentation, a major proposal or a critical hiring recommendation, run all three in sequence. The combined output is qualitatively different from what any single pattern produces — and it is qualitatively different from what most AI users are producing.
+For a board presentation, a major proposal or a critical hiring recommendation, run all three in sequence. The combined output is qualitatively different from what any single pattern produces, and it is qualitatively different from what most AI users are producing.
 
 ## Recap
 
 - Chain-of-thought prompting instructs the AI to reason step by step before producing output. The improvement in analysis depth is consistent and significant.
 - Few-shot examples are the fastest way to close the gap between AI default output and your specific standard. Use your own best work, not AI-generated examples.
-- Structured role-play assigns a detailed, persistent persona that stays in character across multiple turns. Its highest-value use is adversarial review — having an expert critic pressure-test your work before it reaches the actual stakeholder.
+- Structured role-play assigns a detailed, persistent persona that stays in character across multiple turns. Its highest-value use is adversarial review, having an expert critic pressure-test your work before it reaches the actual stakeholder.
 - The three patterns compound. For high-stakes deliverables, use all three: few-shot for format, chain-of-thought for reasoning, role-play for adversarial review.
 
 ---

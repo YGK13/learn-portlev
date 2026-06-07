@@ -24,7 +24,15 @@ The pattern is predictable. A team sees an agent demo. It is impressive. They de
 
 The skill that separates leaders who get value from agents from leaders who get burned by them is not technical. It is knowing when an agent is genuinely the right tool, and when something simpler and more reliable will serve far better. This lesson gives you that judgment, by putting the agent where it belongs: at the top of a spectrum of options, to be used only when the rungs below it will not do.
 
+<TLDR>
+AI work sits on a spectrum: single prompt, fixed workflow, agent. Each rung up gains flexibility and loses predictability, speed, low cost and easy auditing. Use an agent only when the task's path genuinely varies, has to react to what it finds and is multi-step. If you can write the steps down in advance, use a fixed workflow. Match an agent's autonomy to the stakes, demand a full trail of its actions and pilot small.
+</TLDR>
+
 <FlowDiagram steps={[{label:"Single prompt",note:"one step"},{label:"Fixed workflow",note:"set steps"},{label:"Agent",note:"chooses its own steps"}]} caption="The spectrum: power rises, predictability falls" />
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+Claude does not just execute steps. It thinks about what the right steps are.
+</Pullquote>
 
 ## Context
 
@@ -39,6 +47,8 @@ An AI agent is not the only way to get AI to do work. It is the most powerful an
 **An agent.** The AI itself decides which steps to take, in what order, reacting to what it finds. Maximum power, because it can handle tasks whose shape is not known in advance. Minimum predictability, for exactly the same reason.
 
 The crucial insight: as you move up the spectrum, you gain flexibility and you lose predictability, control, speed, low cost and easy auditability. Every rung up is a trade. An agent is not the best of the three. It is the most powerful, which is a different thing.
+
+<Callout type="key">An agent is not the best of the three options. It is the most powerful, which is a different thing. Every rung up the spectrum trades predictability, control, speed and low cost for flexibility. Reach for the agent only when the rungs below it genuinely will not do.</Callout>
 
 ### The cost of an agent
 
@@ -59,7 +69,7 @@ An agent earns its place when a task has these features together:
 - **It needs to react.** The task requires responding to what is found along the way: searching differently when a search fails, following wherever the information leads.
 - **It is genuinely multi-step.** A one-step task never needs an agent. It needs a prompt.
 
-Triaging a varied inbox where every message needs a different response. Researching an open question across sources you cannot list in advance. Investigating a problem where each finding determines the next move. That is agent-shaped work: variable, reactive, multi-step.
+<Callout type="example">Triaging a varied inbox where every message needs a different response. Researching an open question across sources you cannot list in advance. Investigating a problem where each finding determines the next move. That is agent-shaped work: variable, reactive, multi-step.</Callout>
 
 ### When an agent is the wrong choice
 
@@ -69,6 +79,8 @@ Just as important, the cases where reaching for an agent is a mistake:
 - **The task is one step.** Use a prompt.
 - **A wrong action would be costly or irreversible, and you cannot supervise it.** An agent that can act unsupervised in a high-stakes area is a serious exposure. Either keep a human in the loop or do not use an agent there.
 - **You cannot see what it did.** If a proposed agent cannot give you a clear trail of its actions, it is not ready for anything that matters.
+
+<Callout type="warning">An agent that can act unsupervised in a high-stakes area is a serious exposure. Where a wrong action would be costly or irreversible and you cannot supervise it, either keep a human in the loop or do not use an agent there.</Callout>
 
 ### How agents fail
 
@@ -90,6 +102,26 @@ For any task you want AI to handle, start with the simplest option and move up o
 ### Step 2: Apply the "does the path vary?" test
 
 The single clearest test for whether a task needs an agent: can you write down the steps in advance? If you can, it is a fixed workflow, and a workflow will beat an agent on speed, cost, predictability and auditability. Only if the steps genuinely cannot be known in advance, because they depend on what is discovered along the way, is the task actually agent-shaped.
+
+Run the test on paper before you build anything. Paste this into Claude with a real task you are considering, and let it pressure-test your instinct:
+
+```text
+I am deciding whether a task needs an AI agent or something
+simpler. Use this spectrum, simplest first: single prompt,
+fixed workflow, agent.
+
+Task: [describe the task in 2 to 4 sentences.]
+
+Walk me through three questions, one at a time:
+1. Could a single well-written prompt handle this? If yes, stop here.
+2. If not, can I write down the exact steps in advance so they
+   never change? If yes, this is a fixed workflow, not an agent.
+3. Only if the steps genuinely vary, react to what is found and
+   are multi-step, call it agent-shaped.
+
+End with a one-line verdict (prompt, workflow or agent) and the
+single strongest reason it is not the rung below.
+```
 
 ### Step 3: Match autonomy to the stakes
 

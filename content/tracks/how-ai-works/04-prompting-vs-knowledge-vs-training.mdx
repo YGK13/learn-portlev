@@ -20,11 +20,11 @@ video:
 
 At some point, someone in your organization will say "we should train our own AI" or "we need a custom model fine-tuned on our data." It sounds serious, strategic and proprietary. It is often a six-figure mistake.
 
-"Customize the AI" is not one thing. It is three very different things, with three very different costs — and the gap between the cheapest and the most expensive is not a few percent. It is a factor of thousands. Choose the wrong one and you spend a fortune solving a problem the cheapest option would have solved in an afternoon.
+"Customize the AI" is not one thing. It is three very different things, with three very different costs, and the gap between the cheapest and the most expensive is not a few percent. It is a factor of thousands. Choose the wrong one and you spend a fortune solving a problem the cheapest option would have solved in an afternoon.
 
-This is the lesson that ties the track together. You now understand what an AI is, why it makes things up and how to ground it in your own knowledge. This final lesson gives you the decision framework: when someone proposes making the AI "ours," you will know exactly which of the three levers they actually need — and which one they are about to overpay for.
+This is the lesson that ties the track together. You now understand what an AI is, why it makes things up and how to ground it in your own knowledge. This final lesson gives you the decision framework: when someone proposes making the AI "ours," you will know exactly which of the three levers they actually need, and which one they are about to overpay for.
 
-<FlowDiagram steps={[{label:"Prompting",note:"changes behavior"},{label:"Knowledge",note:"changes what it knows"},{label:"Training",note:"changes the model"}]} caption="Three ways to customize AI — cost and effort rise sharply left to right" />
+<FlowDiagram steps={[{label:"Prompting",note:"changes behavior"},{label:"Knowledge",note:"changes what it knows"},{label:"Training",note:"changes the model"}]} caption="Three ways to customize AI, cost and effort rise sharply left to right" />
 
 ## Context
 
@@ -32,14 +32,14 @@ This is the lesson that ties the track together. You now understand what an AI i
 
 There are three ways to make a general AI work better for your specific situation. They are not competing brands or vendors. They are different levers, and they change different things.
 
-**Lever 1: Prompting — change the instructions.**
+**Lever 1: Prompting, change the instructions.**
 You write better instructions: who the AI should act as, what exactly you want, in what format, with what constraints. Prompting changes the AI's *behavior for a task*. It is free, instant and endlessly flexible. It is the entire subject of the Prompt Engineering track on this platform. It is also, by a wide margin, the lever you should reach for first and most often.
 
-**Lever 2: Knowledge — change what it can see.**
+**Lever 2: Knowledge, change what it can see.**
 You give the AI access to your information: pasted into the conversation, or connected as a searchable knowledge base through the RAG pattern from the previous lesson. Knowledge changes *what the AI knows* about your world. It is cheap, updates in minutes and keeps your data yours. It is the right lever whenever the problem is "the AI does not know our specific stuff."
 
-**Lever 3: Training — change the model itself.**
-This is what "fine-tuning" or "training a custom model" means. You take the AI model and adjust its internals by training it further on a large set of your own examples. Training changes *the model itself*. It is expensive, slow, requires real technical expertise and a large, clean set of examples, and produces something opaque — you cannot easily see why the new model behaves as it does. It is the heavy machinery, and it is the lever to reach for last, if ever.
+**Lever 3: Training, change the model itself.**
+This is what "fine-tuning" or "training a custom model" means. You take the AI model and adjust its internals by training it further on a large set of your own examples. Training changes *the model itself*. It is expensive, slow, requires real technical expertise and a large, clean set of examples, and produces something opaque, you cannot easily see why the new model behaves as it does. It is the heavy machinery, and it is the lever to reach for last, if ever.
 
 ### Seeing the difference clearly
 
@@ -49,17 +49,17 @@ A simple way to hold the three apart:
 - **Knowledge** is handing that hire the company handbook and your files to work from.
 - **Training** is sending the hire back to a year of school to rewire how they think.
 
-For almost any everyday problem, you give better directions or hand over the right files. You do not send someone back to school. And critically: if the hire keeps getting facts wrong, *more school does not fix that* — they need the handbook, not another degree. Hold that thought; it is the most common mistake.
+For almost any everyday problem, you give better directions or hand over the right files. You do not send someone back to school. And critically: if the hire keeps getting facts wrong, *more school does not fix that*, they need the handbook, not another degree. Hold that thought; it is the most common mistake.
 
 ### How they compare on what matters
 
 | | Prompting | Knowledge (RAG) | Training (fine-tuning) |
 |---|---|---|---|
 | **What it changes** | Behavior for a task | What the AI knows | The model itself |
-| **Cost** | Effectively free | Low (per question) | High — often tens of thousands and up |
+| **Cost** | Effectively free | Low (per question) | High, often tens of thousands and up |
 | **Speed to set up** | Immediate | Days | Weeks, with technical staff |
 | **Updating it** | Edit the instruction | Update a document | Retrain the whole model |
-| **Can you trace its answers?** | Yes | Yes — shows sources | No — changes are baked in, opaque |
+| **Can you trace its answers?** | Yes | Yes, shows sources | No, changes are baked in, opaque |
 | **Right for** | Almost everything | "It doesn't know our stuff" | Style and format at scale |
 
 The pattern in that table is the whole lesson. As you move from left to right, cost and effort climb steeply, while flexibility and transparency fall. The leftmost lever you can solve your problem with is almost always the right one.
@@ -70,11 +70,11 @@ The single most common and most costly error leaders make with AI is reaching fo
 
 It usually goes like this. The AI is not performing well on some task. "Train it on our data" sounds like the thorough, serious fix. Budget gets approved. Months pass. Money is spent. And often the result underperforms a good prompt plus a RAG knowledge base that a competent person could have set up in a week for a tiny fraction of the cost.
 
-The deepest version of the mistake is using training to fix a *knowledge* problem. If the AI gives wrong answers because it does not know your policies or your recent data, training is the wrong tool — and an actively bad one. Training bakes information into the model in a way that is frozen the moment it finishes, cannot be audited and goes stale the instant a document changes. That is the exact opposite of what you want for facts. Facts belong in a knowledge base you can update and inspect, not trained into a model you cannot.
+The deepest version of the mistake is using training to fix a *knowledge* problem. If the AI gives wrong answers because it does not know your policies or your recent data, training is the wrong tool, and an actively bad one. Training bakes information into the model in a way that is frozen the moment it finishes, cannot be audited and goes stale the instant a document changes. That is the exact opposite of what you want for facts. Facts belong in a knowledge base you can update and inspect, not trained into a model you cannot.
 
 ### When training is genuinely the answer
 
-Training is not useless. It earns its cost in a narrow band: when you need the AI to consistently adopt a specific *style, tone, voice or output format*, at high volume, in a way that prompting and examples cannot reliably achieve. A company processing millions of documents into one exact house format, a product needing one unmistakable brand voice across enormous scale — there, training can pay off.
+Training is not useless. It earns its cost in a narrow band: when you need the AI to consistently adopt a specific *style, tone, voice or output format*, at high volume, in a way that prompting and examples cannot reliably achieve. A company processing millions of documents into one exact house format, a product needing one unmistakable brand voice across enormous scale, there, training can pay off.
 
 Notice the common thread: training is about *how* the AI expresses things, not *what facts it knows*. Style and form, yes. Facts and knowledge, no. If a vendor proposes training a custom model so it will "know your business," that is the warning sign from the previous section, dressed up.
 
@@ -84,7 +84,7 @@ Notice the common thread: training is about *how* the AI expresses things, not *
 
 When AI is underperforming, do not jump to a solution. Diagnose first. Ask which of three things is actually wrong:
 
-- Is it doing the *wrong thing* — wrong format, wrong focus, wrong tone for one task? That is a **behavior** problem → prompting.
+- Is it doing the *wrong thing*, wrong format, wrong focus, wrong tone for one task? That is a **behavior** problem → prompting.
 - Is it *missing information* about your company, products or recent events? That is a **knowledge** problem → a knowledge base.
 - Does it need to *consistently express things in a specific style at scale*, in a way examples cannot achieve? That is a **model** problem → possibly training.
 
@@ -96,11 +96,11 @@ Before anything else, improve the instructions. State the role, the task, the fo
 
 ### Step 3: Add a knowledge base when the gap is "it doesn't know our stuff"
 
-If prompting is solid and the AI still fails because it lacks your specific information, that is the knowledge lever. Use the previous lesson's framework: paste documents in for one-off needs, build or buy a RAG knowledge base when the need is large, repeated and shared. This solves the great majority of remaining problems — accurately, cheaply and with sources you can audit.
+If prompting is solid and the AI still fails because it lacks your specific information, that is the knowledge lever. Use the previous lesson's framework: paste documents in for one-off needs, build or buy a RAG knowledge base when the need is large, repeated and shared. This solves the great majority of remaining problems, accurately, cheaply and with sources you can audit.
 
 ### Step 4: Treat training as a last resort, and never for facts
 
-Consider training only when prompting and knowledge have both genuinely been used and a real gap remains, and only when that gap is about consistent style or format at large scale. Never use training to make the AI "know" facts — facts belong in a knowledge base. If training is on the table, it should involve technical specialists, a clear cost-benefit case and a hard look at whether the gain over a strong prompt-plus-knowledge setup is worth the price.
+Consider training only when prompting and knowledge have both genuinely been used and a real gap remains, and only when that gap is about consistent style or format at large scale. Never use training to make the AI "know" facts, facts belong in a knowledge base. If training is on the table, it should involve technical specialists, a clear cost-benefit case and a hard look at whether the gain over a strong prompt-plus-knowledge setup is worth the price.
 
 ### Step 5: Pressure-test any "custom model" proposal
 
@@ -109,20 +109,20 @@ When a vendor or a team member proposes training a custom model, ask four questi
 1. **Have we fully exhausted prompting?** Show me the best prompt we have tried.
 2. **Is this really a knowledge gap?** If so, a knowledge base is cheaper, faster, current and auditable. Why not that?
 3. **What exactly will training change that the other two levers cannot?** The honest answer should be about style or format, not facts.
-4. **What is the full cost** — money, time, technical staff, and the loss of the ability to audit and update easily — **and what is the measured gain over prompt-plus-knowledge?**
+4. **What is the full cost**, money, time, technical staff, and the loss of the ability to audit and update easily, **and what is the measured gain over prompt-plus-knowledge?**
 
 If those questions do not produce clear, specific answers, the proposal is not ready. More often than not, asking them well saves a six-figure sum.
 
 ## Recap
 
 - "Customizing AI" is three different levers: prompting (changes behavior), knowledge (changes what it knows) and training (changes the model itself).
-- Cost and effort rise steeply from left to right — by a factor of thousands — while flexibility and transparency fall. Use the leftmost lever that solves your problem.
+- Cost and effort rise steeply from left to right, by a factor of thousands, while flexibility and transparency fall. Use the leftmost lever that solves your problem.
 - Start with prompting. It is free, instant and resolves a large share of problems on its own.
 - Add a knowledge base when the gap is that the AI does not know your specific, current information. It is cheap, auditable and updatable.
-- Training is a narrow, expensive last resort for consistent style and format at scale. Never use it to teach facts — facts belong in a knowledge base. Pressure-test every "train a custom model" proposal before any budget is committed.
+- Training is a narrow, expensive last resort for consistent style and format at scale. Never use it to teach facts, facts belong in a knowledge base. Pressure-test every "train a custom model" proposal before any budget is committed.
 
 ---
 
-You have completed **How AI Actually Works**. You can now explain what an AI is, why it makes things up, how to ground it in your own knowledge and which of the three customization levers any situation calls for. That is a foundation most professionals using AI every day do not have — and it is what lets you make sound decisions about it.
+You have completed **How AI Actually Works**. You can now explain what an AI is, why it makes things up, how to ground it in your own knowledge and which of the three customization levers any situation calls for. That is a foundation most professionals using AI every day do not have, and it is what lets you make sound decisions about it.
 
 [Back to How AI Actually Works →](/learn/how-ai-works)

@@ -18,9 +18,9 @@ video:
 
 ## Hook
 
-You use AI every week. Maybe every day. You have a sense of what it is good at and what it is not. But if someone stopped you in a hallway and asked "what is it actually doing when it answers you?" — could you give a clear, accurate answer in two sentences?
+You use AI every week. Maybe every day. You have a sense of what it is good at and what it is not. But if someone stopped you in a hallway and asked "what is it actually doing when it answers you?", could you give a clear, accurate answer in two sentences?
 
-Most professionals cannot. And that is a real problem, because you cannot govern, budget for, delegate to or set policy on a tool you do not understand. Every decision you make about AI — what to use it for, what to keep it away from, what to tell your team, what to tell your board — rests on a mental model of how it works. If that model is wrong, every decision built on it is shaky.
+Most professionals cannot. And that is a real problem, because you cannot govern, budget for, delegate to or set policy on a tool you do not understand. Every decision you make about AI, what to use it for, what to keep it away from, what to tell your team, what to tell your board, rests on a mental model of how it works. If that model is wrong, every decision built on it is shaky.
 
 The good news: you do not need mathematics, code or a computer science background to build an accurate mental model. The core of how a large language model works can be explained in plain language, and once you have it, a great deal of confusing AI behavior suddenly makes sense. Why it sometimes invents facts. Why it does not know about recent events. Why the same question can get different answers. Why it is brilliant at some tasks and unreliable at others.
 
@@ -32,7 +32,7 @@ This lesson gives you that model. No math. Just an accurate picture of what is h
 
 ### An LLM is a prediction engine
 
-Start here, because everything else follows from it. A large language model — the technology behind ChatGPT, Claude, Gemini and the rest — does exactly one thing: it predicts the next piece of text.
+Start here, because everything else follows from it. A large language model, the technology behind ChatGPT, Claude, Gemini and the rest, does exactly one thing: it predicts the next piece of text.
 
 You give it some text. It predicts what text most plausibly comes next. Then it adds that prediction to the text and predicts again. And again. It builds up an answer one small piece at a time, each piece chosen because it is the most plausible continuation of everything written so far.
 
@@ -44,11 +44,11 @@ This sounds too simple to produce the results you have seen, and it is worth sit
 
 When you give text to an AI, it does not see words the way you do. It breaks text into chunks called **tokens**. A token is often a whole word, but long or unusual words get split. "Understanding" might become "under" and "standing." A name the model has rarely seen might break into three or four pieces.
 
-You do not need to track tokens precisely. You need to know they exist, for one practical reason: tokens are the unit of measurement for AI. The cost of using AI is priced per token. The amount of text an AI can handle at once is measured in tokens. When you hear that a model "has a 200,000 token context window," that is a statement about capacity — and the next idea explains why that capacity matters.
+You do not need to track tokens precisely. You need to know they exist, for one practical reason: tokens are the unit of measurement for AI. The cost of using AI is priced per token. The amount of text an AI can handle at once is measured in tokens. When you hear that a model "has a 200,000 token context window," that is a statement about capacity, and the next idea explains why that capacity matters.
 
 ### The context window: AI's working memory
 
-An AI does not remember your conversation the way a colleague does. It has a working memory called the **context window** — the amount of text it can hold in view at one time. This includes your current question, the conversation so far and any documents you have pasted in.
+An AI does not remember your conversation the way a colleague does. It has a working memory called the **context window**, the amount of text it can hold in view at one time. This includes your current question, the conversation so far and any documents you have pasted in.
 
 Everything inside the window, the AI can use. Everything outside it does not exist to the model.
 
@@ -70,7 +70,7 @@ Put the pieces together. The AI predicts plausible text, from patterns it learne
 
 Notice what is missing from that description: any step where the AI checks whether what it is saying is true.
 
-The model produces text that is *plausible* — text that fits the patterns of correct, fluent, authoritative writing. Plausible text is usually also true, because in the training data, true statements were far more common than false ones. But plausible and true are not the same thing, and the model optimizes for the first. It will produce a confident, well-formed, authoritative-sounding answer whether or not the content is correct, because confident and well-formed is what plausible text looks like.
+The model produces text that is *plausible*, text that fits the patterns of correct, fluent, authoritative writing. Plausible text is usually also true, because in the training data, true statements were far more common than false ones. But plausible and true are not the same thing, and the model optimizes for the first. It will produce a confident, well-formed, authoritative-sounding answer whether or not the content is correct, because confident and well-formed is what plausible text looks like.
 
 This is the most important single takeaway in this lesson. Fluency is not evidence of accuracy. The AI's tone of certainty carries no information about whether it is right. A wrong answer and a right answer arrive in exactly the same confident voice. The next lesson, on why AI makes things up, builds directly on this.
 
@@ -104,12 +104,12 @@ It is far riskier for tasks that depend on facts it may not have, especially rec
 
 - A large language model does one thing: it predicts the next piece of text, over and over, building an answer one piece at a time. It is the most sophisticated autocomplete ever built.
 - AI reads text as tokens (chunks), not words. Tokens are the unit AI is measured and priced in.
-- The context window is the AI's working memory — the text it can hold in view at once. Anything outside it does not exist to the model.
+- The context window is the AI's working memory, the text it can hold in view at once. Anything outside it does not exist to the model.
 - The training cutoff is the date the AI's knowledge stops. It knows nothing more recent, and nothing private to you, unless you supply it.
 - Because the model optimizes for plausible text and never checks truth, confidence is not correctness. Fluency is not evidence of accuracy. This is the foundation for everything that follows.
 
 ---
 
-The next lesson takes the most important idea here — that AI produces plausible text, not verified truth — and uses it to explain the behavior that worries leaders most: why AI confidently makes things up, and how to know when to trust it.
+The next lesson takes the most important idea here, that AI produces plausible text, not verified truth, and uses it to explain the behavior that worries leaders most: why AI confidently makes things up, and how to know when to trust it.
 
 [Continue: Why AI Makes Things Up →](/learn/how-ai-works/why-ai-makes-things-up)

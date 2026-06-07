@@ -20,11 +20,15 @@ video:
 
 On its own, an AI model is sealed in a box. It can read what you type and write text back. That is the whole of it. It cannot see your calendar, open your files, look up a customer, check today's date or send anything anywhere. Brilliant, and completely cut off from your actual work.
 
-Every genuinely useful AI agent is useful because that box has been opened — because the AI has been connected to real software and real data. The previous lesson said an agent needs tools. This lesson is about what tools actually are, how the connection works and why a new standard is suddenly making those connections far easier to build and far more important to understand.
+Every genuinely useful AI agent is useful because that box has been opened: because the AI has been connected to real software and real data. The previous lesson said an agent needs tools. This lesson is about what tools actually are, how the connection works and why a new standard is suddenly making those connections far easier to build and far more important to understand.
 
 You will not write any of this yourself. But you make decisions that depend on it: what to connect AI to, what to ask vendors, how worried to be about lock-in and how to think about the risk that a connected AI carries. For all of that, you need to know how AI reaches your software.
 
-<FlowDiagram steps={[{label:"AI asks",note:"requests a tool"},{label:"Your system runs it",note:"the action happens"},{label:"Result returns",note:"the AI reads it and continues"}]} caption="An AI never acts directly — it asks, and your system does" />
+<TLDR>
+A tool is a specific action an AI is allowed to take, and the list of an AI's tools is both its reach and its risk. The AI never runs a tool itself: it asks a surrounding system to act and reads the result back, which is where every permission check lives. MCP is a new connection standard, USB-C for AI, that replaces custom one-off integrations with reusable connectors and means less lock-in. Every connection adds capability and risk together, so grant the least access that does the job.
+</TLDR>
+
+<FlowDiagram steps={[{label:"AI asks",note:"requests a tool"},{label:"Your system runs it",note:"the action happens"},{label:"Result returns",note:"the AI reads it and continues"}]} caption="An AI never acts directly: it asks, and your system does" />
 
 ## Context
 
@@ -33,6 +37,10 @@ You will not write any of this yourself. But you make decisions that depend on i
 A "tool," in AI terms, is a specific action the AI has been given permission to perform. "Check the calendar" is a tool. "Send an email" is a tool. "Look up a customer record" is a tool. "Search the web" is a tool.
 
 An AI model with no tools can only produce text. An AI model with tools can do whatever those tools allow. The set of tools an AI has been given *is* the boundary of what it can do. This matters more than almost anything else for a leader: if you want to know what an AI agent can do, and what it could do wrong, you ask for the list of its tools. That list is the agent's reach, and it is the agent's risk surface.
+
+<Callout type="key" title="The one question that tells you everything">
+If you want to know what an AI agent can do, and what it could do wrong, ask for the list of its tools. That list is the agent's reach and its risk surface in the same breath.
+</Callout>
 
 ### How the connection works
 
@@ -70,6 +78,14 @@ Everything that makes a connected AI valuable also makes it consequential. The p
 
 An AI connected to your calendar can manage your calendar, and can also mismanage it. An AI connected to your email can draft and send, including sending the wrong thing. An AI connected to a database can update records, and can corrupt them. Every tool you grant is a capability and a risk in the same motion.
 
+<Callout type="warning" title="Connection cuts both ways">
+Every capability you grant a connected AI is also a way it can do damage. The email tool that drafts for you can send the wrong thing. The database tool that updates records can corrupt them. Treat each new connection as a new risk, not just a new convenience.
+</Callout>
+
+<Pullquote author="Kim Pecina" role="HR and benefits leader" source="AI Wage Gap Podcast">
+I'm always checking. Make sure I'm in the work instance instead of in the web instance. I don't want to be putting anything out there.
+</Pullquote>
+
 This leads to one governing principle, the same one that has guided computer security for decades: grant the least access that does the job. An AI agent should have exactly the tools its task requires and no more. An agent that only needs to read information should not be able to change anything. An agent that drafts emails does not necessarily need to send them. Every tool on the list should be there because the job genuinely needs it.
 
 ## Steps
@@ -80,7 +96,7 @@ List the software and data your work depends on: calendar, email, documents, CRM
 
 ### Step 2: Make tool access an explicit question with vendors
 
-When evaluating any AI tool or agent, do not accept "it integrates with your systems" as an answer. Ask precisely: what does it connect to, what can it read, what can it change, and does it connect through a standard like MCP or through custom integrations? You are gathering two things at once: how much value the connection creates and how much risk it introduces.
+When evaluating any AI tool or agent, do not accept "it integrates with your systems" as an answer. Ask precisely: what does it connect to, what can it read, what can it change and does it connect through a standard like MCP or through custom integrations? You are gathering two things at once: how much value the connection creates and how much risk it introduces.
 
 ### Step 3: Treat MCP support as a real evaluation criterion
 
@@ -94,7 +110,7 @@ For every AI connection in your organization, insist on the least-access princip
 
 - A tool is a specific action an AI has been given permission to take. The set of an AI's tools defines both what it can do and what it can do wrong.
 - The AI never runs tools itself. It asks a surrounding system to act and reads back the result. That gap between asking and doing is where every permission check and human approval lives.
-- Before MCP, every AI-to-software connection was a custom one-off, which was slow, costly and locking. MCP is a connection standard — think USB-C for AI — that lets one connector work with any AI tool that speaks it.
+- Before MCP, every AI-to-software connection was a custom one-off, which was slow, costly and locking. MCP is a connection standard (think USB-C for AI) that lets one connector work with any AI tool that speaks it.
 - MCP means faster, cheaper connections and less vendor lock-in. Treat "does it support MCP" as a genuine evaluation question.
 - Every connection is a capability and a risk together. Grant the least access that does the job: the tools the task requires, and no more.
 

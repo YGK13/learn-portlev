@@ -1,6 +1,6 @@
 ---
 title: "Giving AI Your Own Knowledge"
-summary: "AI knows the public internet but nothing about your company. Here is how it can answer from your own documents — the pattern behind every serious AI tool."
+summary: "AI knows the public internet but nothing about your company. Here is how it can answer from your own documents, the pattern behind every serious AI tool."
 track: how-ai-works
 order: 3
 level: beginner
@@ -18,13 +18,13 @@ video:
 
 ## Hook
 
-A company builds a customer-support chatbot on top of a capable AI model. A customer asks: "What is the refund policy for enterprise plans?" The chatbot answers smoothly, describing a typical software refund policy — 30 days, standard terms.
+A company builds a customer-support chatbot on top of a capable AI model. A customer asks: "What is the refund policy for enterprise plans?" The chatbot answers smoothly, describing a typical software refund policy, 30 days, standard terms.
 
 It is wrong. The company's actual enterprise refund policy, written in a 200-page internal handbook, gives a 60-day window with pro-rated refunds. The AI never read that handbook. It could not have. So it did what you now know it does when it lacks a fact: it produced a plausible answer that sounded right and was not.
 
-This is the most common gap between what AI can do and what businesses need it to do. The model knows an enormous amount about the world in general. It knows nothing about *you* — your policies, your products, your projects, your clients, your last quarter. And almost every genuinely valuable business use of AI depends on knowledge that is specific to you.
+This is the most common gap between what AI can do and what businesses need it to do. The model knows an enormous amount about the world in general. It knows nothing about *you*, your policies, your products, your projects, your clients, your last quarter. And almost every genuinely valuable business use of AI depends on knowledge that is specific to you.
 
-This lesson explains how that gap gets closed. The pattern has a technical name, RAG, but the idea is simple, and understanding it tells you how nearly every serious business AI tool actually works — and what to demand when a vendor tries to sell you one.
+This lesson explains how that gap gets closed. The pattern has a technical name, RAG, but the idea is simple, and understanding it tells you how nearly every serious business AI tool actually works, and what to demand when a vendor tries to sell you one.
 
 <FlowDiagram steps={[{label:"Question",note:"what is asked"},{label:"Retrieve",note:"find relevant passages"},{label:"Augment",note:"add them to the prompt"},{label:"Generate",note:"answer from them"}]} caption="The RAG pattern: how AI answers from your own documents" />
 
@@ -34,7 +34,7 @@ This lesson explains how that gap gets closed. The pattern has a technical name,
 
 Two limits from earlier in this track combine into one problem.
 
-First, the **training cutoff**: the AI learned from text up to a fixed date and nothing since. Second, and just as important: the AI only ever learned from data its makers could collect — overwhelmingly the public internet and published material. Your company's internal handbook was not in there. Neither were your contracts, your meeting notes, your project files, your customer records or your strategy documents.
+First, the **training cutoff**: the AI learned from text up to a fixed date and nothing since. Second, and just as important: the AI only ever learned from data its makers could collect, overwhelmingly the public internet and published material. Your company's internal handbook was not in there. Neither were your contracts, your meeting notes, your project files, your customer records or your strategy documents.
 
 So the AI's knowledge has two boundaries. It is **frozen** in time, and it is **public** in scope. Everything specific to your organization sits outside both boundaries. The refund-policy chatbot failed because it was asked a private-knowledge question and had only public knowledge to answer from.
 
@@ -42,7 +42,7 @@ So the AI's knowledge has two boundaries. It is **frozen** in time, and it is **
 
 There are two ways to get your knowledge to the AI.
 
-**The simple way: paste it in.** You take the relevant document and paste it directly into the conversation. The AI now has it in its working memory — the context window from Lesson 1 — and can answer from it accurately. This works, it requires no technology and no budget, and you should use it constantly. Its limits are practical: you have to do it by hand every time, you have to know in advance which document is relevant, and a context window, though large, cannot hold your entire body of company knowledge at once.
+**The simple way: paste it in.** You take the relevant document and paste it directly into the conversation. The AI now has it in its working memory, the context window from Lesson 1, and can answer from it accurately. This works, it requires no technology and no budget, and you should use it constantly. Its limits are practical: you have to do it by hand every time, you have to know in advance which document is relevant, and a context window, though large, cannot hold your entire body of company knowledge at once.
 
 **The systematic way: connect a knowledge base.** Instead of you choosing and pasting the right document each time, a system does it automatically. You load your documents into a searchable store once. From then on, whenever someone asks a question, the system finds the relevant passages itself and hands them to the AI. This is the pattern called **RAG**, and it is what the rest of this lesson explains.
 
@@ -50,17 +50,17 @@ There are two ways to get your knowledge to the AI.
 
 RAG stands for Retrieval-Augmented Generation. Ignore the phrase; hold on to the idea. RAG is a three-step pattern that happens automatically every time a question is asked:
 
-1. **Retrieve.** The system takes the question and searches your document store for the passages most relevant to it. Not whole documents — the specific relevant passages.
+1. **Retrieve.** The system takes the question and searches your document store for the passages most relevant to it. Not whole documents, the specific relevant passages.
 2. **Augment.** The system places those passages into the prompt, right alongside the user's question. The AI now has the question *and* the source material in its working memory.
 3. **Generate.** The AI writes its answer using those passages as its source, rather than relying on its trained-in memory.
 
-Question comes in, relevant passages get retrieved, passages and question go to the AI together, grounded answer comes out. Every serious "chat with your documents" tool — every internal knowledge assistant, every support bot that actually knows the product, every research tool that works over your files — is some version of this pattern.
+Question comes in, relevant passages get retrieved, passages and question go to the AI together, grounded answer comes out. Every serious "chat with your documents" tool, every internal knowledge assistant, every support bot that actually knows the product, every research tool that works over your files, is some version of this pattern.
 
 ### The open-book exam
 
 The clearest way to picture the difference: a closed-book exam versus an open-book exam.
 
-A plain AI answering from its training is taking a **closed-book exam**. It must answer from memory alone. On general knowledge it does well. On the specific contents of a book it was never given, it does what students do on closed-book exams when they do not know — it writes something plausible and hopes.
+A plain AI answering from its training is taking a **closed-book exam**. It must answer from memory alone. On general knowledge it does well. On the specific contents of a book it was never given, it does what students do on closed-book exams when they do not know, it writes something plausible and hopes.
 
 A RAG system turns it into an **open-book exam**. Before the AI answers, the relevant pages are found and placed open in front of it. It is no longer recalling; it is reading and summarizing source material that is right there. This is why grounding an AI in real documents is the strongest defense against the hallucination problem from the previous lesson. You have removed the need to guess.
 
@@ -72,7 +72,7 @@ RAG is not a technical curiosity. It changes four things a leader cares about.
 
 **Freshness.** When a policy changes, you update one document in the store. The AI is current within minutes. Nothing has to be retrained. This directly solves the frozen-knowledge problem.
 
-**Auditability.** Because the answer is built from specific retrieved passages, a well-built RAG system can show you which passages it used. You can trace any answer back to its source. For regulated work, client work or board work, this is not a nice-to-have — it is the difference between a tool you can defend and one you cannot.
+**Auditability.** Because the answer is built from specific retrieved passages, a well-built RAG system can show you which passages it used. You can trace any answer back to its source. For regulated work, client work or board work, this is not a nice-to-have, it is the difference between a tool you can defend and one you cannot.
 
 **Privacy and control.** Your documents sit in your own store. They are not absorbed into the AI model itself. You decide what goes in, what comes out and who can ask. (The next track, on AI risk and governance, goes deeper on what happens to your data.)
 
@@ -80,7 +80,7 @@ RAG is not a technical curiosity. It changes four things a leader cares about.
 
 RAG is the right tool when the need is "the AI must answer accurately from a body of knowledge specific to us": internal knowledge assistants, customer support grounded in real product docs, research over your own files, policy and compliance lookups, onboarding helpers.
 
-RAG does not make the AI smarter, more careful or better at reasoning. It changes *what the AI knows*, not *how well it thinks*. It also depends entirely on the quality of what you put in: if your documents are out of date, contradictory or badly organized, RAG will faithfully retrieve out-of-date, contradictory, badly organized answers. And retrieval is not perfect — if the system fetches the wrong passage, the AI answers from the wrong passage. Auditability is what lets you catch that.
+RAG does not make the AI smarter, more careful or better at reasoning. It changes *what the AI knows*, not *how well it thinks*. It also depends entirely on the quality of what you put in: if your documents are out of date, contradictory or badly organized, RAG will faithfully retrieve out-of-date, contradictory, badly organized answers. And retrieval is not perfect, if the system fetches the wrong passage, the AI answers from the wrong passage. Auditability is what lets you catch that.
 
 ## Steps
 
@@ -90,11 +90,11 @@ List the questions you most want AI to answer well that depend on knowledge spec
 
 ### Step 2: Use the simple way first
 
-Before any tool or budget, build the paste-it-in habit. When you need AI help with something specific, give it the specific document in the conversation. Most individual AI work does not need a RAG system — it needs you to stop expecting the model to know things it cannot know, and to hand it the source instead. Master the simple way before reaching for the systematic one.
+Before any tool or budget, build the paste-it-in habit. When you need AI help with something specific, give it the specific document in the conversation. Most individual AI work does not need a RAG system, it needs you to stop expecting the model to know things it cannot know, and to hand it the source instead. Master the simple way before reaching for the systematic one.
 
 ### Step 3: Recognize when you have outgrown pasting
 
-You need an actual knowledge base — a RAG system — when three things are true together: the body of knowledge is too large to paste, the same kinds of questions get asked repeatedly, and more than one person needs the answers. A support team answering product questions all day, an organization whose staff constantly look things up in a large policy library: that is when the systematic approach earns its cost. One person occasionally consulting one document does not need it.
+You need an actual knowledge base, a RAG system, when three things are true together: the body of knowledge is too large to paste, the same kinds of questions get asked repeatedly, and more than one person needs the answers. A support team answering product questions all day, an organization whose staff constantly look things up in a large policy library: that is when the systematic approach earns its cost. One person occasionally consulting one document does not need it.
 
 ### Step 4: Ask vendors the right four questions
 
@@ -103,7 +103,7 @@ When a vendor sells you a "chat with your documents" or "AI knowledge assistant"
 1. **Does it show its sources?** Every answer should be traceable to the documents it came from. If it cannot cite, you cannot trust it for serious work.
 2. **How does it stay current?** Updating a document should refresh the AI's answers quickly, with no retraining.
 3. **Where does our data live, and who can see it?** Your documents should stay in a store you control and never be absorbed into a shared model.
-4. **What happens when it does not know?** A good system says it found nothing relevant. A weak one falls back to guessing — straight back into hallucination.
+4. **What happens when it does not know?** A good system says it found nothing relevant. A weak one falls back to guessing, straight back into hallucination.
 
 ### Step 5: Set the expectation with your team
 
@@ -112,13 +112,13 @@ Make sure your team understands the distinction this lesson draws: a plain AI an
 ## Recap
 
 - AI's built-in knowledge has two boundaries: it is frozen at the training cutoff and limited to public data. Everything specific to your organization sits outside both.
-- Two ways to close the gap: paste the document in by hand (simple, free, do it constantly) or connect a searchable knowledge base (systematic — the RAG pattern).
+- Two ways to close the gap: paste the document in by hand (simple, free, do it constantly) or connect a searchable knowledge base (systematic, the RAG pattern).
 - RAG is a three-step pattern: retrieve the relevant passages, augment the prompt with them, generate an answer grounded in them. It is the engine inside nearly every serious business AI tool.
-- It turns a closed-book exam into an open-book one — which is also the strongest defense against hallucination.
+- It turns a closed-book exam into an open-book one, which is also the strongest defense against hallucination.
 - For leaders, RAG improves accuracy, freshness, auditability and data control. Judge any vendor tool by whether it cites sources, stays current, keeps your data yours and admits when it does not know.
 
 ---
 
-You have now seen two ways to customize AI — prompting it well and grounding it in your knowledge. There is a third, far more expensive, and it is the one businesses most often reach for by mistake. The final lesson in this track puts all three side by side so you always choose the right one.
+You have now seen two ways to customize AI, prompting it well and grounding it in your knowledge. There is a third, far more expensive, and it is the one businesses most often reach for by mistake. The final lesson in this track puts all three side by side so you always choose the right one.
 
 [Continue: Prompting vs. Knowledge vs. Training →](/learn/how-ai-works/prompting-vs-knowledge-vs-training)

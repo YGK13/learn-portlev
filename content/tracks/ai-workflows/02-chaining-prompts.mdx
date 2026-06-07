@@ -18,27 +18,33 @@ video:
 
 There is a specific kind of frustration that hits when you have mastered prompt engineering but the output still is not where it needs to be.
 
-You have the role. You have the task specification. You have the context. The prompt is technically correct and the output is technically correct. But it is not the output you would have produced yourself. It is missing something — a non-obvious insight, a structural decision that requires real judgment, a calibration to the specific audience that a general instruction cannot capture.
+You have the role. You have the task specification. You have the context. The prompt is technically correct and the output is technically correct. But it is not the output you would have produced yourself. It is missing something: a non-obvious insight, a structural decision that requires real judgment, a calibration to the specific audience that a general instruction cannot capture.
 
-The reason is not that the prompt is wrong. The reason is that the prompt is doing too much in a single shot. The AI is simultaneously extracting information, interpreting it, structuring an argument and writing prose — four different cognitive modes compressed into one operation. The result is competent at all four and excellent at none.
+The reason is not that the prompt is wrong. The reason is that the prompt is doing too much in a single shot. The AI is simultaneously extracting information, interpreting it, structuring an argument and writing prose: four different cognitive modes compressed into one operation. The result is competent at all four and excellent at none.
 
 Chaining breaks that compression. Instead of one prompt doing everything, you write a sequence of specialized prompts where each one has a clear role, a defined input and a defined output. The chain handles the cognitive architecture. Each link handles one task exceptionally well.
 
 This lesson teaches you three prompt chaining patterns, the failure modes to avoid and how to build your first working chain from a real piece of work.
 
-<FlowDiagram steps={["Input","Step 1","Step 2","Step 3","Output"]} caption="A sequential chain: each step's output becomes the next step's input" />
+<TLDR>
+One prompt compresses four cognitive jobs into one shot and does none of them excellently. Chaining splits the work into specialized links where each step's output is the explicit input of the next. Learn three patterns (Sequential, Branch-and-Merge, Refinement Loop), write an input/output contract for every link before the prompt, check each step before moving on, then save the working chain as a reusable template.
+</TLDR>
+
+<Callout type="key">A chain is not a sequence of prompts. In a sequence the connection between turns is implicit and depends on the AI holding context. In a chain the output of each step is the explicit, structured input of the next. That explicitness is what makes chains reliable.</Callout>
+
+<FlowDiagram steps={[{label:"Input",note:"raw material"},{label:"Step 1",note:"extract"},{label:"Step 2",note:"structure"},{label:"Step 3",note:"write"},{label:"Output",note:"deliverable"}]} caption="A sequential chain: each step's output becomes the next step's input" />
 
 ## Context
 
 ### What Makes a Chain Different from a Sequence of Prompts
 
-The distinction matters. A sequence of prompts is when you ask AI something, get an answer, ask something else and so on — each conversation turn independent of the others.
+The distinction matters. A sequence of prompts is when you ask AI something, get an answer, ask something else and so on, each conversation turn independent of the others.
 
-A chain is when the output of each prompt is the explicit, structured input of the next. The AI in step 3 does not just have access to what happened in steps 1 and 2 — it receives the output of step 2 as the content it works on.
+A chain is when the output of each prompt is the explicit, structured input of the next. The AI in step 3 does not just have access to what happened in steps 1 and 2: it receives the output of step 2 as the content it works on.
 
 The difference is structural. In a sequence, the connection between steps is implicit and depends on the AI's ability to maintain context. In a chain, the connection is explicit: you copy the output, paste it in and tell the next prompt what it is working with.
 
-This explicitness is what makes chains reliable. The AI in step 3 cannot hallucinate what step 2 produced — it is right there in the prompt.
+This explicitness is what makes chains reliable. The AI in step 3 cannot hallucinate what step 2 produced: it is right there in the prompt.
 
 ### Pattern 1: Sequential Chain
 
@@ -50,9 +56,9 @@ Input → Step 1 → Step 2 → Step 3 → Output
 
 Each step transforms the output of the previous step. The chain is complete when the final step produces the deliverable.
 
-**When to use it:** Any task with a natural progression — gather, then analyze, then write. Or extract, then structure, then polish.
+**When to use it:** Any task with a natural progression, gather, then analyze, then write. Or extract, then structure, then polish.
 
-**Example — board presentation narrative:**
+**Example, board presentation narrative:**
 
 Step 1: Extract the five most important facts and decisions from these meeting notes.
 
@@ -74,7 +80,7 @@ Input → Split ─┤             ├─ Merge → Output
 
 **When to use it:** When the task requires two different perspectives, analyses or formats that need to be synthesized. Decision memos (pros and cons evaluated separately, then synthesized). Competitive analyses (your position analyzed independently from competitor position, then compared). Risk assessments (operational risks and strategic risks analyzed separately, then prioritized together).
 
-**Example — build vs. buy analysis:**
+**Example, build vs. buy analysis:**
 
 Step 1A [Build branch]: Evaluate the build option. Analyze: development cost, time to value, maintenance burden, strategic control gained, team capacity required.
 
@@ -98,7 +104,7 @@ Input → Draft → Evaluate → [pass] → Output
 
 **When to use it:** High-stakes deliverables where the first pass is never good enough. Executive communications. Client-facing proposals. Presentations for senior audiences. Any content where tone, precision and structure are critical.
 
-**Example — executive email refinement:**
+**Example, executive email refinement:**
 
 Step 1: Draft an email to the CFO requesting budget approval for the Q3 headcount plan. Context: [paste context]. Goal: secure approval or a meeting to discuss.
 
@@ -109,17 +115,19 @@ Step 2 [receives Step 1 output]: Evaluate this email against these criteria:
 - Is it under 150 words?
 Rate each criterion pass/fail. Identify the two highest-priority improvements.
 
-Step 3 [receives Steps 1 and 2 output]: Rewrite the email addressing the highest-priority issues identified in the evaluation. Do not change what works — only fix what was flagged.
+Step 3 [receives Steps 1 and 2 output]: Rewrite the email addressing the highest-priority issues identified in the evaluation. Do not change what works, only fix what was flagged.
 
 You can run steps 2 and 3 again on the revised output if needed. Most refinement loops reach "ready to send" in two cycles.
 
 ### The Input/Output Contract
 
-Every link in a chain has an input/output contract — a clear specification of what goes in and what comes out.
+Every link in a chain has an input/output contract, a clear specification of what goes in and what comes out.
 
 This sounds obvious. It is routinely violated.
 
 The most common chain failure is a mismatch between what one step produces and what the next step expects. Step 2 expects structured data; step 1 produced flowing prose. Step 3 expects a list of five items; step 2 produced eight. The chain breaks not because the prompts are wrong individually, but because the handoff between them was not specified.
+
+<Callout type="warning" title="The handoff is where chains break">The chain breaks not because the prompts are wrong individually, but because the handoff between them was not specified. Write the input/output contract for every link before you write the prompt. The contracts are the workflow design. The prompts are the implementation.</Callout>
 
 **How to write a clean input/output contract for each step:**
 
@@ -139,10 +147,10 @@ The diagnostic: if you find yourself scanning the output of a step to find the p
 **Failure mode 2: Context bleed.**
 You include too much of the upstream context in each step, trying to give the AI everything it might need. The result is that the AI prioritizes the wrong parts of the context.
 
-The fix: give each step only what it needs to do its specific job. If step 3 is editing prose, it needs the draft text and the editing criteria — not the original raw input from step 1.
+The fix: give each step only what it needs to do its specific job. If step 3 is editing prose, it needs the draft text and the editing criteria, not the original raw input from step 1.
 
 **Failure mode 3: No intermediate quality check.**
-You run the entire chain and get a final output that is wrong — but you do not know which step produced the error. By the time you find the problem, you have wasted multiple prompts.
+You run the entire chain and get a final output that is wrong, but you do not know which step produced the error. By the time you find the problem, you have wasted multiple prompts.
 
 The fix: build a quick quality check after every step that requires judgment. Before moving to step 2, read the step 1 output. Does it actually contain what you need? If not, adjust step 1 and re-run before proceeding.
 
@@ -192,7 +200,7 @@ Once the chain runs cleanly end to end on real input, write it up as a template:
 
 ```
 WORKFLOW: [Name]
-TRIGGER: [What initiates this workflow — what raw input does it receive?]
+TRIGGER: [What initiates this workflow, what raw input does it receive?]
 
 STEP 1: [Name]
 Role: [who the AI is for this step]
@@ -208,6 +216,10 @@ NOTES: [edge cases, failure modes you have encountered, things to watch for]
 
 This template goes into your prompt library. Every time you encounter this task, you run the template rather than rebuilding the chain from scratch.
 
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+The way out of the scaling trap is not working harder. It is building systems.
+</Pullquote>
+
 ## Recap
 
 - A chain is different from a sequence of prompts: the output of each step is the explicit, structured input of the next. The connection is structural, not conversational.
@@ -218,6 +230,6 @@ This template goes into your prompt library. Every time you encounter this task,
 
 ---
 
-The next lesson applies everything you have built here to the most common professional use case: document processing. You will build a complete pipeline that takes any document as input and produces a structured brief, an action list and a risk summary — in minutes.
+The next lesson applies everything you have built here to the most common professional use case: document processing. You will build a complete pipeline that takes any document as input and produces a structured brief, an action list and a risk summary, in minutes.
 
 [Continue: Your First Document Processing Pipeline →](/learn/ai-workflows/your-first-document-pipeline)

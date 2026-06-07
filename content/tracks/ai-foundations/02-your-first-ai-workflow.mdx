@@ -30,13 +30,13 @@ A prompt is a one-off question. A workflow is a repeatable system: fixed inputs,
 
 A workflow has three components that a one-off prompt does not:
 
-1. **Fixed inputs**: You always feed it the same types of information — a meeting transcript, a list of data points, a set of documents.
-2. **A defined output format**: You know exactly what you want out — a one-page brief, a five-bullet summary, a structured proposal.
+1. **Fixed inputs**: You always feed it the same types of information, a meeting transcript, a list of data points, a set of documents.
+2. **A defined output format**: You know exactly what you want out, a one-page brief, a five-bullet summary, a structured proposal.
 3. **A system prompt that does not change**: The instructions you give the AI stay constant. Only the inputs change.
 
 This is what makes a workflow repeatable. You build it once, refine it over a week and then it runs on autopilot indefinitely. Every hour it saves you compounds.
 
-The workflow you will build in this lesson: a **Weekly Context Brief** — an AI system that takes your week's notes, emails and decisions and produces a one-page brief every Monday that starts your week with full clarity.
+The workflow you will build in this lesson: a **Weekly Context Brief**, an AI system that takes your week's notes, emails and decisions and produces a one-page brief every Monday that starts your week with full clarity.
 
 ## Steps
 
@@ -46,7 +46,7 @@ For this lesson, you will build the Weekly Context Brief. But the underlying met
 
 Other high-leverage examples:
 - **Pre-meeting research brief**: Takes a contact's name and company, produces a one-page profile before any important meeting.
-- **Client proposal outline**: Same structure every time, different inputs per client — saves 2-3 hours per proposal.
+- **Client proposal outline**: Same structure every time, different inputs per client, saves 2-3 hours per proposal.
 - **Job description generator**: Takes a role's requirements and produces a full, structured JD in your voice.
 - **Board or leadership update**: Takes bullet-point inputs, produces a polished executive narrative.
 
@@ -58,10 +58,10 @@ Before writing any prompt, write down what you normally gather to do this task m
 
 - Notes from the previous week: decisions made, meetings held, key conversations
 - Important emails sent or received (the ones you would need to reference next week)
-- Open commitments you made to others — what you said you would do, and to whom
+- Open commitments you made to others, what you said you would do, and to whom
 - Your top two to three priorities for the coming week
 
-Write these down. This is your input list. Your workflow will always begin by feeding the AI these inputs — nothing more, nothing less.
+Write these down. This is your input list. Your workflow will always begin by feeding the AI these inputs, nothing more, nothing less.
 
 ### Step 3: Define the output format precisely
 
@@ -69,10 +69,10 @@ Write down exactly what you want the AI to produce before you write a single lin
 
 ```
 Output format (one page, no filler):
-Section 1: Last week's top three wins — 2-3 bullets each, outcome-focused
-Section 2: Open commitments — numbered list, format: [Person] — [Action I said I'd take] — [Due date]
-Section 3: This week's three priorities — ranked 1, 2, 3; one sentence each
-Section 4: One risk or blocker worth watching — two sentences max
+Section 1: Last week's top three wins, 2-3 bullets each, outcome-focused
+Section 2: Open commitments, numbered list, format: [Person], [Action I said I'd take], [Due date]
+Section 3: This week's three priorities, ranked 1, 2, 3; one sentence each
+Section 4: One risk or blocker worth watching, two sentences max
 ```
 
 Vague output definitions produce vague outputs. If you want a table, say table. If you want five bullets, say five bullets.
@@ -81,20 +81,20 @@ Vague output definitions produce vague outputs. If you want a table, say table. 
 
 Open Claude (recommended), ChatGPT or your preferred AI tool. If using Claude, create a new **Project** and paste the system prompt into the Project instructions. This way it is saved permanently and you never have to re-enter it.
 
-Here is the system prompt for the Weekly Context Brief — copy it directly:
+Here is the system prompt for the Weekly Context Brief, copy it directly:
 
 ```
 You are my executive briefing assistant. Each week I will paste my notes, emails and priorities. Your job is to produce my Weekly Context Brief.
 
 Format:
-1. Last Week's Wins (top 3, 2-3 bullet points each — outcome-focused, specific, no filler)
-2. Open Commitments (numbered list — format: [Person] — [What I promised to do] — [Due date or "no date"])
-3. This Week's Priorities (ranked 1, 2, 3 — one direct sentence each)
-4. Risk or Blocker to Watch (one or two sentences — specific, actionable)
+1. Last Week's Wins (top 3, 2-3 bullet points each, outcome-focused, specific, no filler)
+2. Open Commitments (numbered list, format: [Person], [What I promised to do], [Due date or "no date"])
+3. This Week's Priorities (ranked 1, 2, 3, one direct sentence each)
+4. Risk or Blocker to Watch (one or two sentences, specific, actionable)
 
 Rules:
 - Be direct. No padding. No motivational language.
-- If information is missing for a section, write "Not enough information provided" — do not invent anything.
+- If information is missing for a section, write "Not enough information provided", do not invent anything.
 - Total length: one page. If it runs longer, cut the least important content, do not summarize everything.
 ```
 
@@ -113,13 +113,13 @@ Make one change at a time to the system prompt. Re-test. Most workflows reach a 
 
 The moment a workflow becomes a habit is the moment it starts compounding.
 
-Block 20 minutes every Sunday evening or Monday morning. Gather your inputs — notes, emails, commitments, priorities. Paste them. Read the brief. That is it.
+Block 20 minutes every Sunday evening or Monday morning. Gather your inputs, notes, emails, commitments, priorities. Paste them. Read the brief. That is it.
 
 Over time you will want to add new input sources (Slack summaries, project updates) and refine the output format as your needs change. That is normal. Good workflows evolve. The goal is to ship the first version this week, not to design the perfect version over the next month.
 
 ## Recap
 
-- A workflow is a repeatable system with fixed inputs, a defined output format and a stable system prompt — not a one-off prompt.
+- A workflow is a repeatable system with fixed inputs, a defined output format and a stable system prompt, not a one-off prompt.
 - Defining the output format before writing the prompt is the most important step. Vague instructions produce vague results.
 - The Weekly Context Brief is the best starting workflow: universal, high-friction, 30+ minutes saved every week.
 - Most workflows stabilize in three to five iterations. Ship the first version now, improve it over time.
@@ -127,6 +127,6 @@ Over time you will want to add new input sources (Slack summaries, project updat
 
 ---
 
-You have built your first AI workflow. Keep going — the next lesson covers chaining workflows together into a system that handles an entire work stream automatically.
+You have built your first AI workflow. Keep going, the next lesson covers chaining workflows together into a system that handles an entire work stream automatically.
 
 [Back to AI Foundations track →](/learn/ai-foundations)

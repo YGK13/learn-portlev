@@ -22,6 +22,16 @@ It does not. The gap between understanding agents and building them is bridged b
 
 This track is hands-on. By the end of it you will have built and shipped a working AI agent. This first lesson is the foundation: setting up your n8n workspace and building your first automation, so the canvas stops being abstract and becomes a place you are comfortable working.
 
+<TLDR>
+No-code automation bridges the gap between understanding AI agents and building them, and n8n is the leading tool. It is a visual flowchart that actually runs, built from four parts: a trigger, nodes, connections and executions. Start with the cloud version, build a deliberately trivial first workflow (a manual trigger plus one node) and lock in the core habit from rep one: read the output of every node after every run.
+</TLDR>
+
+<Callout type="key">The skill n8n asks for is not programming. It is the one you already have: knowing what you want the system to do. You have drawn process flows on whiteboards your whole career. n8n is that whiteboard, except the boxes are real and when you press run, the process executes.</Callout>
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+The most destructive lie circulating among mid-career professionals right now: that to benefit from AI, you need to learn to code.
+</Pullquote>
+
 <FlowDiagram steps={[{label:"Trigger",note:"what starts it"},{label:"Node",note:"a step"},{label:"Node",note:"another step"},{label:"Result",note:"the output"}]} caption="An n8n workflow: a trigger, a chain of nodes, a result" />
 
 ## Context
@@ -51,11 +61,15 @@ n8n comes in two forms. The **cloud** version is hosted for you: you sign up, yo
 
 For learning this track and for most professional use, start with the cloud version. It removes every piece of technical friction so you can focus on building. You can always move to self-hosted later if volume or data-control requirements call for it. Do not let the hosting decision delay you: take the cloud version and start.
 
+<Callout type="warning" title="Do not let hosting stall you">Self-hosting is cheaper at scale and keeps everything on your own systems, but it requires technical setup. That setup is exactly the kind of friction that kills momentum before you have built anything. Take the cloud version now. The hosting decision can wait until volume or data-control requirements actually force it.</Callout>
+
 ### What you are about to build
 
 This lesson's automation is deliberately trivial: a workflow with a manual trigger and one or two simple nodes that produce an output. It will not be useful. That is the point. The goal of the first build is not utility. It is to make the canvas, the trigger, the nodes, the connections and the execution log familiar, so that when the next lessons add AI models and real tools, the environment is already comfortable. You learn the room before you rearrange the furniture.
 
 ## Steps
+
+<FlowDiagram steps={[{label:"Create workspace",note:"cloud account, blank canvas"},{label:"Learn the canvas",note:"add-node, save, executions"},{label:"Trigger + action",note:"manual trigger, one node, connect"},{label:"Run and read",note:"check every node's output"},{label:"Save and log",note:"name it, find it in executions"}]} caption="The five steps of your first build" />
 
 ### Step 1: Create your workspace
 

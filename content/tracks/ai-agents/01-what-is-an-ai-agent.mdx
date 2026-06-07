@@ -24,7 +24,15 @@ That gap is expensive. When you cannot define an agent, you cannot tell whether 
 
 The good news: the core distinction is simple and you can hold it in one sentence. A chatbot answers. An agent acts. This lesson unpacks that sentence into a working understanding of what an AI agent is, how it operates and why "it acts" changes everything about how you evaluate and govern it.
 
-<FlowDiagram loop steps={["Observe","Think","Act"]} caption="The agent loop: observe, think, act, repeat until the goal is met" />
+<TLDR>
+A chatbot answers; an agent acts. An agent is an ordinary language model placed in a loop (observe, think, act) and given tools and a goal, so it takes real actions instead of only producing text. That same ability to act moves it into a higher risk category: a wrong agent does the wrong thing before you can catch it, so it needs deliberate oversight.
+</TLDR>
+
+<Callout type="key" title="The whole distinction in one line">
+A chatbot answers. An agent acts. If a person still has to carry out everything the AI suggests, it is a chatbot, however it is marketed. If it checks things, sends things, changes things on its own, it is an agent.
+</Callout>
+
+<FlowDiagram steps={[{label:"Observe",note:"Look at the goal, what has happened so far and the result of the last action"},{label:"Think",note:"Decide the next step, or whether the goal is already met"},{label:"Act",note:"Use a tool, send a request, make a change"},{label:"Repeat",note:"Loop until the goal is met or a stopping point is hit"}]} caption="The agent loop: observe, think, act, repeat until the goal is met" />
 
 ## Context
 
@@ -35,6 +43,10 @@ Start with the thing you already know. When you use ChatGPT or Claude in the ord
 An agent is different in one specific way: it can take actions, not just produce text. An agent can check your calendar, send an email, search the web, update a record in a database, create a file, run a piece of software. It does things, and then it continues working based on what those things returned.
 
 Here is the same task, both ways. *Chatbot version:* you ask, "what does my Thursday look like?" and paste in your calendar; it answers. *Agent version:* you say, "look at my Thursday and move any internal meeting that conflicts with the client call," and it checks the calendar itself, identifies the conflicts, and reschedules them. The chatbot needed you to fetch the information and to carry out the result. The agent did both ends itself.
+
+<Callout type="example" title="Same task, two modes">
+Chatbot: you ask "what does my Thursday look like?" and paste in your calendar; it answers. Agent: you say "move any internal meeting that conflicts with the client call," and it checks the calendar, finds the conflicts and reschedules them itself. The chatbot needed you on both ends. The agent did both ends itself.
+</Callout>
 
 ### The loop: observe, think, act
 
@@ -48,6 +60,10 @@ How does an agent actually work? Underneath, every AI agent runs the same simple
 The agent stays in this loop, action after action, until it decides the goal is met or it hits a stopping point. That is the entire mechanism. An agent is a large language model placed inside a loop, given the ability to act, and pointed at a goal.
 
 This is why agents can handle work that a single AI response cannot. A single response is one shot: input goes in, text comes out, done. The loop lets the AI take a step, see what happened, adjust and take another step. It can react to what it finds. If a search returns nothing useful, it can search differently. If a file is missing, it can notice and respond. That capacity to course-correct mid-task is what the loop buys.
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+Claude does not just execute steps. It thinks about what the right steps are.
+</Pullquote>
 
 ### What an agent needs to exist
 
@@ -89,15 +105,34 @@ For any agent or proposed agent, make yourself answer: what actions can this thi
 
 When a vendor pitches an "agentic" product, do not accept the label. Ask directly: is this a chatbot or an agent? What specific actions can it take without a human approving each one? What can it reach into and change? A vendor who cannot answer those plainly does not have a product you are ready to buy. A vendor who answers them clearly has just given you the start of your risk assessment.
 
+Copy these four questions into your next vendor call or RFP:
+
+```text
+1. Is this product a chatbot or an agent? In other words,
+   does it only produce text for a person to act on, or
+   does it take actions itself?
+
+2. What specific actions can it take WITHOUT a human
+   approving each one? List them.
+
+3. What systems can it reach into and change (calendar,
+   email, CRM, files, payments, records)?
+
+4. What is the worst action it could take by mistake, and
+   what stops that from happening?
+```
+
+A vendor who answers all four plainly has handed you the start of your risk assessment. A vendor who cannot is selling a label, not a product.
+
 ## Recap
 
-- A chatbot answers; an agent acts. The agent does things in the world — sends, checks, changes, creates — not just produces text for you to act on.
+- A chatbot answers; an agent acts. The agent does things in the world (sends, checks, changes, creates), not just produces text for you to act on.
 - Every agent runs the same loop: observe the situation, think about the next step, act, then observe the result and repeat until the goal is met or a stopping point is reached.
 - An agent needs five things: a goal, tools (the actions it can take), the ability to observe results, the loop and a stopping point. It is ordinary AI placed in a loop and given tools, not a smarter kind of AI.
 - Because an agent acts rather than only answers, a wrong agent takes a wrong action that has already happened by the time you see it. Acting moves a system into a higher risk category that needs deliberate oversight.
 
 ---
 
-An agent is only as capable as the tools it can reach. The next lesson explains how AI connects to your calendar, your files, your CRM and the rest of your software — and the standard that is making those connections far easier.
+An agent is only as capable as the tools it can reach. The next lesson explains how AI connects to your calendar, your files, your CRM and the rest of your software, plus the standard that is making those connections far easier.
 
 [Continue: How AI Connects to Your Other Software →](/learn/ai-agents/how-ai-connects-to-your-tools)
