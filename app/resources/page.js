@@ -158,71 +158,306 @@ const CERT_CATEGORIES = [
 ]
 
 // ------------------------------------------------------------
-// The Toolkit — open-source repos worth knowing, by category.
-// Each line: one repo, one short effect. Curated from a real
-// power-user Claude Code setup.
+// The Toolkit — open-source repos worth knowing.
+// Each repo carries four honest lenses:
+//   quality     = effect on build quality
+//   tokens      = effect on token use (HIGH STAKES: never invent a percentage)
+//   commercial  = commercial potential
+//   howto       = how to access and start using it
+// Token-savings figures appear only when the repo itself states one.
+// Otherwise the effect is described qualitatively.
 // ------------------------------------------------------------
 const TOOLKIT = [
   {
     category: 'Claude Code, supercharged',
+    blurb: 'Power-user setups that make Claude Code itself dramatically more capable. Install these first.',
     items: [
-      { name: 'superpowers',             by: 'obra',          desc: 'Auto-sources and activates skills',         url: 'https://github.com/obra/superpowers' },
-      { name: 'everything-claude-code',  by: 'affaan-m',      desc: 'The complete Claude Code playbook',         url: 'https://github.com/affaan-m/everything-claude-code' },
-      { name: 'gstack',                  by: 'garrytan',      desc: 'A full deploy pipeline inside Claude',      url: 'https://github.com/garrytan/gstack' },
-      { name: 'gbrain',                  by: 'garrytan',      desc: 'A persistent second brain for Claude',      url: 'https://github.com/garrytan/gbrain' },
-      { name: 'Personal_AI_Infrastructure', by: 'danielmiessler', desc: 'A full personal AI operating system',  url: 'https://github.com/danielmiessler/Personal_AI_Infrastructure' },
-      { name: 'claude-doctor',           by: 'millionco',     desc: 'Diagnoses and tunes your setup',            url: 'https://github.com/millionco/claude-doctor' },
-      { name: 'archon',                  by: 'coleam00',      desc: 'Repeatable, standardized coding workflows', url: 'https://github.com/coleam00/archon' },
+      {
+        name: 'superpowers', by: 'obra', url: 'https://github.com/obra/superpowers',
+        oneLiner: 'Auto-sources and activates skills',
+        quality: 'High. Skills load on demand, so Claude reaches for the right capability without you naming it.',
+        tokens: 'Lower per-task: only the active skill loads, instead of a fat system prompt.',
+        commercial: 'Resell your own skill packs to clients or teams.',
+        howto: '`git clone` and follow the README to point Claude at the skills directory.',
+      },
+      {
+        name: 'everything-claude-code', by: 'affaan-m', url: 'https://github.com/affaan-m/everything-claude-code',
+        oneLiner: 'The complete Claude Code playbook',
+        quality: 'High. A curated reference set of hooks, plans and patterns.',
+        tokens: 'Neutral. Reference material you read, not load at runtime.',
+        commercial: 'A reading list, not a product.',
+        howto: 'Browse the GitHub README. Cherry-pick the techniques that apply to your stack.',
+      },
+      {
+        name: 'gstack', by: 'garrytan', url: 'https://github.com/garrytan/gstack',
+        oneLiner: 'A full deploy pipeline inside Claude',
+        quality: 'High. Turns Claude into a build/test/deploy operator with real guardrails.',
+        tokens: 'Neutral. Token cost trades against the human-hours it removes.',
+        commercial: 'Strong: ship client work end-to-end from a single chat.',
+        howto: 'Install per the README. Point it at a git repo with deploy targets configured.',
+      },
+      {
+        name: 'gbrain', by: 'garrytan', url: 'https://github.com/garrytan/gbrain',
+        oneLiner: 'A persistent second brain for Claude',
+        quality: 'High. Long-running context survives sessions and projects.',
+        tokens: 'Lower over time: retrieves only relevant memory instead of replaying full history.',
+        commercial: 'Differentiator for client work: continuity across engagements.',
+        howto: 'Install, point it at the projects you want a brain for, let it index.',
+      },
+      {
+        name: 'Personal_AI_Infrastructure', by: 'danielmiessler', url: 'https://github.com/danielmiessler/Personal_AI_Infrastructure',
+        oneLiner: 'A full personal AI operating system',
+        quality: 'High. The opinionated reference architecture for running AI on your own stack.',
+        tokens: 'Variable: depends on which modules you enable.',
+        commercial: 'A great starting point for productizing an internal AI ops practice.',
+        howto: 'Read the README first; this is a system, not a single tool. Adopt module by module.',
+      },
+      {
+        name: 'claude-doctor', by: 'millionco', url: 'https://github.com/millionco/claude-doctor',
+        oneLiner: 'Diagnoses and tunes your setup',
+        quality: 'High for reliability. Catches silent misconfigurations.',
+        tokens: 'Lower indirectly: fewer wasted retries from broken setups.',
+        commercial: 'Run it for clients as a paid setup audit.',
+        howto: 'Run the doctor command, follow its fixes.',
+      },
+      {
+        name: 'archon', by: 'coleam00', url: 'https://github.com/coleam00/archon',
+        oneLiner: 'Repeatable, standardized coding workflows',
+        quality: 'High. Codifies "the right way" to do common engineering tasks.',
+        tokens: 'Lower per task: shorter prompts, standardized scaffolds.',
+        commercial: 'Productize your engineering playbook for client teams.',
+        howto: 'Clone, define your workflows in the prescribed format, invoke from Claude.',
+      },
     ],
   },
   {
     category: 'Memory and token efficiency',
+    blurb: 'The single highest-leverage category for cost. Memory and compaction repos cut what you pay for repeated context.',
     items: [
-      { name: 'claude-mem',  by: 'thedotmack', desc: 'Free long-term memory, fewer tokens', url: 'https://github.com/thedotmack/claude-mem' },
-      { name: 'mempalace',   by: 'MemPalace',  desc: 'A structured memory palace',          url: 'https://github.com/MemPalace/mempalace' },
-      { name: 'rtk',         by: 'rtk-ai',     desc: 'Cuts token use up to 90 percent',     url: 'https://github.com/rtk-ai/rtk' },
-      { name: 'lat.md',      by: '1st1',       desc: 'Fixes markdown file architecture',    url: 'https://github.com/1st1/lat.md' },
+      {
+        name: 'claude-mem', by: 'thedotmack', url: 'https://github.com/thedotmack/claude-mem',
+        oneLiner: 'Free long-term memory, fewer tokens',
+        quality: 'High. Claude stops forgetting between sessions on the same project.',
+        tokens: 'Materially lower: retrieves the relevant slice instead of replaying full history. Cost scales with what you remember, not how often you ask.',
+        commercial: 'Premium feature for client engagements that span weeks.',
+        howto: 'Install per README, give it a project path, let it manage the memory store.',
+      },
+      {
+        name: 'mempalace', by: 'MemPalace', url: 'https://github.com/MemPalace/mempalace',
+        oneLiner: 'A structured memory palace',
+        quality: 'High when your work is reference-heavy.',
+        tokens: 'Lower: structured retrieval beats raw context dumps.',
+        commercial: 'Sell as a knowledge layer for client teams.',
+        howto: 'Install per README. Ingest your domain documents, then query.',
+      },
+      {
+        name: 'rtk', by: 'rtk-ai', url: 'https://github.com/rtk-ai/rtk',
+        oneLiner: 'Aggressive prompt compaction',
+        quality: 'Neutral to slightly improved: tighter prompts, less drift.',
+        tokens: 'The project advertises up to 90% reduction on suitable workloads. Measure on your own corpus before trusting any figure on yours.',
+        commercial: 'Real margin on high-volume agent or pipeline work.',
+        howto: 'Install per README, wrap your prompt pipeline with the rtk client.',
+      },
+      {
+        name: 'lat.md', by: '1st1', url: 'https://github.com/1st1/lat.md',
+        oneLiner: 'Fixes markdown file architecture',
+        quality: 'Higher: cleaner files, better parseability for AI agents.',
+        tokens: 'Lower indirectly: tidier files mean smaller, focused reads.',
+        commercial: 'Niche, but real if you sell content systems.',
+        howto: 'Install and run against your markdown tree.',
+      },
     ],
   },
   {
     category: 'Agents and skills',
+    blurb: 'Frameworks and patterns for turning Claude into a fleet of specialists, not a single chat.',
     items: [
-      { name: 'agent-skills',      by: 'addyosmani',     desc: 'A curated agent-skills collection',    url: 'https://github.com/addyosmani/agent-skills' },
-      { name: 'book-to-skill',     by: 'virgiliojr94',   desc: 'Turns any book into a Claude skill',   url: 'https://github.com/virgiliojr94/book-to-skill' },
-      { name: 'create-agent-tui',  by: 'OpenRouterTeam', desc: 'A full agent in one command',          url: 'https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui' },
-      { name: 'maestro',           by: 'its-maestro-baby', desc: 'A Bloomberg Terminal for Claude Code', url: 'https://github.com/its-maestro-baby/maestro' },
-      { name: 'helmor',            by: 'dohooo',         desc: 'Multi-agent development fixer',         url: 'https://github.com/dohooo/helmor' },
-      { name: 'paperclip',         by: 'paperclipai',    desc: 'An AI agent that manages agents',      url: 'https://github.com/paperclipai/paperclip' },
-      { name: 'OpenMythos',        by: 'kyegomez',       desc: 'An open-source agent toolkit',         url: 'https://github.com/kyegomez/OpenMythos' },
-      { name: 'token-dashboard',   by: 'nateherkai',     desc: 'Live Claude token tracking',           url: 'https://github.com/nateherkai/token-dashboard' },
+      {
+        name: 'agent-skills', by: 'addyosmani', url: 'https://github.com/addyosmani/agent-skills',
+        oneLiner: 'A curated agent-skills collection',
+        quality: 'High. Vetted skills you do not have to invent.',
+        tokens: 'Lower per task: load only the skill the moment needs.',
+        commercial: 'Use these as starter blocks for client agents.',
+        howto: 'Browse the catalog, copy the skill folder, point Claude at it.',
+      },
+      {
+        name: 'book-to-skill', by: 'virgiliojr94', url: 'https://github.com/virgiliojr94/book-to-skill',
+        oneLiner: 'Turns any book into a Claude skill',
+        quality: 'High for domain expertise. Embeds the book\'s framework into Claude.',
+        tokens: 'Lower than copy-pasting the book; higher than no context. Net positive.',
+        commercial: 'Productize your own book as a paid skill. Direct monetization.',
+        howto: 'Feed it a PDF or text. Out comes a skill folder you ship.',
+      },
+      {
+        name: 'create-agent-tui', by: 'OpenRouterTeam', url: 'https://github.com/OpenRouterTeam/skills/tree/main/skills/create-agent-tui',
+        oneLiner: 'A full agent in one command',
+        quality: 'High starter quality. Right defaults, fewer footguns.',
+        tokens: 'Neutral. Scaffolds the agent, you choose the model.',
+        commercial: 'Fastest path from idea to demoable client agent.',
+        howto: 'Run the command, answer the TUI prompts, get a working agent.',
+      },
+      {
+        name: 'maestro', by: 'its-maestro-baby', url: 'https://github.com/its-maestro-baby/maestro',
+        oneLiner: 'A Bloomberg Terminal for Claude Code',
+        quality: 'High visibility into what the agent is doing.',
+        tokens: 'Neutral to slightly lower: easier to spot wasteful patterns.',
+        commercial: 'A dashboard you can demo to enterprise buyers.',
+        howto: 'Install, point at your Claude sessions, watch the panes.',
+      },
+      {
+        name: 'helmor', by: 'dohooo', url: 'https://github.com/dohooo/helmor',
+        oneLiner: 'Multi-agent development fixer',
+        quality: 'High on complex bug hunts and refactors.',
+        tokens: 'Higher per task than a single agent, but lower than failing repeatedly.',
+        commercial: 'Premium "stuck-codebase rescue" engagements.',
+        howto: 'Install, point at the broken repo, supervise.',
+      },
+      {
+        name: 'paperclip', by: 'paperclipai', url: 'https://github.com/paperclipai/paperclip',
+        oneLiner: 'An AI agent that manages agents',
+        quality: 'High for orchestration at scale.',
+        tokens: 'Variable: a meta-agent uses tokens, but it offsets coordination overhead.',
+        commercial: 'Strong: sell agent-fleet operations to enterprise clients.',
+        howto: 'Install per README, give it the agents to manage.',
+      },
+      {
+        name: 'OpenMythos', by: 'kyegomez', url: 'https://github.com/kyegomez/OpenMythos',
+        oneLiner: 'An open-source agent toolkit',
+        quality: 'High when you need a vendor-neutral base.',
+        tokens: 'Variable by configuration.',
+        commercial: 'Build proprietary agents without lock-in.',
+        howto: 'Clone, install dependencies, pick the agent type to extend.',
+      },
+      {
+        name: 'token-dashboard', by: 'nateherkai', url: 'https://github.com/nateherkai/token-dashboard',
+        oneLiner: 'Live Claude token tracking',
+        quality: 'Neutral. Diagnostic.',
+        tokens: 'Lower indirectly: you cannot cut what you do not measure.',
+        commercial: 'Run it for clients to justify AI spend with real numbers.',
+        howto: 'Install, point at your usage source, watch the live dashboard.',
+      },
     ],
   },
   {
     category: 'Content, media and design',
+    blurb: 'Ship publishable output (decks, audio, print, design) without paying SaaS rent.',
     items: [
-      { name: 'PptxGenJS',         by: 'gitbrent',      desc: 'Generate slide decks, a free Gamma',       url: 'https://github.com/gitbrent/PptxGenJS' },
-      { name: 'supertonic',        by: 'supertone-inc', desc: 'Fast TTS, an ElevenLabs alternative',      url: 'https://github.com/supertone-inc/supertonic' },
-      { name: 'LuxTTS',            by: 'ysharma3501',   desc: 'Free text-to-speech for Claude',           url: 'https://github.com/ysharma3501/LuxTTS' },
-      { name: 'cli-printing-press', by: 'mvanhorn',     desc: 'Publication-quality output from the CLI',  url: 'https://github.com/mvanhorn/cli-printing-press' },
-      { name: 'open-design',       by: 'nexu-io',       desc: 'An open design system for Claude builds',  url: 'https://github.com/nexu-io/open-design' },
+      {
+        name: 'PptxGenJS', by: 'gitbrent', url: 'https://github.com/gitbrent/PptxGenJS',
+        oneLiner: 'Generate slide decks programmatically',
+        quality: 'High when content is data-driven. Pixel-perfect on layouts you control.',
+        tokens: 'Neutral. The model writes content; this writes the pptx.',
+        commercial: 'Strong: an alternative to monthly Gamma fees.',
+        howto: '`npm install pptxgenjs`. Build a script that takes structured content and emits a deck.',
+      },
+      {
+        name: 'supertonic', by: 'supertone-inc', url: 'https://github.com/supertone-inc/supertonic',
+        oneLiner: 'Fast TTS, an ElevenLabs alternative',
+        quality: 'High for usable narration without a subscription.',
+        tokens: 'N/A. Saves SaaS dollars, not tokens.',
+        commercial: 'Strong: podcast and video production at lower cost.',
+        howto: 'Install per README. Feed it text, get audio.',
+      },
+      {
+        name: 'LuxTTS', by: 'ysharma3501', url: 'https://github.com/ysharma3501/LuxTTS',
+        oneLiner: 'Free text-to-speech for Claude',
+        quality: 'Good for quick voiceovers; not a replacement for studio TTS.',
+        tokens: 'N/A.',
+        commercial: 'Use as a free fallback when SaaS quotas run out.',
+        howto: 'Install per README. Plug into your Claude pipeline.',
+      },
+      {
+        name: 'cli-printing-press', by: 'mvanhorn', url: 'https://github.com/mvanhorn/cli-printing-press',
+        oneLiner: 'Publication-quality output from the CLI',
+        quality: 'High typographic quality (LaTeX-class).',
+        tokens: 'Neutral. The press handles formatting; the model writes.',
+        commercial: 'Sell self-published books and reports without a designer.',
+        howto: 'Install per README, hand it markdown, get a print-ready PDF.',
+      },
+      {
+        name: 'open-design', by: 'nexu-io', url: 'https://github.com/nexu-io/open-design',
+        oneLiner: 'An open design system for Claude builds',
+        quality: 'High visual consistency across AI-generated UIs.',
+        tokens: 'Neutral.',
+        commercial: 'Use as the house style for productized client builds.',
+        howto: 'Install per README, reference the design tokens in your Claude prompts and components.',
+      },
     ],
   },
   {
     category: 'Web, data and research',
+    blurb: 'Give Claude eyes and hands on the open web and your own data.',
     items: [
-      { name: 'browser-harness', by: 'browser-use', desc: 'Flexible AI browser control',      url: 'https://github.com/browser-use/browser-harness' },
-      { name: 'Scrapling',       by: 'D4Vinci',     desc: 'A robust, free web scraper',       url: 'https://github.com/D4Vinci/Scrapling' },
-      { name: 'wterm',           by: 'vercel-labs', desc: 'A web terminal, by Vercel',        url: 'https://github.com/vercel-labs/wterm' },
-      { name: 'data-formulator', by: 'microsoft',   desc: 'Natural-language BI and charts',   url: 'https://github.com/microsoft/data-formulator' },
+      {
+        name: 'browser-harness', by: 'browser-use', url: 'https://github.com/browser-use/browser-harness',
+        oneLiner: 'Flexible AI browser control',
+        quality: 'High for any task that needs a real browser.',
+        tokens: 'Neutral to higher: the browser context is not free; cap rounds.',
+        commercial: 'Strong: scraping, QA, research, lead gen.',
+        howto: 'Install per README, give Claude a goal and a URL, watch it work.',
+      },
+      {
+        name: 'Scrapling', by: 'D4Vinci', url: 'https://github.com/D4Vinci/Scrapling',
+        oneLiner: 'A robust, free web scraper',
+        quality: 'High on hostile sites where naive scrapers fail.',
+        tokens: 'N/A. Saves time and SaaS costs.',
+        commercial: 'Strong: an alternative to paid scraping APIs for research and lead gen.',
+        howto: '`pip install scrapling`. Build the scraper into your research pipeline.',
+      },
+      {
+        name: 'wterm', by: 'vercel-labs', url: 'https://github.com/vercel-labs/wterm',
+        oneLiner: 'A web terminal, by Vercel',
+        quality: 'High for client-facing terminal experiences.',
+        tokens: 'Neutral.',
+        commercial: 'Embed in deliverables that include a live shell.',
+        howto: 'Install per README, expose the terminal in your app.',
+      },
+      {
+        name: 'data-formulator', by: 'microsoft', url: 'https://github.com/microsoft/data-formulator',
+        oneLiner: 'Natural-language BI and charts',
+        quality: 'High for fast exploratory analysis.',
+        tokens: 'Variable, depends on dataset size. Cap with sampling.',
+        commercial: 'Replace a chunk of Tableau or PowerBI usage for clients.',
+        howto: 'Install per README. Load a dataset, ask in natural language.',
+      },
     ],
   },
   {
     category: 'Privacy, learning and career',
+    blurb: 'Govern what leaves your environment, accelerate your own skills, and ship things that earn.',
     items: [
-      { name: 'LLM-anonymization',        by: 'zeroc00I',  desc: 'Strips sensitive data from prompts', url: 'https://github.com/zeroc00I/LLM-anonymization' },
-      { name: 'ai-engineering-from-scratch', by: 'rohitg00', desc: 'The 428-lesson AI engineering course', url: 'https://github.com/rohitg00/ai-engineering-from-scratch' },
-      { name: 'omniget',                  by: 'tonhowtf',  desc: 'Free courses pulled from everywhere', url: 'https://github.com/tonhowtf/omniget' },
-      { name: 'career-ops',               by: 'santifer',  desc: 'An AI-powered job-search system',    url: 'https://github.com/santifer/career-ops' },
+      {
+        name: 'LLM-anonymization', by: 'zeroc00I', url: 'https://github.com/zeroc00I/LLM-anonymization',
+        oneLiner: 'Strips sensitive data from prompts',
+        quality: 'High. Real governance, not vibes.',
+        tokens: 'Neutral.',
+        commercial: 'Strong for any enterprise sale: handle PII safely.',
+        howto: 'Install per README. Wrap your prompt pipeline with the anonymizer.',
+      },
+      {
+        name: 'ai-engineering-from-scratch', by: 'rohitg00', url: 'https://github.com/rohitg00/ai-engineering-from-scratch',
+        oneLiner: 'A 428-lesson AI engineering course',
+        quality: 'High for technical depth, well beyond the academy.',
+        tokens: 'N/A.',
+        commercial: 'Builds the skills behind paid AI engineering work.',
+        howto: 'Start at the README index. Work through the lessons in order.',
+      },
+      {
+        name: 'omniget', by: 'tonhowtf', url: 'https://github.com/tonhowtf/omniget',
+        oneLiner: 'Free courses pulled from everywhere',
+        quality: 'High coverage, variable depth.',
+        tokens: 'N/A.',
+        commercial: 'Cheap upskilling for you or your team.',
+        howto: 'Install per README, search by topic.',
+      },
+      {
+        name: 'career-ops', by: 'santifer', url: 'https://github.com/santifer/career-ops',
+        oneLiner: 'An AI-powered job-search system',
+        quality: 'High for structured search at scale.',
+        tokens: 'Neutral.',
+        commercial: 'Operate as a paid service for executive job-seekers.',
+        howto: 'Install per README, configure your target roles, let it run.',
+      },
     ],
   },
 ]
@@ -385,37 +620,64 @@ export default function ResourcesPage() {
           <h2 id="build-heading" className="text-2xl font-bold mb-2" style={{ color: '#0f172a' }}>
             The toolkit
           </h2>
-          <p className="text-base leading-7 mb-8" style={{ color: '#374151' }}>
+          <p className="text-base leading-7 mb-3" style={{ color: '#374151' }}>
             Open-source repositories worth knowing as you move from learning to building:
             the actual toolkit behind a power-user Claude Code setup, grouped by what each
-            one does for you.
+            one does for you. Every entry below carries four lenses so you can decide what
+            is worth installing.
           </p>
+          <ul className="mb-8 grid gap-2 sm:grid-cols-2 list-none p-0" style={{ color: '#374151' }}>
+            <li><strong>Quality:</strong> what it does for the build itself.</li>
+            <li><strong>Tokens:</strong> the cost lens. Higher, lower or neutral. Percentages only when a repo states them.</li>
+            <li><strong>Commercial:</strong> where the money is if you operate it for clients.</li>
+            <li><strong>How to use:</strong> the first command, the first decision, the first link.</li>
+          </ul>
 
-          <div className="flex flex-col gap-7">
+          <div className="flex flex-col gap-10">
             {TOOLKIT.map(group => (
               <div key={group.category}>
-                <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: '#4f46e5' }}>
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-1" style={{ color: '#4f46e5' }}>
                   {group.category}
                 </h3>
-                <ul className="flex flex-col list-none p-0 m-0 rounded-xl border divide-y" style={{ borderColor: '#e2e8f0', backgroundColor: '#fff' }}>
+                {group.blurb && (
+                  <p className="mb-4 text-sm" style={{ color: '#64748b' }}>
+                    {group.blurb}
+                  </p>
+                )}
+                <ul className="flex flex-col gap-3 list-none p-0 m-0">
                   {group.items.map(it => (
                     <li
                       key={it.name}
-                      className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5 px-4 py-2.5"
-                      style={{ borderColor: '#f1f5f9' }}
+                      className="rounded-xl border bg-white p-4"
+                      style={{ borderColor: '#e2e8f0' }}
                     >
-                      <a
-                        href={it.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm font-semibold font-mono no-underline hover:underline"
-                        style={{ color: '#0f172a' }}
-                      >
-                        {it.name}
-                      </a>
-                      <span className="text-xs" style={{ color: '#cbd5e1' }}>/{it.by}</span>
-                      <span className="text-xs" style={{ color: '#cbd5e1' }}>&middot;</span>
-                      <span className="text-sm" style={{ color: '#64748b' }}>{it.desc}</span>
+                      <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                        <a
+                          href={it.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-base font-bold font-mono no-underline hover:underline"
+                          style={{ color: '#0f172a' }}
+                        >
+                          {it.name}
+                        </a>
+                        <span className="text-xs" style={{ color: '#cbd5e1' }}>/{it.by}</span>
+                        <span className="text-xs" style={{ color: '#cbd5e1' }}>&middot;</span>
+                        <span className="text-sm font-medium" style={{ color: '#475569' }}>{it.oneLiner}</span>
+                      </div>
+                      <dl className="mt-3 grid gap-x-5 gap-y-2 sm:grid-cols-2">
+                        {[
+                          ['Quality',     it.quality],
+                          ['Tokens',      it.tokens],
+                          ['Commercial',  it.commercial],
+                          ['How to use',  it.howto],
+                        ].map(([k, v]) => v && (
+                          <div key={k}>
+                            <dt className="text-[10px] font-bold uppercase tracking-wider" style={{ color: '#94a3b8' }}>{k}</dt>
+                            <dd className="text-sm leading-relaxed" style={{ color: '#374151' }}>{v}</dd>
+                          </div>
+                        ))}
+                      </dl>
                     </li>
                   ))}
                 </ul>
