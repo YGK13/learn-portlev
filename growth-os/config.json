@@ -47,5 +47,10 @@
     "timezone": "Asia/Jerusalem",
     "shabbatAware": true,
     "note": "No runs scheduled Friday evening through Saturday night. Weekly sync runs Sunday morning (start of Yuri's work week)."
-  }
+  },
+
+  "dailyResearchNotionDsId": "fc49c2b2-ea33-43e1-af59-20cfe89060fa",
+  "dailyResearchNotionDbId": "56445d98-4e99-4033-8df5-19a2f6655c1d",
+  "dailyResearchNotionDbName": "Daily AI Signal (Leverage Brief)",
+  "leverageSignalEngineRepo": "C:/Users/yurik/Downloads/leverage-signal-engine"
 }

@@ -9,6 +9,7 @@
 - `state/intelligence/` (last 30 days of daily briefs)
 - `state/content-calendar.md`, `state/topical-map.md`
 - IF a Notion daily-research database is configured in config.json (key: `dailyResearchNotionDbId`), pull the month's accumulated daily notes. If not configured, run self-sufficient and say so.
+- DailyResearchDS: query data source `dailyResearchNotionDsId` (Daily AI Signal, Leverage Brief) for rows where `Date` is in the target month AND `Strength = Signal` AND `Status != Rejected`. Group by `Domain` to map onto the six index sweeps. Read `Signal`, `Operator implication`, `Source URL`, `Source date`, `Rung`, `Brand frame`. Same source the `leverage-brief-daily-research` dispatcher writes to daily.
 
 ## Does (six index sweeps)
 1. **Tools and models:** what shipped or materially changed this month (Anthropic, OpenAI, Google, Microsoft, open-source). For each, one line on what it changes for the ICP.
