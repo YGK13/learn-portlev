@@ -26,6 +26,14 @@ This is the most common gap between what AI can do and what businesses need it t
 
 This lesson explains how that gap gets closed. The pattern has a technical name, RAG, but the idea is simple, and understanding it tells you how nearly every serious business AI tool actually works, and what to demand when a vendor tries to sell you one.
 
+<TLDR>
+AI knows the public internet but nothing about your company, your policies, your clients or your last quarter. RAG (Retrieval-Augmented Generation) closes that gap by finding the relevant passages from your own documents and handing them to the AI before it answers. It is the engine inside nearly every serious business AI tool, and it turns a closed-book exam into an open-book one.
+</TLDR>
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+AI is voraciously good at codified knowledge. It has ingested more textbooks, manuals, and procedures than any human could read in a hundred lifetimes.
+</Pullquote>
+
 <FlowDiagram steps={[{label:"Question",note:"what is asked"},{label:"Retrieve",note:"find relevant passages"},{label:"Augment",note:"add them to the prompt"},{label:"Generate",note:"answer from them"}]} caption="The RAG pattern: how AI answers from your own documents" />
 
 ## Context

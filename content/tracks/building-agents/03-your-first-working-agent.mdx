@@ -22,7 +22,19 @@ It is not an agent. An agent, as the "AI Agents, Explained" track defined it, is
 
 This lesson is where you cross that line. You will build a real, working AI agent in n8n: give it tools, write its instructions, set it loose on a goal and watch it decide. It is the centerpiece of this track, and by the end of this lesson the abstract idea of an agent will be something you have built with your own hands.
 
+<TLDR>
+An agent differs from a workflow in one specific way: the AI itself decides which steps to take. In n8n, you build one by adding the AI Agent node, attaching a minimal set of tools, writing precise instructions and giving it a per-run goal. Pick a genuinely agent-shaped task, run it, then watch the decision trail, not just the output.
+</TLDR>
+
 <FlowDiagram loop steps={["Observe","Think","Choose a tool","Act"]} caption="Inside the agent node: the observe-think-act loop, running until the goal is met" />
+
+<Callout type="key" title="The three things an agent needs">
+Tools, instructions and a goal. Tools are its reach and its risk surface, so keep them minimal. Instructions are its permanent judgment, so write them with the care of a Track 2 prompt. The goal is per-run, and the clearer it is, the better the agent's choices.
+</Callout>
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+Claude does not just execute steps. It thinks about what the right steps are.
+</Pullquote>
 
 ## Context
 

@@ -22,6 +22,10 @@ Every time you start a new chat and rebuild your system prompt from scratch, you
 
 This lesson walks you through building yours, not a collection of prompts you saved somewhere and forgot about, but a system you actually use.
 
+<TLDR>
+A prompt library is a database of tested, named, versioned prompt systems, not a folder of text files. Audit the tasks you already repeat, format your top five prompts with name, version, purpose and input spec, load them into a Claude Project and add one new prompt every week. That is how AI capability compounds instead of resetting every session.
+</TLDR>
+
 <Callout type="key">A prompt library is a database of tested, named, versioned prompt systems, not a folder of text files. Start with an audit: find the tasks you already repeat.</Callout>
 
 ## Context
@@ -38,7 +42,19 @@ Here is what separates a real prompt library from a dumping ground:
 
 **Every prompt lives in Claude Projects (or equivalent).** The best prompt libraries are not stored in a document, they are loaded as system prompts in a persistent AI environment where you can run them instantly.
 
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+A certificate on your LinkedIn profile is not a skill. A documented workflow that saved your team twenty hours a week is a skill.
+</Pullquote>
+
 ## Steps
+
+<FlowDiagram steps={[
+  {label: "Audit", note: "List the AI tasks you already repeat"},
+  {label: "Format", note: "Name, version, purpose, input, notes"},
+  {label: "Load", note: "Paste your top five into a Claude Project"},
+  {label: "Iterate", note: "One new or refined prompt per week"},
+  {label: "Share", note: "Turn proven prompts into team assets"}
+]} caption="The five-stage path from scattered prompts to a compounding library." />
 
 ### Step 1: Audit your last 10 AI tasks
 
@@ -83,6 +99,8 @@ SYSTEM PROMPT:
 ```
 
 Write each of your top-five prompts in this format before the end of this lesson. Five is the right number to start. Not fifteen, not one, five.
+
+<Callout type="warning" title="Do not skip the format">An unformatted prompt collection is just a notes file. The structure (name, version, purpose, input spec, notes) is what makes a library searchable, shareable and improvable over time. Skip it and your library decays into a graveyard within a month.</Callout>
 
 ### Step 3: Load your library into Claude Projects
 
@@ -146,6 +164,8 @@ The highest-leverage use of a prompt library is not personal, it is organization
 - Create a simple naming convention: DEPT-FUNCTION-VERSION (e.g., HR-JD-DRAFT-v2)
 
 The professional who builds the team's prompt library becomes indispensable. The AI Wage Gap is not just about individual leverage, it is about who builds the systems that make an entire team more effective.
+
+<Callout type="example">The CHRO who ships a "HR-JD-DRAFT-v2" prompt that fifteen recruiters use every week has built more value than the one who ran a smarter personal workflow in private. Visible, reused infrastructure is what gets remembered at review time.</Callout>
 
 ### Step 6: Add your five highest-value prompts right now
 

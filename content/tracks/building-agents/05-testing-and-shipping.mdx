@@ -22,7 +22,13 @@ The distance between those two things is where most amateur builds quietly fail.
 
 This final lesson of the track closes that distance. It covers what turns a working demo into something you can actually rely on: testing it against the inputs you did not design for, handling errors on purpose, keeping a human in the loop where the stakes demand it, and monitoring it once it is live. This is the discipline that separates a builder from someone who once got a workflow to run.
 
+<TLDR>
+A demo that works once is not a deployment. To ship something trustworthy, test against the inputs you did not design for, handle errors on purpose, place a human checkpoint anywhere a mistake is expensive or irreversible, then activate and monitor on a rhythm with an owner and failure alerts.
+</TLDR>
+
 <FlowDiagram steps={["Test the edge cases","Handle errors","Human checkpoint","Ship","Monitor"]} caption="From working demo to trustworthy deployment" />
+
+<Callout type="key" title="The bar that matters">For every edge-case input, the question is not "did it succeed" but "did it fail safely." A build that handles the clean case and breaks loudly and harmlessly on the messy ones is far more trustworthy than one that mostly works and occasionally does something wrong in silence.</Callout>
 
 ## Context
 

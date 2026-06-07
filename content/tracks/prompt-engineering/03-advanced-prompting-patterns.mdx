@@ -24,6 +24,10 @@ That ceiling exists because standard prompts ask AI to do one thing: produce out
 
 These three patterns are what you add when the basic structure is not enough.
 
+<TLDR>
+When standard prompts hit a ceiling, three advanced patterns push through it: chain-of-thought makes the AI reason step by step before answering, few-shot examples show it the target output instead of describing it, and structured role-play turns it into an adversarial reviewer of your own work. Use all three together on your highest-stakes deliverables.
+</TLDR>
+
 <FlowDiagram steps={["Chain-of-thought","Few-shot examples","Structured role-play"]} caption="Three advanced patterns, combine all three for high-stakes work" />
 
 ## Context
@@ -62,6 +66,10 @@ Then give me your recommendation with the three most important reasons.
 
 The second prompt produces analysis. The first produces an opinion.
 
+<Callout type="key" title="Reasoning out loud is the unlock">
+AI models produce higher-quality output when they articulate intermediate steps. Asking for the reasoning before the conclusion forces the model to surface assumptions and catch logical errors a direct-to-answer pass would skip.
+</Callout>
+
 ### Pattern 2: Few-Shot Examples
 
 Few-shot prompting gives the AI one to three examples of the output you want before asking it to produce the actual output. This is the fastest way to close the gap between what AI produces by default and what your work actually requires.
@@ -91,6 +99,10 @@ My input: [paste your actual content]
 One strong example beats a paragraph of tone instructions every time. Two examples beat one. Three is usually diminishing returns.
 
 **The most common mistake:** Using AI-generated examples. The few-shot example should be your own work, something you wrote, edited and would publish. Using a piece the AI wrote introduces the AI's defaults, which you are trying to override.
+
+<Callout type="warning" title="Never use AI-generated examples">
+The whole point of few-shot is to override the AI's defaults with your own standard. If you feed it work it (or another model) produced, you are reinforcing the very output you are trying to move away from. Use only your own best prior work.
+</Callout>
 
 ### Pattern 3: Structured Role-Play
 
@@ -136,6 +148,10 @@ Here is the strategy: [paste your strategy]
 ```
 
 This pattern produces feedback that forces you to defend your work at a level your internal team will rarely push. It is one of the highest-value uses of AI for senior executives.
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+The critical skill isn’t knowing how to use AI. It’s knowing where to use it and where to override it.
+</Pullquote>
 
 ## Steps
 

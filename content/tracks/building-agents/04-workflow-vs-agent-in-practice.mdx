@@ -22,7 +22,15 @@ It is tempting, having just built an agent, to make everything an agent. Agents 
 
 The "When to Use an Agent" lesson in the AI Agents track gave you the principle. This lesson makes it a working decision you apply every time you open the n8n canvas: a clear test, an honest accounting of what each choice costs, and the discipline to build the simplest thing that solves the problem.
 
+<TLDR>
+For any task, choose the leftmost option on the spectrum that solves it: single prompt, fixed workflow or agent. The deciding test is whether you can write the steps down in advance. If yes, build a fixed workflow. If the path genuinely varies, build an agent. Most strong builds in n8n are hybrids, and when you are unsure, default to the simpler build.
+</TLDR>
+
 <FlowDiagram steps={[{label:"Single prompt",note:"one step"},{label:"Fixed workflow",note:"known steps"},{label:"Agent",note:"the AI decides"}]} caption="The spectrum: choose the leftmost option that solves the problem" />
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+Claude does not just execute steps. It thinks about what the right steps are.
+</Pullquote>
 
 ## Context
 

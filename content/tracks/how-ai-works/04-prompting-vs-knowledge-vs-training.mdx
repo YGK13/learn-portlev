@@ -24,6 +24,10 @@ At some point, someone in your organization will say "we should train our own AI
 
 This is the lesson that ties the track together. You now understand what an AI is, why it makes things up and how to ground it in your own knowledge. This final lesson gives you the decision framework: when someone proposes making the AI "ours," you will know exactly which of the three levers they actually need, and which one they are about to overpay for.
 
+<TLDR>
+Customizing AI is three different levers, not one: prompting changes behavior, knowledge changes what it knows, training changes the model itself. Cost and effort climb by a factor of thousands from left to right. Use the leftmost lever that solves your problem, and never use training to fix a facts problem.
+</TLDR>
+
 <FlowDiagram steps={[{label:"Prompting",note:"changes behavior"},{label:"Knowledge",note:"changes what it knows"},{label:"Training",note:"changes the model"}]} caption="Three ways to customize AI, cost and effort rise sharply left to right" />
 
 ## Context
@@ -51,6 +55,14 @@ A simple way to hold the three apart:
 
 For almost any everyday problem, you give better directions or hand over the right files. You do not send someone back to school. And critically: if the hire keeps getting facts wrong, *more school does not fix that*, they need the handbook, not another degree. Hold that thought; it is the most common mistake.
 
+<Callout type="key" title="The one rule that prevents most of the damage">
+Use the leftmost lever that solves your problem. Prompting first, knowledge second, training only as a narrow last resort. Cost and effort climb by a factor of thousands as you move right, while flexibility and transparency fall.
+</Callout>
+
+<Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
+The critical skill isn’t knowing how to use AI. It’s knowing where to use it and where to override it.
+</Pullquote>
+
 ### How they compare on what matters
 
 | | Prompting | Knowledge (RAG) | Training (fine-tuning) |
@@ -71,6 +83,10 @@ The single most common and most costly error leaders make with AI is reaching fo
 It usually goes like this. The AI is not performing well on some task. "Train it on our data" sounds like the thorough, serious fix. Budget gets approved. Months pass. Money is spent. And often the result underperforms a good prompt plus a RAG knowledge base that a competent person could have set up in a week for a tiny fraction of the cost.
 
 The deepest version of the mistake is using training to fix a *knowledge* problem. If the AI gives wrong answers because it does not know your policies or your recent data, training is the wrong tool, and an actively bad one. Training bakes information into the model in a way that is frozen the moment it finishes, cannot be audited and goes stale the instant a document changes. That is the exact opposite of what you want for facts. Facts belong in a knowledge base you can update and inspect, not trained into a model you cannot.
+
+<Callout type="warning" title="Never use training to teach facts">
+If the AI keeps getting your policies, products or numbers wrong, that is a knowledge problem, not a model problem. Training freezes information into something you cannot audit or update. Put facts in a knowledge base you control.
+</Callout>
 
 ### When training is genuinely the answer
 
