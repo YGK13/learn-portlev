@@ -33,12 +33,14 @@ export default function Pullquote({ children, author, role, source }) {
         >
           &ldquo;
         </span>
-        <p
-          className="relative m-0 text-lg leading-8 font-medium"
+        {/* div, not p: in MDX the children are already wrapped in a <p>, and
+            <p> inside <p> is invalid HTML and causes a hydration error. */}
+        <div
+          className="relative m-0 text-lg leading-8 font-medium [&>p]:m-0"
           style={{ color: '#1e293b' }}
         >
           {children}
-        </p>
+        </div>
       </blockquote>
       {(author || source) && (
         <figcaption className="mt-3 pl-1 text-sm" style={{ color: '#64748b' }}>
