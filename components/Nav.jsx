@@ -19,6 +19,12 @@ const NAV_LINKS = [
   { label: 'About',     href: '/about' },
 ]
 
+// Cross-property links shown after a divider in the desktop nav
+const ECOSYSTEM_LINKS = [
+  { label: 'Marketplace', href: 'https://apps.portlev.com' },
+  { label: 'PortLev.com', href: 'https://portlev.com' },
+]
+
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -55,6 +61,23 @@ export default function Nav() {
                 >
                   {link.label}
                 </Link>
+              </li>
+            ))}
+            <li aria-hidden className="mx-1 h-4 w-px bg-slate-200 self-center" />
+            {ECOSYSTEM_LINKS.map(link => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    px-3 py-2 rounded-md text-sm font-medium text-slate-400
+                    hover:text-navy hover:bg-slate-50
+                    transition-colors duration-150 no-underline
+                  "
+                >
+                  {link.label}
+                </a>
               </li>
             ))}
           </ul>

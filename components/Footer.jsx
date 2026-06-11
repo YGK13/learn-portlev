@@ -16,6 +16,8 @@ const PRODUCT_LINKS = [
   { label: 'Executive AI Cohort',   href: '/cohort' },
   { label: 'About Yuri',            href: '/about' },
   { label: 'Credits',               href: '/credits' },
+  { label: 'Marketplace',           href: 'https://apps.portlev.com', external: true },
+  { label: 'PortLev.com',           href: 'https://portlev.com',      external: true },
 ]
 
 // Community is not live yet (Skool not set up). For now every
@@ -96,13 +98,25 @@ export default function Footer() {
             <ul className="space-y-2 list-none p-0 m-0">
               {PRODUCT_LINKS.map(link => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm no-underline transition-colors hover:underline"
-                    style={{ color: '#64748b' }}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm no-underline transition-colors hover:underline"
+                      style={{ color: '#64748b' }}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-sm no-underline transition-colors hover:underline"
+                      style={{ color: '#64748b' }}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
