@@ -6,7 +6,7 @@ order: 1
 level: beginner
 status: published
 tier: free
-updated: "2026-05-18"
+updated: "2026-07-06"
 tags: ["prompting", "system-prompt", "fundamentals"]
 estReadMin: 9
 video:
@@ -88,6 +88,42 @@ Context includes:
 
 The more specific your context, the less editing you will do. Every hour spent editing AI output is an hour lost to insufficient context.
 
+<KnowledgeCheck
+  id="anatomy-check"
+  questions={[
+    {
+      question: "What separates a prompt from a search query?",
+      options: [
+        "A prompt is longer and more polite",
+        "A prompt specifies role, task and context instead of asking a question",
+        "A prompt always includes a word count"
+      ],
+      answer: 1,
+      explain: "Length and politeness change nothing. Specification does: who the AI is, exactly what it must produce and what it needs to know."
+    },
+    {
+      question: "Which line carries the most leverage in any prompt?",
+      options: [
+        "The role assignment",
+        "The closing instruction",
+        "The greeting"
+      ],
+      answer: 0,
+      explain: "Role assignment primes the AI's entire register. A senior consultant persona writes a fundamentally different document than the default assistant."
+    },
+    {
+      question: "You keep heavily editing AI output. Per this lesson, the most likely cause is:",
+      options: [
+        "The model is not powerful enough",
+        "You did not provide enough context and constraints",
+        "You asked during peak hours"
+      ],
+      answer: 1,
+      explain: "Every hour spent editing AI output is an hour lost to insufficient context. Feed it the background, the format and the anti-patterns and the editing collapses."
+    }
+  ]}
+/>
+
 ## Steps
 
 ### Step 1: Build your role library
@@ -148,9 +184,33 @@ These constraints sound obvious. The AI will violate all of them if you do not n
 
 <Callout type="warning" title="If you do not name it, the AI will do it">Every hedge, every "certainly!", every invented statistic shows up because you did not explicitly forbid it. Anti-patterns are not optional polish, they are the difference between output you ship and output you rewrite.</Callout>
 
+<TryIt id="anatomy-tryit" title="Run the three-part structure on real work" prompt={`You are a [specific expert] who [specific experience and specialty].
+
+I need [deliverable type] that [specific function].
+It should be [length/format].
+It must include: [component 1], [component 2], [component 3].
+It should not: [anti-pattern 1], [anti-pattern 2].
+The tone is [X]. The audience is [Y] who [what they care about].
+
+Context you need:
+[Paste the document, data or background here]`}>
+Take one deliverable that is actually due this week. Copy the template, fill every bracket, run it and compare the output against your last unstructured attempt. Two iterations to "usable" is the benchmark.
+</TryIt>
+
+<ActionChecklist
+  id="anatomy-actions"
+  title="Before the next lesson"
+  items={[
+    "Write your five role descriptions (Step 1)",
+    "Fill in the output specification template on a real task (Step 2)",
+    "Test the three-part structure on one real deliverable (Step 3)",
+    "Add a default anti-pattern list to your standard prompt (Step 4)"
+  ]}
+/>
+
 ## Recap
 
-- A prompt is not a question, it is a specification. The shift from asking to specifying is the single biggest unlock.
+- A prompt is not a question, it is a specification. The shift from asking to specifying is the single highest-return change you can make.
 - Every effective prompt has three components: Role (who the AI is), Task (exactly what it must produce) and Context (what it needs to know).
 - Role assignment is the highest-leverage line in any prompt. A specific role produces a fundamentally different tier of output.
 - Output specification should be written before the prompt, not after. Define the deliverable precisely: format, length, sections, tone, audience and anti-patterns.

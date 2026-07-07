@@ -57,6 +57,7 @@ import {
 import LessonNav    from '@/components/LessonNav'
 import CTABanner    from '@/components/CTABanner'
 import MDXComponents from '@/components/MDXComponents'
+import { TRUSTED_MDX_OPTIONS } from '@/lib/mdx-options'
 
 // ============================================================
 // generateStaticParams — pre-render a page for every lesson
@@ -117,17 +118,13 @@ export default async function LessonPage({ params }) {
   // FAQPage JSON-LD for this lesson (null if no FAQ data defined)
   const faqSchema = FAQ_SCHEMA[lessonSlug] ?? null
 
-  // Compile MDX — this is an async operation on the server
+  // Compile MDX — this is an async operation on the server.
+  // Security posture (blockJS off for trusted first-party content)
+  // lives in lib/mdx-options.js so it cannot drift between surfaces.
   const { content } = await compileMDX({
     source:     lesson.content,
     components: MDXComponents,
-    options: {
-      mdxOptions: {
-        // Remark/rehype plugins can be added here as the site grows
-        remarkPlugins: [],
-        rehypePlugins: [],
-      },
-    },
+    options:    TRUSTED_MDX_OPTIONS,
   })
 
   // Stable date formatter

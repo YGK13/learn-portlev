@@ -15,6 +15,9 @@ import FlowDiagram from './FlowDiagram'
 import TLDR from './TLDR'
 import Pullquote from './Pullquote'
 import Stat from './Stat'
+import KnowledgeCheck from './KnowledgeCheck'
+import ActionChecklist from './ActionChecklist'
+import TryIt from './TryIt'
 
 // ---- Headings --------------------------------------------------
 
@@ -231,6 +234,10 @@ const MDXComponents = {
   TLDR,
   Pullquote,
   Stat,
+  // Interactive lesson components (client-side, localStorage persistence)
+  KnowledgeCheck,
+  ActionChecklist,
+  TryIt,
 }
 
 export default MDXComponents

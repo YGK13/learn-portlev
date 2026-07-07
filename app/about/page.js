@@ -13,7 +13,7 @@ export const metadata = {
 }
 
 const CREDENTIALS = [
-  { label: 'Roles',        value: '3x CHRO · CLO · Fractional CHRO' },
+  { label: 'Roles',        value: 'Fractional CAIO · 3x CHRO · CLO' },
   { label: 'AI Training',  value: 'Trainer of frontier AI models for Meta, Microsoft and OpenAI' },
   { label: 'Coaching',     value: '2,300+ executive coaching clients' },
   { label: 'Expertise',    value: 'Top 5 Global HR Thought Leader (Thinkers360)' },
@@ -134,8 +134,8 @@ export default function AboutPage() {
             </p>
             <p>
               What I gate is transformation: live accountability, done-for-you assets, direct access
-              to me and to a community of peers doing the same work. That is what the Leverage Lab
-              and the CHRO AI Cohort are for.
+              to me and to a community of peers doing the same work. That is what the Executive AI
+              Cohort and the Fractional CAIO Course are for.
             </p>
           </div>
         </div>

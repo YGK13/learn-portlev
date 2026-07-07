@@ -6,7 +6,7 @@ order: 2
 level: beginner
 status: published
 tier: free
-updated: "2026-05-18"
+updated: "2026-07-06"
 tags: ["prompting", "productivity", "systems"]
 estReadMin: 11
 video:
@@ -45,6 +45,32 @@ Here is what separates a real prompt library from a dumping ground:
 <Pullquote author="Yuri Kruman" role="Author, 3x CHRO" source="Closing the AI Wage Gap">
 A certificate on your LinkedIn profile is not a skill. A documented workflow that saved your team twenty hours a week is a skill.
 </Pullquote>
+
+<KnowledgeCheck
+  id="library-check"
+  questions={[
+    {
+      question: "A prompt qualifies for your library when:",
+      options: [
+        "You wrote it once and it felt promising",
+        "You have run it 10+ times and it produces usable output on the first try",
+        "It is longer than 200 words"
+      ],
+      answer: 1,
+      explain: "Tested is the bar. A prompt you wrote once and never reused is backlog, not library."
+    },
+    {
+      question: "What separates a real prompt library from a dumping ground?",
+      options: [
+        "It is stored in the cloud",
+        "It contains at least twenty prompts",
+        "Every prompt has a functional name, a version and a tested track record"
+      ],
+      answer: 2,
+      explain: "Name, version, purpose, input spec, notes. The structure is what makes a library searchable, shareable and improvable. Volume is irrelevant."
+    }
+  ]}
+/>
 
 ## Steps
 
@@ -189,6 +215,18 @@ MY FIVE CORE PROMPTS:
 ```
 
 Done. You now have a functional prompt library. Refine it over the next four weeks and you will have something that generates professional leverage every single day.
+
+<ActionChecklist
+  id="library-actions"
+  title="Your library build, step by step"
+  items={[
+    "Audit your last 10 AI tasks and list everything that repeats (Step 1)",
+    "Format your top five prompts: name, version, purpose, input spec, notes (Step 2)",
+    "Create a Claude Project and load your five prompts as Project Instructions (Step 3)",
+    "Put a weekly 15-minute slot on your calendar: one new or refined prompt (Step 4)",
+    "Share one proven prompt with your team using the DEPT-FUNCTION-VERSION convention (Step 5)"
+  ]}
+/>
 
 ## Recap
 

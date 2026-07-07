@@ -14,9 +14,10 @@ const NAV_LINKS = [
   { label: 'Learn',     href: '/learn' },
   { label: 'Resources', href: '/resources' },
   { label: 'Brief',     href: '/brief' },
-  { label: 'Book',      href: '/book' },
-  { label: 'Cohort',    href: '/cohort' },
-  { label: 'About',     href: '/about' },
+  { label: 'Book',        href: '/book' },
+  { label: 'Cohort',      href: '/cohort' },
+  { label: 'CAIO Course', href: '/caio-course' },
+  { label: 'About',       href: '/about' },
 ]
 
 // Cross-property links shown after a divider in the desktop nav

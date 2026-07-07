@@ -1,0 +1,130 @@
+---
+title: "Your First AI Governance Decision"
+summary: "Before frameworks and committees, one rule decides your AI risk posture: which data may enter which tools. Here is how to draw that line in a week."
+track: "fractional-caio-playbook"
+order: 3
+level: "intermediate"
+status: "published"
+tier: "free"
+updated: "2026-07-07"
+tags: ["caio", "governance", "data", "risk"]
+estReadMin: 9
+---
+
+An account manager wants to save an hour, so she pastes a customer's contract into a free chatbot and asks for a summary. The summary is good. The hour is saved. And the company has just transmitted confidential terms to a third party under a consumer license that may permit training on the input, in violation of the confidentiality clause sitting in that very contract. Nobody did anything malicious. That is what makes it a governance problem instead of a discipline problem.
+
+<TLDR>Your first real governance decision is the data boundary: which classes of information may enter which tiers of AI tools. Classify data into three classes, tier tools into three tiers, publish the grid on one page and pair every "no" with an approved "yes".</TLDR>
+
+## Why the data boundary comes first
+
+AI is not new. Governance failure is new, and nearly every early AI incident inside companies reduces to the same event: the wrong data entered the wrong tool. Bias, hallucination and vendor risk all matter, but they mature over quarters. The data boundary is binary and immediate: the moment the paste happens, the exposure exists.
+
+It is also the decision you can get catastrophically wrong in either direction. Too loose and you leak. Too tight and you create the shadow-use problem from the last lesson, where the real behavior goes underground and your policy governs a fiction.
+
+<Callout type="warning">The failure mode is not employees ignoring the rule. It is a rule written so broadly ("never put company information into AI") that following it is impossible, so everyone quietly stops trying.</Callout>
+
+## Step 1: Classify your data into three classes
+
+Skip the enterprise data-classification program with nine levels. Three classes cover the decision:
+
+1. **Public.** Already published or intended for publication. Website copy, published reports, job posts.
+2. **Internal.** Not secret, not public. Process docs, internal metrics, meeting notes, most working documents.
+3. **Protected.** Anything carrying legal or contractual consequence: customer data, employee records, financials before disclosure, anything under NDA, anything a regulator names.
+
+The test for Protected is simple: if this data appeared in a competitor's inbox or a plaintiff's exhibit, would a lawyer be in the room? Then it is Protected.
+
+## Step 2: Tier your tools by where the data goes
+
+The tool question is not "which vendor is best". It is "what happens to what we type in". Three tiers:
+
+1. **Tier 1: Consumer tools.** Free or personal accounts. Inputs may be retained and may train future models. Treat the input as published.
+2. **Tier 2: Business tools.** Paid organizational accounts with contractual commitments: no training on inputs, defined retention, admin controls.
+3. **Tier 3: Controlled environments.** Enterprise agreements with security review, or systems running inside your own infrastructure.
+
+<FlowDiagram
+  steps={[
+    { label: "Public data",    note: "any tier" },
+    { label: "Internal data",  note: "Tier 2 and up" },
+    { label: "Protected data", note: "Tier 3 only, case by case" }
+  ]}
+  caption="The whole policy is this grid. It fits on one page."
+/>
+
+## Step 3: Publish the grid with a yes for every no
+
+The boundary holds only if the allowed path is as convenient as the forbidden one. The account manager pasted the contract into a free chatbot because it was there. If the company provides a Tier 2 tool where contract summarization is explicitly allowed, the same instinct becomes compliant behavior with zero training required.
+
+So the rollout rule: every "you may not do X in tool Y" ships together with "here is where you do X instead". A boundary without an approved alternative is a ban, and you already know what bans produce.
+
+<KnowledgeCheck
+  id="governance-scenarios"
+  title="Call these three scenarios"
+  questions={[
+    {
+      question: "A recruiter wants to use a free AI tool to rewrite job descriptions before posting. Under the grid, this is:",
+      options: [
+        "Blocked: recruiting data is Protected",
+        "Allowed: job posts are Public-class data, so Tier 1 is acceptable",
+        "Allowed only with legal sign-off"
+      ],
+      answer: 1,
+      explain: "A job description is written for publication. Public data may enter any tier. Governance that blocks this loses credibility for the cases that matter."
+    },
+    {
+      question: "A finance analyst wants to drop the pre-release quarterly numbers into the company's paid Tier 2 AI tool to draft the earnings summary. This is:",
+      options: [
+        "Allowed: it is a paid business tool",
+        "Blocked at Tier 2: pre-disclosure financials are Protected-class and belong in Tier 3, case by case",
+        "Fine if the analyst deletes the chat afterward"
+      ],
+      answer: 1,
+      explain: "Contractual no-training terms do not neutralize the legal weight of pre-disclosure financials. Protected data needs a controlled environment and a named approval."
+    },
+    {
+      question: "The sales team has been summarizing customer contracts in a free chatbot for months. Your first move as CAIO is:",
+      options: [
+        "Announce the violation and revoke access",
+        "Stand up the Tier 2 alternative where contract work is allowed, then close the Tier 1 path",
+        "Ask legal to draft disciplinary guidance"
+      ],
+      answer: 1,
+      explain: "Sequence matters. Provide the compliant yes before enforcing the no, or the behavior moves to personal devices where you cannot see it."
+    }
+  ]}
+/>
+
+## Step 4: Write it in a week, not a quarter
+
+This decision does not need a committee. It needs a draft, one review from legal and one from IT, and a publish date. The one-page format:
+
+<TryIt id="governance-tryit" title="Draft your data boundary page" prompt={`You are an operating executive writing an AI data-boundary policy that fits on one page and that a non-technical employee can apply in under 10 seconds.
+
+Our data classes: Public (written for publication), Internal (working documents, internal metrics), Protected (customer data, employee records, pre-disclosure financials, anything under NDA).
+
+Our tool tiers: Tier 1 consumer/free tools, Tier 2 paid business accounts with no-training terms, Tier 3 controlled/enterprise environments.
+
+Write the policy: the 3x3 grid with plain-language examples per cell, the one-sentence test for Protected data, the human accountability rule for AI output leaving the company, and a 3-line "where to do it instead" section listing our approved alternatives: [YOUR APPROVED TOOLS].`}>
+Replace the bracket with your real approved tools, run it and cut anything that pushes the result past one page. If it does not fit on a page, employees will not carry it in their heads, and a policy nobody remembers governs nobody.
+</TryIt>
+
+<ActionChecklist
+  id="governance-actions"
+  title="Ship the boundary this week"
+  items={[
+    "Sort your ten most common data types into Public, Internal and Protected (Step 1)",
+    "List every AI tool from your inventory and assign each a tier (Step 2)",
+    "Draft the one-page grid with the prompt above and route it to legal and IT for a 48-hour review (Step 4)",
+    "For each forbidden pattern you found in the inventory, name the approved alternative before you publish (Step 3)"
+  ]}
+/>
+
+## Recap
+
+- Nearly every early AI incident is the same event: wrong data, wrong tool. The data boundary is therefore governance decision number one.
+- Three data classes, three tool tiers, one grid on one page. The Protected test: would a lawyer be in the room?
+- Every "no" ships with an approved "yes", and the yes arrives first. Bans create shadow use.
+- A week and two reviews, not a quarter and a committee.
+
+With the boundary drawn, the next class of decisions arrives with budget attached: when to build, when to buy and when the platform you already pay for is enough.
+
+[Continue: Build, Buy or Platform →](/learn/fractional-caio-playbook/the-build-buy-platform-triage)

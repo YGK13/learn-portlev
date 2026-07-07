@@ -10,6 +10,7 @@ import { compileMDX } from 'next-mdx-remote/rsc'
 import { getAllBriefs, getBrief } from '@/lib/content'
 import CTABanner    from '@/components/CTABanner'
 import MDXComponents from '@/components/MDXComponents'
+import { TRUSTED_MDX_OPTIONS } from '@/lib/mdx-options'
 
 // ============================================================
 // generateStaticParams — pre-render a page for every brief
@@ -58,16 +59,11 @@ export default async function BriefPage({ params }) {
   const brief = getBrief(slug)
   if (!brief) notFound()
 
-  // Compile the MDX body
+  // Compile the MDX body. Security posture lives in lib/mdx-options.js.
   const { content } = await compileMDX({
     source:     brief.content,
     components: MDXComponents,
-    options: {
-      mdxOptions: {
-        remarkPlugins: [],
-        rehypePlugins: [],
-      },
-    },
+    options:    TRUSTED_MDX_OPTIONS,
   })
 
   return (

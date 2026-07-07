@@ -1,12 +1,12 @@
 ---
 title: "Advanced Prompting Patterns"
-summary: "Three advanced techniques that unlock a higher tier of AI output: chain-of-thought, few-shot examples and structured role-play."
+summary: "Three advanced techniques that produce a higher tier of AI output: chain-of-thought, few-shot examples and structured role-play."
 track: prompt-engineering
 order: 3
 level: beginner
 status: published
 tier: free
-updated: "2026-05-18"
+updated: "2026-07-06"
 tags: ["prompting", "chain-of-thought", "few-shot", "advanced"]
 estReadMin: 12
 video:
@@ -66,7 +66,7 @@ Then give me your recommendation with the three most important reasons.
 
 The second prompt produces analysis. The first produces an opinion.
 
-<Callout type="key" title="Reasoning out loud is the unlock">
+<Callout type="key" title="Reasoning out loud is what raises quality">
 AI models produce higher-quality output when they articulate intermediate steps. Asking for the reasoning before the conclusion forces the model to surface assumptions and catch logical errors a direct-to-answer pass would skip.
 </Callout>
 
@@ -153,6 +153,43 @@ This pattern produces feedback that forces you to defend your work at a level yo
 The critical skill isn’t knowing how to use AI. It’s knowing where to use it and where to override it.
 </Pullquote>
 
+<KnowledgeCheck
+  id="patterns-check"
+  title="Which pattern fits the situation?"
+  questions={[
+    {
+      question: "You need a build-vs-buy recommendation where a wrong answer costs six figures. Which pattern comes first?",
+      options: [
+        "Few-shot examples",
+        "Chain-of-thought",
+        "Structured role-play"
+      ],
+      answer: 1,
+      explain: "Costly analysis calls for visible reasoning before the recommendation. Chain-of-thought forces the model to surface assumptions and weigh factors instead of jumping to an opinion."
+    },
+    {
+      question: "The AI's memo is correct in content but wrong in form: not your structure, not your tone. Fastest fix?",
+      options: [
+        "A few-shot example of your own best memo",
+        "A longer role description",
+        "Asking it to try again"
+      ],
+      answer: 0,
+      explain: "Form problems are pattern problems. One strong example of your real work beats a paragraph of tone instructions every time."
+    },
+    {
+      question: "Your board deck is finished and you want to find its weak points before Thursday. Which pattern?",
+      options: [
+        "Chain-of-thought",
+        "Few-shot examples",
+        "Structured role-play as an adversarial reviewer"
+      ],
+      answer: 2,
+      explain: "A detailed skeptic persona (PE-background board member, ROI-obsessed CFO) pressure-tests finished work the way your internal team rarely will."
+    }
+  ]}
+/>
+
 ## Steps
 
 ### Step 1: Add chain-of-thought to your three most complex recurring prompts
@@ -198,6 +235,32 @@ The three patterns compound:
 3. **Role-play** reviews the finished output from the perspective of its harshest critic
 
 For a board presentation, a major proposal or a critical hiring recommendation, run all three in sequence. The combined output is qualitatively different from what any single pattern produces, and it is qualitatively different from what most AI users are producing.
+
+<TryIt id="patterns-tryit" title="Build your adversarial reviewer now" prompt={`You are going to play the role of [your hardest critic: a specific board member, CFO or client].
+
+Your background: [their expertise, experience and track record, be specific]
+Your priorities: [what they optimize for: EBITDA impact, headcount ratios, outcomes over programs]
+Your skepticism: [what they push back on hardest: vague ROI, missing owners, "investment" vs "cost"]
+Your communication style: [how they speak and what they value in answers]
+
+Stay in character for the entire conversation. Do not break character to explain your role.
+
+I am going to present a piece of work. Push back where you see gaps, ask the questions this person would actually ask and do not accept vague answers.
+
+Here is the work: [paste your deliverable]`}>
+Think of the person who asks the questions you least want to answer. Fill in their persona, paste your most important upcoming deliverable and let the reviewer find the weak points before the real critic does.
+</TryIt>
+
+<ActionChecklist
+  id="patterns-actions"
+  title="Lock in the three patterns"
+  items={[
+    "Add a chain-of-thought scaffold to your three most analytical library prompts (Step 1)",
+    "Collect five to eight pieces of your own best work as few-shot examples (Step 2)",
+    "Write one detailed adversarial reviewer persona (Step 3)",
+    "Run all three patterns in sequence on one high-stakes deliverable (Step 4)"
+  ]}
+/>
 
 ## Recap
 

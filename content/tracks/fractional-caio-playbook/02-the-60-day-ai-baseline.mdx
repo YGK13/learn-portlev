@@ -1,0 +1,113 @@
+---
+title: "The 60-Day AI Baseline"
+summary: "The first thing a CAIO delivers is not a strategy. It is a defensible baseline: what is actually happening, what is allowed and what gets measured."
+track: "fractional-caio-playbook"
+order: 2
+level: "intermediate"
+status: "published"
+tier: "free"
+updated: "2026-07-07"
+tags: ["caio", "baseline", "governance"]
+estReadMin: 10
+---
+
+New AI leaders fail in a predictable way: they spend their first quarter writing a strategy. Ninety days later they present a document full of horizons and pillars, the board asks "so what did we actually change?", and the answer is nothing. Meanwhile the sales team has been pasting customer contracts into free chatbots the entire time.
+
+<TLDR>You do not need an AI strategy. You need a defensible AI baseline in 60 days: what is happening, what is allowed, what one pilot proves and what number the board sees. Strategy comes after, and writes itself faster once the baseline exists.</TLDR>
+
+## Why baseline beats strategy
+
+A strategy describes a future state. A baseline establishes the current one, and in AI adoption the current state is almost always unknown. Most organizations cannot answer four basic questions: which AI tools are in use, by whom, with what data and to what effect. Until those are answered, any strategy is fiction with a budget attached.
+
+"Defensible" is the operative word. Defensible means that when a director, a regulator or a general counsel asks "how do you know?", there is an artifact behind the answer: an inventory, a policy, a measured pilot. The baseline is the set of artifacts.
+
+<Callout type="key">The 60-day baseline is four artifacts: an inventory of actual AI use, a policy floor everyone can follow, one measured pilot and a board-ready readout. Nothing else belongs in the first 60 days.</Callout>
+
+## Step 1 (Weeks 1-2): Inventory actual use, not official use
+
+The official picture says the company has two approved AI tools. The real picture is that marketing runs eleven, finance built three spreadsheet automations on a personal account and someone in ops connected a chatbot to the ticketing system eight months ago.
+
+You get the real picture by asking for it without threat. The framing that works: "Nothing gets taken away this month. I need to know what you use so I can protect it and expand it." Run it as a short survey plus five direct conversations with the heaviest users in each function.
+
+<TryIt id="baseline-inventory-tryit" title="Generate your inventory instrument" prompt={`You are an operations leader running an AI usage inventory at a mid-size company. Employees fear tools will be banned, so questions must be non-threatening and take under 4 minutes.
+
+Draft a 10-question survey that captures: which AI tools each person uses (including personal accounts), for which tasks, how many hours per week it saves, what data they put into it and what they wish they were allowed to do.
+
+Then list the 5 follow-up interview questions I should ask each department's heaviest user.`}>
+Run it, adapt the questions to your organization's vocabulary and send the survey this week. The interview list matters more than the survey: the heaviest users know where the bodies are buried.
+</TryIt>
+
+## Step 2 (Weeks 3-4): Set the policy floor
+
+Not a 40-page policy. A floor: the minimum set of rules that makes current use defensible. Three components cover most of it.
+
+1. **A data boundary.** Which classes of data may enter which classes of tools. This is the single highest-stakes rule and the next lesson is devoted to it.
+2. **A human accountability rule.** AI output that leaves the building (to a customer, a regulator, a court) carries a named human owner. No exceptions.
+3. **An approved-tool path.** A way to get a new tool approved in days, not quarters. If the approved path is slow, the unapproved path wins, and you are back to shadow use.
+
+The floor is deliberately permissive everywhere else. A policy that bans more than it allows does not reduce risk, it just moves the risk somewhere you cannot see it.
+
+## Step 3 (Weeks 5-6): Pick one pilot and measure it properly
+
+One pilot. Not a portfolio. Selection criteria, in order:
+
+- The workflow is frequent and measurable (weekly volume, clear before-state).
+- The owner wants it. Never pilot on a conscript.
+- A result would be legible to the board without translation.
+
+Measure the before-state for two weeks before changing anything: hours, volume, error rate, cycle time, whichever pair of numbers the workflow's own manager already uses. The most common failure in AI pilots is a missing before-state, which converts every result into an anecdote.
+
+<KnowledgeCheck
+  id="baseline-check"
+  title="Baseline judgment calls"
+  questions={[
+    {
+      question: "Legal proposes a comprehensive 35-page AI policy as the first deliverable. What is the problem?",
+      options: [
+        "It is not comprehensive enough",
+        "A policy that arrives before the inventory regulates imaginary behavior, and one that bans more than it allows drives use underground",
+        "Policies are the CTO's responsibility"
+      ],
+      answer: 1,
+      explain: "Policy floor, not policy ceiling, and only after you know what people actually do. Otherwise you get compliant paperwork and non-compliant behavior."
+    },
+    {
+      question: "Which pilot is the right first pick?",
+      options: [
+        "The CEO's favorite idea: an AI customer-facing chatbot",
+        "A weekly internal reporting workflow with a willing owner and two years of cycle-time data",
+        "The most technically impressive option, to build credibility with engineering"
+      ],
+      answer: 1,
+      explain: "Frequent, measurable, willing owner, legible result. Customer-facing pilots stack reputational risk onto an unproven process, which is how AI programs die in month three."
+    }
+  ]}
+/>
+
+## Step 4 (Weeks 7-8): Deliver the board readout
+
+One page plus an appendix. The page says: here is what we found (inventory), here is what now governs it (floor), here is what one pilot measured (numbers, before and after) and here is the decision I need next (budget, scope or headcount). The appendix carries the artifacts.
+
+The readout does something a strategy deck cannot: it demonstrates that AI at this company now has an owner who ships. That, more than any content on the page, is what the board is buying.
+
+<ActionChecklist
+  id="baseline-actions"
+  title="Your 60-day baseline, as a checklist"
+  items={[
+    "Weeks 1-2: run the usage inventory, survey plus five heavy-user interviews (Step 1)",
+    "Weeks 3-4: publish the policy floor: data boundary, human accountability rule, fast approval path (Step 2)",
+    "Weeks 5-6: select one pilot by the three criteria and capture its before-state for two full weeks (Step 3)",
+    "Weeks 7-8: write the one-page board readout ending with a specific decision request (Step 4)"
+  ]}
+/>
+
+## Recap
+
+- Strategy-first is the predictable failure mode. Baseline-first is defensible in front of a board, a regulator and a general counsel.
+- The baseline is four artifacts in 60 days: real-use inventory, policy floor, one measured pilot, board readout.
+- The policy floor is permissive by design: data boundary, human accountability, fast approval. Bans create shadow use.
+- One pilot with a real before-state beats five pilots with anecdotes.
+
+The data boundary inside that policy floor is the first governance decision that can genuinely hurt you if you get it wrong. It deserves its own lesson.
+
+[Continue: Your First AI Governance Decision →](/learn/fractional-caio-playbook/your-first-ai-governance-decision)

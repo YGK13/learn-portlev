@@ -1,0 +1,131 @@
+---
+title: "Build, Buy or Platform: The Triage"
+summary: "Every AI request that reaches you is secretly a budget decision. Four questions sort them into build, buy or use-what-you-have before money moves."
+track: "fractional-caio-playbook"
+order: 4
+level: "intermediate"
+status: "published"
+tier: "free"
+updated: "2026-07-07"
+tags: ["caio", "build-vs-buy", "strategy"]
+estReadMin: 9
+---
+
+Within a month of owning the AI mandate, your inbox fills with the same email in three costumes: "We should build an internal tool for this." "Vendor X does exactly this, can we buy it?" "Can the AI we already pay for do this?" All three are the same question, and answering them one at a time by instinct is how AI budgets disappear without a trace.
+
+<TLDR>Run every AI request through four questions: is it differentiating, how sensitive is the data, how fast does it change and can we maintain it? Most requests resolve to the platform you already pay for. Buy the commodity. Build only what differentiates.</TLDR>
+
+## The two expensive mistakes
+
+Organizations burn AI budget in two symmetric ways.
+
+**Building the commodity.** An internal team spends two quarters building a meeting summarizer, a document Q&A bot or a support-ticket classifier that a dozen vendors sell as a feature. The build is fun, demos well and is obsolete against the commercial version before it ships.
+
+**Buying the differentiation.** The workflow that actually sets the company apart, the one encoding proprietary judgment, data and process, gets handed to a vendor whose product flattens it to the industry average. The company pays to become more generic.
+
+Both mistakes come from skipping triage and going straight to solutioning. The fix is a fixed set of questions asked in a fixed order.
+
+<Callout type="key">Build only what makes you different. Buy what makes you the same as everyone else, because for commodity capability, same is fine and faster.</Callout>
+
+## Step 1: Ask the four triage questions
+
+For any AI request, in this order:
+
+1. **Differentiation.** If a competitor had exactly this capability tomorrow, would it hurt? If no, it is commodity: never build it.
+2. **Data sensitivity.** Which data class from the last lesson does it touch? Protected data narrows the vendor field to Tier 3 and strengthens the case for controlled or internal builds.
+3. **Rate of change.** Is the underlying need stable (contract review) or moving fast (anything touching frontier model capabilities)? Fast-moving needs punish long builds.
+4. **Maintenance reality.** Who fixes it in month nine when the model behind it changes behavior? No named owner means no build, whatever the other answers say.
+
+## Step 2: Read the answers as a decision grid
+
+<FlowDiagram
+  steps={[
+    { label: "Platform", note: "commodity need, data fits an approved tier: use what you pay for" },
+    { label: "Buy",      note: "commodity need the platform cannot cover: vendor with exit terms" },
+    { label: "Build",    note: "differentiating, proprietary data or judgment, named owner" }
+  ]}
+  caption="The triage resolves in this order. Platform first, buy second, build last."
+/>
+
+The order matters because the cheapest capability is the one already under contract. In practice a large share of requests dissolve at the first stop: the general-purpose tools the company already licenses can do the job with a well-built prompt and a saved workflow, which costs an afternoon instead of a procurement cycle. That is also why the earlier tracks on this site spend so much time on prompt systems and workflows: they are the platform stop of this triage.
+
+Buying earns its place when the need is commodity but operationally deep: real integrations, uptime someone else guarantees, a roadmap someone else funds. The two contract terms that matter more than price: your data is not training material, and your data exits with you in a usable format.
+
+Building is the last resort and the biggest prize. Reserve it for capability that encodes what only your organization knows: your pricing logic, your risk model, your client methodology. That is the judgment a vendor cannot sell you, because they do not have it.
+
+## Step 3: Pressure-test with the scenarios that fool people
+
+<KnowledgeCheck
+  id="triage-scenarios"
+  title="Three requests hit your desk"
+  questions={[
+    {
+      question: "Operations wants to build an internal chatbot that answers HR policy questions from the employee handbook. The triage says:",
+      options: [
+        "Build it: employee data is sensitive",
+        "Platform or buy: answering questions from a document is commodity capability, and the handbook is Internal-class, not Protected",
+        "Reject the request entirely"
+      ],
+      answer: 1,
+      explain: "Document Q&A is a solved commodity. If a competitor had a handbook chatbot tomorrow, nothing happens to you. Two hours of setup on an approved platform beats two quarters of building."
+    },
+    {
+      question: "The pricing team wants AI assistance that applies your firm's proprietary deal-pricing methodology, refined over a decade. The triage says:",
+      options: [
+        "Buy the leading pricing AI vendor",
+        "Build: this encodes differentiating judgment and proprietary data no vendor has",
+        "Platform: a good prompt is enough for pricing"
+      ],
+      answer: 1,
+      explain: "This is the build case. A vendor product averages your methodology toward the industry norm, which is paying to erase your edge. Differentiation plus proprietary judgment plus a willing owner equals build."
+    },
+    {
+      question: "A department head brings a vendor demo for AI meeting notes and wants to sign this week. Your first triage question is:",
+      options: [
+        "How much does it cost per seat?",
+        "Can the platform we already license do this, and which data tier do meeting recordings fall into?",
+        "How many competitors use it?"
+      ],
+      answer: 1,
+      explain: "Platform first, and meetings routinely contain Protected-class content, which constrains the vendor field before price ever enters the conversation."
+    }
+  ]}
+/>
+
+## Step 4: Run the triage on something real
+
+<TryIt id="triage-tryit" title="Triage a live request" prompt={`You are an AI capability triage advisor. Walk me through a build-buy-platform decision.
+
+The request: [DESCRIBE THE AI CAPABILITY SOMEONE HAS ASKED FOR].
+
+Interview me one question at a time through the four triage gates:
+1. Differentiation: would a competitor having this capability tomorrow hurt us?
+2. Data sensitivity: does it touch Public, Internal or Protected data?
+3. Rate of change: is the underlying need stable or fast-moving?
+4. Maintenance: who owns it in month nine, by name?
+
+After my answers, give a verdict (platform / buy / build), the two biggest risks of that verdict and what evidence would change your mind.`}>
+Use a real request from your organization, or the one you are most tempted to build yourself. The month-nine question kills more builds than any other, and it should.
+</TryIt>
+
+<ActionChecklist
+  id="triage-actions"
+  title="Install the triage"
+  items={[
+    "List every AI request currently open in your organization, even informal ones",
+    "Run each through the four questions and mark it platform, buy or build (Steps 1-2)",
+    "For anything marked build, write the month-nine maintenance owner's name next to it. No name, no build (Step 1, question 4)",
+    "For anything marked buy, note the two contract terms: no training on your data, data exits with you (Step 2)"
+  ]}
+/>
+
+## Recap
+
+- The two budget killers are symmetric: building commodity capability and buying away your differentiation.
+- Four questions in order: differentiation, data sensitivity, rate of change, maintenance owner.
+- Resolve platform first, buy second, build last. Most requests die pleasantly at the platform stop.
+- Build is reserved for capability encoding what only your organization knows, with a named owner for month nine.
+
+You now hold the mandate, the baseline, the boundary and the budget logic. The remaining question is the seat itself: full-time inside one company, or fractional across several.
+
+[Continue: Fractional vs Full-Time →](/learn/fractional-caio-playbook/fractional-vs-full-time)
