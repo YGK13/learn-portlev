@@ -58,10 +58,45 @@ const STAGES = [
 ]
 
 const BUILT_FROM = [
-  ['The AI Wage Gap', 'The book and framework the whole program is built to answer.'],
-  ['Leverage Signal', 'The daily newsletter read at a 75% open rate, distilled into your own signal-building.'],
+  ['The AI Wage Gap', 'The framework and forthcoming book the whole program is built to answer.'],
+  ['Leverage Signal', 'The daily newsletter on where AI leverage is moving, distilled into your own signal-building.'],
   ['Leverage Brief', 'The weekly brief on where leverage is moving, turned into a practice you run.'],
-  ['The Build Vault', "The library of builds and templates you draw on so you are not starting from a blank page."],
+  ['The Build Vault', 'The library of builds and templates you draw on so you are not starting from a blank page.'],
+]
+
+// Three ways to run the build, by how much you do yourself.
+// DIY is the self-serve on-ramp; the higher tiers add delivery.
+const TRACKS = [
+  {
+    name:     'DIY',
+    price:    '$1,997',
+    founding: 'Founding $997',
+    tagline:  'You build it, guided.',
+    desc:     'The whole system, self-paced: video walkthroughs, the exact template and prompt vault Yuri uses in delivery, plus a monthly group accountability call and a private community. Lifetime access and updates.',
+    points:   ['40+ templates + Authority Prompt Pack', 'Monthly group office hours (live, recorded)', 'Private community', 'Apply your fee toward a higher tier within 90 days'],
+    accent:   '#0891b2',
+    featured: true,
+  },
+  {
+    name:     'Guided',
+    price:    'From $5,000',
+    founding: 'Foundation Sprint',
+    tagline:  'We build the foundation with you.',
+    desc:     'The Foundation Sprint: your identity, enemy and named method built with you over six weeks of working sessions, so the core of your stack is locked and defensible before you scale it.',
+    points:   ['Positioning, voice and method, done with you', 'Live working sessions', 'Your framework pages and diagnostic', 'Upgrades to the full build'],
+    accent:   '#7c3aed',
+    featured: false,
+  },
+  {
+    name:     'Done-for-you',
+    price:    'From $15,000',
+    founding: 'Full Build',
+    tagline:  'We build the whole stack.',
+    desc:     'The 90-day done-for-you build: all seven layers plus the connective tissue, delivered by Yuri and a production system. You walk out with the position, the site, the engines and the offer, live.',
+    points:   ['All seven layers, done for you', 'Book architecture and a working product', 'Newsletter, LinkedIn and PR engines live', 'Full handoff, you own everything'],
+    accent:   '#4f46e5',
+    featured: false,
+  },
 ]
 
 const FAQ = [
@@ -75,7 +110,7 @@ const FAQ = [
   },
   {
     q: 'What does it cost?',
-    a: 'Pricing for the founding cohort is set with each applicant based on track (guided, DIY or done-for-you). Express interest below and Yuri will walk you through the options personally.',
+    a: 'Three ways in. The DIY track is $1,997 (founding $997): the full system, self-paced, with a monthly group call and community. The Guided Foundation Sprint starts at $5,000. The done-for-you Full Build starts at $15,000. You can apply your DIY fee toward a higher tier within 90 days.',
   },
   {
     q: 'How is this different from the CAIO Course?',
@@ -83,7 +118,7 @@ const FAQ = [
   },
   {
     q: 'Who is behind it?',
-    a: 'Yuri Kruman: 3x CHRO, AI model trainer for OpenAI, Meta and Microsoft, author of the AI Wage Gap, built in partnership with ForwardShare Ventures.',
+    a: 'Yuri Kruman: 3x CHRO and AI Model Trainer for OpenAI, Meta and Microsoft, author of the forthcoming Closing the AI Wage Gap. Built in partnership with ForwardShare Ventures.',
   },
 ]
 
@@ -184,6 +219,53 @@ export default function AuthorityStackPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ---- Choose your track ---- */}
+      <section className="py-16 sm:py-20" aria-labelledby="as-tracks">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <h2 id="as-tracks" className="text-2xl sm:text-3xl font-bold mb-3" style={{ color: '#0f172a' }}>
+            Choose your track
+          </h2>
+          <p className="text-base mb-8" style={{ color: '#64748b' }}>
+            Same build, three levels of help. Start where you are; move up whenever you want, and your
+            fee follows you.
+          </p>
+          <div className="grid gap-5 lg:grid-cols-3 items-stretch">
+            {TRACKS.map((t) => (
+              <div
+                key={t.name}
+                className="flex flex-col rounded-2xl border bg-white p-6"
+                style={{ borderColor: t.featured ? t.accent : '#e2e8f0', borderWidth: t.featured ? 2 : 1 }}
+              >
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: t.accent }}>{t.name}</p>
+                  {t.featured && (
+                    <span className="rounded-full px-2.5 py-0.5 text-xs font-semibold text-white" style={{ backgroundColor: t.accent }}>
+                      Start here
+                    </span>
+                  )}
+                </div>
+                <p className="text-2xl font-bold" style={{ color: '#0f172a' }}>{t.price}</p>
+                <p className="text-xs font-medium mb-3" style={{ color: t.accent }}>{t.founding}</p>
+                <p className="text-sm font-semibold mb-2" style={{ color: '#475569' }}>{t.tagline}</p>
+                <p className="text-sm leading-relaxed mb-4" style={{ color: '#64748b' }}>{t.desc}</p>
+                <ul className="flex flex-col gap-2 list-none p-0 m-0 mt-auto">
+                  {t.points.map((pt) => (
+                    <li key={pt} className="flex items-start gap-2 text-sm" style={{ color: '#374151' }}>
+                      <span className="mt-1 shrink-0" style={{ color: t.accent }} aria-hidden="true">✓</span>
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+          <p className="text-sm mt-6" style={{ color: '#94a3b8' }}>
+            Every track builds the same Authority Stack. DIY hands you the system; Guided and
+            Done-for-you add Yuri and a production team. Use the form below to start on any of them.
+          </p>
         </div>
       </section>
 
