@@ -34,7 +34,7 @@ export const metadata = {
     process.env.NEXT_PUBLIC_SITE_URL || 'https://learn.portlev.com'
   ),
   title: {
-    default:  'PortLev Academy — Build with AI. Create Leverage.',
+    default:  'PortLev Academy: Build with AI. Create Leverage.',
     template: '%s | PortLev Academy',
   },
   description:
@@ -43,7 +43,7 @@ export const metadata = {
   openGraph: {
     type:        'website',
     siteName:    'PortLev Academy',
-    title:       'PortLev Academy — Build with AI. Create Leverage.',
+    title:       'PortLev Academy: Build with AI. Create Leverage.',
     description: 'Free, open-source AI learning for executives and consultants.',
   },
   twitter: {

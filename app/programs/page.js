@@ -36,7 +36,7 @@ const PROGRAMS = [
   },
   {
     href:     '/caio-course',
-    eyebrow:  'Self-serve · $2,500',
+    eyebrow:  'Application-based · Self-paced · $2,500',
     title:    'The Fractional CAIO Course',
     tagline:  'Reinvent yourself as a Chief AI Officer.',
     desc:     'Eight self-paced modules, each ending in an artifact you produce: ' +
@@ -108,7 +108,7 @@ export default function ProgramsPage() {
                       className="shrink-0 rounded-full px-3 py-1 text-xs font-semibold text-white"
                       style={{ backgroundColor: p.accent }}
                     >
-                      Most popular
+                      Flagship
                     </span>
                   )}
                 </div>

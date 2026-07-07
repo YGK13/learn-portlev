@@ -14,7 +14,7 @@ import Link from 'next/link'
 const COHORT_URL = 'https://forwardshare.co/executive-ai-cohort-forward-achieve-forward-share-ventures'
 
 export const metadata = {
-  title:       'Executive AI Cohort — Forward Achieve',
+  title:       'Executive AI Cohort: Forward Achieve',
   description: 'A 12-week live cohort with ForwardShare Ventures for ' +
                'mid-career executives building their AI Portfolio OS. ' +
                'Limited to 15 per intake.',
@@ -221,6 +221,18 @@ export default function CohortPage() {
               style={{ color: '#64748b' }}
             >
               Start with the free lessons
+            </Link>
+            .
+          </p>
+          <p className="mt-2 text-sm" style={{ color: '#94a3b8' }}>
+            Further along? Already building with AI and after the Chief AI
+            Officer seat itself?{' '}
+            <Link
+              href="/caio-course"
+              className="underline underline-offset-2"
+              style={{ color: '#64748b' }}
+            >
+              See the Fractional CAIO Course
             </Link>
             .
           </p>

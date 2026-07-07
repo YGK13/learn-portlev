@@ -1,5 +1,5 @@
 // ============================================================
-// app/about/page.js — About Yuri Kruman and PortLev Academy
+// app/about/page.js - About Yuri Kruman and PortLev Academy
 // Server Component. Pure JSX.
 // ============================================================
 
@@ -14,8 +14,8 @@ export const metadata = {
 
 const CREDENTIALS = [
   { label: 'Roles',        value: 'Fractional CAIO · 3x CHRO · CLO' },
-  { label: 'AI Training',  value: 'Trainer of frontier AI models for Meta, Microsoft and OpenAI' },
-  { label: 'Coaching',     value: '2,300+ executive coaching clients' },
+  { label: 'AI Training',  value: 'AI Model Trainer for OpenAI, Meta and Microsoft' },
+  { label: 'Coaching',     value: '2,300+ coaching clients' },
   { label: 'Expertise',    value: 'Top 5 Global HR Thought Leader (Thinkers360)' },
   { label: 'Education',    value: 'JD Cardozo · BA UPenn (Anthropology / Neuroscience)' },
 ]
@@ -124,13 +124,13 @@ export default function AboutPage() {
             <p>
               The people who need this most are not always the ones who can pay for it first.
               Mid-career executives, consultants just building their practices, HR leaders at
-              nonprofits and government agencies — these are the people the AI Wage Gap will hit
+              nonprofits and government agencies: these are the people the AI Wage Gap will hit
               hardest if they do not close it now.
             </p>
             <p>
               Making the curriculum open-source is not charity. It is how I build trust at scale.
               The code is MIT licensed. The content is CC-BY 4.0. Anyone can fork it, teach it,
-              translate it or build on top of it — with attribution.
+              translate it or build on top of it, with attribution.
             </p>
             <p>
               What I gate is transformation: live accountability, done-for-you assets, direct access

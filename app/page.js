@@ -12,7 +12,7 @@ import CTABanner         from '@/components/CTABanner'
 import NewsletterCapture from '@/components/NewsletterCapture'
 
 export const metadata = {
-  title:       'PortLev Academy — Build with AI. Create Leverage.',
+  title:       'PortLev Academy: Build with AI. Create Leverage.',
   description: 'Free, open-source AI learning for executives and consultants. ' +
                'Build real workflows, close the AI Wage Gap and create lasting leverage.',
 }
