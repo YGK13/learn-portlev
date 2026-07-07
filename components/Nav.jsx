@@ -12,11 +12,10 @@ import Link from 'next/link'
 // Primary nav links
 const NAV_LINKS = [
   { label: 'Learn',     href: '/learn' },
+  { label: 'Programs',  href: '/programs' },
   { label: 'Resources', href: '/resources' },
   { label: 'Brief',     href: '/brief' },
   { label: 'Book',        href: '/book' },
-  { label: 'Cohort',      href: '/cohort' },
-  { label: 'CAIO Course', href: '/caio-course' },
   { label: 'About',       href: '/about' },
 ]
 

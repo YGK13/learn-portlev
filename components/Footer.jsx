@@ -13,8 +13,10 @@ const LEARN_LINKS = [
 
 const PRODUCT_LINKS = [
   { label: 'The Book',              href: '/book' },
+  { label: 'All Programs',          href: '/programs' },
   { label: 'Executive AI Cohort',   href: '/cohort' },
   { label: 'Fractional CAIO Course', href: '/caio-course' },
+  { label: 'Authority Stack',       href: '/authority-stack' },
   { label: 'About Yuri',            href: '/about' },
   { label: 'Credits',               href: '/credits' },
   { label: 'Marketplace',           href: 'https://apps.portlev.com', external: true },
