@@ -5,6 +5,8 @@
 
 _Last re-ranked: 2026-07-13 (Agent 02, third invocation, 39-day gap since the second: the routines dispatcher that triggers this swarm was down under a KILL flag from 2026-06-07 to 2026-07-07. Reconciled the backlog against what actually shipped during the gap; promoted the sitewide JSON-LD item to IN-PROGRESS.)_
 
+_Coordinator pass, 2026-07-13 (W29): corrected the track count below from 9 to 10 (live repo count: `content/tracks/` has 10 directories, 42 lessons; the free `fractional-caio-playbook` track, shipped 2026-07-07 in the same commit as the paid CAIO course, was miscounted as commercial-only scope by both this file and `state/intelligence/2026-07-13.md`). No score changes: item 1's 5x5/2=12.5 was already at the ICP-impact and AEO-value ceiling, and PR #3's schema is derived dynamically from frontmatter, so it already covers all 10 tracks with no rework needed. Distribution (05) did not run this week: see `state/runs/2026-07-13-distribution-block.md` (Reddit + Quora access blocked; zero drafts, by design, not a skipped step).
+
 ## Intel status for this run
 
 `2026-07-13.md`: verified CAIO adoption stats (IBM 2026 CEO Study via secondary citation, [VERIFY] flagged) and a primary-sourced CHRO anxiety stat (CHRO Association/USC Darla Moore, 91%, dated 2026-03-20). Full detail in `state/intelligence/2026-07-13.md`.
@@ -13,11 +15,11 @@ _Last re-ranked: 2026-07-13 (Agent 02, third invocation, 39-day gap since the se
 
 None of this was logged by the swarm because the dispatcher was down. Reconciled here from `git log` and the live repo so the backlog stops lying about scope:
 
-1. **8 new tracks published**, taking the site from 1 track (`ai-foundations`, 4 lessons) to 9: `how-ai-works`, `prompt-engineering`, `ai-workflows`, `ai-agents`, `ai-governance`, `personal-website`, `building-agents`, `leading-ai-adoption`, `fractional-caio-playbook`. This is the single biggest fact this backlog was missing.
+1. **9 new tracks published**, taking the site from 1 track (`ai-foundations`, 4 lessons) to 10: `how-ai-works`, `prompt-engineering`, `ai-workflows`, `ai-agents`, `ai-governance`, `personal-website`, `building-agents`, `leading-ai-adoption`, `fractional-caio-playbook`. This is the single biggest fact this backlog was missing. (Corrected from "9 total" to "10 total" in the W29 coordinator pass: `fractional-caio-playbook` is a free, published track inside `content/tracks/` like the others, not commercial-only scope.)
 2. **PR #2 (the stale AEO branch) was rebased and merged** by Yuri. FAQPage JSON-LD + direct-answer Callout live on "Your First Hour with Claude." Item 1 below moves to SHIPPED.
 3. **Search Console metrics reader** shipped (commit `51c59b8`, zero-dep service-account JWT). `state/metrics.md`'s Search Console blocker may be partially resolved; needs a Coordinator check against the actual metrics.md checklist (still shows Yuri's verification step as outstanding as of this run, not re-verified here).
 4. **Content format revamp** (2 passes, ~21 lessons retrofitted with TLDR/Pullquote/Stat) and a **verified quote bank** (48 verbatim quotes from book + transcripts) shipped. This substantially reduces the "no second verified quote available" gap flagged against lesson 04 in the 2026-06-04 decisions-log entry; worth rechecking before that lesson publishes.
-5. **CAIO course, Authority Stack and Programs hub** shipped (per `git log`: `aab576b`, `60c9c5a`, `398804c`). These are commercial surfaces (course/pricing tiers), not `content/tracks/` lessons, out of this swarm's `content/` scope but relevant context for the ICP profile (CAIO is now a paid track, not just free lessons).
+5. **CAIO course, Authority Stack and Programs hub** shipped (per `git log`: `aab576b`, `60c9c5a`, `398804c`). The Authority Stack/Programs hub/course pricing tiers are commercial surfaces out of this swarm's `content/` scope. **Correction (W29):** `aab576b` also shipped the free `fractional-caio-playbook` track (5 lessons, `tier: free`, `status: published`) inside `content/tracks/`, which IS in scope and is counted in the "10 tracks" figure above, not carved out as commercial-only as this line previously implied.
 6. `llms.txt` still does not exist. Confirmed unchanged.
 
 **Standing gap:** this reconciliation is Strategy-level triage, not a full audit. A complete pass (metrics.md re-check, decisions-log backfill for items 3 to 5 above, ICP-profile implications of the CAIO paid tier) belongs to the next weekly Coordinator sync. Flagged there.
@@ -26,7 +28,7 @@ None of this was logged by the swarm because the dispatcher was down. Reconciled
 
 | # | Type | Item | Score | Status |
 |---|------|------|-------|--------|
-| 1 | onpage | Add sitewide `Course`/`LearningResource` + `BreadcrumbList` JSON-LD to all lesson pages across all 9 published tracks | 5x5/2 = 12.5 (was 4x5/2=10 when scoped to 1 track; raised on the 9x scope increase) | **in-progress this run: implementing on branch, PR to follow.** Unblocks `llms.txt` (raw score 16, deferred until this lands per the 2026-06-04 backlog note). |
+| 1 | onpage | Add sitewide `Course`/`LearningResource` + `BreadcrumbList` JSON-LD to all lesson pages across all 10 published tracks (corrected from "9" W29, see reconciliation note above; PR's schema is frontmatter-driven so it already covers all 10, no rework needed) | 5x5/2 = 12.5 (was 4x5/2=10 when scoped to 1 track; raised on the scope increase) | **PR #3 open** (`growth-os/sitewide-lesson-schema`), not yet merged. Build verified: 52 content files, 68 static pages, 0 errors. **Action needed from Yuri: merge PR #3.** Unblocks `llms.txt` (raw score 16, deferred until this lands per the 2026-06-04 backlog note). |
 
 ## IDEAS (queued, not yet ranked for execution)
 
@@ -51,6 +53,13 @@ None of this was logged by the swarm because the dispatcher was down. Reconciled
 ## DRAFTED, AWAITING HUMAN PUBLISH
 
 - content: "Is AI Going to Take My Executive Job?" (`content/tracks/ai-foundations/04-is-ai-going-to-take-my-executive-job.mdx`), `status: draft` since 2026-06-04, unchanged this run. Two open items from the 2026-06-04 decisions-log entry: (1) [VERIFY]-flagged SHRM "5.7x" stat, now supersedable by the primary-sourced CHRO Association 91% stat from `2026-07-13.md`; (2) no Pullquote used, now potentially resolvable against the 48-quote verified quote bank that shipped during the gap. Flagged for content agent's next run, not touched today (today's single pick was onpage).
+
+## NEXT WEEK'S FOCUS (Coordinator, W29, 2026-07-13)
+
+1. **Content (03), top pick:** finalize and publish `04-is-ai-going-to-take-my-executive-job.mdx`. Both blockers from the 2026-06-04 entry are now resolvable: swap the [VERIFY]-flagged SHRM "5.7x" stat for the primary-sourced CHRO Association 91%-concern stat (`state/intelligence/2026-07-13.md` Thread 2, now in `ICP-profile.md` evidence anchors), and pull a Pullquote from the 48-quote verified quote bank that shipped during the gap. This is the single oldest item in the backlog (drafted 2026-06-04) and both its open items are now closed by evidence already in hand.
+2. **On-page (04):** once PR #3 merges, ship `llms.txt` (raw score 16, was deferred pending #3).
+3. **Distribution (05):** access is blocked (see `state/runs/2026-07-13-distribution-block.md`). Do not re-attempt with the same tools next week without a fix; flagged to Yuri in this week's digest with 3 concrete unblock options. If none land, Distribution stays a manual-source, agent-drafts hybrid.
+4. **Infrastructure, standing ask for Yuri:** verify the `learn.portlev.com` property in Search Console for the existing service account (1 click, tooling already works, live-confirmed this week); this single step unblocks the entire "not connected" ranking/position row in `metrics.md`.
 
 ## SHIPPED (dedup guard; coordinator moves items here)
 
