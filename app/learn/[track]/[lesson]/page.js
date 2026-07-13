@@ -12,6 +12,57 @@
 // AI answer engines (Perplexity, SGE, Bing Copilot) can parse
 // and cite the Q+A pairs directly.
 // ============================================================
+// ============================================================
+// Sitewide AEO structured data (LearningResource + BreadcrumbList).
+// Unlike FAQ_SCHEMA above (hand-authored per lesson with a real
+// FAQ), this graph is derived from existing frontmatter/track
+// data and applies to every published lesson automatically.
+// Rendered as a single @graph so one <script> tag carries both
+// schemas per Schema.org's documented graph pattern.
+// ============================================================
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://learn.portlev.com'
+
+function buildLessonSchemaGraph({ lesson, track, trackSlug, lessonSlug }) {
+  const lessonUrl = `${SITE_URL}/learn/${trackSlug}/${lessonSlug}`
+  const trackUrl  = `${SITE_URL}/learn/${trackSlug}`
+  const provider  = { '@type': 'Organization', name: 'PortLev Academy', url: SITE_URL }
+
+  const breadcrumb = {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Learn', item: `${SITE_URL}/learn` },
+      { '@type': 'ListItem', position: 2, name: track?.title ?? trackSlug, item: trackUrl },
+      { '@type': 'ListItem', position: 3, name: lesson.title, item: lessonUrl },
+    ],
+  }
+
+  const learningResource = {
+    '@type': 'LearningResource',
+    '@id': `${lessonUrl}#lesson`,
+    name: lesson.title,
+    description: lesson.summary,
+    url: lessonUrl,
+    inLanguage: 'en',
+    educationalLevel: lesson.level,
+    dateModified: lesson.updated,
+    isAccessibleForFree: lesson.tier === 'free',
+    provider,
+    isPartOf: {
+      '@type': 'Course',
+      name: track?.title ?? trackSlug,
+      description: track?.summary,
+      url: trackUrl,
+      provider,
+    },
+    ...(lesson.estReadMin ? { timeRequired: `PT${lesson.estReadMin}M` } : {}),
+  }
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [breadcrumb, learningResource],
+  }
+}
+
 const FAQ_SCHEMA = {
   'your-first-hour-with-claude': {
     '@context': 'https://schema.org',
@@ -118,6 +169,9 @@ export default async function LessonPage({ params }) {
   // FAQPage JSON-LD for this lesson (null if no FAQ data defined)
   const faqSchema = FAQ_SCHEMA[lessonSlug] ?? null
 
+  // LearningResource + BreadcrumbList JSON-LD, every published lesson
+  const lessonSchemaGraph = buildLessonSchemaGraph({ lesson, track, trackSlug, lessonSlug })
+
   // Compile MDX — this is an async operation on the server.
   // Security posture (blockJS off for trusted first-party content)
   // lives in lib/mdx-options.js so it cannot drift between surfaces.
@@ -134,6 +188,10 @@ export default async function LessonPage({ params }) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(lessonSchemaGraph) }}
+      />
       {faqSchema && (
         <script
           type="application/ld+json"
