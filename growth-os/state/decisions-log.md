@@ -1,5 +1,15 @@
 # Decisions Log (append-only)
 
+## 2026-07-13: Third invocation, daily swarm, first run after a 39-day dispatcher outage
+
+- The routines dispatcher that triggers this swarm was down under a KILL flag from 2026-06-07 to 2026-07-07 (per project memory, revived same day it was pruned). This was the first `growth-os-daily-swarm` run since 2026-06-04.
+- RECONCILED: `backlog.md` still described a 1-track, 4-lesson site. The live repo has 9 published tracks (~45 lessons), a merged AEO PR (#2), a Search Console metrics reader, 2 content format-revamp passes, a 48-quote verified quote bank, and a commercial CAIO course/Authority Stack/Programs hub, none of which were logged by the swarm because it was not running. Backfilled into `backlog.md`'s reconciliation section and SHIPPED list. Full decisions-log backfill (commit-level detail) deferred to the next weekly Coordinator sync.
+- INTELLIGENCE: verified 2 stats via direct fetch (not search-snippet-only): IBM 2026 CEO Study CAIO adoption (76%, up from 26% a year earlier; secondary citation via iternal.ai, [VERIFY] primary source before publish use) and CHRO Association/USC Darla Moore 2026 CHRO Survey (91% named AI/digitization a top-5 concern, ranked #1; primary-sourced, PR Newswire, dated 2026-03-20). Full detail in `state/intelligence/2026-07-13.md`.
+- STRATEGY: rescored the sitewide `Course`/`LearningResource` + `BreadcrumbList` JSON-LD onpage item from 10 to 12.5 (5x5/2) given the 9x track-count increase since it was last scored, and promoted it to IN-PROGRESS as today's single pick.
+- SHIPPED THIS RUN: sitewide `LearningResource` + `BreadcrumbList` JSON-LD on every published lesson page (`app/learn/[track]/[lesson]/page.js`), on branch `growth-os/sitewide-lesson-schema`, PR #3 open (not merged; Yuri merges). Build verified: 52 content files validated, 68 static pages generated, 0 errors. Unblocks the `llms.txt` backlog item, which was deferred pending this.
+- FLAGGED for the weekly Coordinator sync: re-check `metrics.md`'s Search Console checklist against the metrics reader that shipped during the gap; decide whether the CAIO paid course tier changes anything in `ICP-profile.md`'s value ladder; full decisions-log backfill for the gap's shipped commits.
+- STANDING RULE CONFIRMED: even during an extended outage, the swarm does not fabricate what happened while it was down. This run reconciled from `git log` and the live repo rather than assuming the last-known state was current.
+
 > The swarm's memory of what was decided and why. Agents check here to avoid redoing or contradicting past decisions. Coordinator appends weekly; any agent may append a material decision.
 
 ## 2026-06-03 — Growth OS founded
