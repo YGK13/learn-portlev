@@ -52,12 +52,23 @@ None of this was logged by the swarm because the dispatcher was down. Reconciled
 
 ## DRAFTED, AWAITING HUMAN PUBLISH
 
-- content: "Is AI Going to Take My Executive Job?" (`content/tracks/ai-foundations/04-is-ai-going-to-take-my-executive-job.mdx`), `status: draft` since 2026-06-04, unchanged this run. Two open items from the 2026-06-04 decisions-log entry: (1) [VERIFY]-flagged SHRM "5.7x" stat, now supersedable by the primary-sourced CHRO Association 91% stat from `2026-07-13.md`; (2) no Pullquote used, now potentially resolvable against the 48-quote verified quote bank that shipped during the gap. Flagged for content agent's next run, not touched today (today's single pick was onpage).
+- content: "Is AI Going to Take My Executive Job?" (`content/tracks/ai-foundations/04-is-ai-going-to-take-my-executive-job.mdx`), `status: draft`, finalized 2026-07-14 (today's single content pick, per the W29 Coordinator's "next week's focus" item 1). Both open items from the 2026-06-04 decisions-log entry are now CLOSED: (1) the SHRM "5.7x" stat was re-verified live against the primary source (shrm.org/topics-tools/research/state-of-ai-hr-2026/full-report) and rescoped honestly, it is real but workforce-wide, not CHRO-specific, as the original draft implied; the CHRO Association 91%-concern `<Stat>` was added alongside it as the properly CHRO-specific evidence; (2) a `<Pullquote>` was added (Yuri Kruman, "Fear without a plan is paralysis...", verbatim from `state/quote-bank.md`). The `content-structure-auditor` also caught 2 pre-existing block-level defects from the original 2026-06-04 draft (an unsourced "12% of CHROs rank among the 5 highest-paid executives" stat with no citation anywhere in state, and an Oxford comma in the Context section's 4-item list) and 2 warns (AMS/Reworked.co and Mercer/Reworked.co stats are only secondary-cited, same standard the swarm already applies to the IBM CAIO stat; "80% of CHROs" vs "CHROs and HR leaders" wording mismatch). Both blocks were fixed same-session (unsourced sentence cut, Oxford comma removed); build re-verified clean (52 files, 68 pages, 0 errors). **Standing warn for Yuri before publish:** the AMS (80%/89%) and Mercer (78%/13%) stats still need primary-source verification, same bar the swarm held the IBM stat to until today (see intelligence 2026-07-14 Thread 1, now cleared). Full detail: `state/runs/2026-07-14-daily.md`.
 
-## NEXT WEEK'S FOCUS (Coordinator, W29, 2026-07-13)
+## TODAY'S PICK, 2026-07-14 (daily swarm)
 
-1. **Content (03), top pick:** finalize and publish `04-is-ai-going-to-take-my-executive-job.mdx`. Both blockers from the 2026-06-04 entry are now resolvable: swap the [VERIFY]-flagged SHRM "5.7x" stat for the primary-sourced CHRO Association 91%-concern stat (`state/intelligence/2026-07-13.md` Thread 2, now in `ICP-profile.md` evidence anchors), and pull a Pullquote from the 48-quote verified quote bank that shipped during the gap. This is the single oldest item in the backlog (drafted 2026-06-04) and both its open items are now closed by evidence already in hand.
-2. **On-page (04):** once PR #3 merges, ship `llms.txt` (raw score 16, was deferred pending #3).
+- **Content (03):** finalized `04-is-ai-going-to-take-my-executive-job.mdx` per the W29 focus item below. Moved to DRAFTED, AWAITING HUMAN PUBLISH with full detail above. Not published (still `status: draft`, per tiered change control).
+- **On-page (04):** not actioned. PR #3 (`growth-os/sitewide-lesson-schema`) checked live via `gh pr list`, still OPEN, not merged. `llms.txt` stays deferred until Yuri merges it.
+- **Intelligence (01):** light 1-thread scan closed the `[VERIFY]` flag on the IBM 76%-CAIO stat (now primary-source confirmed, cleared for use in the CAIO track) and caught a mis-scoped SHRM stat in the lesson 04 draft before it could ship inaccurately. `state/intelligence/2026-07-14.md`.
+- **Strategy (02):** no backlog rescoring needed today; item 1 (sitewide JSON-LD) and item 2 (llms.txt) are unchanged, both still gated on Yuri's PR #3 merge.
+
+## IDEAS, promoted from today's intel
+
+- content: use the now-cleared IBM 76%-CAIO-adoption stat (was `[VERIFY]`-flagged, cleared 2026-07-14) in the `fractional-caio-playbook` track's opening lesson: ~4x4/2 = 8. Primary source: IBM Newsroom, 2026-05-04. See `state/intelligence/2026-07-14.md` Thread 1.
+
+## NEXT WEEK'S FOCUS (Coordinator, W29, 2026-07-13, still open)
+
+1. ~~**Content (03), top pick:** finalize `04-is-ai-going-to-take-my-executive-job.mdx`.~~ DONE 2026-07-14, see above. Still needs Yuri's publish decision, and the AMS/Mercer secondary-source warn resolved first if he wants it fully clean before publish.
+2. **On-page (04):** once PR #3 merges, ship `llms.txt` (raw score 16, was deferred pending #3). **Still blocked on Yuri, unchanged as of 2026-07-14.**
 3. **Distribution (05):** access is blocked (see `state/runs/2026-07-13-distribution-block.md`). Do not re-attempt with the same tools next week without a fix; flagged to Yuri in this week's digest with 3 concrete unblock options. If none land, Distribution stays a manual-source, agent-drafts hybrid.
 4. **Infrastructure, standing ask for Yuri:** verify the `learn.portlev.com` property in Search Console for the existing service account (1 click, tooling already works, live-confirmed this week); this single step unblocks the entire "not connected" ranking/position row in `metrics.md`.
 
