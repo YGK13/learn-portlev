@@ -6,9 +6,12 @@
 // (2026-07-06): mid-career executives 35-55, enemy = the AI wage
 // gap, a guided build from "who am I" to ICP, main product and
 // value ladder, then build-out, monetization and money management.
-// DIY and done-for-you tracks. Price is NOT set yet, so this page
-// captures interest for the founding cohort rather than selling a
-// fixed ticket. Do not add a price until Yuri sets one.
+// DIY and done-for-you tracks.
+//
+// Pricing LIVE (Yuri confirmed 2026-07-15): each track card carries a
+// Stripe Payment Link, full payment up front — DIY $997 founding,
+// Guided/Foundation Sprint from $5,000, Done-for-you/Full Build from
+// $15,000. CourseApplyForm stays as the "talk first" path.
 // ============================================================
 
 import Link from 'next/link'
@@ -76,6 +79,9 @@ const TRACKS = [
     points:   ['40+ templates + Authority Prompt Pack', 'Monthly group office hours (live, recorded)', 'Private community', 'Apply your fee toward a higher tier within 90 days'],
     accent:   '#0891b2',
     featured: true,
+    checkout: 'https://buy.stripe.com/00w5kE4Al7xPg9o6F0gQE0L',
+    cta:      'Get founding access',
+    note:     'Instant access · no call required',
   },
   {
     name:     'Guided',
@@ -86,6 +92,9 @@ const TRACKS = [
     points:   ['Positioning, voice and method, done with you', 'Live working sessions', 'Your framework pages and diagnostic', 'Upgrades to the full build'],
     accent:   '#7c3aed',
     featured: false,
+    checkout: 'https://buy.stripe.com/cNi6oI3wh6tL9L08N8gQE0K',
+    cta:      'Reserve your Sprint',
+    note:     'Paid up front · or express interest below',
   },
   {
     name:     'Done-for-you',
@@ -96,6 +105,9 @@ const TRACKS = [
     points:   ['All seven layers, done for you', 'Book architecture and a working product', 'Newsletter, LinkedIn and PR engines live', 'Full handoff, you own everything'],
     accent:   '#4f46e5',
     featured: false,
+    checkout: 'https://buy.stripe.com/dRmeVe4AldWd1euaVggQE0J',
+    cta:      'Reserve your build',
+    note:     'Paid up front · or express interest below',
   },
 ]
 
@@ -259,6 +271,14 @@ export default function AuthorityStackPage() {
                     </li>
                   ))}
                 </ul>
+                <a
+                  href={t.checkout}
+                  className="mt-5 block rounded-lg px-5 py-3 text-center text-sm font-semibold text-white"
+                  style={{ backgroundColor: t.accent }}
+                >
+                  {t.cta} →
+                </a>
+                <p className="mt-2 text-center text-xs" style={{ color: '#94a3b8' }}>{t.note}</p>
               </div>
             ))}
           </div>
