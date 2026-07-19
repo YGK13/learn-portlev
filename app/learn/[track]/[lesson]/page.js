@@ -43,6 +43,28 @@ const FAQ_SCHEMA = {
       },
     ],
   },
+  'ai-and-your-data': {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'How do I use AI at work without causing a data or governance incident?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Put real work on a business or enterprise AI account, not a personal one, since reputable business agreements commit not to train on your data while consumer tiers often do. Then classify what must never be pasted into a general AI tool, write a one-page policy people will actually read and ask any AI vendor the four data questions: will our data train your models, how long do you retain it, where is it stored and who are your sub-processors. Account type is the single biggest lever.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'What is the difference between a consumer and a business AI account for data privacy?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Consumer tiers, free accounts and personal subscriptions, frequently allow the provider to retain what you submit and use it to train future models by default. Business, team and enterprise tiers generally come with materially stronger terms: reputable agreements commit that your data will not be used for training, with clearer commitments on retention, security and confidentiality. For an organization, that is the difference between an acceptable tool and an unacceptable one.',
+        },
+      },
+    ],
+  },
 }
 
 import Link from 'next/link'
