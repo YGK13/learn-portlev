@@ -2,7 +2,11 @@
 
 > The single source of truth on who learn.portlev.com serves. The Intelligence agent updates this with evidence; the Coordinator reconciles it weekly. Every other agent reads it before acting. Never edit with assumptions: changes must cite evidence.
 
-_Last reconciled: 2026-07-13 (W29 coordinator sync, by Claude). One evidence anchor added this week: see reconciliation note below._
+_Last reconciled: 2026-07-19 (second W29 coordinator sync, by Claude). No change this pass: see reconciliation note below._
+
+## W29b reconciliation note (2026-07-19)
+
+No evidence-backed change this sync. Distribution (05) was blocked at the access layer for the third consecutive weekly attempt (see `state/runs/2026-07-19-distribution-block.md`), producing no subreddit/ICP-language evidence. The 2026-07-19 daily Intelligence brief's finding (a stale backlog annotation plus a competitive-altitude check) was a content-gap finding, not ICP-anxiety or demographic evidence, so nothing from it belongs in this profile. Per "never edit with assumptions," the profile is held exactly as it stood after the 2026-07-13 reconciliation. All four "Open questions for the Intelligence agent" below remain OPEN, unchanged, now three weeks running on the Distribution-access question specifically.
 
 ## W29 reconciliation note (2026-07-13)
 
