@@ -8,10 +8,14 @@
 // value ladder, then build-out, monetization and money management.
 // DIY and done-for-you tracks.
 //
-// Pricing LIVE (Yuri confirmed 2026-07-15): each track card carries a
-// Stripe Payment Link, full payment up front — DIY $997 founding,
-// Guided/Foundation Sprint from $5,000, Done-for-you/Full Build from
-// $15,000. CourseApplyForm stays as the "talk first" path.
+// Pricing LIVE. DIY ($997 founding) = self-serve Stripe checkout, paid
+// up front. Guided/Foundation Sprint (from $5,000) and Done-for-you/Full
+// Build (from $15,000) are milestone-split deals (50/50 and 50/25/25,
+// ACH preferred, pay-in-full saves 5%) that start with a call — their
+// cards route to the CourseApplyForm (#as-cta), and Yuri sends the
+// deposit invoice via Stripe Invoicing. Yonatan/Israel is the exception
+// to the US split (his terms are separate). See authority-stack repo
+// AUTHORITY_STACK_SYSTEM.md §2.
 // ============================================================
 
 import Link from 'next/link'
@@ -92,9 +96,9 @@ const TRACKS = [
     points:   ['Positioning, voice and method, done with you', 'Live working sessions', 'Your framework pages and diagnostic', 'Upgrades to the full build'],
     accent:   '#7c3aed',
     featured: false,
-    checkout: 'https://buy.stripe.com/cNi6oI3wh6tL9L08N8gQE0K',
-    cta:      'Reserve your Sprint',
-    note:     'Paid up front · or express interest below',
+    checkout: '#as-cta',
+    cta:      'Book a call to start',
+    note:     '50/50 split · ACH or card · pay in full saves 5%',
   },
   {
     name:     'Done-for-you',
@@ -105,9 +109,9 @@ const TRACKS = [
     points:   ['All seven layers, done for you', 'Book architecture and a working product', 'Newsletter, LinkedIn and PR engines live', 'Full handoff, you own everything'],
     accent:   '#4f46e5',
     featured: false,
-    checkout: 'https://buy.stripe.com/dRmeVe4AldWd1euaVggQE0J',
-    cta:      'Reserve your build',
-    note:     'Paid up front · or express interest below',
+    checkout: '#as-cta',
+    cta:      'Book a call to start',
+    note:     '50/25/25 split · ACH or card · pay in full saves 5%',
   },
 ]
 
