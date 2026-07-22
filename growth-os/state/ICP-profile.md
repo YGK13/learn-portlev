@@ -2,7 +2,16 @@
 
 > The single source of truth on who learn.portlev.com serves. The Intelligence agent updates this with evidence; the Coordinator reconciles it weekly. Every other agent reads it before acting. Never edit with assumptions: changes must cite evidence.
 
-_Last reconciled: 2026-07-19 (second W29 coordinator sync, by Claude). No change this pass: see reconciliation note below._
+_Last reconciled: 2026-07-22 (daily swarm, ninth invocation). Two evidence-backed changes this pass: see reconciliation note below._
+
+## 2026-07-22 reconciliation note (daily swarm, ninth invocation)
+
+Two evidence-backed changes, both from `state/intelligence/2026-07-21.md` (Agent 01, single-agent session, content substance passed audit; the brief itself was blocked and fixed for voice/process defects, see the brief's re-audit note):
+
+1. **Refreshed the PwC evidence anchor.** The 56%/2025 figure is superseded by PwC's own 2026 Global AI Jobs Barometer (62% wage premium, up from 57% the prior year per PwC's own year-over-year comparator, more than one billion job ads across 27 countries, PR Newswire, dated 2026-06-15). The 56%/2025 figure remains true history, not removed as a fabrication, just no longer the headline anchor. See evidence anchors below.
+2. **Added a fifth anxiety hook**, a real dimension not previously captured: AI cost/usage-governance trade-off anxiety (as opposed to obsolescence, paralysis, deployment-risk or falling-behind anxiety, the four already logged). Evidence: Nickle LaMoreaux, IBM's CHRO, on-record 2026-06-05, "AI is not free. We act like it's free right now... organizations have to make trade-offs about, 'Do I want people using AI for that or not, is there enough value for the cost?'" Corroborated by reported 2026 AI-budget-blowout pattern at Uber, Amazon and Meta. Source: HR Brew, linked in the intel brief.
+
+This same-day stat drift (56% to 62%) was already flagged in Yuri's project memory for a different property (`aiwagegap.com`); this reconciliation is the first time it was checked against `learn.portlev.com`'s own flagship lesson specifically. The lesson-level fix (updating the `<Stat>` block in `01-what-is-the-ai-wage-gap.mdx` itself) is this run's onpage/content pick, tracked in `backlog.md`, not applied here (this file is evidence and framing only, not the lesson content).
 
 ## W29b reconciliation note (2026-07-19)
 
@@ -32,7 +41,7 @@ No evidence-backed change was made to this profile this week. The Intelligence a
 - **Time-poor and skeptical.** Allergic to fluff, listicles and breathless hype. Short on hours.
 - **Pressure from above and below.** Board/CEO expect an AI point of view; teams worry about their jobs.
 
-Evidence anchors (cited): PwC AI Jobs Barometer 2025 (AI-skill roles advertise ~56% higher salary); 62% of CHROs cite AI fluency as the #1 missing capability (ForwardShare cohort research); Gartner / Deloitte 2026 enterprise-AI data; 91% of CHROs named AI/workplace digitization a top-5 concern, ranked #1 ahead of geopolitical instability (46%) and inflation uncertainty (42%) (CHRO Association / USC Darla Moore School of Business 2026 CHRO Survey, ~150 CHROs, PR Newswire, dated 2026-03-20, added W29).
+Evidence anchors (cited): PwC Global AI Jobs Barometer 2026 (AI-skill roles advertise a 62% wage premium, up from 57% the prior year per PwC's own comparator, based on more than one billion job ads across 27 countries, PR Newswire, dated 2026-06-15, refreshed 2026-07-22 from the prior 56%/2025 figure, which remains real history); 62% of CHROs cite AI fluency as the #1 missing capability (ForwardShare cohort research); Gartner / Deloitte 2026 enterprise-AI data; 91% of CHROs named AI/workplace digitization a top-5 concern, ranked #1 ahead of geopolitical instability (46%) and inflation uncertainty (42%) (CHRO Association / USC Darla Moore School of Business 2026 CHRO Survey, ~150 CHROs, PR Newswire, dated 2026-03-20, added W29).
 
 ## What they read / where they are
 
@@ -54,6 +63,7 @@ Evidence anchors (cited): PwC AI Jobs Barometer 2025 (AI-skill roles advertise ~
 - Not knowing what to actually build
 - Deploying AI wrong and causing a governance/data incident
 - Falling behind their own org's expectations
+- Whether their org's AI spend is actually worth what it costs, and who decides when to say no (added 2026-07-22: Nickle LaMoreaux, IBM CHRO, on-record 2026-06-05, corroborated by reported 2026 AI-budget-blowout pattern at Uber, Amazon and Meta, source: HR Brew)
 
 ## How we serve them (the value ladder)
 
