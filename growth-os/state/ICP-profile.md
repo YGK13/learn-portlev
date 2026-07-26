@@ -2,7 +2,11 @@
 
 > The single source of truth on who learn.portlev.com serves. The Intelligence agent updates this with evidence; the Coordinator reconciles it weekly. Every other agent reads it before acting. Never edit with assumptions: changes must cite evidence.
 
-_Last reconciled: 2026-07-22 (daily swarm, ninth invocation). Two evidence-backed changes this pass: see reconciliation note below._
+_Last reconciled: 2026-07-23 (daily swarm, tenth invocation). One evidence-backed addition this pass: see reconciliation note below._
+
+## 2026-07-23 reconciliation note (daily swarm, tenth invocation)
+
+One evidence-backed addition, from `state/intelligence/2026-07-23.md` Thread 2: re-fetched the CHRO Association/USC Darla Moore 2026 CHRO Survey primary release directly (PR Newswire, dated 2026-03-20, already an evidence anchor below for the 91% stat) and found a sharper, primary-sourced number for the existing "anxious about obsolescence" anchor that was not previously logged: among named barriers to AI adoption, employee fear of job loss ranks first (~19%), ahead of budget/investment constraints (~17%) and data/security/legal/compliance concerns (~17%). This does not add a new anxiety dimension (the five hooks already cover obsolescence); it sharpens the evidence behind the first one with a same-survey, same-primary-source number. A second finding from the same brief (a chro.org companion article citing 84%/42% AI-impact and AI-governance-control stats from, apparently, the same survey) is explicitly NOT added here: WebFetch returned HTTP 403 on chro.org, so those figures could not be independently verified and stay out per "never edit with assumptions."
 
 ## 2026-07-22 reconciliation note (daily swarm, ninth invocation)
 
@@ -35,7 +39,7 @@ No evidence-backed change was made to this profile this week. The Intelligence a
 
 ## Emotional state (the core of the messaging)
 
-- **Anxious about obsolescence.** Watching same-title peers pull ahead. Quiet fear of being "restructured out."
+- **Anxious about obsolescence.** Watching same-title peers pull ahead. Quiet fear of being "restructured out." Sharpest available number: employee fear of job loss is the single largest named barrier to AI adoption in their own organizations (~19%, CHRO Association/USC Darla Moore 2026 CHRO Survey, PR Newswire, 2026-03-20, added 2026-07-23).
 - **Late and slightly ashamed of it.** Do not want to be talked down to, do not want hype.
 - **Paralyzed by where to start.** Do not know how to use it, what to build, or what is real vs noise.
 - **Time-poor and skeptical.** Allergic to fluff, listicles and breathless hype. Short on hours.
