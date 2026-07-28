@@ -1,5 +1,7 @@
 # Growth OS Backlog
 
+_Last re-ranked: 2026-07-28 (Agent 02, 13th invocation. Actioned the oldest unactioned READY-adjacent IDEA on the whole backlog, carried since 2026-07-14: the cleared-but-never-inserted IBM 76%-CAIO-adoption stat. Re-verified the stat directly against IBM's own newsroom (`state/intelligence/2026-07-28.md` Thread 2) and confirmed the live lesson still has zero supporting `<Stat>` for its opening claim. Scored 4x4/1=16 (effort 1: single stat insertion, source verified twice now) and promoted to today's onpage pick, treated as onpage/PR-gated per the same live-published-content pattern as PR #5, not a content draft. Thread 1 produced a correct null result (two search-snippet stats traced to no primary source, explicitly rejected, not added anywhere) rather than new ICP evidence; no ICP-profile.md change this run.)_
+
 _Last re-ranked: 2026-07-27 (Agent 02, twelfth invocation. Actioned the standing flag carried since 2026-07-20: crowding/duplication-checked the two ~10-scored content IDEAS items (`state/intelligence/2026-07-27.md` Thread 1). Both found to be direct duplicates of already-published lessons (`01-what-is-the-ai-wage-gap.mdx` and `02-your-first-ai-workflow.mdx` respectively), not partial overlaps; both KILLED, not down-scored. Crowding-checked "AI for the VP of Finance" (Thread 2): no internal duplication, external crowding is at a different (technical/FP&A) altitude than our differentiated angle, but its track placement is genuinely unresolved, no existing track fits a VP Finance persona lesson without an architecture decision. Held in IDEAS, flagged for Yuri rather than actioned blind. With no READY content item, promoted the top actionable `onpage` IDEA instead: the internal-linking pass (score 6) was unblocked, unlike items 1/2/4 which remain pure PR-merge waits. Shipped as PR #6, today's pick.)_
 
 > Owned by Agent 02 (Strategy). Re-ranked daily. Status: idea | ready | in-progress | shipped | killed.
@@ -36,6 +38,7 @@ None of this was logged by the swarm because the dispatcher was down. Reconciled
 
 | # | Type | Item | Score | Status |
 |---|------|------|-------|--------|
+| 5 | onpage | Add a `<Stat>` block (76% of organizations now have a CAIO, up from 26% a year ago, IBM Newsroom 2026-05-04) to `content/tracks/fractional-caio-playbook/01-what-a-chief-ai-officer-actually-does.mdx`, the only opening-lesson in the track with zero supporting stat | 4x4/1 = 16 | **Today's pick, 2026-07-28.** Actioned this run. |
 | 1 | onpage | Add sitewide `Course`/`LearningResource` + `BreadcrumbList` JSON-LD to all lesson pages across all 10 published tracks (corrected from "9" W29, see reconciliation note above; PR's schema is frontmatter-driven so it already covers all 10, no rework needed) | 5x5/2 = 12.5 (was 4x5/2=10 when scoped to 1 track; raised on the scope increase) | **PR #3 open** (`growth-os/sitewide-lesson-schema`), not yet merged. Build verified: 52 content files, 68 static pages, 0 errors. **Action needed from Yuri: merge PR #3.** Unblocks `llms.txt` (raw score 16, deferred until this lands per the 2026-06-04 backlog note). |
 | 2 | onpage | AEO-shape `content/tracks/ai-governance/02-ai-and-your-data.mdx` for query #5 ("How do I use AI at work without causing a data or governance incident?"): add a "Quick answer" Callout + `FAQPage` JSON-LD entry, same pattern as PR #2's "Your First Hour with Claude" | 5x5/2 = 12.5 (re-typed from IDEAS today; the "needs a lesson to anchor" blocker was stale, see reconciliation note above) | **Shipped as PR #4 2026-07-19**, open, not yet merged. **Action needed from Yuri: merge PR #4.** |
 | 4 | onpage | Refresh the stale flagship `<Stat>` in `content/tracks/ai-foundations/01-what-is-the-ai-wage-gap.mdx` (56%/2025 to primary-sourced 62%/2026, PwC Global AI Jobs Barometer) and correct the job-ad sample-size citation ("roughly 6 billion job postings" does not match PwC's own "more than one billion job ads across 27 countries") | 5x5/1 = 25 (see re-ranking note above) | **Shipped as PR #5 2026-07-22**, open, not yet merged. **Action needed from Yuri: merge PR #5.** |
@@ -114,7 +117,7 @@ None of this was logged by the swarm because the dispatcher was down. Reconciled
 
 ## IDEAS, promoted from today's intel
 
-- content: use the now-cleared IBM 76%-CAIO-adoption stat (was `[VERIFY]`-flagged, cleared 2026-07-14) in the `fractional-caio-playbook` track's opening lesson: ~4x4/2 = 8. Primary source: IBM Newsroom, 2026-05-04. See `state/intelligence/2026-07-14.md` Thread 1. Unchanged, not actioned today.
+- (empty; the standing IBM 76%-CAIO-adoption item promoted to IN-PROGRESS 2026-07-28, see below)
 
 ## NEXT WEEK'S FOCUS (Coordinator, W29, 2026-07-13, still open)
 
