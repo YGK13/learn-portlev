@@ -1,0 +1,144 @@
+---
+title: "Your Claude Starter Kit: The Skills and Tools Worth Installing"
+summary: "Once Claude is set up, what should you add to it? A plain-language menu of skills and free tools worth installing, plus the trick that makes it effortless."
+track: ai-foundations
+order: 5
+level: beginner
+status: published
+tier: free
+updated: "2026-07-28"
+tags: ["getting-started", "claude", "skills", "tools", "ai-fluency"]
+estReadMin: 10
+video:
+  status: none
+  scriptStatus: none
+---
+
+<Callout type="key" title="Quick answer">
+Once Claude is working, you make it dramatically more capable by installing skills and tools that other people have already built. You do not need to be technical. There is one trick: paste the tool's GitHub link into Claude Code and ask it to install and set the tool up for you. This lesson gives you the trick and a curated menu of what is worth adding first.
+</Callout>
+
+## Hook
+
+You have had your first hour with Claude. You have briefed it on real work and seen the difference between a lazy one-line question and a proper brief. Now you hit the natural next question, the one nobody answers cleanly: what do I actually add to this thing?
+
+The internet has thousands of "awesome AI tools" lists. They are almost all noise, written for engineers, sorted by hype, and impossible for a busy executive to act on. This lesson is the opposite. It is a short, opinionated menu of skills and free tools that are genuinely worth installing, each described in one plain sentence, with a gold star on the handful you should start with.
+
+<TLDR>
+Claude gets much more useful when you add skills and tools built by others. Installing them is easier than it looks: paste the GitHub link into Claude Code and ask it to set the tool up. Start with three things that make everything else better, memory, a skill finder, and a health check, then add from the menu as real needs come up. Do not install everything. Install the next thing you actually need.
+</TLDR>
+
+## The one trick that makes this easy
+
+Almost every tool below lives on a site called GitHub, and every one of them installs the same way. You do not read the instructions. You do not touch code. You open Claude Code and paste this, with the tool's link on the end:
+
+```
+Please install this for me and set it up, step by step:
+https://github.com/OWNER/NAME
+```
+
+Claude reads the project, figures out how it installs, and walks through it. If it needs something from you, it will ask in plain language. That is the whole method. Learn it once and the entire menu below is available to you.
+
+<Callout type="key">
+The skill that separates fluent AI users from stuck ones is not coding. It is knowing that "go read this and set it up for me" is a valid, powerful instruction. Delegating the setup is the point.
+</Callout>
+
+## Part 1: Three skills to start with
+
+A "skill" is a packaged set of instructions that teaches Claude to do one job really well. Cohort members get a small starter pack of three, installed in one step from a single download:
+
+- **book-engine** turns the process of writing a nonfiction book into a repeatable system.
+- **autonomous-company-builder** takes a blank page to a validated, sellable business.
+- **fable-mode** makes Claude plan harder and check its own work before it calls anything done.
+
+If you are in the cohort, use the one-step installer you were sent. Everyone else can build the same habit with the tools below.
+
+## Part 2: The tools worth installing
+
+Install these with the trick above. A gold star marks where to begin. Do not try to install everything at once. The fastest way to get overwhelmed is to add ten tools in a day and use none of them.
+
+### Start here (the three that make everything else better)
+
+- **Claude Mem** &#9733; gives Claude a memory that persists across sessions, and cuts your token use at the same time. `github.com/thedotmack/claude-mem`
+- **Superpowers** &#9733; automatically finds and switches on the right skill for whatever you are doing. `github.com/obra/superpowers`
+- **Claude Doctor** &#9733; checks that your whole setup is healthy and tells you what is missing. `github.com/millionco/claude-doctor`
+
+### Do more, faster
+
+- **Data Formulator** &#9733; turns a spreadsheet into charts just by asking (built by Microsoft). `github.com/microsoft/data-formulator`
+- **PptxGenJS** &#9733; builds slide decks for free, a genuine alternative to Gamma. `github.com/gitbrent/PptxGenJS`
+- **STORM** &#9733; turns any topic into a sourced, written research report (built at Stanford). `github.com/stanford-oval/storm`
+- **Book to Skill** &#9733; turns any book you own into a skill Claude can apply to your work. `github.com/virgiliojr94/book-to-skill`
+
+### Power user, worth it early
+
+- **Headroom** &#9733; compresses what Claude reads for 60 to 95 percent fewer tokens, same answers. `github.com/chopratejas/headroom`
+- **Personal AI Infrastructure** &#9733; a complete personal AI setup that sits on top of Claude. `github.com/danielmiessler/Personal_AI_Infrastructure`
+- **GStack** &#9733; lets you ship a real website or app straight from Claude (built by Garry Tan). `github.com/garrytan/gstack`
+
+<TryIt id="starter-kit-install" title="Install your first tool" prompt={`Please install this for me and set it up, step by step. Explain what you are doing in plain language as you go, and tell me if you need anything from me:
+
+https://github.com/thedotmack/claude-mem`}>
+Run this in Claude Code. It installs a persistent memory for Claude, the single highest-leverage add-on for a new user. When it finishes, start a fresh chat and ask Claude what it remembers. That moment, when it recalls your earlier work, is when the toolkit starts paying off.
+</TryIt>
+
+### Go deeper when a real need comes up
+
+You do not need these on day one. Come back when a specific job calls for one.
+
+- **Skills and skill-building:** Skill finder (`vercel-labs/skills`), Agent Skills (`addyosmani/agent-skills`), SkillOpt (`microsoft/SkillOpt`).
+- **Making Claude a disciplined engineer:** Claude Code Harness (`Chachamaru127/claude-code-harness`), Archon (`coleam00/archon`), Spec Kit (`github/spec-kit`).
+- **Research and documents:** HyperResearch (`jordan-gibbs/hyperresearch`), PageIndex for long documents (`VectifyAI/PageIndex`), MinerU (`opendatalab/mineru`).
+- **Content and media:** OpenCut video editor (`OpenCut-app/OpenCut`), Supertonic free text-to-speech (`supertone-inc/supertonic`).
+- **Web and integrations:** Scrapling web scraper (`D4Vinci/Scrapling`), Nango integrations (`NangoHQ/nango`).
+- **Cost and health:** RTK token savings (`rtk-ai/rtk`), Token Dashboard (`nateherkai/token-dashboard`).
+
+<Callout type="warning" title="A word on trust">
+Everything here is a tool built by someone else. These are ones worth a look, but treat any tool you install like a new vendor. If a project asks for passwords, payment details or wide access to your accounts, stop and ask someone technical before continuing. Start with the starred, well-known projects.
+</Callout>
+
+## Why this matters
+
+The gap is not access. Every tool on this page is free and a paste away. The gap is the habit of reaching for the right one. Executives who pull ahead are not the ones who installed the most tools. They are the ones who, when they hit a real job, think "there is probably a tool for this," paste a link, and let Claude set it up. That reflex is worth more than any single item on the menu.
+
+<ActionChecklist
+  id="starter-kit-actions"
+  title="Before the next lesson"
+  items={[
+    "Install the three Start Here tools: Claude Mem, Superpowers, Claude Doctor",
+    "Run the Try It above and confirm Claude remembers your work in a fresh session",
+    "Pick one tool from Do More, Faster that maps to a real job on your desk this week, and install it",
+    "Save the paste-the-link trick somewhere you will find it again"
+  ]}
+/>
+
+<KnowledgeCheck
+  id="starter-kit-check"
+  title="Check the method"
+  questions={[
+    {
+      question: "You find a promising tool on GitHub. What is the fastest correct way to install it as a non-technical user?",
+      options: [
+        "Read the technical README and follow the code steps yourself",
+        "Paste the GitHub link into Claude Code and ask it to install and set the tool up for you",
+        "Email the tool's author for instructions"
+      ],
+      answer: 1,
+      explain: "Delegating the setup is the whole trick. Claude reads the project and walks you through installing it, asking for anything it needs in plain language."
+    },
+    {
+      question: "Which three tools does this lesson tell you to install first, and why?",
+      options: [
+        "The three with the most GitHub stars, because popularity signals quality",
+        "Memory, a skill finder and a health check, because they make every other tool work better",
+        "The three built by the biggest companies, because they are safest"
+      ],
+      answer: 1,
+      explain: "Claude Mem, Superpowers and Claude Doctor are foundational. Memory, automatic skill selection and a healthy setup raise the value of everything else you add."
+    }
+  ]}
+/>
+
+<Callout type="key">
+Do not install everything. Install the next thing you actually need, learn it, then come back. A small toolkit you use beats a huge one you forgot you had.
+</Callout>
