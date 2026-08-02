@@ -8,7 +8,6 @@ _Seeded 2026-06-03 from the Growth OS backlog + baseline brief + the transformat
 
 | Query (AEO) | Rung | Next move | Dest | Funnel | Persona | Pillar/cluster | Status |
 |---|---|---|---|---|---|---|---|
-| "What should a CHRO do first with AI without handing it to IT?" | 1-2 | Run one scoped first move this week | 6b | academy->Brief | 01 | Operator deployment / first-move | drafted (lesson 07, status: draft, awaiting publish) |
 | "How do I use AI at work without causing a data or governance incident?" | 4-5 | Build new governance "deploy without an incident" anchor lesson: failure taxonomy + 11-14% pilot-to-production stat (M1-12), Cognizant EMEA AI unit example (M1-13), NIST AI RMF/ISO 42001 tiered framing (M1-14), accountability-for-AI-decisions sub-section (M1-26) | 6b | academy->Book/cohort | 03 | Pillar B / governance ("deploy without an incident" cluster) | ready, M3 2026-08 plan item #1, promoted from IDEAS |
 | "What does current EU and US AI regulation actually require of an executive right now?" | 4 | Refresh ai-governance/03-ai-regulation-for-leaders.mdx: replace evergreen generalities with dated EU AI Act Art.50/GPAI enforcement (live 2026-08-02, M1-22), Illinois HB 3773 + Colorado + CA state law specifics (M1-23), federal-preemption-has-not-happened closer (M1-24) | 6b | academy->Book/cohort | 03 | Pillar B / governance (regulation currency) | ready, M3 2026-08 plan item #2, same work session as item #1 |
 | "What is AI fluency for a time-poor executive (operationally)?" | 2-3 | Build operational AI-fluency page using Anthropic's Delegation/Description/Discernment/Diligence framework (M1-11), companion to lesson 03 "Your First Hour with Claude"; differentiate vs Anthropic's own course via the site's "one focused hour"/AI Wage Gap frame per backlog crowding flag 2026-07-20 | 6a/6b | academy->Brief | 01/03 | Pillar A / AI fluency defined operationally | ready, M3 2026-08 plan item #3, promoted from IDEAS, resolves backlog crowding down-score |
@@ -36,6 +35,7 @@ _Seeded 2026-06-03 from the Growth OS backlog + baseline brief + the transformat
 - "Your First Hour with Claude, for Busy Executives"
 - "The Enterprise AI Deployment Protocol"
 - the 3 retrofitted foundational lessons (TLDR/Pullquote/Stat)
+- "What a CHRO Should Do First with AI (Without Handing It to IT)" (lesson 07), published by Yuri, commit `ef8dbfc`, 2026-06-04. **Corrected 2026-08-02 (W31 coordinator sync):** this file's READY table still listed lesson 07 as `status: draft, awaiting publish` more than 8 weeks after it actually published; `backlog.md`'s SHIPPED section had it right the whole time. This file was simply never cross-checked against it. Direct repo grep confirms `status: published` in the live frontmatter. Moved here, removed from READY.
 
 ## KILLED
 _(none yet)_
