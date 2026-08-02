@@ -2,7 +2,17 @@
 
 > The single source of truth on who learn.portlev.com serves. The Intelligence agent updates this with evidence; the Coordinator reconciles it weekly. Every other agent reads it before acting. Never edit with assumptions: changes must cite evidence.
 
-_Last reconciled: 2026-07-23 (daily swarm, tenth invocation). One evidence-backed addition this pass: see reconciliation note below._
+_Last reconciled: 2026-08-02 (Agent M6, Monthly Coordinator, first-ever monthly run). One evidence-backed addition this pass: see reconciliation note below._
+
+## 2026-08-02 reconciliation note (Agent M6, Monthly Coordinator, first monthly run)
+
+One evidence-backed addition, one explicit decline, both weighed against M1's `2026-08-deep-index.md` (33 items) per this run's own instruction to add nothing without evidence.
+
+**Added:** M1 item 29 (SHRM, "The State of AI in HR 2026," n=1,722 HR professionals, fielded 2025-12-05 to 2025-12-23, https://www.shrm.org/topics-tools/research/state-of-ai-hr-2026/full-report). 54% of organizations have adopted no AI in HR and have no 2026 plans to, even as 92% of CHROs expect further AI integration and 87% expect greater HR-process adoption. This is a new, primary-sourced, ICP-specific number (surveys HR professionals directly, not the general workforce) that sharpens the existing "Paralyzed by where to start" anxiety bullet with a concrete, named gap: the CHRO believes AI adoption should be moving and her own organization has done nothing, a belief-practice gap distinct from the personal-obsolescence fear the other four anchors already cover. Added inline below with citation.
+
+**Declined:** M1 item 15 (BCG's fourth annual AI at Work survey, the "joy paradox," 11,749 workers across 14 markets, 67% of regular AI users report improved job satisfaction even as 41% report higher cognitive load, 47% spend more time directing AI than doing the underlying task). This does not clear the bar for a profile edit. It is a general-workforce sentiment survey (individual contributors and managers broadly), not evidence about this profile's specific ICP (mid-career executives, primarily CHRO/VP People). Its real value, per M2's own read, is validating the academy's "strategy beats tools" content thesis (ai-workflows, leading-ai-adoption), not sharpening what this ICP is personally anxious about. Adding it here would be force-fitting a workforce-usage stat onto an executive-anxiety profile. Held out per "never edit with assumptions."
+
+**Not re-added (confirmed correctly excluded):** M1 items 20/32 (Protiviti/Fran Maxwell survey). M1 itself flags these as already surfaced and already actioned by the 2026-07-30 daily brief (driving `leading-ai-adoption/09`, drafted). Re-adding them here would be redundant with work already reconciled into this profile's evidence base via that lesson; correctly left out this pass.
 
 ## 2026-07-23 reconciliation note (daily swarm, tenth invocation)
 
@@ -41,11 +51,11 @@ No evidence-backed change was made to this profile this week. The Intelligence a
 
 - **Anxious about obsolescence.** Watching same-title peers pull ahead. Quiet fear of being "restructured out." Sharpest available number: employee fear of job loss is the single largest named barrier to AI adoption in their own organizations (~19%, CHRO Association/USC Darla Moore 2026 CHRO Survey, PR Newswire, 2026-03-20, added 2026-07-23).
 - **Late and slightly ashamed of it.** Do not want to be talked down to, do not want hype.
-- **Paralyzed by where to start.** Do not know how to use it, what to build, or what is real vs noise.
+- **Paralyzed by where to start.** Do not know how to use it, what to build, or what is real vs noise. This is not just personal: 54% of organizations have adopted no AI in HR and have no 2026 plans to, even as 92% of CHROs themselves expect further AI integration and 87% expect greater HR-process adoption (SHRM, "The State of AI in HR 2026," n=1,722 HR professionals, fielded December 2025, added 2026-08-02). The CHRO's own conviction that AI adoption should be moving is not matched by what her own organization has actually done.
 - **Time-poor and skeptical.** Allergic to fluff, listicles and breathless hype. Short on hours.
 - **Pressure from above and below.** Board/CEO expect an AI point of view; teams worry about their jobs.
 
-Evidence anchors (cited): PwC Global AI Jobs Barometer 2026 (AI-skill roles advertise a 62% wage premium, up from 57% the prior year per PwC's own comparator, based on more than one billion job ads across 27 countries, PR Newswire, dated 2026-06-15, refreshed 2026-07-22 from the prior 56%/2025 figure, which remains real history); 62% of CHROs cite AI fluency as the #1 missing capability (ForwardShare cohort research); Gartner / Deloitte 2026 enterprise-AI data; 91% of CHROs named AI/workplace digitization a top-5 concern, ranked #1 ahead of geopolitical instability (46%) and inflation uncertainty (42%) (CHRO Association / USC Darla Moore School of Business 2026 CHRO Survey, ~150 CHROs, PR Newswire, dated 2026-03-20, added W29).
+Evidence anchors (cited): PwC Global AI Jobs Barometer 2026 (AI-skill roles advertise a 62% wage premium, up from 57% the prior year per PwC's own comparator, based on more than one billion job ads across 27 countries, PR Newswire, dated 2026-06-15, refreshed 2026-07-22 from the prior 56%/2025 figure, which remains real history); 62% of CHROs cite AI fluency as the #1 missing capability (ForwardShare cohort research); Gartner / Deloitte 2026 enterprise-AI data; 91% of CHROs named AI/workplace digitization a top-5 concern, ranked #1 ahead of geopolitical instability (46%) and inflation uncertainty (42%) (CHRO Association / USC Darla Moore School of Business 2026 CHRO Survey, ~150 CHROs, PR Newswire, dated 2026-03-20, added W29); 54% of organizations have adopted no AI in HR with no 2026 plans to, even as 92% of CHROs expect further AI integration (SHRM, "The State of AI in HR 2026," n=1,722, fielded December 2025, added 2026-08-02).
 
 ## What they read / where they are
 

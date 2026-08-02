@@ -1,0 +1,105 @@
+---
+title: "How to Deploy AI Without Causing a Governance Incident"
+summary: "Only 11-14% of enterprise AI pilots reach production. The gap is organizational, not technical. Here is the tiered protocol and who answers when it's wrong."
+track: ai-governance
+order: 4
+level: intermediate
+status: draft
+tier: free
+updated: "2026-08-02"
+tags: ["governance", "deployment", "risk", "accountability", "leadership"]
+estReadMin: 12
+video:
+  status: none
+  scriptStatus: none
+---
+
+## Hook
+
+Somewhere right now, a leader who did everything reasonable is about to have a bad week. She approved a pilot. It demoed well. Legal signed off on the vendor. Then, three weeks into real use, the agent did something nobody approved: it sent a policy answer that was confidently wrong, or it kept retrying a failed action until a bill showed up, or it touched a system it was never supposed to reach. Now she is the one explaining it, because her name is the one on the approval.
+
+That fear, of deploying AI wrong and causing a governance or data incident, is not paranoia. It is the single most common outcome. Most enterprise AI agent pilots never make it to real, scaled use at all, and the ones that do often get there without anyone deliberately deciding what "safe" means first. This lesson is the fix: a plain-language way to know, before you deploy anything, what can go wrong, how much governance a given use actually needs and who is on the hook when a decision the AI made lands on a person who did not make it.
+
+<TLDR>
+Only 11-14% of enterprise AI agent pilots reach production at scale, and the gap is almost always organizational, not technical: unclear scope, no governance, no named owner. There is a named taxonomy of exactly how these deployments fail. There are two reference frameworks, NIST's AI Risk Management Framework and ISO/IEC 42001, that the field now applies as a tiered system: low-stakes tools move fast, high-stakes deployments carry full governance. And there is a sharper, newer problem underneath all of it: when AI drives a hiring, lending or admin decision, a frontline employee is often the one left explaining it, unless a leader names the accountable owner before the deployment ships, not after.
+</TLDR>
+
+<Stat value="11-14%" label="of enterprise AI agent pilots reach production at scale" source="Tricentis, 2026" />
+
+## Context
+
+### The failure is organizational, not technical
+
+Tricentis's 2026 research on agentic AI in the enterprise found that only 11% to 14% of AI agent pilots ever reach real production at scale. The natural assumption is that the models were not good enough. That is almost never the actual reason. The gap is organizational: unclear scoping, no governance built in before launch and no named human owner accountable for what the agent does once it is live. A pilot that works in a demo and dies in production usually dies of neglect, not of a bad model.
+
+Tricentis names the specific ways this neglect shows up. Treat this as a checklist of what to look for before you deploy anything, not a list of abstract risks:
+
+- **Hallucinated actions.** The AI does something based on information it invented, not information that was true.
+- **Runaway loops or cost.** The AI retries a failed step indefinitely, or keeps calling an expensive tool, with nobody watching the meter.
+- **Tool misuse.** The AI uses a connected system in a way nobody intended, because nothing stopped it from trying.
+- **Prompt injection and exfiltration.** Hidden instructions, buried in a document or a webpage the AI reads, hijack it into leaking data or taking an unauthorized action.
+- **Silent failures.** The AI fails quietly and nobody notices, because nothing was watching for the failure.
+- **Context loss on long tasks.** A multi-step task drifts from its original instructions the longer it runs, and the drift compounds.
+- **Over-automation without a human in the loop.** A consequential decision ships with no person positioned to catch it before it lands.
+
+<Callout type="warning" title="This is not a hypothetical">On 2026-07-28, Cognizant, one of the largest enterprise services firms in the world, stood up a dedicated EMEA AI unit specifically because enterprise agent pilots were failing to scale across its own client base. This is a real, current, named example of a major firm restructuring around exactly the problem this lesson addresses, not a warning about something that might happen someday.</Callout>
+
+### Not every AI use needs the same governance
+
+The instinct, once you have read the failure list above, is to slow everything down and put every AI use through the same heavy review. That instinct is wrong, and it is also why governance programs die: nobody has the time to run a six-week review on a tool that summarizes meeting notes.
+
+The field's answer in 2026 is a tiered system, built around two reference frameworks most enterprise AI-governance programs now cite: the NIST AI Risk Management Framework and ISO/IEC 42001. Neither hands you a rulebook to copy. Both point at the same practical idea: sort what you are deploying by stakes, and match the governance weight to the stakes, not to the technology.
+
+<FlowDiagram steps={[{label:"Low stakes",note:"internal, reversible, no protected data: move fast"},{label:"Medium stakes",note:"customer-facing or operational: review before scale"},{label:"High stakes",note:"hiring, comp, legal, financial, health data: full governance, human sign-off"}]} caption="A tiered governance system: match the weight to the stakes, not the technology" />
+
+A tool that drafts internal meeting summaries and touches no protected data is low stakes: let people use it, with the basic data-tier rules from the data-handling lesson, and move on. A tool that screens resumes, sets pay or acts inside a regulated process is high stakes: it gets a named owner, a human-in-the-loop requirement and a real review before it goes live. Most of what gets deployed sits in between, and the tier tells you how much scrutiny it earns. This is the single fastest way to stop a governance program from either rubber-stamping everything or freezing everything: decide the tier once, in writing, and apply it consistently.
+
+### The accountability gap nobody names
+
+There is a sharper problem sitting underneath the tiering system, and it is newer to the field than the rest of this lesson. Harvard Business Review's Anne-Sophie Mayer, Elmira van den Broek and Tomislav Karačić published research in 2026 on what happens after an AI system drives a hiring, lending or administrative decision: the frontline employee, the one who processed the application or delivered the answer, is frequently the person left explaining and defending a decision they did not make and may not fully understand. The manager who approved the tool is not in the room. The vendor is not in the room. The employee is.
+
+<Callout type="key" title="The question a tiered system alone does not answer">A risk tier tells you how much governance a deployment needs. It does not tell you who explains the outcome to the person it affects. Those are two different design decisions, and skipping the second one is how a well-tiered deployment still produces a bad Monday for someone on your team.</Callout>
+
+This is not a reason to avoid deploying AI into consequential decisions. It is a reason to name, in writing, before the deployment ships, exactly one person who owns explaining and defending its outcomes, and to make sure that person is not the most junior employee in the process by default. If you would not put your newest hire in front of a rejected candidate with no script and no backup, do not do the AI equivalent of that by accident.
+
+## Steps
+
+### Step 1: Run the failure-taxonomy audit on what is already live
+
+Before building anything new, list every AI tool or agent your team already uses for real work, even informally. For each one, ask the seven-item list above as literal questions: could this hallucinate an action, run away on cost, misuse a connected tool, be hijacked by injected instructions, fail silently, drift on a long task or make a consequential call with no human positioned to catch it. This takes an afternoon, not a quarter, and it is the single highest-value hour you can spend this week, because most teams have never done it once.
+
+### Step 2: Tier everything you found, in one page
+
+Sort what you found into the three tiers: low stakes, medium stakes, high stakes. Use the plain test from the Context section: does it touch protected data, does it act on a customer or a regulated process, does it drive a decision about a person's job, pay, credit or health. Write the tier next to each tool on one page. This page is your governance program's actual starting point, not a strategy deck.
+
+### Step 3: Name one accountable owner for every medium- and high-stakes item
+
+For each tool tiered medium or higher, write down one name: the person who owns explaining and defending what it does. Not a committee, not "the AI team," one name. If that name would currently be your most junior person by default because they are the one who touches the tool day to day, fix that now, either by adding a real human-in-the-loop check above them or by making their manager the named owner for outcomes, even if the employee still runs the tool day to day.
+
+### Step 4: Add a go/no-go gate before the next pilot ships
+
+For anything not yet live, add one gate before launch: has it been tiered, does it have a named owner and, for anything high stakes, is there a human-in-the-loop step before a consequential action goes out. Three questions, asked out loud, before the switch flips. This is the cheapest insurance available and it is the exact discipline the 11-14% production-rate statistic says most organizations skip.
+
+### Step 5: Put the tiering page and the owner list somewhere your team and your board can both find it
+
+The artifact from Steps 2 and 3, the one-page tier list with a named owner next to every medium- and high-stakes item, is the thing you show your board when they ask for your AI governance posture, and it is the thing a new hire on your team reads on day one instead of asking around. A governance program that lives only in your head is not a governance program. Write it down once, then keep it current as you add tools.
+
+## Recap
+
+- Only 11-14% of enterprise AI agent pilots reach production at scale, and the gap is organizational: unclear scope, no governance, no named owner, not a technology shortfall.
+- Know the seven-item failure taxonomy: hallucinated actions, runaway loops or cost, tool misuse, prompt injection and exfiltration, silent failures, context loss on long tasks and over-automation without a human in the loop. Cognizant restructured a whole business unit around exactly this problem in July 2026.
+- Match governance weight to stakes, not to the technology, using a tiered system built on the NIST AI Risk Management Framework and ISO/IEC 42001: low stakes moves fast, high stakes gets full governance.
+- A risk tier does not answer who explains an AI-driven decision to the person it affects. Name that owner in writing before the deployment ships, or it defaults to your most junior employee by accident.
+- The whole protocol fits on one page: audit what you have, tier it, name an owner for every medium- and high-stakes item, gate what ships next and keep the page current.
+
+---
+
+This lesson gave you the protocol for what you deploy and who answers for it. The rules arriving from outside your organization, the regulation now live in the EU and a growing set of US states, are the companion piece: what the law now actually requires of you, on top of what good practice already does.
+
+[Continue: AI Regulation Every Leader Should Know →](/learn/ai-governance/ai-regulation-for-leaders)
+
+You can also see this same "build it in before the first user touches it" discipline applied end to end, from a completed build, in the deployment protocol lesson, and applied specifically to a fractional or portfolio AI leadership role in the CAIO playbook's baseline and first-governance-decision lessons.
+
+[Continue: The Enterprise AI Deployment Protocol →](/learn/leading-ai-adoption/the-enterprise-ai-deployment-protocol)
+[Continue: The 60-Day AI Baseline →](/learn/fractional-caio-playbook/the-60-day-ai-baseline)
+[Continue: Your First AI Governance Decision →](/learn/fractional-caio-playbook/your-first-ai-governance-decision)
