@@ -1,5 +1,15 @@
 # Decisions Log (append-only)
 
+## 2026-08-04: Seventeenth invocation, daily swarm (growth-os-daily-swarm)
+
+- Reconciled repo state at session start: 7 open PRs (#3-#9) re-checked live via `gh pr list`, unchanged since 2026-08-03. Same 3 standing out-of-scope uncommitted items left untouched.
+- INTELLIGENCE (01): 2 threads, full detail `state/intelligence/2026-08-04.md`. Thread 1: independently re-verified `content-refresh-queue.md` item 2 (the Claude Cowork non-coding-usage stat, first queued by M5 on 2026-08-02) by direct WebFetch of Anthropic's own launch post rather than trusting the queued citation as-is; confirmed the exact quote ("more than 90% of it wasn't software development... the largest categories were business operations and content creation") and the 2026-07-07 publish date. Thread 2: re-ran the fractional-CAIO pricing search blocked on 2026-08-03; found only aggregator/consultancy content, no genuine primary source, block correctly held.
+- STRATEGY (02): no rescoring needed on the wider backlog (all 7 PRs remain pure Yuri merge decisions, no READY content item exists). Promoted Thread 1's verified item directly to today's onpage pick, score 3x3/1=9.
+- CONTENT (03): not actioned. No READY content item.
+- ON-PAGE (04): actioned. Added a `<Stat>` block plus one supporting paragraph to `content/tracks/ai-agents/03-when-to-use-an-agent.mdx`'s `## Context` section, citing the verified Cowork stat. `updated` frontmatter bumped to 2026-08-04. `npm run build` verified clean: 69 static pages, 0 errors. No Oxford comma, no em dash, grep-confirmed. Branch `growth-os/ai-agents-cowork-stat`. **PR #10 opened, not merged:** see run log for URL.
+- `content-refresh-queue.md` item 2 marked DONE inline, per that file's own coordination rule (mark done, do not delete, for the audit trail).
+- FLAGGED for Yuri: **8 PRs now open simultaneously counting #10** (#3 through #10), the largest simultaneous merge-decision backlog the swarm has carried yet. All remain pure merge decisions with zero further agent work pending. 6+ lessons remain in DRAFTED/awaiting-publish, unchanged. Recommend a batch-merge session: none of the 8 PRs conflict in file scope (confirmed via each PR's own diff description across this and prior runs), so they can be merged in any order.
+
 ## 2026-08-03: Sixteenth invocation, daily swarm (growth-os-daily-swarm)
 
 - Reconciled repo state at session start: 7 open PRs (#3-#9) re-checked live via `gh pr list`, unchanged since 2026-08-02. Same 3 standing out-of-scope uncommitted items left untouched. `content-calendar.md`'s 3 READY rows confirmed still fully actioned by the 08-02 monthly chain.
