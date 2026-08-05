@@ -1,5 +1,15 @@
 # Decisions Log (append-only)
 
+## 2026-08-05: Eighteenth invocation, daily swarm (growth-os-daily-swarm)
+
+- Reconciled repo state at session start: 8 open PRs (#3-#10) re-checked live via `gh pr list`, unchanged since 2026-08-04. Same 3 standing out-of-scope uncommitted items left untouched.
+- INTELLIGENCE (01): 2 threads, full detail `state/intelligence/2026-08-05.md`. Thread 1: verified `content-refresh-queue.md` item 3 (Claude voice-mode update, queued since M5's 2026-08-02 monthly sweep) by direct WebFetch of the TechCrunch article, not the queued citation as-is; confirmed the exact quotes (model choice Opus/Sonnet/Haiku; app connections to Gmail, Google Calendar, Slack, Canva, Notion) and the 2026-07-23 publish date. Grep-confirmed no existing voice-mode mention anywhere in `content/tracks/`, no duplication. Thread 2: content-refresh-queue item 5 (fractional-CAIO pricing) not re-attempted; still blocked on a genuine primary source per 2026-08-03/2026-08-04 findings, a third identical search would be diminishing return.
+- STRATEGY (02): no rescoring needed on the wider backlog (all 8 PRs remain pure Yuri merge decisions, no READY content item exists). Promoted Thread 1's verified item directly to today's onpage pick.
+- CONTENT (03): not actioned. No READY content item.
+- ON-PAGE (04): actioned. Added a `<Callout type="key" title="Or just talk to it">` to `content/tracks/ai-foundations/03-your-first-hour-with-claude.mdx` Step 1 (published, high-visibility lesson), citing the verified voice-mode update as a second, lower-friction on-ramp fitting the lesson's own thesis. `updated` frontmatter bumped to 2026-08-05. `npm run build` verified clean: 69 static pages, 0 errors. No Oxford comma, no em dash, grep-confirmed. Branch `growth-os/voice-mode-onramp-lesson03`. **PR #11 opened, not merged:** https://github.com/YGK13/learn-portlev/pull/11.
+- `content-refresh-queue.md` item 3 marked DONE inline, per that file's own coordination rule.
+- FLAGGED for Yuri: **9 PRs now open simultaneously counting #11** (#3 through #11), the largest simultaneous merge-decision backlog the swarm has carried yet. All remain pure merge decisions with zero further agent work pending; no file-scope conflicts across any of them. The oldest, PR #3, has now been open 23 days. Recommend a batch-merge session.
+
 ## 2026-08-04: Seventeenth invocation, daily swarm (growth-os-daily-swarm)
 
 - Reconciled repo state at session start: 7 open PRs (#3-#9) re-checked live via `gh pr list`, unchanged since 2026-08-03. Same 3 standing out-of-scope uncommitted items left untouched.
