@@ -1,5 +1,12 @@
 # Decisions Log (append-only)
 
+## 2026-08-05 (second trigger, same day): reconciliation only, no re-run
+
+- The daily swarm was invoked a second time today. The 18th invocation (see entry directly below) had already run the full sequence hours earlier (commit `670c6f8`, 03:26 EDT): Intelligence (2 threads), Strategy (promoted Thread 1), On-page (shipped PR #11), Content (correctly not run, no READY item). Re-running Intelligence/Strategy fresh a second time same day would risk exactly the failure mode this swarm has flagged repeatedly (e.g. 2026-08-02, 2026-08-03): contradicting sourced same-day work rather than adding evidence. No new user instruction differentiated this invocation from the first, so no second cycle was run.
+- Reconciled repo state instead, per the standing rule. Found a real change since the 18th invocation's own clean-repo note: the working tree now carries **11 modified + 2 untracked files**, not the standing 3 out-of-scope items (`.gitignore`, `fractional-caio-playbook/track.json`, `scripts/setup-stripe-authority-stack.sh`). New: `app/llms.txt/` (untracked directory) and `app/robots.js` (untracked) plus modifications to `app/book/page.js`, `app/brief/page.js`, `app/caio-course/page.js`, `app/cohort/page.js`, `app/learn/[track]/[lesson]/page.js`, `app/page.js`, `app/sitemap.js`, `components/CTABanner.jsx`, `content/tracks/ai-governance/02-ai-and-your-data.mdx`, `content/tracks/fractional-caio-playbook/track.json`. This looks like manual (non-growth-os) work in progress on the `llms.txt` feature, which the backlog has had deferred pending PR #3's merge since 2026-07-13. Not touched, not committed, not evaluated for correctness: out of this swarm's remit and clearly someone else's (or a different session's) in-flight work, same standing precedent as the 3-item pattern.
+- 8 open PRs (#3-#10) plus #11 (opened this morning) re-checked live via `gh pr list`: unchanged, still 9 open simultaneously.
+- FLAGGED for Yuri: the `llms.txt` work sitting uncommitted touches 11 files including the sitewide lesson-page schema (`app/learn/[track]/[lesson]/page.js`), which overlaps PR #3's own scope (sitewide JSON-LD, open 23 days). Worth checking this isn't about to conflict with PR #3 before either lands. No action taken by this swarm; flagging only.
+
 ## 2026-08-05: Eighteenth invocation, daily swarm (growth-os-daily-swarm)
 
 - Reconciled repo state at session start: 8 open PRs (#3-#10) re-checked live via `gh pr list`, unchanged since 2026-08-04. Same 3 standing out-of-scope uncommitted items left untouched.
