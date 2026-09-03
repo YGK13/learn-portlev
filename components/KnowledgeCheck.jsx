@@ -23,47 +23,29 @@
 // feedback beats passive re-reading for retention.
 // ============================================================
 
-import { useEffect, useRef, useState } from 'react'
+import { useMemo, useRef } from 'react'
 import { track } from '@vercel/analytics'
-
-// localStorage helpers — guarded so SSR and private mode never throw
-function loadState(key) {
-  try {
-    const raw = window.localStorage.getItem(key)
-    return raw ? JSON.parse(raw) : null
-  } catch {
-    return null
-  }
-}
-
-function saveState(key, value) {
-  try {
-    window.localStorage.setItem(key, JSON.stringify(value))
-  } catch {
-    // Storage unavailable (private mode, quota) — degrade silently
-  }
-}
+import { useStoredValue, writeStored, parseStored } from '@/lib/use-stored-value'
 
 export default function KnowledgeCheck({ id, title = 'Check your understanding', questions = [] }) {
   const storageKey = `pl-kc-${id}`
 
-  // picks[i] = index the reader chose for question i, or null
-  const [picks,    setPicks]    = useState(() => questions.map(() => null))
-  const [hydrated, setHydrated] = useState(false)
   const firedRef = useRef(false)
 
-  // Restore prior answers after mount (avoids SSR hydration mismatch).
+  // picks[i] = index the reader chose for question i, or null.
+  // Derived from the stored value (external store), which is undefined
+  // until hydration so SSR and the first client render agree.
   // Per-index merge: if the lesson later adds or removes questions, a
   // returning reader keeps every answer that still lines up instead of
   // losing all saved progress to a length-mismatch reset.
-  useEffect(() => {
-    const saved = loadState(storageKey)
-    if (Array.isArray(saved)) {
-      setPicks(questions.map((_, i) => (typeof saved[i] === 'number' ? saved[i] : null)))
-    }
-    setHydrated(true)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storageKey])
+  const raw      = useStoredValue(storageKey)
+  const hydrated = raw !== undefined
+  const picks    = useMemo(() => {
+    const saved = parseStored(raw)
+    return questions.map((_, i) =>
+      Array.isArray(saved) && typeof saved[i] === 'number' ? saved[i] : null
+    )
+  }, [raw, questions])
 
   const answered = picks.filter((p) => p !== null).length
   const done     = answered === questions.length && questions.length > 0
@@ -74,8 +56,7 @@ export default function KnowledgeCheck({ id, title = 'Check your understanding',
     if (picks[qIndex] !== null) return
 
     const next = picks.map((p, i) => (i === qIndex ? optIndex : p))
-    setPicks(next)
-    saveState(storageKey, next)
+    writeStored(storageKey, JSON.stringify(next))
 
     const isNowDone = next.every((p) => p !== null)
     if (isNowDone && !firedRef.current) {

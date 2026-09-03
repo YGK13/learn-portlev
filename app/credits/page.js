@@ -167,7 +167,7 @@ export default function CreditsPage() {
       <section className="py-14 sm:py-16" aria-labelledby="our-license-heading">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <h2 id="our-license-heading" className="text-2xl font-bold mb-5" style={{ color: '#0f172a' }}>
-            PortLev Academy's own licensing
+            PortLev Academy’s own licensing
           </h2>
           <div className="space-y-4 text-base leading-7" style={{ color: '#374151' }}>
             <p>
@@ -177,7 +177,7 @@ export default function CreditsPage() {
             </p>
             <p>
               Adapted material remains under its original source license, noted on each track.
-              Where a track is adapted, the source's license governs that adapted content.
+              Where a track is adapted, the source’s license governs that adapted content.
             </p>
           </div>
         </div>

@@ -20,52 +20,34 @@
 // plus visible progress (goal-gradient effect) sustains completion.
 // ============================================================
 
-import { useEffect, useRef, useState } from 'react'
+import { useMemo, useRef } from 'react'
 import { track } from '@vercel/analytics'
-
-function loadChecked(key) {
-  try {
-    const raw = window.localStorage.getItem(key)
-    return raw ? JSON.parse(raw) : null
-  } catch {
-    return null
-  }
-}
-
-function saveChecked(key, value) {
-  try {
-    window.localStorage.setItem(key, JSON.stringify(value))
-  } catch {
-    // Storage unavailable — degrade silently
-  }
-}
+import { useStoredValue, writeStored, parseStored } from '@/lib/use-stored-value'
 
 export default function ActionChecklist({ id, title = 'Do this now', items = [] }) {
   const storageKey = `pl-cl-${id}`
 
-  const [checked,  setChecked]  = useState(() => items.map(() => false))
-  const [hydrated, setHydrated] = useState(false)
   const firedRef = useRef(false)
 
+  // The stored array is the source of truth (external store), so there
+  // is no copy in React state to synchronise. `raw` is undefined until
+  // hydration, so the checkboxes stay disabled until storage is readable.
   // Per-index merge on restore: if the lesson later adds or removes
   // items, a returning reader keeps every checkmark that still lines
   // up instead of losing all progress to a length-mismatch reset.
-  useEffect(() => {
-    const saved = loadChecked(storageKey)
-    if (Array.isArray(saved)) {
-      setChecked(items.map((_, i) => saved[i] === true))
-    }
-    setHydrated(true)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storageKey])
+  const raw      = useStoredValue(storageKey)
+  const hydrated = raw !== undefined
+  const checked  = useMemo(() => {
+    const saved = parseStored(raw)
+    return items.map((_, i) => Array.isArray(saved) && saved[i] === true)
+  }, [raw, items])
 
   const doneCount = checked.filter(Boolean).length
   const allDone   = doneCount === items.length && items.length > 0
 
   function toggle(index) {
     const next = checked.map((c, i) => (i === index ? !c : c))
-    setChecked(next)
-    saveChecked(storageKey, next)
+    writeStored(storageKey, JSON.stringify(next))
 
     // Fire the completion event once per page view, not on every
     // uncheck/re-check cycle, so the analytics count stays honest

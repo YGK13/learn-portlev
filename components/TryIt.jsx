@@ -19,25 +19,22 @@
 // is a lightweight commitment device.
 // ============================================================
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { track } from '@vercel/analytics'
+import { useStoredValue, writeStored } from '@/lib/use-stored-value'
 
 export default function TryIt({ id, title = 'Try it now', prompt, children }) {
   const storageKey = `pl-ti-${id}`
 
   const [copied,     setCopied]     = useState(false)
   const [copyFailed, setCopyFailed] = useState(false)
-  const [ranIt,      setRanIt]      = useState(false)
-  const [hydrated,   setHydrated]   = useState(false)
 
-  useEffect(() => {
-    try {
-      setRanIt(window.localStorage.getItem(storageKey) === 'done')
-    } catch {
-      // Storage unavailable — degrade silently
-    }
-    setHydrated(true)
-  }, [storageKey])
+  // Stored completion flag: undefined until hydrated, then null | 'done'.
+  // Read through an external store so SSR and first client render agree
+  // without copying storage into state inside an effect.
+  const stored   = useStoredValue(storageKey)
+  const hydrated = stored !== undefined
+  const ranIt    = stored === 'done'
 
   async function copyPrompt() {
     try {
@@ -59,12 +56,7 @@ export default function TryIt({ id, title = 'Try it now', prompt, children }) {
   }
 
   function confirmRan() {
-    setRanIt(true)
-    try {
-      window.localStorage.setItem(storageKey, 'done')
-    } catch {
-      // Storage unavailable — degrade silently
-    }
+    writeStored(storageKey, 'done')
     try {
       track('tryit_complete', { id })
     } catch {

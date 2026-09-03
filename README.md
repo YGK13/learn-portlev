@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PortLev Academy (learn.portlev.com)
 
-## Getting Started
+Free, open-source AI curriculum for executives, consultants and coaches, published by
+[Portfolio Leverage Company](https://portlev.com) and taught by [Yuri Kruman](https://yurikruman.com).
+The site is the top of a value ladder: free tracks, [The Leverage Brief](https://leveragebrief.beehiiv.com),
+then the paid programs (the live Executive AI Cohort at `/cohort` and the self-paced
+Fractional CAIO Program at `/program`).
 
-First, run the development server:
+## Stack
+
+Next.js 16 (App Router, Turbopack), React 19, Tailwind 4, MDX via `next-mdx-remote`,
+Zod-validated frontmatter, Vercel hosting and Vercel Analytics, beehiiv for email capture.
+No auth, no database, no on-site payments.
+
+## Layout
+
+| Path | What lives there |
+|---|---|
+| `content/tracks/<track>/` | `track.json` plus numbered lesson `.mdx` files. Written daily by the `growth-os` automation; do not restructure. |
+| `app/` | Routes. Marketing surface (`/`, `/program`, `/programs`, `/cohort`, `/about`), curriculum (`/learn/[track]/[lesson]`), the Brief (`/brief`), and generated `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `feed.xml` and OG images. |
+| `lib/site.js` | Every entity fact search engines read (organization, person, program, pricing, sister links) and the JSON-LD builders. Change facts here, not in pages. |
+| `lib/content.js` | Content loaders used by pages, sitemap, feed and llms.txt. |
+| `components/` | Server components for layout and marketing blocks; client components only where state is needed (nav, forms, lesson interactivity). |
+| `docs/` | `AUDIT-2026-09.md` (live audit and what changed) and `GTM-2026-09.md` (go-to-market plan). |
+| `STRATEGY.md`, `COURSE_STRATEGY.md`, `CONTENT.md` | Why the site exists, which courses to build, how content ships. Read before adding content. |
+
+## Develop
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # validates content/ first, then starts next dev
+npm run build      # validates, then production build
+npm run lint       # eslint
+npm run validate   # content/ frontmatter against lib/schemas.js
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Optional environment: `NEXT_PUBLIC_SITE_URL` (defaults to `https://learn.portlev.com`),
+`GOOGLE_SITE_VERIFICATION`, and the beehiiv keys used by `lib/beehiiv.js` and `lib/leverage-brief.js`
+(without them `/brief` falls back to the local MDX archive).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Licensing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Code is MIT. Original content is CC-BY 4.0. Adapted tracks keep their source license, credited on
+`/credits` and in each `track.json`.
