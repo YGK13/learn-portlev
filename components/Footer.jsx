@@ -4,6 +4,7 @@
 // ============================================================
 
 import Link from 'next/link'
+import PortLevStrip from './PortLevStrip'
 
 const LEARN_LINKS = [
   { label: 'All Tracks',     href: '/learn' },
@@ -15,7 +16,7 @@ const PRODUCT_LINKS = [
   { label: 'The Book',              href: '/book' },
   { label: 'All Programs',          href: '/programs' },
   { label: 'Executive AI Cohort',   href: '/cohort' },
-  { label: 'Fractional CAIO Course', href: '/caio-course' },
+  { label: 'Fractional CAIO Program', href: '/program' },
   { label: 'Authority Stack',       href: '/authority-stack' },
   { label: 'About Yuri',            href: '/about' },
   { label: 'Credits',               href: '/credits' },
@@ -148,6 +149,9 @@ export default function Footer() {
           </nav>
         </div>
       </div>
+
+      {/* Sister properties */}
+      <PortLevStrip />
 
       {/* Bottom bar */}
       <div className="border-t border-slate-100">

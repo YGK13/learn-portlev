@@ -28,10 +28,10 @@ const ECOSYSTEM_LINKS = [
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Primary CTA. The Skool community is not live yet, so for now
-  // the nav CTA routes to the /brief archive, where the Leverage
-  // Brief sign-up form is the first thing every visitor sees.
-  const briefUrl = '/brief'
+  // Primary CTA. The academy is the conversion surface for the
+  // Fractional CAIO Program (sold from portlev.com and the Brief),
+  // so the nav CTA routes there. The Brief keeps its own nav link.
+  const briefUrl = '/program'
 
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur-sm">
@@ -92,9 +92,9 @@ export default function Nav() {
               hover:bg-indigo-dark
               transition-colors duration-150 no-underline shrink-0
             "
-            style={{ backgroundColor: '#4f46e5' }}
+            style={{ backgroundColor: '#4b41e1' }}
           >
-            Get the Brief
+            CAIO Program
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -155,9 +155,9 @@ export default function Nav() {
                   mx-3 py-2.5 rounded-lg text-sm font-semibold
                   text-white no-underline
                 "
-                style={{ backgroundColor: '#4f46e5' }}
+                style={{ backgroundColor: '#4b41e1' }}
               >
-                Get the Leverage Brief
+                See the CAIO Program
               </Link>
             </div>
           </div>

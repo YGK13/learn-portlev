@@ -9,6 +9,11 @@ import { notFound } from 'next/navigation'
 import { getAllTracks, getTrack, getLessonsForTrack } from '@/lib/content'
 import CTABanner         from '@/components/CTABanner'
 import AttributionNotice from '@/components/AttributionNotice'
+import JsonLd            from '@/components/JsonLd'
+import { trackCourseLd, breadcrumbLd } from '@/lib/site'
+
+// Tracks whose end-of-track CTA steps up to the CAIO Program.
+const PROGRAM_FEEDER_TRACKS = new Set(['fractional-caio-playbook'])
 
 // ============================================================
 // generateStaticParams — pre-render a page for each track
@@ -27,8 +32,15 @@ export async function generateMetadata({ params }) {
   if (!track) return {}
 
   return {
-    title:       track.title,
+    title:       `${track.title}: Free Track`,
     description: track.summary,
+    alternates:  { canonical: `/learn/${trackSlug}` },
+    openGraph: {
+      title:       track.title,
+      description: track.summary,
+      url:         `/learn/${trackSlug}`,
+      type:        'website',
+    },
   }
 }
 
@@ -43,6 +55,15 @@ export default async function TrackPage({ params }) {
 
   const lessons = getLessonsForTrack(trackSlug)
 
+  const structuredData = [
+    trackCourseLd(track, lessons),
+    breadcrumbLd([
+      { name: 'Home',  path: '/' },
+      { name: 'Learn', path: '/learn' },
+      { name: track.title, path: `/learn/${trackSlug}` },
+    ]),
+  ]
+
   // Level label map
   const LEVEL_LABELS = {
     beginner:     'Beginner',
@@ -52,6 +73,7 @@ export default async function TrackPage({ params }) {
 
   return (
     <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-14">
+      <JsonLd data={structuredData} />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="mb-8">
         <ol className="flex items-center gap-2 text-sm list-none p-0 m-0" style={{ color: '#64748b' }}>
@@ -172,7 +194,7 @@ export default async function TrackPage({ params }) {
       )}
 
       {/* CTA at bottom of track */}
-      <CTABanner variant="community" />
+      <CTABanner variant={PROGRAM_FEEDER_TRACKS.has(trackSlug) ? 'program' : 'community'} />
     </div>
   )
 }

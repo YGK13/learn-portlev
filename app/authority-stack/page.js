@@ -22,6 +22,7 @@ import Link from 'next/link'
 import CourseApplyForm from '@/components/CourseApplyForm'
 
 export const metadata = {
+  alternates: { canonical: '/authority-stack' },
   title:       'Authority Stack',
   description: 'Portfolio-engineer your career against the AI wage gap. A guided ' +
                'build for mid-career executives: from who you are to your ICP, ' +

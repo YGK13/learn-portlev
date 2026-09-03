@@ -4,9 +4,11 @@
 // ============================================================
 
 import Link from 'next/link'
+import Image from 'next/image'
 import CTABanner from '@/components/CTABanner'
 
 export const metadata = {
+  alternates: { canonical: '/about' },
   title:       'About',
   description: 'Yuri Kruman is a 3x CHRO, AI model trainer and executive coach who built PortLev Academy ' +
                'to help executives and consultants close the AI Wage Gap.',
@@ -32,11 +34,13 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Headshot */}
-            <img
+            <Image
               src="/yuri-kruman.jpg"
-              alt="Yuri Kruman"
-              width="160"
-              height="160"
+              alt="Yuri Kruman, Fractional Chief AI Officer and 3x CHRO"
+              width={320}
+              height={320}
+              sizes="160px"
+              priority
               className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover"
               style={{ backgroundColor: '#eef2ff' }}
             />
@@ -135,7 +139,7 @@ export default function AboutPage() {
             <p>
               What I gate is transformation: live accountability, done-for-you assets, direct access
               to me and to a community of peers doing the same work. That is what the Executive AI
-              Cohort and the Fractional CAIO Course are for.
+              Cohort and the Fractional CAIO Program are for.
             </p>
           </div>
         </div>

@@ -9,6 +9,7 @@ import Link from 'next/link'
 import CTABanner from '@/components/CTABanner'
 
 export const metadata = {
+  alternates: { canonical: '/credits' },
   title:       'Credits & Attribution',
   description: 'The open-source sources adapted into the PortLev Academy curriculum, ' +
                'with full attribution and license information.',

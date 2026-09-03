@@ -1,54 +1,73 @@
 // ============================================================
-// app/layout.js — Root layout (Server Component)
-// Wraps every page with the Geist fonts, Nav and Footer.
-// Metadata here acts as the global default; individual pages
-// override title/description via their own `metadata` export.
+// app/layout.js - Root layout (Server Component)
+// Wraps every page with the house fonts, Nav and Footer, the
+// sitewide entity JSON-LD (Organization, WebSite, Person) and
+// the scroll-reveal observer. Metadata here is the global
+// default; pages override title/description/canonical.
 // ============================================================
 
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Manrope, Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 import Nav    from '@/components/Nav'
 import Footer from '@/components/Footer'
+import Reveal from '@/components/Reveal'
+import JsonLd from '@/components/JsonLd'
+import { SITE_URL, SITE_NAME, organizationLd, websiteLd, personLd } from '@/lib/site'
 
 // ============================================================
-// Fonts — loaded once, CSS variables injected into <html>
+// Fonts: Manrope (display) + Inter (body). Google Fonts, free,
+// self-hosted by next/font with system fallbacks.
 // ============================================================
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const manrope = Manrope({
+  variable: '--font-manrope',
+  subsets:  ['latin'],
+  display:  'swap',
+  weight:   ['600', '700', '800'],
+})
+
+const inter = Inter({
+  variable: '--font-inter',
   subsets:  ['latin'],
   display:  'swap',
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets:  ['latin'],
-  display:  'swap',
-})
+// ============================================================
+// Default metadata, overridden per page via `metadata` exports
+// ============================================================
+const DEFAULT_TITLE = 'PortLev Academy: Free AI Curriculum for Executives'
+const DEFAULT_DESCRIPTION =
+  'Free, open-source AI curriculum for executives and consultants from a 3x CHRO who trains ' +
+  'frontier models. Ten tracks, no code. Then the Fractional CAIO Program.'
 
-// ============================================================
-// Default metadata — overridden per page via `metadata` exports
-// ============================================================
 export const metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || 'https://learn.portlev.com'
-  ),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default:  'PortLev Academy: Build with AI. Create Leverage.',
-    template: '%s | PortLev Academy',
+    default:  DEFAULT_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description:
-    'Free, open-source AI learning for executives and consultants. ' +
-    'Build real workflows, close the AI Wage Gap and create lasting leverage.',
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: 'Yuri Kruman', url: 'https://yurikruman.com' }],
+  creator: 'Yuri Kruman',
+  publisher: 'Portfolio Leverage Company',
   openGraph: {
     type:        'website',
-    siteName:    'PortLev Academy',
-    title:       'PortLev Academy: Build with AI. Create Leverage.',
-    description: 'Free, open-source AI learning for executives and consultants.',
+    siteName:    SITE_NAME,
+    locale:      'en_US',
+    title:       DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
   },
   twitter: {
     card:    'summary_large_image',
     creator: '@yurikruman',
+    title:   DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
   },
   alternates: {
     types: {
@@ -63,6 +82,12 @@ export const metadata = {
     : undefined,
 }
 
+export const viewport = {
+  themeColor: '#4b41e1',
+  width: 'device-width',
+  initialScale: 1,
+}
+
 // ============================================================
 // Root layout component
 // ============================================================
@@ -70,14 +95,22 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${manrope.variable} ${inter.variable}`}
     >
       <body className="flex min-h-screen flex-col">
+        <JsonLd data={[organizationLd(), websiteLd(), personLd()]} />
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold focus:text-indigo"
+        >
+          Skip to content
+        </a>
         <Nav />
-        <main className="flex-1">
+        <main id="main" className="flex-1">
           {children}
         </main>
         <Footer />
+        <Reveal />
         <Analytics />
       </body>
     </html>

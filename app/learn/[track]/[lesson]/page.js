@@ -57,7 +57,13 @@ import {
 import LessonNav    from '@/components/LessonNav'
 import CTABanner    from '@/components/CTABanner'
 import MDXComponents from '@/components/MDXComponents'
+import JsonLd       from '@/components/JsonLd'
 import { TRUSTED_MDX_OPTIONS } from '@/lib/mdx-options'
+import { lessonLd, breadcrumbLd } from '@/lib/site'
+
+// Tracks whose end-of-lesson CTA steps up to the CAIO Program
+// instead of the newsletter (the track is the program's free feeder).
+const PROGRAM_FEEDER_TRACKS = new Set(['fractional-caio-playbook'])
 
 // ============================================================
 // generateStaticParams — pre-render a page for every lesson
@@ -85,13 +91,30 @@ export async function generateMetadata({ params }) {
   const lesson = getLesson(trackSlug, lessonSlug)
   if (!lesson) return {}
 
+  const track = getTrack(trackSlug)
+  const path  = `/learn/${trackSlug}/${lessonSlug}`
+
   return {
     title:       lesson.title,
     description: lesson.summary,
+    keywords:    lesson.tags,
+    alternates:  { canonical: path },
+    authors:     [{ name: 'Yuri Kruman', url: 'https://yurikruman.com' }],
     openGraph: {
+      title:         lesson.title,
+      description:   lesson.summary,
+      type:          'article',
+      url:           path,
+      publishedTime: `${lesson.updated}T00:00:00Z`,
+      modifiedTime:  `${lesson.updated}T00:00:00Z`,
+      authors:       ['https://yurikruman.com'],
+      section:       track?.title,
+      tags:          lesson.tags,
+    },
+    twitter: {
+      card:        'summary_large_image',
       title:       lesson.title,
       description: lesson.summary,
-      type:        'article',
     },
   }
 }
@@ -118,6 +141,21 @@ export default async function LessonPage({ params }) {
   // FAQPage JSON-LD for this lesson (null if no FAQ data defined)
   const faqSchema = FAQ_SCHEMA[lessonSlug] ?? null
 
+  // Article/LearningResource + BreadcrumbList JSON-LD for every lesson
+  const structuredData = track
+    ? [
+        lessonLd(track, lesson),
+        breadcrumbLd([
+          { name: 'Home',  path: '/' },
+          { name: 'Learn', path: '/learn' },
+          { name: track.title, path: `/learn/${trackSlug}` },
+          { name: lesson.title, path: `/learn/${trackSlug}/${lessonSlug}` },
+        ]),
+      ]
+    : []
+
+  const ctaVariant = PROGRAM_FEEDER_TRACKS.has(trackSlug) ? 'program' : 'newsletter'
+
   // Compile MDX — this is an async operation on the server.
   // Security posture (blockJS off for trusted first-party content)
   // lives in lib/mdx-options.js so it cannot drift between surfaces.
@@ -134,12 +172,7 @@ export default async function LessonPage({ params }) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-14">
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
+      <JsonLd data={[...structuredData, faqSchema]} />
       <div className="flex gap-12 lg:gap-16">
 
         {/* ---- Main content column ---- */}
@@ -223,7 +256,7 @@ export default async function LessonPage({ params }) {
 
           {/* CTA at bottom of lesson */}
           <div className="mt-10">
-            <CTABanner variant="newsletter" source={`lesson-${lessonSlug}`} />
+            <CTABanner variant={ctaVariant} source={`lesson-${lessonSlug}`} />
           </div>
         </div>
 

@@ -5,6 +5,7 @@
 // Variants:
 //   'community' — Subscribe to The Leverage Brief (no Skool yet)
 //   'cohort'    — Apply for the Executive AI Cohort (ForwardShare)
+//   'program'   — See the Fractional CAIO Program (/program)
 //   'newsletter' — Subscribe to The Leverage Brief (with NewsletterCapture)
 // ============================================================
 
@@ -26,6 +27,18 @@ const VARIANTS = {
     border: '#c7d2fe',
     ctaBg:  '#4f46e5',
     icon:   '✉️',
+  },
+  program: {
+    eyebrow: 'The Fractional CAIO Program',
+    headline: 'You have the map. The program is the instruments.',
+    body: 'Eight self-paced modules, each ending in an artifact you produce for your own organization: the board one-pager, the 60-day baseline plan, the AI-use policy and RACI, the ROI model, the pilot SOW and the retainer kit. $2,500, personally onboarded.',
+    cta: 'See the program',
+    href: '/program',
+    external: false,
+    bg:     '#eceafc',
+    border: '#c7c2f5',
+    ctaBg:  '#4b41e1',
+    icon:   '🎯',
   },
   cohort: {
     eyebrow: 'Executive AI Cohort',

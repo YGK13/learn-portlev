@@ -1,46 +1,65 @@
 /* ============================================================
-   PortLev Academy — Global Styles
+   PortLev Academy - Global Styles
    Tailwind v4 CSS-first config. All design tokens live here.
-   No tailwind.config.js — the @theme block is the source of truth.
+   No tailwind.config.js: the @theme block is the source of truth.
+
+   Tokens follow the PortLev house system: off-white canvas,
+   near-black navy ink, indigo accent, a three-stop violet hero
+   gradient, Manrope for display and Inter for body.
    ============================================================ */
 
 @import "tailwindcss";
 
 /* ============================================================
-   Design Tokens — edit these to retheme the entire site
+   Design Tokens
    ============================================================ */
 @theme inline {
-  /* Brand palette */
-  --color-navy:        #0f172a;   /* slate-900: header, footer, dark sections */
-  --color-navy-light:  #1e293b;   /* slate-800: hover states on dark bg */
-  --color-indigo:      #4f46e5;   /* indigo-600: primary CTAs, links */
-  --color-indigo-dark: #4338ca;   /* indigo-700: hover on primary CTAs */
-  --color-amber:       #f59e0b;   /* amber-500: accents, premium badge, highlights */
-  --color-amber-dark:  #d97706;   /* amber-600: hover on amber elements */
+  /* House palette */
+  --color-canvas:      #f7f9fb;   /* page ground */
+  --color-ink:         #000613;   /* headings, primary text on light */
+  --color-body:        #2b3140;   /* running text */
+  --color-indigo:      #4b41e1;   /* primary accent, CTAs, links */
+  --color-indigo-dark: #3a31c4;   /* hover on primary CTAs */
+  --color-indigo-soft: #eceafc;   /* tints, badges */
+  --color-violet:      #7c5cff;   /* gradient mid-stop */
+  --color-lilac:       #b8a6ff;   /* gradient end-stop */
+  --color-amber:       #f59e0b;   /* sparse highlight only */
+  --color-amber-dark:  #d97706;
+
+  /* Legacy aliases kept so existing pages keep rendering */
+  --color-navy:        #0f172a;
+  --color-navy-light:  #1e293b;
 
   /* Neutral surface palette */
-  --color-surface:     #f8fafc;   /* slate-50: alternate section backgrounds */
-  --color-border:      #e2e8f0;   /* slate-200: dividers, card borders */
-  --color-muted:       #64748b;   /* slate-500: secondary text, metadata */
+  --color-surface:     #f8fafc;   /* alternate section backgrounds */
+  --color-border:      #e3e7ee;   /* dividers, card borders */
+  --color-muted:       #5f6778;   /* secondary text, metadata */
 
   /* Semantic */
   --color-background: #ffffff;
-  --color-foreground: #0f172a;
+  --color-foreground: #000613;
 
   /* Typography */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-sans:    var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* Radius */
-  --radius-sm:  0.25rem;   /* 4px */
-  --radius-md:  0.5rem;    /* 8px */
-  --radius-lg:  0.75rem;   /* 12px */
-  --radius-xl:  1rem;      /* 16px */
-  --radius-2xl: 1.5rem;    /* 24px */
+  --radius-sm:  0.25rem;
+  --radius-md:  0.5rem;
+  --radius-lg:  0.75rem;
+  --radius-xl:  1rem;
+  --radius-2xl: 1.5rem;
 
   /* Shadows */
-  --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.08), 0 1px 2px -1px rgb(0 0 0 / 0.06);
-  --shadow-card-hover: 0 4px 12px 0 rgb(0 0 0 / 0.1), 0 2px 6px -2px rgb(0 0 0 / 0.08);
+  --shadow-card: 0 1px 2px 0 rgb(0 6 19 / 0.06), 0 1px 3px 0 rgb(0 6 19 / 0.06);
+  --shadow-card-hover: 0 10px 30px -10px rgb(75 65 225 / 0.25), 0 4px 12px -4px rgb(0 6 19 / 0.10);
+  --shadow-lift: 0 24px 60px -24px rgb(0 6 19 / 0.35);
+}
+
+/* Signature three-stop violet gradient */
+:root {
+  --gradient-hero: linear-gradient(120deg, #4b41e1 0%, #7c5cff 55%, #b8a6ff 100%);
 }
 
 /* ============================================================
@@ -54,6 +73,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
   color-scheme: light;
 }
 
@@ -66,23 +86,141 @@ body {
   flex-direction: column;
 }
 
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+/* ============================================================
+   House utilities
+   ============================================================ */
+.hero-gradient {
+  background-image: var(--gradient-hero);
+}
+
+.text-gradient {
+  background-image: var(--gradient-hero);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--radius-lg);
+  padding: 0.8rem 1.35rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.btn:active { transform: translateY(1px); }
+
+.btn-primary {
+  background: var(--color-indigo);
+  color: #fff;
+  box-shadow: 0 8px 20px -10px rgb(75 65 225 / 0.6);
+}
+.btn-primary:hover { background: var(--color-indigo-dark); }
+
+.btn-secondary {
+  background: #fff;
+  color: var(--color-ink);
+  border: 1px solid var(--color-border);
+}
+.btn-secondary:hover { border-color: var(--color-indigo); color: var(--color-indigo); }
+
+.btn-inverse {
+  background: #fff;
+  color: var(--color-indigo);
+}
+.btn-inverse:hover { background: var(--color-indigo-soft); }
+
+.btn-ghost-inverse {
+  background: rgb(255 255 255 / 0.08);
+  color: #fff;
+  border: 1px solid rgb(255 255 255 / 0.18);
+}
+.btn-ghost-inverse:hover { background: rgb(255 255 255 / 0.14); }
+
+/* Card */
+.card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+  border-color: rgb(75 65 225 / 0.35);
+}
+
+/* ============================================================
+   Reveal on scroll (driven by components/Reveal.jsx)
+   Disabled entirely when the visitor prefers reduced motion.
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* No-JS fallback: if the observer never mounts, content still shows */
+@media (scripting: none) {
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   FAQ accordion (<details>)
+   ============================================================ */
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::marker { content: ""; }
+.faq details > div { animation: faq-open 0.25s ease; }
+@keyframes faq-open {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .faq details > div { animation: none; }
+}
+
 /* ============================================================
    Prose styles for MDX content (lessons and briefs)
-   Applied via the .prose class on the article wrapper.
    ============================================================ */
 .prose {
-  --prose-body:      #374151;   /* gray-700 */
-  --prose-heading:   #0f172a;   /* navy */
-  --prose-lead:      #4b5563;   /* gray-600 */
-  --prose-link:      #4f46e5;   /* indigo */
-  --prose-link-hover:#4338ca;   /* indigo-dark */
-  --prose-code-bg:   #f1f5f9;   /* slate-100 */
-  --prose-pre-bg:    #0f172a;   /* navy */
-  --prose-border:    #e2e8f0;   /* slate-200 */
-  --prose-blockquote:#64748b;   /* muted */
+  --prose-body:      #2b3140;
+  --prose-heading:   #000613;
+  --prose-lead:      #4b5563;
+  --prose-link:      #4b41e1;
+  --prose-link-hover:#3a31c4;
+  --prose-code-bg:   #f1f5f9;
+  --prose-pre-bg:    #0f172a;
+  --prose-border:    #e3e7ee;
+  --prose-blockquote:#5f6778;
 
   color: var(--prose-body);
-  font-size: 1.0625rem;         /* 17px — comfortable reading size */
+  font-size: 1.0625rem;
   line-height: 1.75;
   max-width: 65ch;
 }
@@ -94,7 +232,6 @@ body {
   line-height: 1.3;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  letter-spacing: -0.01em;
 }
 
 .prose h3 {
@@ -114,7 +251,7 @@ body {
 .prose a {
   color: var(--prose-link);
   text-decoration: underline;
-  text-decoration-color: rgb(79 70 229 / 0.35);
+  text-decoration-color: rgb(75 65 225 / 0.35);
   text-underline-offset: 3px;
   transition: color 0.15s, text-decoration-color 0.15s;
 }
@@ -187,6 +324,16 @@ body {
   margin: 2.5rem 0;
 }
 
+.prose img,
+.prose table {
+  max-width: 100%;
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
+}
+
 /* ============================================================
    Utility: tier badge colors
    ============================================================ */
@@ -206,7 +353,7 @@ body {
 }
 
 /* ============================================================
-   Utility: smooth focus ring (keyboard nav)
+   Utility: keyboard focus ring
    ============================================================ */
 :focus-visible {
   outline: 2px solid var(--color-indigo);

@@ -9,6 +9,7 @@ import { getAllTracks, getLessonsForTrack } from '@/lib/content'
 import TrackCard from '@/components/TrackCard'
 
 export const metadata = {
+  alternates: { canonical: '/learn' },
   title:       'Learn',
   description: 'Free AI learning tracks for executives and consultants. ' +
                'Structured paths from zero to leverage, one lesson at a time.',
