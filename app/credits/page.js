@@ -28,8 +28,8 @@ const ADAPTED_SOURCES = [
     license:      'MIT License',
     description:  'A 428-lesson, 20-phase technical course teaching engineers to build AI ' +
                   'systems from first principles. PortLev Academy adapts the conceptual core ' +
-                  'of select lessons — rewritten in plain language, with all code and ' +
-                  'mathematics removed — for non-technical leaders.',
+                  'of select lessons, rewritten in plain language with all code and ' +
+                  'mathematics removed, for non-technical leaders.',
     usedIn: [
       { track: 'How AI Actually Works',            href: '/learn/how-ai-works' },
       { track: 'AI Agents, Explained',             href: '/learn/ai-agents' },
@@ -61,7 +61,7 @@ export default function CreditsPage() {
           <p className="text-lg leading-relaxed" style={{ color: '#64748b' }}>
             PortLev Academy is built in the open and stands on the work of others. Some tracks
             are adapted from open-source courses. Every source is credited here in full, with
-            its license — and again on every track and lesson that draws on it.
+            its license, and again on every track and lesson that draws on it.
           </p>
         </div>
       </section>
@@ -173,7 +173,7 @@ export default function CreditsPage() {
             <p>
               PortLev Academy is itself open. Our site code is released under the MIT License.
               Our original written content is released under Creative Commons Attribution 4.0
-              (CC-BY 4.0). You may fork it, teach it, translate it or build on it — with attribution.
+              (CC-BY 4.0). You may fork it, teach it, translate it or build on it, with attribution.
             </p>
             <p>
               Adapted material remains under its original source license, noted on each track.

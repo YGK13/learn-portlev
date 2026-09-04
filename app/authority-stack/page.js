@@ -24,10 +24,8 @@ import CourseApplyForm from '@/components/CourseApplyForm'
 export const metadata = {
   alternates: { canonical: '/authority-stack' },
   title:       'Authority Stack',
-  description: 'Portfolio-engineer your career against the AI wage gap. A guided ' +
-               'build for mid-career executives: from who you are to your ICP, ' +
-               'your main product and your value ladder, then build-out and ' +
-               'monetization. Founding cohort forming.',
+  description: 'Guided build for mid-career executives closing the AI wage gap: ' +
+               'ICP, main product, value ladder, monetization. Founding cohort forming.',
 }
 
 // The build sequence, from the concept call. Each step is a stage

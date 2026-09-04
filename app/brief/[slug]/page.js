@@ -5,6 +5,7 @@
 // ============================================================
 
 import Link from 'next/link'
+import { seoTitle, seoDescription } from '@/lib/site'
 import { notFound } from 'next/navigation'
 import { compileMDX } from 'next-mdx-remote/rsc'
 import { getAllBriefs, getBrief } from '@/lib/content'
@@ -29,8 +30,8 @@ export async function generateMetadata({ params }) {
   if (!brief) return {}
 
   return {
-    title:       brief.title,
-    description: brief.summary,
+    title:       seoTitle(brief.title),
+    description: seoDescription(brief.summary),
     openGraph: {
       title:       brief.title,
       description: brief.summary,

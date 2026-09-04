@@ -174,21 +174,19 @@ h1, h2, h3, .font-display {
    Reveal on scroll (driven by components/Reveal.jsx)
    Disabled entirely when the visitor prefers reduced motion.
    ============================================================ */
+/* Visible by default. Hidden only after <Reveal /> has mounted and set
+   data-reveal-ready on <html>, so pre-hydration paint, JS failures and
+   non-scrolling crawlers all see the full page. */
 @media (prefers-reduced-motion: no-preference) {
-  [data-reveal] {
+  html[data-reveal-ready] [data-reveal] {
     opacity: 0;
     transform: translateY(14px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
-  [data-reveal].is-visible {
+  html[data-reveal-ready] [data-reveal].is-visible {
     opacity: 1;
     transform: none;
   }
-}
-
-/* No-JS fallback: if the observer never mounts, content still shows */
-@media (scripting: none) {
-  [data-reveal] { opacity: 1; transform: none; }
 }
 
 /* ============================================================

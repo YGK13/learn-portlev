@@ -18,11 +18,11 @@ import BriefCard                   from '@/components/BriefCard'
 import CTABanner                   from '@/components/CTABanner'
 
 export const metadata = {
-  alternates: { canonical: '/brief' },
   title:       'The Leverage Brief',
   description: 'Weekly actionable AI ideas for executives and consultants. ' +
                'One idea per week. Seven minutes to read. Built to implement.',
   alternates: {
+    canonical: '/brief',
     types: {
       'application/rss+xml': 'https://leveragebrief.beehiiv.com/feed',
     },

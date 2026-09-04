@@ -19,7 +19,7 @@ export async function GET() {
 
   // ---- Build feed object -----------------------------------
   const feed = new Feed({
-    title:       'The Leverage Brief — PortLev Academy',
+    title:       'The Leverage Brief | PortLev Academy',
     description: 'One actionable AI idea every week for executives and consultants. ' +
                  'No hype. No listicles. Just one concept and one implementation path.',
     id:          base + '/',

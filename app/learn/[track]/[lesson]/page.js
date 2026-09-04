@@ -59,7 +59,7 @@ import CTABanner    from '@/components/CTABanner'
 import MDXComponents from '@/components/MDXComponents'
 import JsonLd       from '@/components/JsonLd'
 import { TRUSTED_MDX_OPTIONS } from '@/lib/mdx-options'
-import { lessonLd, breadcrumbLd } from '@/lib/site'
+import { lessonLd, breadcrumbLd, seoTitle, seoDescription } from '@/lib/site'
 
 // Tracks whose end-of-lesson CTA steps up to the CAIO Program
 // instead of the newsletter (the track is the program's free feeder).
@@ -95,8 +95,8 @@ export async function generateMetadata({ params }) {
   const path  = `/learn/${trackSlug}/${lessonSlug}`
 
   return {
-    title:       lesson.title,
-    description: lesson.summary,
+    title:       seoTitle(lesson.title),
+    description: seoDescription(lesson.summary),
     keywords:    lesson.tags,
     alternates:  { canonical: path },
     authors:     [{ name: 'Yuri Kruman', url: 'https://yurikruman.com' }],
@@ -233,7 +233,7 @@ export default async function LessonPage({ params }) {
                 <iframe
                   className="h-full w-full"
                   src={`https://www.youtube.com/embed/${lesson.video.youtubeId}`}
-                  title={`${lesson.title} — video lesson`}
+                  title={`${lesson.title}: video lesson`}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"

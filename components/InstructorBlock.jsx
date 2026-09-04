@@ -8,10 +8,11 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { BUILDS } from '@/lib/site'
 
 const CREDENTIALS = [
   { k: '3x',     v: 'Chief Human Resources Officer' },
-  { k: '10',     v: 'custom AI builds shipped' },
+  { k: String(BUILDS.count), v: 'builds live in public' },
   { k: '2,300+', v: 'executives and professionals coached' },
   { k: '3',      v: 'frontier labs trained for: OpenAI, Meta, Microsoft' },
 ]

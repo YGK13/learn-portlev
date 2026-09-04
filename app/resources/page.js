@@ -11,9 +11,10 @@
 import CTABanner from '@/components/CTABanner'
 
 export const metadata = {
-  title:       'Resources',
+  title:       'AI Resources for Executives',
   description: 'A curated directory of the best AI newsletters, certifications and ' +
                'open-source tools for executives learning and building with AI.',
+  alternates:  { canonical: '/resources' },
 }
 
 // ------------------------------------------------------------
@@ -151,7 +152,7 @@ const CERT_CATEGORIES = [
     title: 'AI governance, risk and ethics',
     blurb: 'For leaders in legal, compliance and risk, or anyone building an AI governance program.',
     items: [
-      { name: 'AIGP — Artificial Intelligence Governance Professional', provider: 'IAPP', cost: 'Paid · exam ~$649 to $799 (training extra)', note: 'The leading professional AI governance certification.', url: 'https://iapp.org/' },
+      { name: 'AIGP: Artificial Intelligence Governance Professional', provider: 'IAPP', cost: 'Paid · exam ~$649 to $799 (training extra)', note: 'The leading professional AI governance certification.', url: 'https://iapp.org/' },
       { name: 'Responsible AI modules', provider: 'Microsoft and LinkedIn Learning', cost: 'Free', note: 'A lightweight introduction to responsible-AI frameworks, inside the Career Essentials path.', url: 'https://learn.microsoft.com/training/' },
     ],
   },
@@ -531,21 +532,21 @@ export default function ResourcesPage() {
           </p>
 
           <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: '#4f46e5' }}>
-            Daily briefings — pick one
+            Daily briefings: pick one
           </h3>
           <ul className="grid gap-4 sm:grid-cols-2 list-none p-0 m-0 mb-8">
             {DAILY_BRIEFINGS.map(r => <ResourceCard key={r.name} {...r} />)}
           </ul>
 
           <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: '#4f46e5' }}>
-            Weekly depth — pick one or two
+            Weekly depth: pick one or two
           </h3>
           <ul className="grid gap-4 sm:grid-cols-2 list-none p-0 m-0 mb-8">
             {WEEKLY_DEPTH.map(r => <ResourceCard key={r.name} {...r} />)}
           </ul>
 
           <h3 className="text-sm font-bold uppercase tracking-wider mb-3" style={{ color: '#4f46e5' }}>
-            Creators and specialists — follow as needed
+            Creators and specialists: follow as needed
           </h3>
           <ul className="grid gap-4 sm:grid-cols-2 list-none p-0 m-0">
             {CREATORS.map(r => <ResourceCard key={r.name} {...r} />)}

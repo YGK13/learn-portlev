@@ -46,7 +46,7 @@ export default function LearnPage() {
         </h1>
         <p className="text-lg max-w-2xl" style={{ color: '#64748b' }}>
           Start with the Introduction, then work through the tracks in order.
-          Every lesson is free, open-source and built to implement — not just read.
+          Every lesson is free, open-source and built to implement, not just read.
         </p>
       </header>
 
@@ -134,7 +134,7 @@ export default function LearnPage() {
             Learning Tracks
           </h2>
           <p className="mt-1 text-base" style={{ color: '#64748b' }}>
-            Work through the tracks in order — each one builds on the last.
+            Work through the tracks in order. Each one builds on the last.
           </p>
         </div>
 

@@ -17,7 +17,7 @@
 
 import Link from 'next/link'
 import { getTrack, getLessonsForTrack } from '@/lib/content'
-import { PROGRAM, COHORT, programCourseLd, faqLd, breadcrumbLd } from '@/lib/site'
+import { PROGRAM, COHORT, BUILDS, programCourseLd, faqLd, breadcrumbLd } from '@/lib/site'
 import CourseApplyForm from '@/components/CourseApplyForm'
 import InstructorBlock from '@/components/InstructorBlock'
 import TrackedLink     from '@/components/TrackedLink'
@@ -26,10 +26,10 @@ import FAQ             from '@/components/FAQ'
 import JsonLd          from '@/components/JsonLd'
 
 export const metadata = {
-  title:       'Fractional CAIO Program: Become a Chief AI Officer',
+  title:       { absolute: 'Fractional CAIO Program: Become a Chief AI Officer' },
   description:
     'Self-paced, application-based program for senior executives becoming Chief AI Officers. ' +
-    '8 modules, 8 working artifacts, $2,500. Taught by a 3x CHRO who trains frontier models.',
+    '8 modules, 8 working artifacts, $2,500. Taught by a 3x CHRO.',
   alternates: { canonical: PROGRAM.path },
   openGraph: {
     title: 'The Fractional CAIO Program',
@@ -65,7 +65,7 @@ const MODULES = [
   {
     n: 4,
     title: 'Build vs Buy vs Platform',
-    desc:  'How to make the calls that commit real budget, scored against ten shipped AI builds as case material.',
+    desc:  `How to make the calls that commit real budget, scored against the ${BUILDS.count} PortLev builds live in public as case material.`,
     artifact: 'The build-buy-platform decision matrix',
   },
   {
@@ -98,7 +98,7 @@ const OUTCOMES = [
   { title: 'A mandate the board recognizes',   body: 'The one-page framing that turns "what is our AI story" into a seat with a scope.' },
   { title: 'A 60-day baseline you can defend', body: 'Week-by-week plan your lawyers, your people and your board can all sign.' },
   { title: 'An operating model that holds',    body: 'AI-use policy, RACI and the three governance calls that usually go wrong, pre-empted.' },
-  { title: 'Budget calls you can justify',     body: 'Build, buy or platform, decided with a matrix scored against ten real builds.' },
+  { title: 'Budget calls you can justify',     body: `Build, buy or platform, decided with a matrix scored against ${BUILDS.count} real builds.` },
   { title: 'Numbers a CFO will sign',          body: 'A working ROI model, not a slide about ROI.' },
   { title: 'A pilot you can run and price',    body: 'Charter and SOW skeleton from a live corporate engagement, anonymised.' },
   { title: 'Authority inside the building',    body: 'The sequencing and trust mechanics that make you the AI answer internally.' },
@@ -124,9 +124,9 @@ const WHO_NOT_FOR = [
   'You want the title without having run a function. The positioning in module 8 is built on an operator credential; without one it does not hold',
 ]
 
-const COMPARE = [
+const compareRows = (caioLessonCount) => [
   { label: 'Format',        free: 'Read at your pace',            cohort: 'Live, weekly sessions',          program: 'Self-paced, application-based' },
-  { label: 'Length',        free: `${'5 lessons in the CAIO track'}`, cohort: '12 weeks',                 program: '8 modules, no fixed calendar' },
+  { label: 'Length',        free: `${caioLessonCount} lessons in the CAIO track`, cohort: '12 weeks',                 program: '8 modules, no fixed calendar' },
   { label: 'Stage',         free: 'Any',                          cohort: 'Learning to build with AI',      program: 'Already building, wants the seat' },
   { label: 'You leave with',free: 'The map',                      cohort: 'Your AI Portfolio OS',           program: '8 working artifacts' },
   { label: 'Access to Yuri',free: 'The Brief',                    cohort: 'Weekly live sessions',           program: 'Personal onboarding and intake' },
@@ -165,7 +165,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'How do I enroll?',
-    a: 'Request enrollment on this page with your work email. Every seat is onboarded personally: Yuri reviews fit against the eight modules and replies within two business days with your enrollment link and a short intake. If the fit is wrong, he tells you and points you to the cohort instead.',
+    a: 'Request enrollment on this page with your work email. Every seat is onboarded personally: Yuri reviews fit against the eight modules and replies within two business days with your enrollment link and a short intake. If the fit is wrong, Yuri says so and points you to the cohort instead.',
   },
   {
     q: 'Do I need a technical background?',
@@ -177,13 +177,14 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Who teaches it?',
-    a: 'Yuri Kruman, Fractional Chief AI Officer and 3x CHRO. He has shipped ten custom AI builds, trains AI models for OpenAI, Meta and Microsoft and has coached 2,300+ clients. The templates in this program are not teaching props: the baseline plan, the data-boundary policy and the pilot SOW are the same instruments he uses in live corporate engagements.',
+    a: `Yuri Kruman, Fractional Chief AI Officer and 3x CHRO, with ${BUILDS.label}, who trains AI models for OpenAI, Meta and Microsoft and has coached 2,300+ clients. The templates in this program are not teaching props: the baseline plan, the data-boundary policy and the pilot SOW are the same instruments Yuri uses in live corporate engagements.`,
   },
 ]
 
 export default function ProgramPage() {
   const caioTrack   = getTrack('fractional-caio-playbook')
   const caioLessons = caioTrack ? getLessonsForTrack(caioTrack.slug) : []
+  const COMPARE     = compareRows(caioLessons.length)
 
   return (
     <div className="pb-20 md:pb-0">
@@ -237,8 +238,8 @@ export default function ProgramPage() {
               </div>
             </div>
 
-            {/* Enrollment card */}
-            <aside className="card p-6 sm:p-7 shadow-lift" aria-labelledby="enroll-card-heading" data-reveal>
+            {/* Enrollment card: the conversion element, never gated behind the reveal observer */}
+            <aside className="card p-6 sm:p-7 shadow-lift" aria-labelledby="enroll-card-heading">
               <div className="flex items-baseline justify-between gap-3">
                 <p id="enroll-card-heading" className="font-display text-lg font-bold text-ink">Request your seat</p>
                 <p className="font-display text-2xl font-extrabold text-ink">{PROGRAM.priceLabel}</p>
@@ -275,7 +276,7 @@ export default function ProgramPage() {
             {[
               { stat: '3x CHRO',                    desc: 'operator credential' },
               { stat: 'OpenAI · Meta · Microsoft',  desc: 'trains their frontier models' },
-              { stat: '10',                         desc: 'custom AI builds as case material' },
+              { stat: String(BUILDS.count),         desc: 'builds live in public, the case material' },
               { stat: '2,300+',                     desc: 'clients coached' },
             ].map(item => (
               <li key={item.stat} className="flex items-center gap-2">

@@ -5,8 +5,14 @@
 // Mounted once in the root layout. Any server-rendered element
 // with a `data-reveal` attribute fades and lifts into view the
 // first time it enters the viewport. Re-scans on route change.
-// CSS lives in globals.css and is disabled under
-// prefers-reduced-motion, so this never blocks content.
+//
+// Content is visible by default. The hide-then-reveal styles in
+// globals.css only apply once this component has mounted and set
+// `data-reveal-ready` on <html>, so nothing is blank before
+// hydration, on a JS error, or for a crawler that never scrolls.
+// Elements already in the viewport are marked visible before the
+// styles switch on, so there is no flash. Disabled under
+// prefers-reduced-motion.
 // ============================================================
 
 import { useEffect } from 'react'
@@ -20,6 +26,15 @@ export default function Reveal() {
 
     const nodes = Array.from(document.querySelectorAll('[data-reveal]:not(.is-visible)'))
     if (nodes.length === 0) return
+
+    // Anything already on screen stays on screen: mark it before the
+    // hiding styles are enabled so the switch is invisible to the reader.
+    const vh = window.innerHeight || document.documentElement.clientHeight
+    for (const n of nodes) {
+      const r = n.getBoundingClientRect()
+      if (r.top < vh && r.bottom > 0) n.classList.add('is-visible')
+    }
+    document.documentElement.setAttribute('data-reveal-ready', '')
 
     const observer = new IntersectionObserver(
       entries => {

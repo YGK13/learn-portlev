@@ -16,7 +16,7 @@ import { PROGRAM, COHORT, breadcrumbLd } from '@/lib/site'
 import JsonLd from '@/components/JsonLd'
 
 export const metadata = {
-  title:       'Programs: Cohort, CAIO Program and Authority Stack',
+  title:       { absolute: 'PortLev Academy Programs: Cohort, CAIO, Authority Stack' },
   description: 'The PortLev Academy programs: the live Executive AI Cohort, the self-paced ' +
                'Fractional CAIO Program and Authority Stack. Pick by where you are with AI.',
   alternates: { canonical: '/programs' },

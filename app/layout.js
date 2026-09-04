@@ -13,7 +13,7 @@ import Nav    from '@/components/Nav'
 import Footer from '@/components/Footer'
 import Reveal from '@/components/Reveal'
 import JsonLd from '@/components/JsonLd'
-import { SITE_URL, SITE_NAME, organizationLd, websiteLd, personLd } from '@/lib/site'
+import { SITE_URL, SITE_NAME, X_HANDLE, organizationLd, websiteLd, personLd } from '@/lib/site'
 
 // ============================================================
 // Fonts: Manrope (display) + Inter (body). Google Fonts, free,
@@ -37,8 +37,8 @@ const inter = Inter({
 // ============================================================
 const DEFAULT_TITLE = 'PortLev Academy: Free AI Curriculum for Executives'
 const DEFAULT_DESCRIPTION =
-  'Free, open-source AI curriculum for executives and consultants from a 3x CHRO who trains ' +
-  'frontier models. Ten tracks, no code. Then the Fractional CAIO Program.'
+  'Free, open-source AI curriculum for executives from a 3x CHRO who trains frontier ' +
+  'models. Ten tracks, no code. Then the $2,500 Fractional CAIO Program.'
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -60,7 +60,8 @@ export const metadata = {
   },
   twitter: {
     card:    'summary_large_image',
-    creator: '@yurikruman',
+    site:    X_HANDLE,
+    creator: X_HANDLE,
     title:   DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
   },

@@ -75,7 +75,7 @@ export default function CourseApplyForm({ source = 'caio-course-apply' }) {
       onSubmit={handleSubmit}
       className="flex flex-col sm:flex-row gap-3 w-full max-w-md mx-auto"
       noValidate
-      aria-label="Request enrollment in the Fractional CAIO Course"
+      aria-label="Request enrollment in the Fractional CAIO Program"
     >
       <label htmlFor="caio-apply-email" className="sr-only">
         Work email address
@@ -112,7 +112,7 @@ export default function CourseApplyForm({ source = 'caio-course-apply' }) {
         "
         style={{ backgroundColor: '#4f46e5' }}
       >
-        {status === 'submitting' ? 'Sending…' : 'Request Enrollment'}
+        {status === 'submitting' ? 'Sending...' : 'Request enrollment'}
       </button>
       {status === 'error' && (
         <p

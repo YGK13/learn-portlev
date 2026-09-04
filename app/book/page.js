@@ -13,7 +13,7 @@ import NewsletterCapture from '@/components/NewsletterCapture'
 
 export const metadata = {
   alternates: { canonical: '/book' },
-  title:       'The Book — Closing the AI Wage Gap',
+  title:       'The Book: Closing the AI Wage Gap',
   description: 'A 5-part, 18-chapter operating system for mid-career executives ' +
                'who want to close the AI Wage Gap. Launching Q4 2026.',
 }

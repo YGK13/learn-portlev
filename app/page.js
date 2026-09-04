@@ -14,7 +14,7 @@
 import Link from 'next/link'
 import { getAllTracks, getLessonsForTrack, getAllBriefs } from '@/lib/content'
 import { getLeverageBriefPosts } from '@/lib/leverage-brief'
-import { PROGRAM, COHORT, NEWSLETTER, faqLd } from '@/lib/site'
+import { PROGRAM, COHORT, NEWSLETTER, BUILDS, faqLd } from '@/lib/site'
 import TrackCard         from '@/components/TrackCard'
 import BriefCard         from '@/components/BriefCard'
 import NewsletterCapture from '@/components/NewsletterCapture'
@@ -26,8 +26,8 @@ import JsonLd            from '@/components/JsonLd'
 export const metadata = {
   title: { absolute: 'PortLev Academy: Free AI Curriculum for Executives' },
   description:
-    'Free, open-source AI curriculum for executives and consultants from a 3x CHRO who trains ' +
-    'frontier models. Ten tracks, no code. Then the Fractional CAIO Program.',
+    'Free, open-source AI curriculum for executives from a 3x CHRO who trains frontier ' +
+    'models. Ten tracks, no code. Then the $2,500 Fractional CAIO Program.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'PortLev Academy: Free AI Curriculum for Executives',
@@ -56,7 +56,7 @@ const HOME_FAQ = [
   },
   {
     q: 'Who is Yuri Kruman?',
-    a: 'Yuri Kruman is a Fractional Chief AI Officer and three-time CHRO who has trained frontier AI models for OpenAI, Meta and Microsoft since 2023, shipped ten custom AI builds and coached 2,300+ clients. Yuri founded Portfolio Leverage Company and writes The Leverage Brief.',
+    a: 'Yuri Kruman is a Fractional Chief AI Officer and three-time CHRO who has trained frontier AI models for OpenAI, Meta and Microsoft since 2023, has 17 builds live in public and has coached 2,300+ clients. Yuri founded Portfolio Leverage Company and writes The Leverage Brief.',
   },
   {
     q: 'What is the Fractional CAIO Program?',
@@ -126,7 +126,7 @@ export default async function Home() {
         <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)] lg:items-center">
             {/* Copy */}
-            <div>
+            <div className="min-w-0">
               <p className="eyebrow mb-4">Free, open-source AI curriculum for executives</p>
               <h1
                 id="hero-heading"
@@ -160,8 +160,8 @@ export default async function Home() {
               </div>
             </div>
 
-            {/* Path card */}
-            <div className="card p-6 sm:p-7 shadow-lift" data-reveal>
+            {/* Path card: above the fold, so never gated behind the reveal observer */}
+            <div className="card p-6 sm:p-7 shadow-lift min-w-0">
               <p className="eyebrow mb-4">Your path here</p>
               <ol className="flex flex-col gap-3 list-none p-0 m-0">
                 <PathStep
@@ -208,7 +208,7 @@ export default async function Home() {
             {[
               { stat: '3x CHRO',       desc: 'operator, not theorist' },
               { stat: 'OpenAI · Meta · Microsoft', desc: 'trains their frontier models' },
-              { stat: '10',            desc: 'custom AI builds shipped' },
+              { stat: String(BUILDS.count), desc: 'builds live in public' },
               { stat: '2,300+',        desc: 'clients coached' },
               { stat: 'MIT + CC-BY',   desc: 'open code and content' },
             ].map(item => (
@@ -517,9 +517,9 @@ function PathStep({ n, label, meta, href, desc, featured = false }) {
           {n}
         </span>
         <span className="min-w-0 flex-1">
-          <span className="flex items-baseline justify-between gap-3">
+          <span className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
             <span className="font-semibold text-sm text-ink group-hover:underline">{label}</span>
-            <span className="text-[11px] font-medium text-muted whitespace-nowrap">{meta}</span>
+            <span className="text-[11px] font-medium text-muted">{meta}</span>
           </span>
           <span className="mt-0.5 block text-xs text-muted">{desc}</span>
         </span>

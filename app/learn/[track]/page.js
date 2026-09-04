@@ -10,7 +10,7 @@ import { getAllTracks, getTrack, getLessonsForTrack } from '@/lib/content'
 import CTABanner         from '@/components/CTABanner'
 import AttributionNotice from '@/components/AttributionNotice'
 import JsonLd            from '@/components/JsonLd'
-import { trackCourseLd, breadcrumbLd } from '@/lib/site'
+import { trackCourseLd, breadcrumbLd, seoTitle, seoDescription } from '@/lib/site'
 
 // Tracks whose end-of-track CTA steps up to the CAIO Program.
 const PROGRAM_FEEDER_TRACKS = new Set(['fractional-caio-playbook'])
@@ -32,12 +32,12 @@ export async function generateMetadata({ params }) {
   if (!track) return {}
 
   return {
-    title:       `${track.title}: Free Track`,
-    description: track.summary,
+    title:       seoTitle(track.title, { variant: 'Free Track' }),
+    description: seoDescription(track.summary),
     alternates:  { canonical: `/learn/${trackSlug}` },
     openGraph: {
       title:       track.title,
-      description: track.summary,
+      description: seoDescription(track.summary, 200),
       url:         `/learn/${trackSlug}`,
       type:        'website',
     },
