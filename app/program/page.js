@@ -446,7 +446,7 @@ export default function ProgramPage() {
             <div className="mb-8" data-reveal>
               <p className="eyebrow mb-2">Try before you request</p>
               <h2 id="feeder-heading" className="font-display text-3xl font-bold tracking-tight text-ink">
-                The free {caioTrack.title}
+                {caioTrack.title}, free
               </h2>
               <p className="mt-3 text-base text-muted">
                 {caioLessons.length} free lessons that teach the map. The program is the instruments.

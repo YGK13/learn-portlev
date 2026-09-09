@@ -32,8 +32,8 @@ export default function InstructorBlock({ variant = 'full', eyebrow = 'Who teach
             <Image
               src="/yuri-kruman.jpg"
               alt="Yuri Kruman, Fractional Chief AI Officer and 3x CHRO, instructor of PortLev Academy"
-              width={640}
-              height={640}
+              width={900}
+              height={1200}
               sizes="(min-width: 1024px) 420px, 90vw"
               className="relative w-full rounded-3xl object-cover shadow-card"
               priority={false}

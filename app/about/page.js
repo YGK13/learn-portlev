@@ -35,10 +35,10 @@ export default function AboutPage() {
           <div className="flex flex-col lg:flex-row gap-12 items-start">
             {/* Headshot */}
             <Image
-              src="/yuri-kruman.jpg"
+              src="/yuri-kruman-480.jpg"
               alt="Yuri Kruman, Fractional Chief AI Officer and 3x CHRO"
-              width={320}
-              height={320}
+              width={360}
+              height={480}
               sizes="160px"
               priority
               className="shrink-0 w-32 h-32 sm:w-40 sm:h-40 rounded-2xl object-cover"
