@@ -6,7 +6,7 @@ order: 3
 level: beginner
 status: published
 tier: free
-updated: "2026-07-06"
+updated: "2026-09-16"
 tags: ["prompting", "chain-of-thought", "few-shot", "advanced"]
 estReadMin: 12
 video:
@@ -153,6 +153,16 @@ This pattern produces feedback that forces you to defend your work at a level yo
 The critical skill isn’t knowing how to use AI. It’s knowing where to use it and where to override it.
 </Pullquote>
 
+### Verification Is the Skill That Actually Compounds
+
+As you hand more work to AI, instructing it well matters less than verifying what it handed back. Simon Willison, a widely followed voice on working with AI agents, frames it directly for coding work: "the key skill required to make productive use of coding agents is being able to confidently instruct them on how to make changes and then confidently verify that those changes have been applied in the correct way," and he is explicit that "eyeballing every line of code has never been the most effective way to validate a change." The same problem exists outside of code. A prompt tells AI what to produce. It does not tell you whether what came back is right.
+
+This is what Pattern 3 is actually for. Structured role-play as an adversarial reviewer is not just a way to improve a draft before you send it, it is your verification method for work you did not build line by line. The skeptical board member, the pressure-testing CFO persona, exists to catch what a quick read-through will not.
+
+<Callout type="key" title="Instruction gets you output. Verification is what makes it trustworthy.">
+Simon Willison, "More Than Just Code Review," simonwillison.net, 2026-08-22: the real bottleneck in working with AI agents is not giving better instructions, it is developing a real way to verify what they produce. Pattern 3 is that method for everything that is not code.
+</Callout>
+
 <KnowledgeCheck
   id="patterns-check"
   title="Which pattern fits the situation?"
@@ -267,6 +277,7 @@ Think of the person who asks the questions you least want to answer. Fill in the
 - Chain-of-thought prompting instructs the AI to reason step by step before producing output. The improvement in analysis depth is consistent and significant.
 - Few-shot examples are the fastest way to close the gap between AI default output and your specific standard. Use your own best work, not AI-generated examples.
 - Structured role-play assigns a detailed, persistent persona that stays in character across multiple turns. Its highest-value use is adversarial review, having an expert critic pressure-test your work before it reaches the actual stakeholder.
+- Instruction is not the hard part. Verification is. Pattern 3 doubles as your verification method for AI output you cannot check line by line.
 - The three patterns compound. For high-stakes deliverables, use all three: few-shot for format, chain-of-thought for reasoning, role-play for adversarial review.
 
 ---
